@@ -17,7 +17,7 @@
  */
 package com.axelor.tool.template;
 
-import com.axelor.apps.tool.exception.ToolExceptionMessage;
+import com.axelor.apps.utils.exception.ToolExceptionMessage;
 import com.axelor.db.EntityHelper;
 import com.axelor.db.Model;
 import com.axelor.db.mapper.Mapper;
