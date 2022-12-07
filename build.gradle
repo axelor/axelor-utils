@@ -10,8 +10,8 @@ apply {
 }
 
 axelor {
-	title "Axelor Tool"
-	description "Axelor Tool Module"
+	title "Axelor Utils"
+	description "Axelor Utils Module"
 }
 
 dependencies {
