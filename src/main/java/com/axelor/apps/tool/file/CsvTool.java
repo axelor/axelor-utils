@@ -35,7 +35,6 @@ public final class CsvTool {
    * @param fileName Le nom du fichier
    * @return Une liste de tableau de valeur contenant l'ensemble des lignes
    * @throws IOException
-   * @throws AxelorException
    */
   public static List<String[]> cSVFileReader(String fileName, char separator) throws IOException {
 

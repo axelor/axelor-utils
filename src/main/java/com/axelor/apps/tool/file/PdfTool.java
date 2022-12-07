@@ -36,8 +36,7 @@ import org.slf4j.LoggerFactory;
 
 public final class PdfTool {
 
-  private static final Logger logger =
-      LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
+  private static final Logger log = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
   private PdfTool() {}
 
@@ -84,7 +83,7 @@ public final class PdfTool {
     try {
       fileLink += "?name=" + URLEncoder.encode(fileName, "UTF-8");
     } catch (UnsupportedEncodingException e) {
-      logger.error(e.getLocalizedMessage());
+      log.error(e.getLocalizedMessage());
     }
     return fileLink;
   }

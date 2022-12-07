@@ -75,13 +75,16 @@ public final class DecimalTool {
       return prorataValue;
     } else {
       prorataValue =
-          (days.multiply(value).divide(totalDays, scale, BigDecimal.ROUND_HALF_UP))
+          (days.multiply(value).divide(totalDays, scale, RoundingMode.HALF_UP))
               .setScale(scale, RoundingMode.HALF_UP);
     }
 
     LOG.debug(
         "Prorata of a value on a total days of {} for {} days and a value of {} : {}",
-        new Object[] {totalDays, days, value, prorataValue});
+        totalDays,
+        days,
+        value,
+        prorataValue);
 
     return prorataValue;
   }

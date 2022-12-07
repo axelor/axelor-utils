@@ -81,7 +81,7 @@ public final class URLService {
       }
 
       LOG.info("Downloaded Successfully.");
-      LOG.debug("No of bytes", byteWritten);
+      LOG.debug("No of bytes {}", byteWritten);
 
     } catch (IOException ex) {
 

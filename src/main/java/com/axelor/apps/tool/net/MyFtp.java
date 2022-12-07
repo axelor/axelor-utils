@@ -17,7 +17,6 @@
  */
 package com.axelor.apps.tool.net;
 
-import com.axelor.exception.service.TraceBackService;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.lang.invoke.MethodHandles;
@@ -66,19 +65,18 @@ public final class MyFtp {
 
   public static void getDataFile(
       FTPFile[] files, String destinationFolder, Calendar start, Calendar end, FTPClient ftp) {
-    for (int i = 0; i < files.length; i++) {
+    for (FTPFile ftpFile : files) {
 
-      Date fileDate = files[i].getTimestamp().getTime();
+      Date fileDate = ftpFile.getTimestamp().getTime();
       if (fileDate.compareTo(start.getTime()) >= 0 && fileDate.compareTo(end.getTime()) <= 0) {
 
         // Download a file from the FTP Server
-        File file = new File(destinationFolder + File.separator + files[i].getName());
+        File file = new File(destinationFolder + File.separator + ftpFile.getName());
         try (FileOutputStream fos = new FileOutputStream(file); ) {
-          ftp.retrieveFile(files[i].getName(), fos);
+          ftp.retrieveFile(ftpFile.getName(), fos);
           file.setLastModified(fileDate.getTime());
         } catch (Exception e) {
-          LOG.error(e.getMessage());
-          TraceBackService.trace(e);
+          LOG.error(e.getMessage(), e);
         }
       }
     }

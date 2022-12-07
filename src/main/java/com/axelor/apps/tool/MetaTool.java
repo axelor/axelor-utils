@@ -18,8 +18,6 @@
 package com.axelor.apps.tool;
 
 import com.axelor.apps.tool.exception.ToolExceptionMessage;
-import com.axelor.exception.AxelorException;
-import com.axelor.exception.db.repo.TraceBackRepository;
 import com.axelor.i18n.I18n;
 import com.axelor.meta.db.MetaField;
 import com.axelor.meta.db.MetaJsonField;
@@ -41,7 +39,7 @@ public class MetaTool {
    * @param nameType type of a json field
    * @return corresponding type of field
    */
-  public static String jsonTypeToType(String nameType) throws AxelorException {
+  public static String jsonTypeToType(String nameType) {
     Map<String, String> typeToJsonTypeMap = createTypeToJsonTypeMap();
     // reverse the map
     Map<String, String> jsonTypeToTypeMap =
@@ -49,10 +47,8 @@ public class MetaTool {
             .collect(Collectors.toMap(Map.Entry::getValue, Map.Entry::getKey));
     String typeName = jsonTypeToTypeMap.get(nameType);
     if (typeName == null) {
-      throw new AxelorException(
-          TraceBackRepository.CATEGORY_INCONSISTENCY,
-          I18n.get(ToolExceptionMessage.ERROR_CONVERT_JSON_TYPE_TO_TYPE),
-          nameType);
+      throw new IllegalStateException(
+          String.format(I18n.get(ToolExceptionMessage.ERROR_CONVERT_JSON_TYPE_TO_TYPE), nameType));
     }
     return typeName;
   }
@@ -67,13 +63,11 @@ public class MetaTool {
    * @param nameType type of a field
    * @return corresponding type of json field
    */
-  public static String typeToJsonType(String nameType) throws AxelorException {
+  public static String typeToJsonType(String nameType) {
     String jsonTypeName = createTypeToJsonTypeMap().get(nameType);
     if (jsonTypeName == null) {
-      throw new AxelorException(
-          TraceBackRepository.CATEGORY_INCONSISTENCY,
-          I18n.get(ToolExceptionMessage.ERROR_CONVERT_TYPE_TO_JSON_TYPE),
-          nameType);
+      throw new IllegalStateException(
+          String.format(I18n.get(ToolExceptionMessage.ERROR_CONVERT_TYPE_TO_JSON_TYPE), nameType));
     }
     return jsonTypeName;
   }

@@ -19,7 +19,6 @@ package com.axelor.apps.tool.service;
 
 import com.axelor.common.ObjectUtils;
 import com.axelor.db.JPA;
-import com.axelor.exception.AxelorException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -31,7 +30,7 @@ public class ArchivingToolServiceImpl implements ArchivingToolService {
 
   /** */
   @Override
-  public Map<String, String> getObjectLinkTo(Object object, Long id) throws AxelorException {
+  public Map<String, String> getObjectLinkTo(Object object, Long id) {
     Map<String, String> objectsLinkToMap = new HashMap<String, String>();
     Query FindModelWithobjectFieldQuery =
         JPA.em()
@@ -140,7 +139,7 @@ public class ArchivingToolServiceImpl implements ArchivingToolService {
   }
 
   @Override
-  public String getModelTitle(String modelName) throws AxelorException {
+  public String getModelTitle(String modelName) {
     Query FindModelWithobjectFieldQuery =
         JPA.em()
             .createNativeQuery(

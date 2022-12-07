@@ -15,8 +15,6 @@ axelor {
 }
 
 dependencies {
-	api project(":modules:axelor-exception")
-
 	implementation libs.commons_net
 	implementation libs.commons_io
 	implementation libs.commons_lang3

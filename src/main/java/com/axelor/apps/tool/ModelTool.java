@@ -23,9 +23,6 @@ import com.axelor.db.JPA;
 import com.axelor.db.JpaRepository;
 import com.axelor.db.Model;
 import com.axelor.db.mapper.Mapper;
-import com.axelor.exception.AxelorException;
-import com.axelor.exception.db.repo.TraceBackRepository;
-import com.axelor.exception.service.TraceBackService;
 import com.axelor.i18n.I18n;
 import com.google.common.base.Preconditions;
 import java.lang.reflect.Field;
@@ -40,6 +37,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import javax.persistence.Column;
+import org.slf4j.LoggerFactory;
 
 public final class ModelTool {
 
@@ -52,6 +50,7 @@ public final class ModelTool {
    * @param consumer to apply on each record.
    * @return the number of errors that occurred.
    */
+  @SuppressWarnings("unchecked")
   public static <T extends Model> int apply(
       Class<? extends Model> modelClass,
       Collection<? extends Number> ids,
@@ -72,14 +71,10 @@ public final class ModelTool {
           }
         }
 
-        throw new AxelorException(
-            modelClass,
-            TraceBackRepository.CATEGORY_NO_VALUE,
-            I18n.get("Cannot find record #%s"),
-            String.valueOf(id));
+        throw new IllegalStateException(String.format(I18n.get("Cannot find record #%s"), id));
       } catch (Exception e) {
         ++errorCount;
-        TraceBackService.trace(e);
+        LoggerFactory.getLogger(ModelTool.class).error(e.getMessage(), e);
       } finally {
         JPA.clear();
       }
@@ -151,7 +146,7 @@ public final class ModelTool {
           | IllegalAccessException
           | IllegalArgumentException
           | InvocationTargetException e) {
-        TraceBackService.trace(e);
+        LoggerFactory.getLogger(ModelTool.class).error(e.getMessage(), e);
       }
     }
 

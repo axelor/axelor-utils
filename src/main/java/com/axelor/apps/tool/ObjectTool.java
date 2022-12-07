@@ -17,7 +17,6 @@
  */
 package com.axelor.apps.tool;
 
-import com.axelor.exception.service.TraceBackService;
 import java.lang.invoke.MethodHandles;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
@@ -47,7 +46,7 @@ public final class ObjectTool {
       field = classGotten.getDeclaredField(fieldName);
 
     } catch (SecurityException | NoSuchFieldException e) {
-      TraceBackService.trace(e);
+      LOG.error(e.getMessage(), e);
     }
     LOG.debug("Found class : {}", field);
     return field;
@@ -58,7 +57,7 @@ public final class ObjectTool {
    * parent
    *
    * @param obj Un objet parent
-   * @param linked Un nom de champ
+   * @param fieldName Un nom de champ
    * @return
    */
   public static Object getObject(Object obj, String fieldName) {

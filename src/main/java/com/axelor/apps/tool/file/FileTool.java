@@ -46,7 +46,6 @@ public final class FileTool {
    * @param fileName Le nom du fichier
    * @return Une liste contenant l'ensemble des lignes
    * @throws IOException
-   * @throws AxelorException
    */
   public static List<String> reader(String fileName) throws IOException {
 
@@ -155,7 +154,6 @@ public final class FileTool {
    * @param fileDest Le chemin du fichier destination
    * @throws IOException
    * @throws FileNotFoundException
-   * @throws AxelorException
    */
   public static void copy(String fileSrc, String fileDest) throws IOException {
 

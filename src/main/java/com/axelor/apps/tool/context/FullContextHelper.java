@@ -23,9 +23,6 @@ import com.axelor.db.JpaRepository;
 import com.axelor.db.JpaScanner;
 import com.axelor.db.Model;
 import com.axelor.db.Query;
-import com.axelor.exception.AxelorException;
-import com.axelor.exception.db.repo.TraceBackRepository;
-import com.axelor.exception.service.TraceBackService;
 import com.axelor.i18n.I18n;
 import com.axelor.inject.Beans;
 import com.axelor.meta.db.repo.MetaJsonRecordRepository;
@@ -34,10 +31,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import org.slf4j.LoggerFactory;
 
 public class FullContextHelper {
 
-  @SuppressWarnings("unchecked")
   public static FullContext create(String modelName, Map<String, Object> values) {
     if (JpaScanner.findModel(modelName) == null) {
       return new FullContext(Beans.get(MetaJsonRecordRepository.class).create(modelName, values));
@@ -49,8 +46,7 @@ public class FullContextHelper {
     return new FullContext(model);
   }
 
-  public static FullContext filterOne(String modelName, String queryStr, Object... params)
-      throws AxelorException {
+  public static FullContext filterOne(String modelName, String queryStr, Object... params) {
 
     Query<? extends Model> query = createQuery(modelName, queryStr, null, params);
     try {
@@ -59,17 +55,15 @@ public class FullContextHelper {
         return new FullContext(model);
       }
     } catch (Exception e) {
-      TraceBackService.trace(e);
-      throw new AxelorException(
-          TraceBackRepository.CATEGORY_INCONSISTENCY,
-          I18n.get("Error executing query: %s"),
-          queryStr);
+      LoggerFactory.getLogger(FullContextHelper.class).error(e.getMessage(), e);
+      throw new IllegalStateException(
+          String.format(I18n.get("Error executing query: %s"), queryStr));
     }
 
     return null;
   }
 
-  public static FullContext filterOne(String modelName, String queryStr) throws AxelorException {
+  public static FullContext filterOne(String modelName, String queryStr) {
 
     Query<? extends Model> query = createQuery(modelName, queryStr, null, null);
     try {
@@ -78,18 +72,16 @@ public class FullContextHelper {
         return new FullContext(model);
       }
     } catch (Exception e) {
-      TraceBackService.trace(e);
-      throw new AxelorException(
-          TraceBackRepository.CATEGORY_INCONSISTENCY,
-          I18n.get("Error executing query: %s"),
-          queryStr);
+      LoggerFactory.getLogger(FullContextHelper.class).error(e.getMessage(), e);
+      throw new IllegalStateException(
+          String.format(I18n.get("Error executing query: %s"), queryStr));
     }
 
     return null;
   }
 
   public static FullContext filterOne(
-      String modelName, String queryStr, Map<String, Object> paramMap) throws AxelorException {
+      String modelName, String queryStr, Map<String, Object> paramMap) {
 
     Query<? extends Model> query = createQuery(modelName, queryStr, paramMap, null);
     try {
@@ -98,11 +90,9 @@ public class FullContextHelper {
         return new FullContext(model);
       }
     } catch (Exception e) {
-      TraceBackService.trace(e);
-      throw new AxelorException(
-          TraceBackRepository.CATEGORY_INCONSISTENCY,
-          I18n.get("Error executing query: %s"),
-          queryStr);
+      LoggerFactory.getLogger(FullContextHelper.class).error(e.getMessage(), e);
+      throw new IllegalStateException(
+          String.format(I18n.get("Error executing query: %s"), queryStr));
     }
 
     return null;
@@ -180,7 +170,7 @@ public class FullContextHelper {
   }
 
   public static FullContext create(String modelName) {
-    return create(modelName, new HashMap<String, Object>());
+    return create(modelName, new HashMap<>());
   }
 
   @Transactional
@@ -188,9 +178,7 @@ public class FullContextHelper {
 
     Model model = null;
 
-    if (object instanceof Model) {
-      model = (Model) model;
-    } else if (object instanceof FullContext) {
+    if (object instanceof FullContext) {
       model = (Model) ((FullContext) object).getTarget();
     }
 
@@ -213,14 +201,14 @@ public class FullContextHelper {
     return null;
   }
 
-  public static JpaRepository<? extends Model> getRepository(String modelName) {
-
+  @SuppressWarnings("unchecked")
+  public static JpaRepository<Model> getRepository(String modelName) {
     return JpaRepository.of((Class<Model>) JpaScanner.findModel(modelName));
   }
 
-  public static FullContext find(String modelName, Object recordId) throws AxelorException {
+  public static FullContext find(String modelName, Object recordId) {
 
-    if (recordId == null || !(recordId instanceof Long)) {
+    if (!(recordId instanceof Long)) {
       return null;
     }
 
