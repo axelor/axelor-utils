@@ -46,13 +46,13 @@ public final class ModelTool {
   /**
    * Apply consumer to each record found from collection of IDs.
    *
+   * @param modelClass Model of collection elements.
    * @param ids collection of IDs.
    * @param consumer to apply on each record.
    * @return the number of errors that occurred.
    */
-  @SuppressWarnings("unchecked")
   public static <T extends Model> int apply(
-      Class<? extends Model> modelClass,
+      Class<T> modelClass,
       Collection<? extends Number> ids,
       ThrowConsumer<T, Exception> consumer) {
 
@@ -64,9 +64,9 @@ public final class ModelTool {
     for (Number id : ids) {
       try {
         if (id != null) {
-          Model model = JPA.find(modelClass, id.longValue());
+          T model = JPA.find(modelClass, id.longValue());
           if (model != null) {
-            consumer.accept((T) model);
+            consumer.accept(model);
             continue;
           }
         }
