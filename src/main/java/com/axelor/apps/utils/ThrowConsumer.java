@@ -23,12 +23,11 @@ package com.axelor.apps.utils;
  * @param <T>
  */
 @FunctionalInterface
-public interface ThrowConsumer<T> {
+public interface ThrowConsumer<T, E extends Exception> {
   /**
    * Performs this operation on the given argument.
    *
    * @param t the input argument.
-   * @throws Exception from operation.
    */
-  void accept(T t) throws Exception;
+  void accept(T t) throws E;
 }
