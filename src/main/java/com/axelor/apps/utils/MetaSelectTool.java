@@ -24,7 +24,7 @@ import com.google.inject.Inject;
 import java.util.Optional;
 
 public class MetaSelectTool {
-  protected MetaSelectItemRepository metaSelectItemRepo;
+  protected final MetaSelectItemRepository metaSelectItemRepo;
 
   @Inject
   public MetaSelectTool(MetaSelectItemRepository metaSelectItemRepo) {

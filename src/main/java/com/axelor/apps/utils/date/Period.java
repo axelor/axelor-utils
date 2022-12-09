@@ -35,9 +35,6 @@ public class Period {
   private LocalDate to;
   private boolean days360;
 
-  @Inject
-  public Period() {}
-
   public LocalDate getFrom() {
     return from;
   }

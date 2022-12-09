@@ -26,7 +26,7 @@ import java.util.Collection;
 import java.util.HashSet;
 
 public class TranslationServiceImpl implements TranslationService {
-  protected MetaTranslationRepository metaTranslationRepo;
+  protected final MetaTranslationRepository metaTranslationRepo;
 
   protected static final String VALUE_KEY_PREFIX = "value:";
 
