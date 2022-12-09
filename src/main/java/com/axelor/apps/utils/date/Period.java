@@ -19,7 +19,6 @@ package com.axelor.apps.utils.date;
 
 import com.axelor.apps.utils.exception.ToolExceptionMessage;
 import com.axelor.i18n.I18n;
-import com.google.inject.Inject;
 import java.time.LocalDate;
 
 /**
