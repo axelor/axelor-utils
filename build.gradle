@@ -2,33 +2,26 @@ plugins {
 	id 'com.axelor.app'
 }
 
-apply from: "../libs.gradle"
-apply from: "../version.gradle"
-
-apply {
-	version = openSuiteVersion
-}
-
 axelor {
 	title "Axelor Utils"
 	description "Axelor Utils Module"
 }
 
 dependencies {
-	implementation libs.commons_net
-	implementation libs.commons_io
-	implementation libs.commons_lang3
-	implementation libs.pdfbox
-	implementation libs.commons_text
+	implementation 'commons-net:commons-net:2.0'
+	implementation 'org.apache.commons:commons-io:1.3.2'
+	implementation 'org.apache.commons:commons-lang3:3.2'
+	implementation 'org.apache.pdfbox:pdfbox:2.0.9'
+	implementation  'org.apache.commons:commons-text:1.9'
 
 	// JSch
-	implementation libs.jsch
+	implementation 'com.jcraft:jsch:0.1.55'
 
-	compileOnly libs.jaxws_api
-	compileOnly libs.jaxb_api
+	compileOnly 'javax.xml.ws:jaxws-api:2.3.1'
+	compileOnly 'javax.xml.bind:jaxb-api:2.2.2'
 
-	implementation libs.jaxb_impl
-	api libs.opencsv
+	implementation  'com.sun.xml.bind:jaxb-impl:2.2.2'
+	api 'com.opencsv:opencsv:4.6'
 	implementation 'javax.xml.ws:jaxws-api:2.3.1'
 	implementation 'javax.jws:javax.jws-api:1.1'
 }

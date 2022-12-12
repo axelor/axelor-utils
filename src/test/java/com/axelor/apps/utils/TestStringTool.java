@@ -17,7 +17,7 @@
  */
 package com.axelor.apps.utils;
 
-import com.axelor.exception.db.TraceBack;
+import com.axelor.meta.db.MetaJsonModel;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -63,21 +63,21 @@ public class TestStringTool {
   @Test
   public void testGetIdListString() {
 
-    List<Long> traceBackIds = Arrays.asList(null, 1l, 2l, null, 5l, null);
-    List<TraceBack> traceBackList = new ArrayList<>();
-    for (Long id : traceBackIds) {
-      TraceBack traceBack = new TraceBack();
-      traceBack.setId(id);
-      traceBackList.add(traceBack);
+    List<Long> customModelIds = Arrays.asList(null, 1l, 2l, null, 5l, null);
+    List<MetaJsonModel> customModelList = new ArrayList<>();
+    for (Long id : customModelIds) {
+      MetaJsonModel customModel = new MetaJsonModel();
+      customModel.setId(id);
+      customModelList.add(customModel);
     }
 
     String expected = "1,2,5";
-    Assert.assertEquals(expected, StringTool.getIdListString(traceBackList));
+    Assert.assertEquals(expected, StringTool.getIdListString(customModelList));
 
-    traceBackList = null;
-    Assert.assertEquals("0", StringTool.getIdListString(traceBackList));
+    customModelList = null;
+    Assert.assertEquals("0", StringTool.getIdListString(customModelList));
 
-    traceBackList = new ArrayList<>();
-    Assert.assertEquals("0", StringTool.getIdListString(traceBackList));
+    customModelList = new ArrayList<>();
+    Assert.assertEquals("0", StringTool.getIdListString(customModelList));
   }
 }

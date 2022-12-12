@@ -52,9 +52,7 @@ public final class ModelTool {
    * @return the number of errors that occurred.
    */
   public static <T extends Model> int apply(
-      Class<T> modelClass,
-      Collection<? extends Number> ids,
-      ThrowConsumer<T, Exception> consumer) {
+      Class<T> modelClass, Collection<? extends Number> ids, ThrowConsumer<T, Exception> consumer) {
 
     Preconditions.checkNotNull(ids, I18n.get("The collection of IDs cannot be null."));
     Preconditions.checkNotNull(consumer, I18n.get("The consumer cannot be null."));
