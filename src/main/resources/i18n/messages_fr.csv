@@ -1,8 +1,11 @@
 "key","message","comment","context"
-"An error occurs while opening the connection. Please verify the following URL : %s.","Une erreur est survenue pendant la connexion. Veuillez verifier l'URL suivant: %s.",,
 "AOS API calls are disabled, please contact your administrator. The property aos.api.enable is false in application.properties.","Les appels API AOS sont désactivés, veuillez contacter votre administrateur. La propriété aos.api.enable est à faux dans le application.properties.",,
+"An error occurred with the following message : %s","Une erreur s'est produite avec le message suivant : %s",,
+"An error occurs while opening the connection. Please verify the following URL : %s.","Une erreur est survenue pendant la connexion. Veuillez verifier l'URL suivant: %s.",,
 "Can not opening the connection to a empty URL.","Impossible d'établir la connexion avec un URL vide.",,
 "Cannot find record #%s","Impossible de trouver l’enregistrement #%s",,
+"Computation in progress...",,,
+"Error executing query: %s",,,
 "Meta json field type %s could not be converted to a meta field type.","Le type de champ personnalisé %s n'a pas pu être converti vers un type de champ.",,
 "No such template","Modèle non trouvé",,
 "Templating can not be empty","Le modèle ne peut pas être vide",,

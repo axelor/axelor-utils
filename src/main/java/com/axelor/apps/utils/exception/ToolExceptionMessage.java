@@ -52,4 +52,7 @@ public final class ToolExceptionMessage {
 
   // Callable Tool
   public static final String PROCESS_BEING_COMPUTED = /*$$(*/ "Computation in progress..." /*)*/;
+
+  public static final String EXCEPTION_OCCURRED = /*$$(*/
+      "An error occurred with the following message : %s" /*)*/;
 }
