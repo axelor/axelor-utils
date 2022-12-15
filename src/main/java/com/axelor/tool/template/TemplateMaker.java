@@ -17,7 +17,6 @@
  */
 package com.axelor.tool.template;
 
-import com.axelor.apps.utils.exception.ToolExceptionMessage;
 import com.axelor.db.EntityHelper;
 import com.axelor.db.Model;
 import com.axelor.db.mapper.Mapper;
@@ -27,6 +26,7 @@ import com.axelor.meta.db.MetaJsonRecord;
 import com.axelor.meta.db.repo.MetaJsonRecordRepository;
 import com.axelor.rpc.Context;
 import com.axelor.text.StringTemplates;
+import com.axelor.utils.exception.ToolExceptionMessage;
 import com.google.common.base.Charsets;
 import com.google.common.base.Preconditions;
 import com.google.common.base.Strings;
