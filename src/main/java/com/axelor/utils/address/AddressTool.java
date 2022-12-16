@@ -17,6 +17,7 @@
  */
 package com.axelor.utils.address;
 
+import com.axelor.utils.ExceptionTool;
 import com.qas.web_2005_02.Address;
 import com.qas.web_2005_02.EngineEnumType;
 import com.qas.web_2005_02.EngineType;
@@ -100,7 +101,7 @@ public class AddressTool {
 
       return resp.isIsOk();
     } catch (Exception e) {
-      LOG.error(e.getMessage(), e);
+      ExceptionTool.trace(e);
       return false;
     }
   }
@@ -129,7 +130,7 @@ public class AddressTool {
       mapSearch.put("qaAddress", respSearch.getQAAddress());
       return mapSearch;
     } catch (Exception e) {
-      LOG.error(e.getMessage(), e);
+      ExceptionTool.trace(e);
       return new HashMap<>();
     }
   }
@@ -146,7 +147,7 @@ public class AddressTool {
 
       return client.doGetAddress(getAddress);
     } catch (Exception e) {
-      LOG.error(e.getMessage(), e);
+      ExceptionTool.trace(e);
     }
     return null;
   }

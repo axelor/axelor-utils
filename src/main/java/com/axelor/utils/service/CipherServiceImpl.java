@@ -19,6 +19,7 @@ package com.axelor.utils.service;
 
 import com.axelor.app.AppSettings;
 import com.axelor.common.StringUtils;
+import com.axelor.utils.ExceptionTool;
 import java.io.UnsupportedEncodingException;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
@@ -54,7 +55,7 @@ public class CipherServiceImpl implements CipherService {
       }
 
     } catch (Exception e) {
-      e.printStackTrace();
+      ExceptionTool.trace(e);
     }
     return encryptedString;
   }
@@ -76,7 +77,7 @@ public class CipherServiceImpl implements CipherService {
       }
 
     } catch (Exception e) {
-      e.printStackTrace();
+      ExceptionTool.trace(e);
     }
     return decryptedText;
   }

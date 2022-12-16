@@ -26,12 +26,12 @@ import com.axelor.db.Query;
 import com.axelor.i18n.I18n;
 import com.axelor.inject.Beans;
 import com.axelor.meta.db.repo.MetaJsonRecordRepository;
+import com.axelor.utils.ExceptionTool;
 import com.google.inject.persist.Transactional;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import org.slf4j.LoggerFactory;
 
 public class FullContextHelper {
 
@@ -55,7 +55,7 @@ public class FullContextHelper {
         return new FullContext(model);
       }
     } catch (Exception e) {
-      LoggerFactory.getLogger(FullContextHelper.class).error(e.getMessage(), e);
+      ExceptionTool.trace(e);
       throw new IllegalStateException(
           String.format(I18n.get("Error executing query: %s"), queryStr));
     }
@@ -72,7 +72,7 @@ public class FullContextHelper {
         return new FullContext(model);
       }
     } catch (Exception e) {
-      LoggerFactory.getLogger(FullContextHelper.class).error(e.getMessage(), e);
+      ExceptionTool.trace(e);
       throw new IllegalStateException(
           String.format(I18n.get("Error executing query: %s"), queryStr));
     }
@@ -90,7 +90,7 @@ public class FullContextHelper {
         return new FullContext(model);
       }
     } catch (Exception e) {
-      LoggerFactory.getLogger(FullContextHelper.class).error(e.getMessage(), e);
+      ExceptionTool.trace(e);
       throw new IllegalStateException(
           String.format(I18n.get("Error executing query: %s"), queryStr));
     }

@@ -18,6 +18,7 @@
 package com.axelor.utils.net;
 
 import com.axelor.i18n.I18n;
+import com.axelor.utils.ExceptionTool;
 import com.axelor.utils.exception.ToolExceptionMessage;
 import com.axelor.utils.file.FileTool;
 import com.google.common.base.Strings;
@@ -56,10 +57,10 @@ public final class URLService {
       fileURL.openConnection().connect();
       return null;
     } catch (java.net.MalformedURLException ex) {
-      ex.printStackTrace();
+      ExceptionTool.trace(ex);
       return String.format(I18n.get(ToolExceptionMessage.URL_SERVICE_2), url);
     } catch (java.io.IOException ex) {
-      ex.printStackTrace();
+      ExceptionTool.trace(ex);
       return String.format(I18n.get(ToolExceptionMessage.URL_SERVICE_3), url);
     }
   }
@@ -84,8 +85,7 @@ public final class URLService {
       LOG.debug("No of bytes {}", byteWritten);
 
     } catch (IOException ex) {
-
-      LOG.error(ex.getMessage());
+      ExceptionTool.trace(ex);
     }
   }
 

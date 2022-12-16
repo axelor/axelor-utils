@@ -17,19 +17,15 @@
  */
 package com.axelor.utils.net;
 
+import com.axelor.utils.ExceptionTool;
 import java.io.File;
 import java.io.FileOutputStream;
-import java.lang.invoke.MethodHandles;
 import java.util.Calendar;
 import java.util.Date;
 import org.apache.commons.net.ftp.FTPClient;
 import org.apache.commons.net.ftp.FTPFile;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 public final class MyFtp {
-
-  private static final Logger LOG = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
   private MyFtp() {}
 
@@ -58,8 +54,7 @@ public final class MyFtp {
       ftp.disconnect();
 
     } catch (Exception e) {
-
-      LOG.error(e.getMessage());
+      ExceptionTool.trace(e);
     }
   }
 
@@ -76,7 +71,7 @@ public final class MyFtp {
           ftp.retrieveFile(ftpFile.getName(), fos);
           file.setLastModified(fileDate.getTime());
         } catch (Exception e) {
-          LOG.error(e.getMessage(), e);
+          ExceptionTool.trace(e);
         }
       }
     }

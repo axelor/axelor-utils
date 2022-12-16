@@ -17,17 +17,13 @@
  */
 package com.axelor.utils.xml;
 
-import java.lang.invoke.MethodHandles;
+import com.axelor.utils.ExceptionTool;
 import java.time.LocalDateTime;
 import javax.xml.datatype.DatatypeConfigurationException;
 import javax.xml.datatype.DatatypeFactory;
 import javax.xml.datatype.XMLGregorianCalendar;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 public abstract class DateToXML {
-
-  private static final Logger LOG = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
   public static XMLGregorianCalendar convert(LocalDateTime in) {
 
@@ -39,7 +35,7 @@ public abstract class DateToXML {
 
     } catch (DatatypeConfigurationException e) {
 
-      LOG.error(e.getMessage());
+      ExceptionTool.trace(e);
     }
 
     return date;

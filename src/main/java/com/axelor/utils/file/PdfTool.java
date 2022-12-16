@@ -19,24 +19,20 @@ package com.axelor.utils.file;
 
 import com.axelor.i18n.I18n;
 import com.axelor.meta.MetaFiles;
+import com.axelor.utils.ExceptionTool;
 import com.axelor.utils.exception.ToolExceptionMessage;
 import com.google.common.base.Preconditions;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
-import java.lang.invoke.MethodHandles;
 import java.net.URLEncoder;
 import java.nio.file.Path;
 import java.util.Collections;
 import java.util.List;
 import org.apache.pdfbox.multipdf.PDFMergerUtility;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 public final class PdfTool {
-
-  private static final Logger log = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
   private PdfTool() {}
 
@@ -83,7 +79,7 @@ public final class PdfTool {
     try {
       fileLink += "?name=" + URLEncoder.encode(fileName, "UTF-8");
     } catch (UnsupportedEncodingException e) {
-      log.error(e.getLocalizedMessage());
+      ExceptionTool.trace(e);
     }
     return fileLink;
   }

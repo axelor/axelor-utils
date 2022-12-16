@@ -46,7 +46,7 @@ public final class ObjectTool {
       field = classGotten.getDeclaredField(fieldName);
 
     } catch (SecurityException | NoSuchFieldException e) {
-      LOG.error(e.getMessage(), e);
+      ExceptionTool.trace(e);
     }
     LOG.debug("Found class : {}", field);
     return field;

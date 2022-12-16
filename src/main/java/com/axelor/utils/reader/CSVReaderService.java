@@ -19,22 +19,18 @@ package com.axelor.utils.reader;
 
 import com.axelor.meta.MetaFiles;
 import com.axelor.meta.db.MetaFile;
+import com.axelor.utils.ExceptionTool;
 import com.opencsv.CSVReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.lang.invoke.MethodHandles;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 import org.apache.commons.collections.CollectionUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 public class CSVReaderService implements DataReaderService {
-
-  private static final Logger LOG = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
   private CSVReader csvReader = null;
   private List<String[]> totalRows = new ArrayList<>();
@@ -63,7 +59,7 @@ public class CSVReaderService implements DataReaderService {
         return false;
       }
     } catch (IOException e) {
-      LOG.error(e.getMessage());
+      ExceptionTool.trace(e);
       return false;
     }
     return true;

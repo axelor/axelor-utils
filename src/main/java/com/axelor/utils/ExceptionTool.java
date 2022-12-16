@@ -44,4 +44,33 @@ public class ExceptionTool {
     response.setError(
         String.format(I18n.get(ToolExceptionMessage.EXCEPTION_OCCURRED), e.getMessage()));
   }
+
+  /**
+   * Displays the exception message on the screen via a popup.
+   *
+   * @param response the ActionResponse to send the error message to.
+   * @param message
+   */
+  public static void trace(@Nonnull ActionResponse response, @Nonnull String message) {
+    response.setError(String.format(I18n.get(ToolExceptionMessage.EXCEPTION_OCCURRED), message));
+  }
+
+  /**
+   * Traces an exception with a specific message in the logs.
+   *
+   * @param message
+   * @param e the Throwable to log.
+   */
+  public static void trace(@Nonnull String message, @Nonnull Throwable e) {
+    log.error(message, e);
+  }
+
+  /**
+   * Traces an exception corresponding to a bug in the logs.
+   *
+   * @param e the Throwable to log.
+   */
+  public static void trace(@Nonnull Throwable e) {
+    log.error(e.getMessage(), e);
+  }
 }

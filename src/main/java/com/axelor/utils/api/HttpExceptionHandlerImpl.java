@@ -19,6 +19,7 @@ package com.axelor.utils.api;
 
 import com.axelor.app.AppSettings;
 import com.axelor.i18n.I18n;
+import com.axelor.utils.ExceptionTool;
 import com.axelor.utils.exception.IExceptionMessage;
 import javax.ws.rs.BadRequestException;
 import javax.ws.rs.ClientErrorException;
@@ -27,7 +28,6 @@ import javax.ws.rs.NotFoundException;
 import javax.ws.rs.core.Response;
 import org.aopalliance.intercept.MethodInterceptor;
 import org.aopalliance.intercept.MethodInvocation;
-import org.slf4j.LoggerFactory;
 
 public class HttpExceptionHandlerImpl implements MethodInterceptor {
 
@@ -48,7 +48,7 @@ public class HttpExceptionHandlerImpl implements MethodInterceptor {
     } catch (ClientErrorException e) {
       return ResponseConstructor.build(Response.Status.CONFLICT, e.getMessage());
     } catch (Exception e) {
-      LoggerFactory.getLogger(HttpExceptionHandlerImpl.class).error(e.getMessage(), e);
+      ExceptionTool.trace(e);
       return ResponseConstructor.build(Response.Status.INTERNAL_SERVER_ERROR, e.getMessage());
     }
   }

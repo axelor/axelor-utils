@@ -72,7 +72,7 @@ public final class ModelTool {
         throw new IllegalStateException(String.format(I18n.get("Cannot find record #%s"), id));
       } catch (Exception e) {
         ++errorCount;
-        LoggerFactory.getLogger(ModelTool.class).error(e.getMessage(), e);
+        ExceptionTool.trace(e);
       } finally {
         JPA.clear();
       }

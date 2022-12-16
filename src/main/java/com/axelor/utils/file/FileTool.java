@@ -76,9 +76,6 @@ public final class FileTool {
     File file = create(destinationFolder, fileName);
     try (FileWriter writer = new FileWriter(file); ) {
       writer.write(line);
-
-    } catch (IOException ex) {
-      LOG.error(ex.getMessage());
     }
   }
 

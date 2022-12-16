@@ -19,6 +19,7 @@ package com.axelor.utils.reader;
 
 import com.axelor.meta.MetaFiles;
 import com.axelor.meta.db.MetaFile;
+import com.axelor.utils.ExceptionTool;
 import com.google.common.base.Strings;
 import java.io.File;
 import java.io.FileInputStream;
@@ -54,7 +55,7 @@ public class ExcelReaderService implements DataReaderService {
       }
       formatter = new DataFormatter();
     } catch (IOException e) {
-      e.printStackTrace();
+      ExceptionTool.trace(e);
       return false;
     }
 

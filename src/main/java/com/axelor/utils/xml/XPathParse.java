@@ -17,7 +17,7 @@
  */
 package com.axelor.utils.xml;
 
-import java.lang.invoke.MethodHandles;
+import com.axelor.utils.ExceptionTool;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
@@ -29,14 +29,10 @@ import javax.xml.xpath.XPath;
 import javax.xml.xpath.XPathConstants;
 import javax.xml.xpath.XPathExpression;
 import javax.xml.xpath.XPathFactory;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.w3c.dom.Document;
 import org.w3c.dom.NodeList;
 
 public class XPathParse {
-
-  private static final Logger LOG = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
   private Document doc;
 
@@ -62,7 +58,7 @@ public class XPathParse {
 
     } catch (Exception e) {
 
-      LOG.error(e.getMessage());
+      ExceptionTool.trace(e);
     }
   }
 
@@ -90,7 +86,7 @@ public class XPathParse {
       domFactory.setExpandEntityReferences(false);
       domFactory.setFeature(XMLConstants.FEATURE_SECURE_PROCESSING, true);
     } catch (ParserConfigurationException e) {
-      LOG.error(e.getMessage());
+      ExceptionTool.trace(e);
     }
 
     return domFactory;
@@ -132,7 +128,7 @@ public class XPathParse {
         }
       }
     } catch (Exception e) {
-      LOG.error("some pb occurred during xml scan");
+      ExceptionTool.trace("some pb occurred during xml scan", e);
     }
 
     return dict;

@@ -18,6 +18,7 @@
 package com.qas.web_2005_02;
 
 /** Please modify this class to meet your needs This class is not complete */
+import com.axelor.utils.ExceptionTool;
 import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -44,7 +45,7 @@ public final class QAPortType_QAPortType_Client {
           wsdlURL = new URL(args[0]);
         }
       } catch (MalformedURLException e) {
-        e.printStackTrace();
+        ExceptionTool.trace(e);
       }
     }
 
