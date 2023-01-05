@@ -17,6 +17,7 @@
  */
 package com.axelor.utils;
 
+import com.axelor.common.Inflector;
 import com.axelor.db.EntityHelper;
 import com.axelor.db.JPA;
 import com.axelor.db.JpaRepository;
@@ -37,6 +38,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import javax.persistence.Column;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.LoggerFactory;
 
 public final class ModelTool {
@@ -157,6 +159,12 @@ public final class ModelTool {
 
   private static String capitalize(String string) {
     return string.substring(0, 1).toUpperCase() + string.substring(1);
+  }
+
+  public static String normalizeKeyword(String name, boolean isFieldName) {
+    if (name == null) return "";
+    name = StringUtils.stripAccents(name).replaceAll("[^a-zA-Z0-9 ]", "");
+    return Inflector.getInstance().camelize(name, isFieldName);
   }
 
   @SuppressWarnings("unchecked")
