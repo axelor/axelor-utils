@@ -35,8 +35,7 @@ publish snapshot:
     PUBLISH_TYPE: "snapshotRelease"
   rules:
     - if: $CI_PIPELINE_SOURCE == "schedule"
-  only:
-    - main
+    - if: $CI_COMMIT_BRANCH == "main"
 
 publish release:
   <<: *publish_configuration
