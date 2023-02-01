@@ -32,7 +32,7 @@ import com.axelor.utils.service.TranslationService;
 import com.axelor.utils.service.TranslationServiceImpl;
 import com.google.inject.matcher.Matchers;
 
-public class ToolModule extends AxelorModule {
+public class UtilsModule extends AxelorModule {
 
   @Override
   protected void configure() {

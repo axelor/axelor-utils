@@ -21,7 +21,7 @@ import com.axelor.app.AxelorModule;
 import com.axelor.inject.Beans;
 import com.axelor.test.GuiceModules;
 import com.axelor.test.GuiceRunner;
-import com.axelor.tool.template.TemplateMaker;
+import com.axelor.utils.template.TemplateMaker;
 import com.axelor.utils.db.Contact;
 import com.axelor.utils.db.Title;
 import com.axelor.utils.templating.STTest.MyModule;
