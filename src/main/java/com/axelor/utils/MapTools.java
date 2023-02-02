@@ -23,6 +23,7 @@ import com.axelor.db.Model;
 import com.axelor.rpc.Context;
 import com.google.common.collect.Lists;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
@@ -105,5 +106,20 @@ public class MapTools {
     return ids.stream()
         .map(it -> JPA.find(tClass, Long.parseLong(it.toString())))
         .collect(Collectors.toList());
+  }
+
+
+  /**
+   * Simplifies a map of typed values by returning a HashMap of untyped objects.
+   * Useful before passing the map to {@link com.axelor.db.Query#bind(Map)}
+   *
+   * @param map a Map of typed values
+   * @param <T> the type of the keys in the map
+   * @param <U> the type of the values in the map
+   * @return a Map of keys to untyped objects representing the values in the input map
+   */
+  public static <T, U> Map<T, Object> simplifyMap(Map<T, U> map) {
+    return map.entrySet().stream()
+        .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
   }
 }
