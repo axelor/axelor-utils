@@ -10,6 +10,7 @@ import org.junit.Test;
 public class TestMapTool {
 
   Map<String, List<String>> mapStringListString;
+
   @Before
   public void setUp() {
 
@@ -18,7 +19,6 @@ public class TestMapTool {
     mapStringListString.put("key2", List.of("value3", "value4"));
     mapStringListString.put("key3", List.of("value5", "value6"));
     mapStringListString.put("key4", List.of("value7", "value8"));
-
   }
 
   @Test
