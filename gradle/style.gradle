@@ -27,7 +27,10 @@ spotless {
   }
 
   format 'markdown', {
-    target '**/*.md'
+    target fileTree(projectDir) {
+      include '**/*.md'
+      exclude 'CHANGELOG.md'
+    }
     indentWithSpaces(2)
     endWithNewline()
   }
