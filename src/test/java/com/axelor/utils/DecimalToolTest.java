@@ -7,14 +7,14 @@ import org.junit.jupiter.api.Test;
 class DecimalToolTest {
 
   @Test
-  void test_isNullOrZero_when_decimal_is_null() {
+  void isNullOrZero_when_decimal_is_null() {
 
     BigDecimal decimal = null;
     Assert.assertTrue(DecimalTool.isNullOrZero(decimal));
   }
 
   @Test
-  void test_isNullOrZero_when_decimal_is_zero() {
+  void isNullOrZero_when_decimal_is_zero() {
 
     BigDecimal zeroFromBigDecimalConstant = BigDecimal.ZERO;
     Assert.assertTrue(DecimalTool.isNullOrZero(zeroFromBigDecimalConstant));
@@ -27,14 +27,14 @@ class DecimalToolTest {
   }
 
   @Test
-  void test_getZeroOrValue_when_decimal_is_null() {
+  void getZeroOrValue_when_decimal_is_null() {
 
     BigDecimal decimal = null;
     Assert.assertEquals(BigDecimal.ZERO, DecimalTool.getZeroOrValue(decimal));
   }
 
   @Test
-  void test_getZeroOrValue_when_decimal_is_not_null() {
+  void getZeroOrValue_when_decimal_is_not_null() {
 
     BigDecimal zeroFromBigDecimalConstant = BigDecimal.ZERO;
     Assert.assertEquals(
