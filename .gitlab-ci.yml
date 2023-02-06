@@ -18,6 +18,11 @@ before_script:
   paths:
     - .gradle/wrapper
     - .gradle/caches
+  policy: pull-push
+
+.global_cache_pull: &global_cache_pull
+  <<: *global_cache
+  policy: pull
 
 # Build artifacts
 build:
@@ -68,7 +73,7 @@ create release:
   stage: publish
   image: registry.gitlab.com/gitlab-org/release-cli:latest
   cache:
-    - *global_cache
+    - *global_cache_pull
   allow_failure: true
   only:
     - tags
