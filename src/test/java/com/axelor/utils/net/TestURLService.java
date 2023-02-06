@@ -19,23 +19,23 @@ package com.axelor.utils.net;
 
 import com.axelor.i18n.I18n;
 import com.axelor.utils.exception.ToolExceptionMessage;
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
-public class TestURLService {
+class TestURLService {
 
   @Test
-  public void testNotExist() {
+  void testNotExist() {
 
     String url = "http://www.google.com";
-    Assert.assertNull(URLService.notExist(url));
+    Assertions.assertNull(URLService.notExist(url));
 
     url = "www.google.com";
-    Assert.assertEquals(
+    Assertions.assertEquals(
         String.format(I18n.get(ToolExceptionMessage.URL_SERVICE_2), url), URLService.notExist(url));
 
     url = "http://testnotfound.axelor.com/";
-    Assert.assertEquals(
+    Assertions.assertEquals(
         String.format(I18n.get(ToolExceptionMessage.URL_SERVICE_3), url), URLService.notExist(url));
   }
 }

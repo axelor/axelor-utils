@@ -19,8 +19,8 @@ package com.axelor.utils.templating;
 
 import com.axelor.app.AxelorModule;
 import com.axelor.inject.Beans;
+import com.axelor.test.GuiceExtension;
 import com.axelor.test.GuiceModules;
-import com.axelor.test.GuiceRunner;
 import com.axelor.utils.db.Contact;
 import com.axelor.utils.db.Title;
 import com.axelor.utils.template.TemplateMaker;
@@ -31,17 +31,14 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Locale;
 import java.util.Map;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.FixMethodOrder;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.MethodSorters;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 
-@RunWith(GuiceRunner.class)
+@ExtendWith(GuiceExtension.class)
 @GuiceModules({MyModule.class})
-@FixMethodOrder(MethodSorters.NAME_ASCENDING)
-public class STTest {
+class STTest {
 
   public Contact contact;
   public String contentFinal;
@@ -78,7 +75,7 @@ public class STTest {
     }
   }
 
-  @Before
+  @BeforeEach
   public void prepareTest() {
     contact = new Contact("Doe", "John");
     contact.setEmail("john.doe@axelor.com");
@@ -140,18 +137,18 @@ public class STTest {
   }
 
   @Test
-  public void test1() {
+  void test1() {
     TemplateMaker maker = new TemplateMaker("Europe/Paris", Locale.FRENCH, '$', '$');
 
     maker.setTemplate(content);
     maker.setContext(contact, map, "contact");
     String result = maker.make();
-    Assert.assertNotNull(result);
-    Assert.assertEquals(contentFinal, result);
+    Assertions.assertNotNull(result);
+    Assertions.assertEquals(contentFinal, result);
   }
 
   @Test
-  public void test2() {
+  void test2() {
     long start = System.currentTimeMillis();
 
     TemplateMaker maker = new TemplateMaker("Europe/Paris", Locale.FRENCH, '$', '$');
@@ -161,19 +158,19 @@ public class STTest {
       maker.setContext(contact, map, "contact");
       String result = maker.make();
 
-      Assert.assertNotNull(result);
-      Assert.assertEquals(contentFinal, result);
+      Assertions.assertNotNull(result);
+      Assertions.assertEquals(contentFinal, result);
     }
 
     // Assert test total time < 15s
-    Assert.assertTrue(((System.currentTimeMillis() - start) / 1000) < 15);
+    Assertions.assertTrue(((System.currentTimeMillis() - start) / 1000) < 15);
   }
 
   @Test
-  public void test3() {
+  void test3() {
     for (int i = 0; i < 10; i++) {
       ThreadTest thread = new ThreadTest();
-      thread.run();
+      thread.start();
     }
   }
 
@@ -189,12 +186,12 @@ public class STTest {
         maker.setContext(contact, map, "contact");
         String result = maker.make();
 
-        Assert.assertNotNull(result);
-        Assert.assertEquals(contentFinal, result);
+        Assertions.assertNotNull(result);
+        Assertions.assertEquals(contentFinal, result);
       }
 
       // Assert test total time < 15s
-      Assert.assertTrue(((System.currentTimeMillis() - start) / 1000) < 15);
+      Assertions.assertTrue(((System.currentTimeMillis() - start) / 1000) < 15);
     }
   }
 }

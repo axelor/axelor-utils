@@ -17,17 +17,21 @@
  */
 package com.axelor.utils.crypto;
 
+import java.nio.charset.StandardCharsets;
 import javax.crypto.Cipher;
 import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
-/** From: http://stackoverflow.com/questions/587357/rijndael-support-in-java */
-public class AESTest2 {
+/**
+ * From: <a
+ * href="http://stackoverflow.com/questions/587357/rijndael-support-in-java">http://stackoverflow.com/questions/587357/rijndael-support-in-java</a>
+ */
+class AESTest2 {
 
   @Test
-  public void test() throws Exception {
+  void test() throws Exception {
 
     String message = "Hello World";
 
@@ -85,8 +89,8 @@ public class AESTest2 {
     cipher2.init(
         Cipher.DECRYPT_MODE, new SecretKeySpec(sessionKey, "AES"), new IvParameterSpec(iv));
     byte[] roundTriptext = cipher2.doFinal(ciphertext);
-    String roundTrip = new String(roundTriptext, "UTF8");
+    String roundTrip = new String(roundTriptext, StandardCharsets.UTF_8);
 
-    Assert.assertEquals(message, roundTrip);
+    Assertions.assertEquals(message, roundTrip);
   }
 }

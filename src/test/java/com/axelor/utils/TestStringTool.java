@@ -21,8 +21,8 @@ import com.axelor.meta.db.MetaJsonModel;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 public class TestStringTool {
 
@@ -32,7 +32,7 @@ public class TestStringTool {
     String actual = "Test";
     String result = "test";
 
-    Assert.assertEquals(StringTool.toFirstLower(actual), result);
+    Assertions.assertEquals(StringTool.toFirstLower(actual), result);
   }
 
   @Test
@@ -41,7 +41,7 @@ public class TestStringTool {
     String actual = "test";
     String result = "Test";
 
-    Assert.assertEquals(StringTool.toFirstUpper(actual), result);
+    Assertions.assertEquals(StringTool.toFirstUpper(actual), result);
   }
 
   @Test
@@ -51,13 +51,13 @@ public class TestStringTool {
     String resultRight = "test    ";
     String resultLeft = "    test";
 
-    Assert.assertEquals(StringTool.fillStringRight(actual, ' ', 8), resultRight);
-    Assert.assertEquals(StringTool.fillStringRight(actual, ' ', 2), "te");
+    Assertions.assertEquals(StringTool.fillStringRight(actual, ' ', 8), resultRight);
+    Assertions.assertEquals(StringTool.fillStringRight(actual, ' ', 2), "te");
 
-    Assert.assertEquals(StringTool.fillStringLeft(actual, ' ', 8), resultLeft);
-    Assert.assertEquals(StringTool.fillStringLeft(actual, ' ', 2), "st");
+    Assertions.assertEquals(StringTool.fillStringLeft(actual, ' ', 8), resultLeft);
+    Assertions.assertEquals(StringTool.fillStringLeft(actual, ' ', 2), "st");
 
-    Assert.assertEquals(StringTool.fillStringLeft(resultRight, ' ', 4), "    ");
+    Assertions.assertEquals(StringTool.fillStringLeft(resultRight, ' ', 4), "    ");
   }
 
   @Test
@@ -72,12 +72,21 @@ public class TestStringTool {
     }
 
     String expected = "1,2,5";
-    Assert.assertEquals(expected, StringTool.getIdListString(customModelList));
+    Assertions.assertEquals(expected, StringTool.getIdListString(customModelList));
 
     customModelList = null;
-    Assert.assertEquals("0", StringTool.getIdListString(customModelList));
+    Assertions.assertEquals("0", StringTool.getIdListString(customModelList));
 
     customModelList = new ArrayList<>();
-    Assert.assertEquals("0", StringTool.getIdListString(customModelList));
+    Assertions.assertEquals("0", StringTool.getIdListString(customModelList));
+  }
+
+  @Test
+  public void reduceLarge_whenStringIsLarge() {
+    String largeString =
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque enim nisi, rhoncus a sollicitudin sed, pretium vitae massa. Nunc ac urna quis eros cursus efficitur. Vestibulum vel finibus felis. Integer ac nunc nec nisl tincidunt tincidunt. In finibus tellus libero, quis molestie lacus mollis sed. Class aptent taciti sociosqu ad.";
+    Assertions.assertEquals(
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque enim nisi, rhoncus a sollicitudin sed, pretium vitae massa. Nunc ac urna quis eros cursus efficitur. Vestibulum vel finibus felis. Integer ac nunc nec nisl tincidunt tincidunt. In f...",
+        StringTool.reduceLarge(largeString));
   }
 }

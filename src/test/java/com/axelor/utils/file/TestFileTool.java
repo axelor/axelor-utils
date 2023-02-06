@@ -19,13 +19,13 @@ package com.axelor.utils.file;
 
 import java.io.File;
 import java.io.IOException;
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
-public class TestFileTool {
+class TestFileTool {
 
   @Test
-  public void create() throws IOException {
+  void create() throws IOException {
 
     String destinationFolder =
         System.getProperty("java.io.tmpdir")
@@ -40,11 +40,11 @@ public class TestFileTool {
     File file = FileTool.create(destinationFolder, fileName);
     file.deleteOnExit();
 
-    Assert.assertTrue(file.createNewFile());
+    Assertions.assertTrue(file.createNewFile());
   }
 
   @Test
-  public void create2() throws IOException {
+  void create2() throws IOException {
 
     String fileName =
         System.getProperty("java.io.tmpdir")
@@ -59,6 +59,6 @@ public class TestFileTool {
     File file = FileTool.create(fileName);
     file.deleteOnExit();
 
-    Assert.assertTrue(file.createNewFile());
+    Assertions.assertTrue(file.createNewFile());
   }
 }

@@ -3,15 +3,15 @@ package com.axelor.utils;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-public class TestMapTool {
+class TestMapTool {
 
   Map<String, List<String>> mapStringListString;
 
-  @Before
+  @BeforeEach
   public void setUp() {
 
     mapStringListString = new HashMap<>();
@@ -22,11 +22,11 @@ public class TestMapTool {
   }
 
   @Test
-  public void testSimplify() {
+  void testSimplify() {
     Map<String, Object> mapStringObject = MapTools.simplifyMap(mapStringListString);
-    Assert.assertEquals(mapStringObject.size(), mapStringListString.size());
+    Assertions.assertEquals(mapStringObject.size(), mapStringListString.size());
     for (String key : mapStringListString.keySet()) {
-      Assert.assertEquals(mapStringObject.get(key), mapStringListString.get(key));
+      Assertions.assertEquals(mapStringObject.get(key), mapStringListString.get(key));
     }
   }
 }

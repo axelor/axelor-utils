@@ -13,6 +13,7 @@ buildscript {
     repositories repos
     dependencies {
         classpath "com.axelor:axelor-gradle:${aopVersion}"
+        classpath "com.adarshr:gradle-test-logger-plugin:2.+"
     }
 }
 
@@ -21,6 +22,11 @@ repositories repos
 apply from: "version.gradle"
 apply from: './gradle/style.gradle'
 apply plugin: "com.axelor.app"
+apply plugin: 'com.adarshr.test-logger'
+
+testlogger {
+    theme 'mocha'
+}
 
 sourceCompatibility = JavaVersion.VERSION_11
 targetCompatibility = JavaVersion.VERSION_11
@@ -77,4 +83,32 @@ publishing {
             }
         }
     }
+}
+
+/*
+* Jacoco
+*/
+
+apply plugin: 'jacoco'
+
+jacoco {
+    toolVersion = '0.8.2'
+}
+
+jacocoTestReport {
+    reports {
+        xml.enabled true
+    }
+}
+
+test {
+    useJUnitPlatform()
+    // report is always generated after tests run
+    finalizedBy jacocoTestReport
+    maxHeapSize = '1G'
+}
+
+jacocoTestReport {
+    // tests are required to run before generating the report
+    dependsOn test
 }

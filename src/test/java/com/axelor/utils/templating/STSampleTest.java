@@ -22,18 +22,18 @@ import com.google.common.base.Strings;
 import com.google.common.collect.Lists;
 import java.util.List;
 import java.util.Locale;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.stringtemplate.v4.AttributeRenderer;
 import org.stringtemplate.v4.ST;
 import org.stringtemplate.v4.STGroup;
 
-public class STSampleTest {
+class STSampleTest {
 
   public String template = "Hi $contact.name;format=\"upper\"$ $contact.lastName$";
 
-  private static List<Contact> data = Lists.newArrayList();
+  private static final List<Contact> data = Lists.newArrayList();
 
   private static final int MAX_ITER = 5000;
 
@@ -41,7 +41,7 @@ public class STSampleTest {
 
   private STGroup stGroup;
 
-  @Before
+  @BeforeEach
   public void before() {
     for (int i = 0; i < MAX_ITER; i++) {
       data.add(new Contact("Name" + i, "LastName" + i));
@@ -49,7 +49,7 @@ public class STSampleTest {
   }
 
   @Test
-  public void test() {
+  void test() {
 
     stGroup = new STGroup(CHAR, CHAR);
     stGroup.registerRenderer(String.class, new BasicFormatRenderer());
@@ -58,7 +58,7 @@ public class STSampleTest {
       String result = run(contact);
 
       String expected = "Hi " + contact.getName().toUpperCase() + " " + contact.getLastName();
-      Assert.assertEquals(expected, result);
+      Assertions.assertEquals(expected, result);
     }
   }
 

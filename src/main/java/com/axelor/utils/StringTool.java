@@ -329,4 +329,18 @@ public final class StringTool {
   public static String escapeHtml(String string) {
     return StringEscapeUtils.escapeHtml4(string);
   }
+
+  /**
+   * Cuts the given string into a string of size less than 255 characters if it is larger than 255
+   * characters.
+   *
+   * @param largeStr the large string to cut.
+   * @return the cut string.
+   */
+  public static String reduceLarge(String largeStr) {
+    if (com.axelor.common.StringUtils.notBlank(largeStr) && largeStr.length() > 255) {
+      return largeStr.substring(0, 255 - 3 - 1) + "...";
+    }
+    return largeStr;
+  }
 }

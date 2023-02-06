@@ -25,11 +25,11 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Map;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-public class InvokationTest {
+class InvokationTest {
 
   protected static final Member INVALID_MEMBER;
 
@@ -37,9 +37,7 @@ public class InvokationTest {
     Member invalidMember;
     try {
       invalidMember = InvokationTest.class.getDeclaredField("INVALID_MEMBER");
-    } catch (NoSuchFieldException ex) {
-      invalidMember = null;
-    } catch (SecurityException ex) {
+    } catch (NoSuchFieldException | SecurityException ex) {
       invalidMember = null;
     }
 
@@ -47,12 +45,11 @@ public class InvokationTest {
   }
 
   /** Cache exact attribute class and property reflection Member object */
-  protected static final Map<Class<?>, Map<String, Member>> membersCache =
-      new HashMap<Class<?>, Map<String, Member>>();
+  protected static final Map<Class<?>, Map<String, Member>> membersCache = new HashMap<>();
 
   public Contact contact;
 
-  @Before
+  @BeforeEach
   public void prepareTest() {
     contact = new Contact("Durand", "Pierre");
     contact.setEmail("@test.com");
@@ -63,10 +60,10 @@ public class InvokationTest {
   }
 
   @Test
-  public void test() {
+  void test() {
     for (int i = 0; i < 100000; i++) {
       ThreadTest thread = new ThreadTest();
-      thread.run();
+      thread.start();
     }
   }
 
@@ -75,25 +72,25 @@ public class InvokationTest {
     public void run() {
       for (int i = 0; i < 10; i++) {
         Object valueEmail = getProperty(contact, "email");
-        Assert.assertEquals(contact.getEmail(), valueEmail);
+        Assertions.assertEquals(contact.getEmail(), valueEmail);
 
         Object valueFullName = getProperty(contact, "fullName");
-        Assert.assertEquals(contact.getFullName(), valueFullName);
+        Assertions.assertEquals(contact.getFullName(), valueFullName);
 
         Object valueFisrtName = getProperty(contact, "firstName");
-        Assert.assertEquals(contact.getFirstName(), valueFisrtName);
+        Assertions.assertEquals(contact.getFirstName(), valueFisrtName);
 
         Object valueLastName = getProperty(contact, "lastName");
-        Assert.assertEquals(contact.getLastName(), valueLastName);
+        Assertions.assertEquals(contact.getLastName(), valueLastName);
 
         Object valueDateOfBirth = getProperty(contact, "dateOfBirth");
-        Assert.assertEquals(contact.getDateOfBirth(), valueDateOfBirth);
+        Assertions.assertEquals(contact.getDateOfBirth(), valueDateOfBirth);
 
         Object valuePayeurQuality = getProperty(contact, "payeurQuality");
-        Assert.assertEquals(contact.getPayeurQuality(), valuePayeurQuality);
+        Assertions.assertEquals(contact.getPayeurQuality(), valuePayeurQuality);
 
         Object valueLanguage = getProperty(contact, "language");
-        Assert.assertEquals("fr", valueLanguage);
+        Assertions.assertEquals("fr", valueLanguage);
       }
     }
   }
@@ -117,7 +114,7 @@ public class InvokationTest {
         } else if (member instanceof Field) {
           return ((Field) member).get(o);
         }
-      } catch (Exception e) {
+      } catch (Exception ignored) {
       }
     }
 
@@ -146,9 +143,7 @@ public class InvokationTest {
       }
 
       // try getXXX and isXXX properties, look up using reflection
-      String methodSuffix =
-          Character.toUpperCase(memberName.charAt(0))
-              + memberName.substring(1, memberName.length());
+      String methodSuffix = Character.toUpperCase(memberName.charAt(0)) + memberName.substring(1);
 
       member = tryGetMethod(clazz, "get" + methodSuffix);
       if (member == null) {
@@ -171,13 +166,10 @@ public class InvokationTest {
   protected static Method tryGetMethod(Class<?> clazz, String methodName) {
     try {
       Method method = clazz.getMethod(methodName);
-      if (method != null) {
-        method.setAccessible(true);
-      }
+      method.setAccessible(true);
 
       return method;
-    } catch (NoSuchMethodException ex) {
-    } catch (SecurityException ex) {
+    } catch (NoSuchMethodException | SecurityException ignored) {
     }
 
     return null;
@@ -186,13 +178,10 @@ public class InvokationTest {
   protected static Field tryGetField(Class<?> clazz, String fieldName) {
     try {
       Field field = clazz.getField(fieldName);
-      if (field != null) {
-        field.setAccessible(true);
-      }
+      field.setAccessible(true);
 
       return field;
-    } catch (NoSuchFieldException ex) {
-    } catch (SecurityException ex) {
+    } catch (NoSuchFieldException | SecurityException ignored) {
     }
 
     return null;

@@ -21,15 +21,17 @@ import javax.crypto.Cipher;
 import javax.crypto.KeyGenerator;
 import javax.crypto.SecretKey;
 import javax.crypto.spec.SecretKeySpec;
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 /**
- * From: http://java.sun.com/developer/technicalArticles/Security/AES/AES_v1.html This program
- * generates a AES key, retrieves its raw bytes, and then reinstantiates a AES key from the key
- * bytes. The reinstantiated key is used to initialize a AES cipher for encryption and decryption.
+ * From: <a
+ * href="http://java.sun.com/developer/technicalArticles/Security/AES/AES_v1.html">http://java.sun.com/developer/technicalArticles/Security/AES/AES_v1.html</a>
+ * This program generates a AES key, retrieves its raw bytes, and then reinstantiates a AES key from
+ * the key bytes. The reinstantiated key is used to initialize a AES cipher for encryption and
+ * decryption.
  */
-public class AESTest {
+class AESTest {
 
   /**
    * Turns array of bytes into string
@@ -51,7 +53,7 @@ public class AESTest {
   }
 
   @Test
-  public void test() throws Exception {
+  void test() throws Exception {
 
     // Get the KeyGenerator
     KeyGenerator kgen = KeyGenerator.getInstance("AES");
@@ -74,6 +76,6 @@ public class AESTest {
     cipher.init(Cipher.DECRYPT_MODE, skeySpec);
     byte[] original = cipher.doFinal(encrypted);
     String originalString = new String(original);
-    Assert.assertEquals("Hello World", originalString);
+    Assertions.assertEquals("Hello World", originalString);
   }
 }
