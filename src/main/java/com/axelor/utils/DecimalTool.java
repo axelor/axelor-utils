@@ -25,10 +25,34 @@ import java.time.LocalDate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-/** Outils simplifiant l'utilisation des nombres. */
+/** Tools to simplify the use of numbers. */
 public final class DecimalTool {
 
   private static final Logger LOG = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
+
+  private DecimalTool() {
+    throw new IllegalStateException("Utility class");
+  }
+
+  /**
+   * Check if the decimal is null or equal to 0.
+   *
+   * @param decimal
+   * @return
+   */
+  public static boolean isNullOrZero(BigDecimal decimal) {
+    return decimal == null || decimal.signum() == 0;
+  }
+
+  /**
+   * If the decimal is null, return 0. Otherwise, return its value.
+   *
+   * @param decimal
+   * @return
+   */
+  public static BigDecimal getZeroOrValue(BigDecimal decimal) {
+    return decimal == null ? BigDecimal.ZERO : decimal;
+  }
 
   /**
    * Proratiser une valeur en fonction de date.
