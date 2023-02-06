@@ -1,6 +1,7 @@
 # Stages (ie phases) that can be used by jobs
 stages:
   - build
+  - tests
   - publish
 
 image: axelor/app-builder:6.1
@@ -23,6 +24,12 @@ build:
   stage: build
   script:
     - ./gradlew -xtest clean build --refresh-dependencies
+
+# Run tests
+tests:
+  stage: tests
+  script:
+    - ./gradlew test
 
 .publish_template: &publish_configuration
   stage: publish
