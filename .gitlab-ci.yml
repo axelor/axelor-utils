@@ -14,7 +14,7 @@ before_script:
   - export GRADLE_USER_HOME=`pwd`/.gradle
 
 # Add wrapper and caches folders in cache
-cache:
+.global_cache: &global_cache
   paths:
     - .gradle/wrapper
     - .gradle/caches
@@ -22,14 +22,28 @@ cache:
 # Build artifacts
 build:
   stage: build
+  cache:
+    - *global_cache
   script:
     - ./gradlew -xtest clean build --refresh-dependencies
 
 # Run tests
 tests:
   stage: tests
+  cache:
+    - *global_cache
+  allow_failure: true
   script:
     - ./gradlew test
+  interruptible: true
+  only:
+    - branches
+  artifacts:
+    expire_in: 31d
+    paths:
+      - build/reports/jacoco
+    reports:
+      junit: build/test-results/test/**/TEST-*.xml
 
 .publish_template: &publish_configuration
   stage: publish
@@ -53,7 +67,8 @@ publish release:
 create release:
   stage: publish
   image: registry.gitlab.com/gitlab-org/release-cli:latest
-  cache: [ ]
+  cache:
+    - *global_cache
   allow_failure: true
   only:
     - tags
