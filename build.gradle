@@ -19,6 +19,7 @@ buildscript {
 repositories repos
 
 apply from: "version.gradle"
+apply from: './gradle/style.gradle'
 apply plugin: "com.axelor.app"
 
 sourceCompatibility = JavaVersion.VERSION_11

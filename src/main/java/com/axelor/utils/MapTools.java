@@ -23,7 +23,6 @@ import com.axelor.db.Model;
 import com.axelor.rpc.Context;
 import com.google.common.collect.Lists;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
@@ -108,10 +107,9 @@ public class MapTools {
         .collect(Collectors.toList());
   }
 
-
   /**
-   * Simplifies a map of typed values by returning a HashMap of untyped objects.
-   * Useful before passing the map to {@link com.axelor.db.Query#bind(Map)}
+   * Simplifies a map of typed values by returning a HashMap of untyped objects. Useful before
+   * passing the map to {@link com.axelor.db.Query#bind(Map)}
    *
    * @param map a Map of typed values
    * @param <T> the type of the keys in the map
