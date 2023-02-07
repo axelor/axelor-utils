@@ -9,7 +9,7 @@ import java.util.List;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-public class DateToolGetMergedIntervalContainingDayTest {
+class DateToolGetMergedIntervalContainingDayTest {
 
   private LocalDate T = LocalDate.of(2021, 10, 5);
 
@@ -18,7 +18,7 @@ public class DateToolGetMergedIntervalContainingDayTest {
   // i: ------C___D--------------
   // o: ------C__________B-------
   @Test
-  public void test01() {
+  void test01() {
     LocalDate A = T.plusDays(-4);
     LocalDate B = T.plusDays(5);
     LocalDate C = T.plusDays(-6);
@@ -40,7 +40,7 @@ public class DateToolGetMergedIntervalContainingDayTest {
   // i: ----------C________D-----
   // o: --------A__________D-----
   @Test
-  public void test02() {
+  void test02() {
     LocalDate A = T.plusDays(-4);
     LocalDate B = T.plusDays(5);
     LocalDate C = T.plusDays(-2);
@@ -62,7 +62,7 @@ public class DateToolGetMergedIntervalContainingDayTest {
   // i: --------C________D-------
   // o: --------A________B-------
   @Test
-  public void test03() {
+  void test03() {
     LocalDate A = T.plusDays(-4);
     LocalDate B = T.plusDays(5);
     LocalDate C = A;
@@ -84,7 +84,7 @@ public class DateToolGetMergedIntervalContainingDayTest {
   // i: ----------C____D---------
   // o: --------A________B-------
   @Test
-  public void test04() {
+  void test04() {
     LocalDate A = T.plusDays(-4);
     LocalDate B = T.plusDays(5);
     LocalDate C = T.plusDays(-2);
@@ -106,7 +106,7 @@ public class DateToolGetMergedIntervalContainingDayTest {
   // i: ------CD-----------------
   // o: ------C__________B-------
   @Test
-  public void test05() {
+  void test05() {
     LocalDate A = T.plusDays(-4);
     LocalDate B = T.plusDays(5);
     LocalDate C = T.plusDays(-6);
@@ -128,7 +128,7 @@ public class DateToolGetMergedIntervalContainingDayTest {
   // i: -------------------CD----
   // o: --------A________B-------
   @Test
-  public void test06() {
+  void test06() {
     LocalDate A = T.plusDays(-4);
     LocalDate B = T.plusDays(5);
     LocalDate C = T.plusDays(7);
@@ -150,7 +150,7 @@ public class DateToolGetMergedIntervalContainingDayTest {
   // i: ---C__D------------------
   // o: --------A________________
   @Test
-  public void test07() {
+  void test07() {
     LocalDate A = T.plusDays(-4);
     LocalDate B = null;
     LocalDate C = T.plusDays(-9);
@@ -172,7 +172,7 @@ public class DateToolGetMergedIntervalContainingDayTest {
   // i: ----------C__D-----------
   // o: --------A________________
   @Test
-  public void test08() {
+  void test08() {
     LocalDate A = T.plusDays(-4);
     LocalDate B = null;
     LocalDate C = T.plusDays(-2);
@@ -194,7 +194,7 @@ public class DateToolGetMergedIntervalContainingDayTest {
   // i: --------C________________
   // o: --------A________________
   @Test
-  public void test09() {
+  void test09() {
     LocalDate A = T.plusDays(-4);
     LocalDate B = T.plusDays(5);
     LocalDate C = A;
@@ -216,7 +216,7 @@ public class DateToolGetMergedIntervalContainingDayTest {
   // i: --------C________________
   // o: --------A________________
   @Test
-  public void test10() {
+  void test10() {
     LocalDate A = T.plusDays(-4);
     LocalDate B = null;
     LocalDate C = A;
@@ -238,7 +238,7 @@ public class DateToolGetMergedIntervalContainingDayTest {
   // i: --------C----------------
   // o: -------------------------
   @Test
-  public void test11() {
+  void test11() {
     LocalDate A = T.plusDays(-4);
     LocalDate B = A;
     LocalDate C = A;
@@ -260,7 +260,7 @@ public class DateToolGetMergedIntervalContainingDayTest {
   // i: ----------------C__D-----
   // o: -------------------------
   @Test
-  public void test12() {
+  void test12() {
     LocalDate A = T.plusDays(-8);
     LocalDate B = T.plusDays(-4);
     LocalDate C = T.plusDays(4);
@@ -282,7 +282,7 @@ public class DateToolGetMergedIntervalContainingDayTest {
   // i: ----C_______________D----
   // o: ----C____________________
   @Test
-  public void test13() {
+  void test13() {
     LocalDate A = T.plusDays(-4);
     LocalDate B = null;
     LocalDate C = T.plusDays(-8);
@@ -304,7 +304,7 @@ public class DateToolGetMergedIntervalContainingDayTest {
   // i: ----------C______________
   // o: _________________________
   @Test
-  public void test14() {
+  void test14() {
     LocalDate A = null;
     LocalDate B = T.plusDays(-3);
     LocalDate C = T.plusDays(-2);
@@ -326,7 +326,7 @@ public class DateToolGetMergedIntervalContainingDayTest {
   // i: ----------CD-------------
   // o: ----------C__B-----------
   @Test
-  public void test15() {
+  void test15() {
     LocalDate A = T;
     LocalDate B = T.plusDays(1);
     LocalDate C = T.plusDays(-2);
@@ -352,7 +352,7 @@ public class DateToolGetMergedIntervalContainingDayTest {
   // i: ------------T------------
   // o: ----E____________H-------
   @Test
-  public void test16() {
+  void test16() {
     LocalDate A = T;
     LocalDate B = T.plusDays(1);
     LocalDate C = T.plusDays(-2);
@@ -391,7 +391,7 @@ public class DateToolGetMergedIntervalContainingDayTest {
   // i: _________________________
   // o: _________________________
   @Test
-  public void test17() {
+  void test17() {
     LocalDate A = T;
     LocalDate B = T.plusDays(1);
     LocalDate C = T.plusDays(-2);
@@ -427,7 +427,7 @@ public class DateToolGetMergedIntervalContainingDayTest {
   // i: ------------T------------
   // o: null
   @Test
-  public void test18() {
+  void test18() {
 
     DatesInterval fromNull = DateTool.getMergedIntervalContainingDay(null, T);
     DatesInterval fromEmptyList =
@@ -441,7 +441,7 @@ public class DateToolGetMergedIntervalContainingDayTest {
   // i: T = null
   // o: IllegalArgumentException
   @Test()
-  public void test19() {
+  void test19() {
 
     LocalDate A = T.plusDays(-1);
     LocalDate B = T.plusDays(1);
@@ -450,6 +450,7 @@ public class DateToolGetMergedIntervalContainingDayTest {
     intervals.add(new DatesInterval(A, B));
 
     Assertions.assertThrows(
-        IllegalArgumentException.class, () -> DateTool.getMergedIntervalContainingDay(intervals, null));
+        IllegalArgumentException.class,
+        () -> DateTool.getMergedIntervalContainingDay(intervals, null));
   }
 }

@@ -1,21 +1,3 @@
-/*
- * Axelor Business Solutions
- *
- * Copyright (C) 2022 Axelor (<http://axelor.com>).
- *
- * This program is free software: you can redistribute it and/or  modify
- * it under the terms of the GNU Affero General Public License, version 3,
- * as published by the Free Software Foundation.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Affero General Public License for more details.
- *
- * You should have received a copy of the GNU Affero General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- */
-
 package com.axelor.utils.date;
 
 import static org.junit.Assert.assertEquals;
@@ -26,7 +8,7 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import org.junit.jupiter.api.Test;
 
-public class DateToolGetNearOccurrencesTest {
+class DateToolGetNearOccurrencesTest {
 
   private final LocalDateTime monday_2022_12_26_12_26 = LocalDateTime.of(2022, 12, 26, 12, 26);
   private final LocalDateTime monday_2023_01_02_03_04 = LocalDateTime.of(2023, 1, 2, 03, 04);
@@ -45,7 +27,7 @@ public class DateToolGetNearOccurrencesTest {
 
   /** next occurrence being the next year */
   @Test
-  public void test01() {
+  void test01() {
 
     DayOfWeek occurrenceDayOfWeek = DayOfWeek.MONDAY;
     LocalTime occurrenceTime = midnight;
@@ -69,7 +51,7 @@ public class DateToolGetNearOccurrencesTest {
 
   /** last occurrence being the precedent year */
   @Test
-  public void test02() {
+  void test02() {
 
     DayOfWeek occurrenceDayOfWeek = DayOfWeek.TUESDAY;
     LocalTime occurrenceTime = at12_33;
@@ -95,7 +77,7 @@ public class DateToolGetNearOccurrencesTest {
    * occurrence day earlier than reference day on the week, with next occurrence on the next month
    */
   @Test
-  public void test03() {
+  void test03() {
 
     DayOfWeek occurrenceDayOfWeek = DayOfWeek.WEDNESDAY;
     LocalTime occurrenceTime = at18_44;
@@ -119,7 +101,7 @@ public class DateToolGetNearOccurrencesTest {
 
   /** occurrence day later than reference day on the week, with next occurrence on the next month */
   @Test
-  public void test04() {
+  void test04() {
 
     DayOfWeek occurrenceDayOfWeek = DayOfWeek.SUNDAY;
     LocalTime occurrenceTime = at18_44;
@@ -143,7 +125,7 @@ public class DateToolGetNearOccurrencesTest {
 
   /** occurrence day earlier than reference day, with last occurrence on the precedent month */
   @Test
-  public void test05() {
+  void test05() {
 
     DayOfWeek occurrenceDayOfWeek = DayOfWeek.THURSDAY;
     LocalTime occurrenceTime = at20_55;
@@ -167,7 +149,7 @@ public class DateToolGetNearOccurrencesTest {
 
   /** occurrence day later than reference day, with last occurrence on the precedent month */
   @Test
-  public void test06() {
+  void test06() {
 
     DayOfWeek occurrenceDayOfWeek = DayOfWeek.THURSDAY;
     LocalTime occurrenceTime = at20_55;
@@ -191,7 +173,7 @@ public class DateToolGetNearOccurrencesTest {
 
   /** occurrence day equals reference day occurrence hour earlier than reference hour */
   @Test
-  public void test08() {
+  void test08() {
 
     DayOfWeek occurrenceDayOfWeek = DayOfWeek.FRIDAY;
     LocalTime occurrenceTime = at20_55;
@@ -215,7 +197,7 @@ public class DateToolGetNearOccurrencesTest {
 
   /** occurrence day equals reference day occurrence hour later than reference hour */
   @Test
-  public void test09() {
+  void test09() {
 
     DayOfWeek occurrenceDayOfWeek = DayOfWeek.FRIDAY;
     LocalTime occurrenceTime = at23_59;
@@ -239,7 +221,7 @@ public class DateToolGetNearOccurrencesTest {
 
   /** occurrence day equals reference day occurrence hour equals reference hour */
   @Test
-  public void test10() {
+  void test10() {
 
     DayOfWeek occurrenceDayOfWeek = DayOfWeek.FRIDAY;
     LocalTime occurrenceTime = at23_19;
@@ -263,7 +245,7 @@ public class DateToolGetNearOccurrencesTest {
 
   /** At the precise time between the last & next occurrences */
   @Test
-  public void test11() {
+  void test11() {
 
     DayOfWeek occurrenceDayOfWeek = DayOfWeek.TUESDAY;
     LocalTime occurrenceTime = at11_19;
@@ -287,7 +269,7 @@ public class DateToolGetNearOccurrencesTest {
 
   /** Just 1 minute before the precise time between the last & next occurrences */
   @Test
-  public void test12() {
+  void test12() {
 
     DayOfWeek occurrenceDayOfWeek = DayOfWeek.TUESDAY;
     LocalTime occurrenceTime = at11_19;
@@ -311,7 +293,7 @@ public class DateToolGetNearOccurrencesTest {
 
   /** Just 1 minute after the precise time between the last & next occurrences */
   @Test
-  public void test13() {
+  void test13() {
 
     DayOfWeek occurrenceDayOfWeek = DayOfWeek.TUESDAY;
     LocalTime occurrenceTime = at11_19;

@@ -8,14 +8,14 @@ import java.time.LocalDateTime;
 import java.time.Month;
 import org.junit.jupiter.api.Test;
 
-public class DateToolGetNearMonthOccurenceBoundariesTest {
+class DateToolGetNearMonthOccurenceBoundariesTest {
 
   /**
    * Test the case of having a reference date (time) later on the year calendar than the given
    * target month
    */
   @Test
-  public void test01() {
+  void test01() {
 
     Month targetMonth = Month.JANUARY;
     LocalDate referenceDate = LocalDate.of(2023, 9, 8);
@@ -45,7 +45,7 @@ public class DateToolGetNearMonthOccurenceBoundariesTest {
    * target month
    */
   @Test
-  public void test02() {
+  void test02() {
 
     Month targetMonth = Month.DECEMBER;
     LocalDate referenceDate = LocalDate.of(2023, 9, 8);
@@ -75,7 +75,7 @@ public class DateToolGetNearMonthOccurenceBoundariesTest {
    * given target month
    */
   @Test
-  public void test03() {
+  void test03() {
 
     Month targetMonth = Month.SEPTEMBER;
     LocalDate referenceDate = LocalDate.of(2023, 9, 8);
@@ -102,7 +102,7 @@ public class DateToolGetNearMonthOccurenceBoundariesTest {
 
   /** Test the when the expected result is a boundaries from February in a leap year */
   @Test
-  public void test04() {
+  void test04() {
 
     MonthBoundaries expected = new MonthBoundaries();
     expected.firstDayOfMonth = LocalDate.of(2040, 2, 1);

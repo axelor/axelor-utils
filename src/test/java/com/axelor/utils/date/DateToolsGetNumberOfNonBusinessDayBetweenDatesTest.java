@@ -5,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import java.time.LocalDate;
 import org.junit.jupiter.api.Test;
 
-public class DateToolsGetNumberOfNonBusinessDayBetweenDatesTest {
+class DateToolsGetNumberOfNonBusinessDayBetweenDatesTest {
 
   private final LocalDate friday22_12_16 = LocalDate.of(2022, 12, 16);
   private final LocalDate saturday22_12_17 = LocalDate.of(2022, 12, 17);
@@ -28,7 +28,7 @@ public class DateToolsGetNumberOfNonBusinessDayBetweenDatesTest {
   private final LocalDate thursday1970_01_08 = LocalDate.of(1970, 1, 8);
 
   @Test
-  public void test01() {
+  void test01() {
 
     long actual = DateTool.getNumberOfNonBusinessDaysBetweenDates(friday22_12_16, monday22_12_19);
     long expected = 2L;
@@ -37,7 +37,7 @@ public class DateToolsGetNumberOfNonBusinessDayBetweenDatesTest {
   }
 
   @Test
-  public void test02() {
+  void test02() {
 
     long actual =
         DateTool.getNumberOfNonBusinessDaysBetweenDates(thursday1970_01_01, monday22_12_19);
@@ -47,7 +47,7 @@ public class DateToolsGetNumberOfNonBusinessDayBetweenDatesTest {
   }
 
   @Test
-  public void test03() {
+  void test03() {
 
     long actual =
         DateTool.getNumberOfNonBusinessDaysBetweenDates(thursday1970_01_01, thursday1970_01_08);
@@ -57,7 +57,7 @@ public class DateToolsGetNumberOfNonBusinessDayBetweenDatesTest {
   }
 
   @Test
-  public void test04() {
+  void test04() {
 
     long actual =
         DateTool.getNumberOfNonBusinessDaysBetweenDates(sunday22_12_18, wednesday22_12_21);
@@ -67,7 +67,7 @@ public class DateToolsGetNumberOfNonBusinessDayBetweenDatesTest {
   }
 
   @Test
-  public void test05() {
+  void test05() {
 
     long actual = DateTool.getNumberOfNonBusinessDaysBetweenDates(sunday22_12_18, sunday22_12_25);
     long expected = 3L;
@@ -76,7 +76,7 @@ public class DateToolsGetNumberOfNonBusinessDayBetweenDatesTest {
   }
 
   @Test
-  public void test06() {
+  void test06() {
 
     long actual = DateTool.getNumberOfNonBusinessDaysBetweenDates(saturday22_12_17, friday22_12_23);
     long expected = 2L;
@@ -87,7 +87,7 @@ public class DateToolsGetNumberOfNonBusinessDayBetweenDatesTest {
   }
 
   @Test
-  public void test07() {
+  void test07() {
 
     long actual = DateTool.getNumberOfNonBusinessDaysBetweenDates(saturday22_12_17, sunday22_12_25);
     long expected = 4L;
@@ -98,7 +98,7 @@ public class DateToolsGetNumberOfNonBusinessDayBetweenDatesTest {
   }
 
   @Test
-  public void test08() {
+  void test08() {
 
     long actual = DateTool.getNumberOfNonBusinessDaysBetweenDates(monday22_12_26, monday23_01_16);
     long expected = 6L;
@@ -109,7 +109,7 @@ public class DateToolsGetNumberOfNonBusinessDayBetweenDatesTest {
   }
 
   @Test
-  public void test09() {
+  void test09() {
 
     long actual = DateTool.getNumberOfNonBusinessDaysBetweenDates(monday22_12_26, friday23_01_20);
     long expected = 6L;
@@ -120,7 +120,7 @@ public class DateToolsGetNumberOfNonBusinessDayBetweenDatesTest {
   }
 
   @Test
-  public void test10() {
+  void test10() {
 
     long actual =
         DateTool.getNumberOfNonBusinessDaysBetweenDates(friday22_12_23, wednesday23_01_18);
@@ -132,7 +132,7 @@ public class DateToolsGetNumberOfNonBusinessDayBetweenDatesTest {
   }
 
   @Test
-  public void test11() {
+  void test11() {
 
     long actual = DateTool.getNumberOfNonBusinessDaysBetweenDates(friday22_12_23, saturday23_01_14);
     long expected = 7L;
@@ -143,7 +143,7 @@ public class DateToolsGetNumberOfNonBusinessDayBetweenDatesTest {
   }
 
   @Test
-  public void test12() {
+  void test12() {
 
     long actual = DateTool.getNumberOfNonBusinessDaysBetweenDates(friday22_12_23, sunday23_01_22);
     long expected = 10L;
@@ -154,7 +154,7 @@ public class DateToolsGetNumberOfNonBusinessDayBetweenDatesTest {
   }
 
   @Test
-  public void test13() {
+  void test13() {
 
     long actual = DateTool.getNumberOfNonBusinessDaysBetweenDates(sunday22_12_25, sunday23_01_15);
     long expected = 7L;
@@ -165,7 +165,7 @@ public class DateToolsGetNumberOfNonBusinessDayBetweenDatesTest {
   }
 
   @Test
-  public void test14() {
+  void test14() {
 
     long actual =
         DateTool.getNumberOfNonBusinessDaysBetweenDates(monday22_12_19, wednesday22_12_21);
@@ -177,7 +177,7 @@ public class DateToolsGetNumberOfNonBusinessDayBetweenDatesTest {
   }
 
   @Test
-  public void test15() {
+  void test15() {
 
     long actual = DateTool.getNumberOfNonBusinessDaysBetweenDates(monday22_12_19, monday22_12_19);
     long expected = 0L;
@@ -188,7 +188,7 @@ public class DateToolsGetNumberOfNonBusinessDayBetweenDatesTest {
   }
 
   @Test
-  public void test16() {
+  void test16() {
 
     long actual = DateTool.getNumberOfNonBusinessDaysBetweenDates(saturday22_12_24, sunday22_12_25);
     long expected = 2L;
@@ -199,7 +199,7 @@ public class DateToolsGetNumberOfNonBusinessDayBetweenDatesTest {
   }
 
   @Test
-  public void test17() {
+  void test17() {
 
     long actual =
         DateTool.getNumberOfNonBusinessDaysBetweenDates(saturday22_12_24, saturday22_12_24);
@@ -208,7 +208,7 @@ public class DateToolsGetNumberOfNonBusinessDayBetweenDatesTest {
   }
 
   @Test
-  public void test18() {
+  void test18() {
 
     long actual = DateTool.getNumberOfNonBusinessDaysBetweenDates(sunday22_12_25, sunday22_12_25);
     long expected = 1L;

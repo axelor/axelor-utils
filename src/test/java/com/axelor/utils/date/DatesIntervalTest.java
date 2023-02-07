@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import java.time.LocalDate;
 import org.junit.jupiter.api.Test;
 
-public class DatesIntervalTest {
+class DatesIntervalTest {
 
   private LocalDate T = LocalDate.of(2000, 1, 1);
 
@@ -19,7 +19,7 @@ public class DatesIntervalTest {
   // i: ----------G-------------- (GH)
   // i: _________________________ (IJ)
   @Test
-  public void test_equals() {
+  void test_equals() {
 
     LocalDate A = T.plusDays(-4);
     LocalDate B = T.plusDays(5);
@@ -86,7 +86,7 @@ public class DatesIntervalTest {
   // i: ------C___D--------------
   // i: ------------T------------
   @Test
-  public void test01() {
+  void test01() {
     LocalDate A = T.plusDays(-4);
     LocalDate B = T.plusDays(5);
     LocalDate C = T.plusDays(-6);
@@ -137,7 +137,7 @@ public class DatesIntervalTest {
   // i: ____________D------------
   // i: ------------T------------
   @Test
-  public void test02() {
+  void test02() {
     LocalDate A = T.plusDays(-4);
     LocalDate B = null;
     LocalDate C = null;
@@ -188,7 +188,7 @@ public class DatesIntervalTest {
   // i: _______D-----------------
   // i: ------------T------------
   @Test
-  public void test03() {
+  void test03() {
     LocalDate A = T.plusDays(-4);
     LocalDate B = T.plusDays(-2);
     LocalDate C = null;
@@ -239,7 +239,7 @@ public class DatesIntervalTest {
   // i: ------------C------------
   // i: ------------T------------
   @Test
-  public void test04() {
+  void test04() {
     LocalDate A = T;
     LocalDate B = null;
     LocalDate C = T;
@@ -290,7 +290,7 @@ public class DatesIntervalTest {
   // i: ------------------C______
   // i: ------------T------------
   @Test
-  public void test05() {
+  void test05() {
     LocalDate A = T.plusDays(5);
     LocalDate B = null;
     LocalDate C = T.plusDays(6);
@@ -341,7 +341,7 @@ public class DatesIntervalTest {
   // i: ___________D-------------
   // i: ------------T------------
   @Test
-  public void test06() {
+  void test06() {
     LocalDate A = T.plusDays(1);
     LocalDate B = null;
     LocalDate C = null;
