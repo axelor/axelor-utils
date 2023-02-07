@@ -23,6 +23,10 @@ import javax.ws.rs.core.Response;
 
 public class ConflictChecker {
 
+  private ConflictChecker() {
+    throw new IllegalStateException("Utility class");
+  }
+
   public static void checkVersion(AuditableModel currentObject, int versionProvided) {
     if (currentObject.getVersion() != versionProvided) {
       throw new ClientErrorException(

@@ -21,6 +21,10 @@ import com.google.common.base.Strings;
 
 public class ComputeNameTool {
 
+  private ComputeNameTool() {
+    throw new IllegalStateException("Utility class");
+  }
+
   public static String computeSimpleFullName(String firstName, String lastName, String id) {
     if (!Strings.isNullOrEmpty(lastName) && !Strings.isNullOrEmpty(firstName)) {
       return lastName + " " + firstName;
