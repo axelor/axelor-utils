@@ -29,15 +29,17 @@ build:
   stage: build
   cache:
     - *global_cache
+  allow_failure: false
   script:
     - ./gradlew -xtest clean build --refresh-dependencies
+  interruptible: true
 
 # Run tests
 tests:
   stage: tests
   cache:
     - *global_cache
-  allow_failure: true
+  allow_failure: false
   script:
     - ./gradlew test
   interruptible: true
