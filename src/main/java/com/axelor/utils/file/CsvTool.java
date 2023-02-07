@@ -1,28 +1,16 @@
-/*
- * Axelor Business Solutions
- *
- * Copyright (C) 2022 Axelor (<http://axelor.com>).
- *
- * This program is free software: you can redistribute it and/or  modify
- * it under the terms of the GNU Affero General Public License, version 3,
- * as published by the Free Software Foundation.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Affero General Public License for more details.
- *
- * You should have received a copy of the GNU Affero General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- */
 package com.axelor.utils.file;
 
+import com.opencsv.CSVParser;
+import com.opencsv.CSVParserBuilder;
 import com.opencsv.CSVReader;
+import com.opencsv.CSVReaderBuilder;
 import com.opencsv.CSVWriter;
+import com.opencsv.ICSVWriter;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.Writer;
 import java.util.List;
 
 public final class CsvTool {
@@ -30,40 +18,47 @@ public final class CsvTool {
   private CsvTool() {}
 
   /**
-   * Méthode permettant de lire le contenu d'un fichier
+   * Read the content of a file.
    *
-   * @param fileName Le nom du fichier
-   * @return Une liste de tableau de valeur contenant l'ensemble des lignes
+   * @param fileName
+   * @param separator
+   * @return a list of arrays with all the lines
    * @throws IOException
    */
   public static List<String[]> cSVFileReader(String fileName, char separator) throws IOException {
 
-    CSVReader reader;
-    List<String[]> myEntries;
-
-    reader = new CSVReader(new FileReader(fileName), separator);
-    myEntries = reader.readAll();
+    final CSVParser parser = new CSVParserBuilder().withSeparator(separator).build();
+    final CSVReader reader =
+        new CSVReaderBuilder(new FileReader(fileName)).withCSVParser(parser).build();
+    List<String[]> myEntries = reader.readAll();
     reader.close();
 
     return myEntries;
   }
 
   /*
-   * Format Windows, sans double quote et CR/LF à chaque fin de ligne
+   * Windows format, without double quote and CR/LF at each line end.
+   *
+   * @param filePath
+   * @param fileName
+   * @param separator
+   * @return
+   * @throws IOException
    */
   public static CSVWriter setCsvFile(final String filePath, final String fileName, char separator)
       throws IOException {
 
-    java.io.Writer w = new FileWriter(filePath + File.separator + fileName);
-    return new CSVWriter(w, separator, CSVWriter.NO_QUOTE_CHARACTER, "\r\n");
+    Writer w = new FileWriter(filePath + File.separator + fileName);
+    return new CSVWriter(
+        w, separator, ICSVWriter.NO_QUOTE_CHARACTER, ICSVWriter.DEFAULT_ESCAPE_CHARACTER, "\r\n");
   }
 
   public static CSVWriter setCsvFile(
       final String filePath, final String fileName, char separator, char quoteChar)
       throws IOException {
 
-    java.io.Writer w = new FileWriter(filePath + File.separator + fileName);
-    return new CSVWriter(w, separator, quoteChar, "\r\n");
+    Writer w = new FileWriter(filePath + File.separator + fileName);
+    return new CSVWriter(w, separator, quoteChar, ICSVWriter.DEFAULT_ESCAPE_CHARACTER, "\r\n");
   }
 
   public static void csvWriter(
