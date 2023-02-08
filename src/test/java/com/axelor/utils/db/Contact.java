@@ -79,7 +79,7 @@ public class Contact extends JpaModel {
   @ManyToMany(
       cascade = {CascadeType.PERSIST, CascadeType.MERGE},
       fetch = FetchType.LAZY)
-  private Set<Group> groups;
+  private Set<ContactGroup> contactGroups;
 
   @Widget(title = "Photo", help = "Max size 4MB.")
   @Lob
@@ -177,17 +177,17 @@ public class Contact extends JpaModel {
     this.addresses = addresses;
   }
 
-  public Group getGroup(int index) {
-    if (groups == null) return null;
-    return Lists.newArrayList(groups).get(index);
+  public ContactGroup getGroup(int index) {
+    if (contactGroups == null) return null;
+    return Lists.newArrayList(contactGroups).get(index);
   }
 
-  public Set<Group> getGroups() {
-    return groups;
+  public Set<ContactGroup> getGroups() {
+    return contactGroups;
   }
 
-  public void setGroups(Set<Group> groups) {
-    this.groups = groups;
+  public void setGroups(Set<ContactGroup> contactGroups) {
+    this.contactGroups = contactGroups;
   }
 
   public byte[] getImage() {

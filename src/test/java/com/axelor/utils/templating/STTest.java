@@ -17,14 +17,10 @@
  */
 package com.axelor.utils.templating;
 
-import com.axelor.app.AxelorModule;
-import com.axelor.inject.Beans;
-import com.axelor.test.GuiceExtension;
-import com.axelor.test.GuiceModules;
 import com.axelor.utils.db.Contact;
 import com.axelor.utils.db.Title;
+import com.axelor.utils.junit.BaseTest;
 import com.axelor.utils.template.TemplateMaker;
-import com.axelor.utils.templating.STTest.MyModule;
 import com.google.common.collect.Maps;
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -34,11 +30,8 @@ import java.util.Map;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
 
-@ExtendWith(GuiceExtension.class)
-@GuiceModules({MyModule.class})
-class STTest {
+class STTest extends BaseTest {
 
   public Contact contact;
   public String contentFinal;
@@ -66,14 +59,6 @@ class STTest {
           + "private String testKey2 = $testKey2$<br />"
           + "private String testKey3 = $testKey3$<br />"
           + "}</pre>";
-
-  public static class MyModule extends AxelorModule {
-
-    @Override
-    protected void configure() {
-      bind(Beans.class).asEagerSingleton();
-    }
-  }
 
   @BeforeEach
   public void prepareTest() {

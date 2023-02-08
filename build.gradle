@@ -56,6 +56,7 @@ dependencies {
     api 'com.opencsv:opencsv:4.6'
     implementation 'javax.xml.ws:jaxws-api:2.3.1'
     implementation 'javax.jws:javax.jws-api:1.1'
+    implementation 'org.reflections:reflections:0.10.2'
 
     testImplementation 'org.junit.vintage:junit-vintage-engine'
 }

@@ -20,9 +20,12 @@ package com.axelor.utils;
 import com.axelor.common.ObjectUtils;
 import com.axelor.db.JPA;
 import com.axelor.db.Model;
+import com.axelor.inject.Beans;
 import com.axelor.rpc.Context;
+import com.axelor.utils.context.adapters.Processor;
 import com.google.common.collect.Lists;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
@@ -35,13 +38,16 @@ public class MapTools {
   private MapTools() {}
 
   /**
-   * An utility method to get a List of specified type from a List&lt;Map&lt;String,Object>>.
+   * A utility method to get a List of specified type from a List&lt;Map&lt;String,Object>>.
+   * <BR/><BR/>
+   * <b>Deprecated</b> in favor of <i>com.axelor.utils.MapTools#getCollection</i>
    *
    * @param tClass the class of items composing the returned list.
    * @param items the List&lt;Map&lt;String,Object>>.
    * @param <T> the class type of items.
    * @return the List&lt;T>.
    */
+  @Deprecated
   @SuppressWarnings("unchecked")
   public static <T extends Model> List<T> makeList(
       @NotNull Class<T> tClass, @NotNull Object items) {
@@ -70,14 +76,17 @@ public class MapTools {
   }
 
   /**
-   * An utility method to get a managed item of specified type from a Map&lt;String, Object> or from
+   * A utility method to get a managed item of specified type from a Map&lt;String, Object> or from
    * a field.
+   * <BR/><BR/>
+   * <b>Deprecated</b> in favor of <i>com.axelor.utils.MapTools#get</i>
    *
    * @param tClass the class of item.
    * @param object the Map&lt;String,Object> or the field.
    * @param <T> the class type of item.
    * @return the T type item managed.
    */
+  @Deprecated
   @SuppressWarnings("unchecked")
   public static <T extends Model> T findObject(@NotNull Class<T> tClass, Object object) {
     Objects.requireNonNull(tClass);
@@ -119,5 +128,39 @@ public class MapTools {
   public static <T, U> Map<T, Object> simplifyMap(Map<T, U> map) {
     return map.entrySet().stream()
         .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
+  }
+
+  /**
+   * A utility method to get an object of the given fieldClass in the given context based on the
+   * given fieldName.
+   *
+   * @param context the context to search into.
+   * @param fieldClass the class of the given field.
+   * @param fieldName the field name.
+   * @return the field value.
+   * @param <T> the field type.
+   */
+  public static <T> List<T> getCollection(Context context, Class<T> fieldClass, String fieldName) {
+    Objects.requireNonNull(context);
+    Objects.requireNonNull(fieldClass);
+    Objects.requireNonNull(fieldName);
+    return Beans.get(Processor.class).processCollection(fieldClass, context.get(fieldName));
+  }
+
+  /**
+   * A utility method to get an object of the given fieldClass in the given context based on the
+   * given fieldName.
+   *
+   * @param context the context to search into.
+   * @param fieldClass the class of the given field.
+   * @param fieldName the field name.
+   * @return the field value.
+   * @param <T> the field type.
+   */
+  public static <T> T get(Context context, Class<T> fieldClass, String fieldName) {
+    Objects.requireNonNull(context);
+    Objects.requireNonNull(fieldClass);
+    Objects.requireNonNull(fieldName);
+    return Beans.get(Processor.class).process(fieldClass, context.get(fieldName));
   }
 }

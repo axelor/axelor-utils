@@ -32,7 +32,7 @@ import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "CONTACT_GROUP")
-public class Group extends Model {
+public class ContactGroup extends Model {
 
   @Id
   @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "CONTACT_GROUP_SEQ")
@@ -46,7 +46,7 @@ public class Group extends Model {
 
   @NotNull private String title;
 
-  public Group() {}
+  public ContactGroup() {}
 
   public Long getId() {
     return id;
@@ -56,7 +56,7 @@ public class Group extends Model {
     this.id = id;
   }
 
-  public Group(String name, String title) {
+  public ContactGroup(String name, String title) {
     this.name = name;
     this.title = title;
   }
@@ -88,7 +88,7 @@ public class Group extends Model {
     return tsh.omitNullValues().toString();
   }
 
-  public static Query<Group> all() {
-    return JPA.all(Group.class);
+  public static Query<ContactGroup> all() {
+    return JPA.all(ContactGroup.class);
   }
 }

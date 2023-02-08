@@ -19,10 +19,11 @@ package com.axelor.utils.net;
 
 import com.axelor.i18n.I18n;
 import com.axelor.utils.exception.ToolExceptionMessage;
+import com.axelor.utils.junit.BaseTest;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-class TestURLService {
+class TestURLService extends BaseTest {
 
   @Test
   void testNotExist() {
