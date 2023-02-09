@@ -43,9 +43,8 @@ spotless:
   script:
     - ./gradlew spotlessCheck
   interruptible: true
-  except:
-    - main
-    - tags
+  only:
+    - branches
 
 # Run tests
 test:
