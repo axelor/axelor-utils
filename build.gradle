@@ -20,9 +20,15 @@ buildscript {
 repositories repos
 
 apply from: "version.gradle"
-apply from: './gradle/style.gradle'
 apply plugin: "com.axelor.app"
 apply plugin: 'com.adarshr.test-logger'
+
+try {
+    tasks.named("spotlessCheck")
+} catch (UnknownTaskException ignored) {
+    apply from: './gradle/style.gradle'
+}
+
 
 testlogger {
     theme 'mocha'

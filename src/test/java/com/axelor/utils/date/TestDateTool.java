@@ -1,7 +1,6 @@
 package com.axelor.utils.date;
 
 import java.time.LocalDate;
-
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
