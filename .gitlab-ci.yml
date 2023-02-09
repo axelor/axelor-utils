@@ -1,7 +1,7 @@
 # Stages (ie phases) that can be used by jobs
 stages:
   - build
-  - tests
+  - test
   - publish
 
 image: axelor/app-builder:6.1
@@ -34,9 +34,22 @@ build:
     - ./gradlew -xtest clean build --refresh-dependencies
   interruptible: true
 
+# Check code formatting
+spotless:
+  stage: test
+  cache:
+    - *global_cache_pull
+  allow_failure: true
+  script:
+    - ./gradlew spotlessCheck
+  interruptible: true
+  except:
+    - main
+    - tags
+
 # Run tests
-tests:
-  stage: tests
+test:
+  stage: test
   cache:
     - *global_cache
   allow_failure: false
