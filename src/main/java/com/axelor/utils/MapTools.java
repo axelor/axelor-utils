@@ -25,7 +25,6 @@ import com.axelor.rpc.Context;
 import com.axelor.utils.context.adapters.Processor;
 import com.google.common.collect.Lists;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
@@ -38,8 +37,8 @@ public class MapTools {
   private MapTools() {}
 
   /**
-   * A utility method to get a List of specified type from a List&lt;Map&lt;String,Object>>.
-   * <BR/><BR/>
+   * A utility method to get a List of specified type from a List&lt;Map&lt;String,Object>>. <br>
+   * <br>
    * <b>Deprecated</b> in favor of <i>com.axelor.utils.MapTools#getCollection</i>
    *
    * @param tClass the class of items composing the returned list.
@@ -77,8 +76,8 @@ public class MapTools {
 
   /**
    * A utility method to get a managed item of specified type from a Map&lt;String, Object> or from
-   * a field.
-   * <BR/><BR/>
+   * a field. <br>
+   * <br>
    * <b>Deprecated</b> in favor of <i>com.axelor.utils.MapTools#get</i>
    *
    * @param tClass the class of item.

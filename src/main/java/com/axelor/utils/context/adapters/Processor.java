@@ -24,8 +24,7 @@ public final class Processor {
 
   private void initMap() {
     Reflections reflections =
-        new Reflections(
-            new ConfigurationBuilder().forPackage("com.axelor.utils.context.adapters"));
+        new Reflections(new ConfigurationBuilder().forPackage("com.axelor.utils.context.adapters"));
     Set<Class<?>> types =
         reflections.getTypesAnnotatedWith(ContextAdapter.class).stream()
             .filter(Adapter.class::isAssignableFrom)
