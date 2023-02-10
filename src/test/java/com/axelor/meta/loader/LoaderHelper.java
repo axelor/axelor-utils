@@ -37,11 +37,15 @@ public class LoaderHelper {
     loader.doLoad(url, module, true);
   }
 
-  public void importCsv(String configFileName) throws URISyntaxException {
-    Path config = path(configFileName);
-    File data = FileUtils.getFile(config.toFile().getParentFile(), INPUT_DIR_NAME);
-    CSVImporter importer =
-        new CSVImporter(config.toFile().getAbsolutePath(), data.getAbsolutePath(), null);
-    importer.run();
+  public void importCsv(String configFileName) {
+    try {
+      Path config = path(configFileName);
+      File data = FileUtils.getFile(config.toFile().getParentFile(), INPUT_DIR_NAME);
+      CSVImporter importer =
+          new CSVImporter(config.toFile().getAbsolutePath(), data.getAbsolutePath(), null);
+      importer.run();
+    } catch (URISyntaxException ignored) {
+      // ignored
+    }
   }
 }

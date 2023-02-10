@@ -10,7 +10,6 @@ import com.axelor.meta.schema.actions.ActionView.ActionViewBuilder;
 import com.axelor.utils.junit.BaseTest;
 import com.axelor.utils.utils.TestHelper;
 import com.google.inject.Inject;
-import com.google.inject.persist.Transactional;
 import java.io.IOException;
 import javax.xml.bind.JAXBException;
 import org.junit.jupiter.api.Assertions;
@@ -36,7 +35,6 @@ class ActionViewHelperTest extends BaseTest {
   }
 
   @BeforeEach
-  @Transactional
   void before() {
     loaderHelper.loadViewFile("views/User.xml");
     loaderHelper.loadViewFile("views/Actions.xml");
