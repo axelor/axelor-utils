@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<object-views xmlns="http://axelor.com/xml/ns/object-views"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://axelor.com/xml/ns/object-views https://axelor.com/xml/ns/object-views/object-views_6.1.xsd">
+
+  <grid title="Users" name="user-grid" model="com.axelor.auth.db.User">
+    <field name="code"/>
+    <field name="name"/>
+  </grid>
+
+  <form title="User" name="user-form" model="com.axelor.auth.db.User">
+    <panel>
+      <field name="code"/>
+      <field name="name"/>
+      <field name="password"/>
+    </panel>
+  </form>
+
+</object-views>
