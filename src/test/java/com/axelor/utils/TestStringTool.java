@@ -24,10 +24,10 @@ import java.util.List;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-public class TestStringTool {
+class TestStringTool {
 
   @Test
-  public void testToFirstLower() {
+  void testToFirstLower() {
 
     String actual = "Test";
     String result = "test";
@@ -36,7 +36,7 @@ public class TestStringTool {
   }
 
   @Test
-  public void testToFirstUpper() {
+  void testToFirstUpper() {
 
     String actual = "test";
     String result = "Test";
@@ -45,7 +45,7 @@ public class TestStringTool {
   }
 
   @Test
-  public void testFillString() {
+  void testFillString() {
 
     String actual = "test";
     String resultRight = "test    ";
@@ -61,7 +61,7 @@ public class TestStringTool {
   }
 
   @Test
-  public void testGetIdListString() {
+  void testGetIdListString() {
 
     List<Long> customModelIds = Arrays.asList(null, 1l, 2l, null, 5l, null);
     List<MetaJsonModel> customModelList = new ArrayList<>();
@@ -82,7 +82,7 @@ public class TestStringTool {
   }
 
   @Test
-  public void reduceLarge_whenStringIsLarge() {
+  void reduceLarge_whenStringIsLarge() {
     String largeString =
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque enim nisi, rhoncus a sollicitudin sed, pretium vitae massa. Nunc ac urna quis eros cursus efficitur. Vestibulum vel finibus felis. Integer ac nunc nec nisl tincidunt tincidunt. In finibus tellus libero, quis molestie lacus mollis sed. Class aptent taciti sociosqu ad.";
     Assertions.assertEquals(

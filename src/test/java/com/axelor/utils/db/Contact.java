@@ -25,12 +25,10 @@ import com.axelor.db.annotations.VirtualColumn;
 import com.axelor.db.annotations.Widget;
 import com.google.common.base.MoreObjects;
 import com.google.common.base.MoreObjects.ToStringHelper;
-import com.google.common.collect.Lists;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Basic;
@@ -38,7 +36,6 @@ import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Lob;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -75,11 +72,6 @@ public class Contact extends JpaModel {
       fetch = FetchType.LAZY,
       orphanRemoval = true)
   private List<Address> addresses;
-
-  @ManyToMany(
-      cascade = {CascadeType.PERSIST, CascadeType.MERGE},
-      fetch = FetchType.LAZY)
-  private Set<ContactGroup> contactGroups;
 
   @Widget(title = "Photo", help = "Max size 4MB.")
   @Lob
@@ -175,19 +167,6 @@ public class Contact extends JpaModel {
 
   public void setAddresses(List<Address> addresses) {
     this.addresses = addresses;
-  }
-
-  public ContactGroup getGroup(int index) {
-    if (contactGroups == null) return null;
-    return Lists.newArrayList(contactGroups).get(index);
-  }
-
-  public Set<ContactGroup> getGroups() {
-    return contactGroups;
-  }
-
-  public void setGroups(Set<ContactGroup> contactGroups) {
-    this.contactGroups = contactGroups;
   }
 
   public byte[] getImage() {
