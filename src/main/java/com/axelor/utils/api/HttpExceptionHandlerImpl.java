@@ -17,10 +17,11 @@
  */
 package com.axelor.utils.api;
 
-import com.axelor.app.AppSettings;
 import com.axelor.i18n.I18n;
+import com.axelor.inject.Beans;
 import com.axelor.utils.ExceptionTool;
 import com.axelor.utils.exception.ToolExceptionMessage;
+import com.axelor.utils.service.AppSettingsService;
 import javax.ws.rs.BadRequestException;
 import javax.ws.rs.ClientErrorException;
 import javax.ws.rs.ForbiddenException;
@@ -34,7 +35,7 @@ public class HttpExceptionHandlerImpl implements MethodInterceptor {
   @Override
   public Object invoke(MethodInvocation invocation) throws Throwable {
     try {
-      if (Boolean.parseBoolean(AppSettings.get().get("aos.api.enable"))) {
+      if (Beans.get(AppSettingsService.class).isApiEnabled()) {
         return invocation.proceed();
       } else {
         throw new ForbiddenException(I18n.get(ToolExceptionMessage.API_DISABLED));

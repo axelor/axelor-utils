@@ -20,6 +20,8 @@ package com.axelor.utils.module;
 import com.axelor.app.AxelorModule;
 import com.axelor.utils.api.HttpExceptionHandler;
 import com.axelor.utils.api.HttpExceptionHandlerImpl;
+import com.axelor.utils.service.AppSettingsService;
+import com.axelor.utils.service.AppSettingsServiceImpl;
 import com.axelor.utils.service.ArchivingToolService;
 import com.axelor.utils.service.ArchivingToolServiceImpl;
 import com.axelor.utils.service.CipherService;
@@ -41,6 +43,7 @@ public class UtilsModule extends AxelorModule {
     bind(ArchivingToolService.class).to(ArchivingToolServiceImpl.class);
     bind(ListToolService.class).to(ListToolServiceImpl.class);
     bind(ConvertBinaryToMetafileService.class).to(ConvertBinaryToMetafileServiceImpl.class);
+    bind(AppSettingsService.class).to(AppSettingsServiceImpl.class);
     bindInterceptor(
         Matchers.any(),
         Matchers.annotatedWith(HttpExceptionHandler.class),

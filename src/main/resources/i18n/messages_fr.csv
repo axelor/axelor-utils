@@ -1,5 +1,5 @@
 "key","message","comment","context"
-"AOS API calls are disabled, please contact your administrator. The property aos.api.enable is false in application.properties.","Les appels API AOS sont désactivés, veuillez contacter votre administrateur. La propriété aos.api.enable est à faux dans le application.properties.",,
+"AOS API calls are disabled, please contact your administrator. The property utils.api.enable is false in application.properties.","Les appels API AOS sont désactivés, veuillez contacter votre administrateur. La propriété utils.api.enable est à faux dans le application.properties.",,
 "An error occurred with the following message : %s","Une erreur s'est produite avec le message suivant : %s",,
 "An error occurs while opening the connection. Please verify the following URL : %s.","Une erreur est survenue pendant la connexion. Veuillez verifier l'URL suivant: %s.",,
 "Can not opening the connection to a empty URL.","Impossible d'établir la connexion avec un URL vide.",,
