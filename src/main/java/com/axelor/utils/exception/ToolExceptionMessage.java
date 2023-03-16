@@ -57,5 +57,5 @@ public final class ToolExceptionMessage {
       "An error occurred with the following message : %s" /*)*/;
 
   public static final String API_DISABLED = /*$$(*/
-      "AOS API calls are disabled, please contact your administrator. The property aos.api.enable is false in application.properties." /*)*/;
+      "AOS API calls are disabled, please contact your administrator. The property utils.api.enable is false in application.properties." /*)*/;
 }

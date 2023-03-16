@@ -17,9 +17,9 @@
  */
 package com.axelor.utils.service;
 
-import com.axelor.app.AppSettings;
 import com.axelor.common.StringUtils;
 import com.axelor.utils.ExceptionTool;
+import com.google.inject.Inject;
 import java.io.UnsupportedEncodingException;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
@@ -37,6 +37,12 @@ public class CipherServiceImpl implements CipherService {
   private static final String UNICODE_FORMAT = "UTF8";
   public static final String DESEDE_ENCRYPTION_SCHEME = "DESede";
   private Cipher cipher;
+  protected final AppSettingsService appSettingsService;
+
+  @Inject
+  public CipherServiceImpl(AppSettingsService appSettingsService) {
+    this.appSettingsService = appSettingsService;
+  }
 
   @Override
   public String encrypt(String unencryptedString) {
@@ -87,7 +93,7 @@ public class CipherServiceImpl implements CipherService {
           NoSuchPaddingException, InvalidKeySpecException {
 
     String encryptionScheme = DESEDE_ENCRYPTION_SCHEME;
-    String encryptionkey = AppSettings.get().get("application.encryptionkey");
+    String encryptionkey = appSettingsService.encryptionKey();
     SecretKey key = null;
 
     if (StringUtils.notEmpty(encryptionkey)) {
