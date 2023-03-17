@@ -10,7 +10,7 @@
 "Meta json field type %s could not be converted to a meta field type.","Le type de champ personnalisé %s n'a pas pu être converti vers un type de champ.",,
 "Name",,,
 "No such template","Modèle non trouvé",,
-"No title found for the view %s.","Aucun titre trouvé pour la vue %s".,,
+"No title found for the view %s.","Aucun titre trouvé pour la vue %s.",,
 "Record Id","ID d'enregistrement",,
 "Record Name","Nom d'enregistrement",,
 "Templating can not be empty","Le modèle ne peut pas être vide",,
