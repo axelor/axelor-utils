@@ -14,11 +14,9 @@ public class GroovyAdapter extends Adapter {
     if (value == null || context == null) {
       return value;
     }
-    final GroovyScriptHelper scriptHelper =
-        new GroovyScriptHelper(new ScriptBindings(context));
+    final GroovyScriptHelper scriptHelper = new GroovyScriptHelper(new ScriptBindings(context));
 
-    if (value instanceof String
-        && StringUtils.notBlank(Objects.toString(value))) {
+    if (value instanceof String && StringUtils.notBlank(Objects.toString(value))) {
       return scriptHelper.eval(Objects.toString(value));
     }
     return value;
