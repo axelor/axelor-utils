@@ -2,9 +2,14 @@ package com.axelor.utils;
 
 import com.axelor.auth.db.User;
 import com.axelor.auth.db.repo.UserRepository;
+import com.axelor.db.JpaRepository;
+import com.axelor.db.mapper.Mapper;
 import com.axelor.inject.Beans;
 import com.axelor.meta.loader.LoaderHelper;
+import com.axelor.rpc.Context;
 import com.axelor.utils.context.adapters.Processor;
+import com.axelor.utils.db.Move;
+import com.axelor.utils.db.MoveLine;
 import com.axelor.utils.junit.BaseTest;
 import com.google.inject.Inject;
 import java.math.BigDecimal;
@@ -45,6 +50,8 @@ class TestMapTool extends BaseTest {
     mapStringListString.put("key4", List.of("value7", "value8"));
     userMap = Map.of("id", 1L);
     loaderHelper.importCsv("data/users-input.xml");
+    loaderHelper.importCsv("data/moves-input.xml");
+    loaderHelper.importCsv("data/move-lines-input.xml");
     userMapList = new ArrayList<>();
     userMapList.add(userMap);
     userMapList.add(Map.of("id", 2L));
@@ -94,5 +101,29 @@ class TestMapTool extends BaseTest {
             userRepository.findByCode("client"),
             userRepository.findByCode("supplier")),
         processor.processCollection(User.class, userMapList));
+  }
+
+  @Test
+  void findParent_whenParentContextIsNull() {
+    Context moveLine = new Context(2L, MoveLine.class);
+    Move move = MapTools.findParent(MoveLine.class, Move.class, moveLine, MoveLine::getMove);
+    Assertions.assertEquals(move.getId(), 1L);
+  }
+
+  @Test
+  void findParent_whenParentContextIsNotNull() {
+    Map<String, Object> moveCtx = Mapper.toMap(JpaRepository.of(Move.class).find(1L));
+    moveCtx.put("_model", Move.class.getName());
+    Context moveLineCtx = new Context(2L, MoveLine.class);
+    moveLineCtx.put("_parent", moveCtx);
+    Move move = MapTools.findParent(MoveLine.class, Move.class, moveLineCtx, MoveLine::getMove);
+    Assertions.assertEquals(move.getId(), 1L);
+  }
+
+  @Test
+  void findParent_whenNoParent() {
+    Context moveLine = new Context(5L, MoveLine.class);
+    Move move = MapTools.findParent(MoveLine.class, Move.class, moveLine, MoveLine::getMove);
+    Assertions.assertNull(move);
   }
 }

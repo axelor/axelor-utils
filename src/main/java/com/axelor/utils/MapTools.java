@@ -18,6 +18,7 @@
 package com.axelor.utils;
 
 import com.axelor.common.ObjectUtils;
+import com.axelor.db.EntityHelper;
 import com.axelor.db.JPA;
 import com.axelor.db.Model;
 import com.axelor.inject.Beans;
@@ -28,6 +29,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 import javax.validation.constraints.NotNull;
 import org.apache.shiro.util.CollectionUtils;
@@ -161,5 +163,20 @@ public class MapTools {
     Objects.requireNonNull(fieldClass);
     Objects.requireNonNull(fieldName);
     return Beans.get(Processor.class).process(fieldClass, context.get(fieldName));
+  }
+
+  public static <I extends Model, O extends Model> O findParent(
+      Class<I> contextClass, Class<O> parentClass, Context context, Function<I, O> function) {
+    Context parentContext = context.getParent();
+    O parent = null;
+    if (parentContext == null || !Objects.equals(parentContext.getContextClass(), parentClass)) {
+      I model = context.asType(contextClass);
+      if (model != null) {
+        parent = function.apply(model);
+      }
+    } else {
+      parent = parentContext.asType(parentClass);
+    }
+    return EntityHelper.getEntity(parent);
   }
 }

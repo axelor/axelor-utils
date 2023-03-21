@@ -27,10 +27,13 @@ import javax.persistence.FetchType;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "TEST_MOVE")
 public class Move extends JpaModel {
+
+  @NotNull String code;
 
   @OneToMany(
       fetch = FetchType.LAZY,
@@ -43,6 +46,14 @@ public class Move extends JpaModel {
       fetch = FetchType.LAZY,
       cascade = {CascadeType.PERSIST, CascadeType.MERGE})
   private Invoice invoice;
+
+  public String getCode() {
+    return code;
+  }
+
+  public void setCode(String code) {
+    this.code = code;
+  }
 
   public List<MoveLine> getMoveLines() {
     return moveLines;
