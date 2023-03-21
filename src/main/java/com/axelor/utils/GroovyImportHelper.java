@@ -39,7 +39,7 @@ public class GroovyImportHelper {
             it ->
                 mapper.set(
                     model,
-                    it.getKey().substring(5),
+                    it.getKey().substring(5).trim(),
                     scriptHelper.eval(Objects.toString(it.getValue()))));
     return JPA.save(model);
   }
