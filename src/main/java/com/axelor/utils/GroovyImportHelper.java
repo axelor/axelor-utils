@@ -9,29 +9,38 @@ import com.axelor.script.GroovyScriptHelper;
 import com.axelor.script.ScriptBindings;
 import com.google.inject.persist.Transactional;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Objects;
+import org.apache.commons.collections.CollectionUtils;
 
 public class GroovyImportHelper {
 
   @Transactional(rollbackOn = Exception.class)
   public Object compute(Object bean, Map<String, Object> values) {
-    assert bean instanceof Model;
-    Model model = (Model) bean;
-    Mapper mapper = Mapper.of(EntityHelper.getEntityClass(model));
-    ScriptBindings scriptBindings = new ScriptBindings(Mapper.toMap(model));
-    GroovyScriptHelper groovyScriptHelper = new GroovyScriptHelper(scriptBindings);
-    for (Entry<String, Object> entry : values.entrySet()) {
-      if (entry.getKey().startsWith("eval:")
-          && entry.getValue() != null
-          && entry.getValue() instanceof String
-          && StringUtils.notBlank(Objects.toString(entry.getValue()))) {
-        mapper.set(
-            model,
-            entry.getKey().substring(5),
-            groovyScriptHelper.eval(Objects.toString(entry.getValue())));
-      }
+    if (bean == null || values == null || CollectionUtils.isEmpty(values.entrySet())) {
+      return bean;
     }
+    assert bean instanceof Model;
+    final Model model = (Model) bean;
+    final Mapper mapper = Mapper.of(EntityHelper.getEntityClass(model));
+    final GroovyScriptHelper scriptHelper =
+        new GroovyScriptHelper(new ScriptBindings(Mapper.toMap(model)));
+
+    values
+        .entrySet()
+        .parallelStream()
+        .filter(
+            it ->
+                it.getKey() != null
+                    && it.getKey().startsWith("eval:")
+                    && it.getValue() != null
+                    && it.getValue() instanceof String
+                    && StringUtils.notBlank(Objects.toString(it.getValue())))
+        .forEach(
+            it ->
+                mapper.set(
+                    model,
+                    it.getKey().substring(5),
+                    scriptHelper.eval(Objects.toString(it.getValue()))));
     return JPA.save(model);
   }
 }
