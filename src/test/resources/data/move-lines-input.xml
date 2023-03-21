@@ -3,7 +3,13 @@
   xmlns="http://axelor.com/xml/ns/data-import"
   xsi:schemaLocation="http://axelor.com/xml/ns/data-import http://axelor.com/xml/ns/data-import/data-import_6.1.xsd">
 
-  <input file="move_lines.csv" separator=";" type="com.axelor.utils.db.MoveLine"
-    call="com.axelor.utils.GroovyImportHelper:compute"/>
+  <adapter name="GroovyAdapter" type="com.axelor.utils.adapters.GroovyAdapter"/>
+
+  <input file="move_lines.csv" separator=";" type="com.axelor.utils.db.MoveLine">
+    <bind column="_today" to="date" adapter="GroovyAdapter"/>
+    <bind column="_today" to="dueDate" adapter="GroovyAdapter"/>
+    <bind column="_credit" to="credit" adapter="GroovyAdapter"/>
+    <bind column="_debit" to="debit" adapter="GroovyAdapter"/>
+  </input>
 
 </csv-inputs>
