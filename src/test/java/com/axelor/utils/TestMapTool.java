@@ -24,10 +24,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 class TestMapTool extends BaseTest {
+
+  static Processor processor;
 
   protected final LoaderHelper loaderHelper;
   protected final UserRepository userRepository;
@@ -41,8 +44,13 @@ class TestMapTool extends BaseTest {
     this.userRepository = userRepository;
   }
 
+  @BeforeAll
+  static void setUpClass() {
+    processor = Beans.get(Processor.class);
+  }
+
   @BeforeEach
-  public void setUp() {
+  void setUp() {
     mapStringListString = new HashMap<>();
     mapStringListString.put("key1", List.of("value1", "value2"));
     mapStringListString.put("key2", List.of("value3", "value4"));
@@ -68,21 +76,42 @@ class TestMapTool extends BaseTest {
   }
 
   @Test
-  void testProcessor() {
-    Processor processor = Beans.get(Processor.class);
+  void testLocalDateProcessor() {
     Assertions.assertEquals(
         LocalDate.of(1996, 1, 1), processor.process(LocalDate.class, "1996-01-01"));
+  }
+
+  @Test
+  void testLocalDateTimeProcessor() {
     Assertions.assertEquals(
         LocalDateTime.ofInstant(
             ZonedDateTime.of(1996, 1, 1, 12, 0, 0, 0, ZoneOffset.UTC).toInstant(),
             ZoneId.systemDefault()),
         processor.process(LocalDateTime.class, "1996-01-01T12:00:00.000Z"));
+  }
+
+  @Test
+  void testStringProcessor() {
     Assertions.assertEquals("TOTO", processor.process(String.class, "TOTO"));
+  }
+
+  @Test
+  void testLongProcessor() {
+    Assertions.assertEquals(123L, processor.process(Long.class, 123L));
+    Assertions.assertEquals(123L, processor.process(Long.class, 123));
+    Assertions.assertEquals(123L, processor.process(Long.class, "123"));
+  }
+
+  @Test
+  void testBigDecimalProcessor() {
     Assertions.assertEquals(BigDecimal.TEN, processor.process(BigDecimal.class, BigDecimal.TEN));
     Assertions.assertEquals(BigDecimal.TEN, processor.process(BigDecimal.class, 10));
     Assertions.assertEquals(BigDecimal.TEN, processor.process(BigDecimal.class, "10"));
     Assertions.assertEquals(new BigDecimal("25.6"), processor.process(BigDecimal.class, 25.6));
+  }
 
+  @Test
+  void testStringCollectionProcessor() {
     List<String> addresses = new ArrayList<>();
     addresses.add("1996-01-01");
     addresses.add("2003-01-01");
@@ -91,10 +120,16 @@ class TestMapTool extends BaseTest {
     Assertions.assertEquals(
         Arrays.asList(LocalDate.of(1996, 1, 1), LocalDate.of(2003, 1, 1), LocalDate.of(2020, 1, 1)),
         processor.processCollection(LocalDate.class, addresses));
+  }
 
+  @Test
+  void testModelProcessor() {
     Assertions.assertEquals(
         userRepository.findByCode("admin"), processor.process(User.class, userMap));
+  }
 
+  @Test
+  void testModelCollectionProcessor() {
     Assertions.assertEquals(
         Arrays.asList(
             userRepository.findByCode("admin"),
