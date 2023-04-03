@@ -105,7 +105,7 @@ public class MapTools {
 
   @SuppressWarnings("unchecked")
   public static <T extends Model> List<T> getSelectedObjects(
-      @NotNull Class<T> tClass, Context context) {
+      @NotNull Class<T> tClass, Map<String, Object> context) {
     Objects.requireNonNull(tClass);
     Objects.requireNonNull(context);
     List<Integer> ids = (ArrayList<Integer>) context.get("_ids");
@@ -141,7 +141,8 @@ public class MapTools {
    * @return the field value.
    * @param <T> the field type.
    */
-  public static <T> List<T> getCollection(Context context, Class<T> fieldClass, String fieldName) {
+  public static <T> List<T> getCollection(
+      Map<String, Object> context, Class<T> fieldClass, String fieldName) {
     Objects.requireNonNull(context);
     Objects.requireNonNull(fieldClass);
     Objects.requireNonNull(fieldName);
@@ -158,7 +159,7 @@ public class MapTools {
    * @return the field value.
    * @param <T> the field type.
    */
-  public static <T> T get(Context context, Class<T> fieldClass, String fieldName) {
+  public static <T> T get(Map<String, Object> context, Class<T> fieldClass, String fieldName) {
     Objects.requireNonNull(context);
     Objects.requireNonNull(fieldClass);
     Objects.requireNonNull(fieldName);
