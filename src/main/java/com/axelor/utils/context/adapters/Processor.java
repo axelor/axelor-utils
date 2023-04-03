@@ -2,6 +2,7 @@ package com.axelor.utils.context.adapters;
 
 import com.axelor.db.Model;
 import com.google.inject.Singleton;
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -32,8 +33,13 @@ public final class Processor {
     for (Class<?> type : types) {
       try {
         Class<?> valueClass = type.getAnnotation(ContextAdapter.class).value();
-        adapterMap.put(valueClass, (Adapter<?>) type.newInstance());
-      } catch (InstantiationException | IllegalAccessException e) {
+        adapterMap.put(valueClass, (Adapter<?>) type.getDeclaredConstructor().newInstance());
+      } catch (InstantiationException
+          | IllegalAccessException
+          | IllegalArgumentException
+          | InvocationTargetException
+          | NoSuchMethodException
+          | SecurityException e) {
         throw new IllegalStateException(e);
       }
     }
