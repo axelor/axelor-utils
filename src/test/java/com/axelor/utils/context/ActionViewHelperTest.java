@@ -1,8 +1,6 @@
 package com.axelor.utils.context;
 
 import com.axelor.auth.db.User;
-import com.axelor.meta.db.repo.MetaActionRepository;
-import com.axelor.meta.db.repo.MetaViewRepository;
 import com.axelor.meta.loader.LoaderHelper;
 import com.axelor.meta.schema.ObjectViews;
 import com.axelor.meta.schema.actions.ActionView;
@@ -19,19 +17,11 @@ import org.junit.jupiter.api.Test;
 class ActionViewHelperTest extends BaseTest {
   protected final TestHelper testHelper;
   protected final LoaderHelper loaderHelper;
-  protected final MetaActionRepository metaActionRepository;
-  protected final MetaViewRepository metaViewRepository;
 
   @Inject
-  public ActionViewHelperTest(
-      TestHelper testHelper,
-      LoaderHelper loaderHelper,
-      MetaActionRepository metaActionRepository,
-      MetaViewRepository metaViewRepository) {
+  public ActionViewHelperTest(TestHelper testHelper, LoaderHelper loaderHelper) {
     this.testHelper = testHelper;
     this.loaderHelper = loaderHelper;
-    this.metaActionRepository = metaActionRepository;
-    this.metaViewRepository = metaViewRepository;
   }
 
   @BeforeEach
