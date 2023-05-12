@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import org.junit.jupiter.api.Test;
 
-class DateToolGetNearOccurrencesTest {
+class LocalDateTimeUtilsGetNearOccurrencesTest {
 
   private final LocalDateTime monday_2022_12_26_12_26 = LocalDateTime.of(2022, 12, 26, 12, 26);
   private final LocalDateTime monday_2023_01_02_03_04 = LocalDateTime.of(2023, 1, 2, 03, 04);
@@ -34,11 +34,11 @@ class DateToolGetNearOccurrencesTest {
     LocalDateTime referenceDate = monday_2022_12_26_12_26;
 
     LocalDateTime lastOccurrence =
-        DateTool.getLastOccurrence(occurrenceDayOfWeek, occurrenceTime, referenceDate);
+        LocalDateTimeUtils.getLastOccurrence(occurrenceDayOfWeek, occurrenceTime, referenceDate);
     LocalDateTime nextOccurrence =
-        DateTool.getNextOccurrence(occurrenceDayOfWeek, occurrenceTime, referenceDate);
+        LocalDateTimeUtils.getNextOccurrence(occurrenceDayOfWeek, occurrenceTime, referenceDate);
     LocalDateTime nearestOccuence =
-        DateTool.getNearestOccurrence(occurrenceDayOfWeek, occurrenceTime, referenceDate);
+        LocalDateTimeUtils.getNearestOccurrence(occurrenceDayOfWeek, occurrenceTime, referenceDate);
 
     LocalDateTime expectedLastOccurrence = LocalDate.of(2022, 12, 26).atTime(occurrenceTime);
     LocalDateTime expectedNextOccurrence = LocalDate.of(2023, 1, 2).atTime(occurrenceTime);
@@ -58,11 +58,11 @@ class DateToolGetNearOccurrencesTest {
     LocalDateTime referenceDate = monday_2023_01_02_03_04;
 
     LocalDateTime lastOccurrence =
-        DateTool.getLastOccurrence(occurrenceDayOfWeek, occurrenceTime, referenceDate);
+        LocalDateTimeUtils.getLastOccurrence(occurrenceDayOfWeek, occurrenceTime, referenceDate);
     LocalDateTime nextOccurrence =
-        DateTool.getNextOccurrence(occurrenceDayOfWeek, occurrenceTime, referenceDate);
+        LocalDateTimeUtils.getNextOccurrence(occurrenceDayOfWeek, occurrenceTime, referenceDate);
     LocalDateTime nearestOccuence =
-        DateTool.getNearestOccurrence(occurrenceDayOfWeek, occurrenceTime, referenceDate);
+        LocalDateTimeUtils.getNearestOccurrence(occurrenceDayOfWeek, occurrenceTime, referenceDate);
 
     LocalDateTime expectedLastOccurrence = LocalDate.of(2022, 12, 27).atTime(occurrenceTime);
     LocalDateTime expectedNextOccurrence = LocalDate.of(2023, 1, 3).atTime(occurrenceTime);
@@ -84,11 +84,11 @@ class DateToolGetNearOccurrencesTest {
     LocalDateTime referenceDate = thursday_2023_08_31_23_56;
 
     LocalDateTime lastOccurrence =
-        DateTool.getLastOccurrence(occurrenceDayOfWeek, occurrenceTime, referenceDate);
+        LocalDateTimeUtils.getLastOccurrence(occurrenceDayOfWeek, occurrenceTime, referenceDate);
     LocalDateTime nextOccurrence =
-        DateTool.getNextOccurrence(occurrenceDayOfWeek, occurrenceTime, referenceDate);
+        LocalDateTimeUtils.getNextOccurrence(occurrenceDayOfWeek, occurrenceTime, referenceDate);
     LocalDateTime nearestOccuence =
-        DateTool.getNearestOccurrence(occurrenceDayOfWeek, occurrenceTime, referenceDate);
+        LocalDateTimeUtils.getNearestOccurrence(occurrenceDayOfWeek, occurrenceTime, referenceDate);
 
     LocalDateTime expectedLastOccurrence = LocalDate.of(2023, 8, 30).atTime(occurrenceTime);
     LocalDateTime expectedNextOccurrence = LocalDate.of(2023, 9, 6).atTime(occurrenceTime);
@@ -108,11 +108,11 @@ class DateToolGetNearOccurrencesTest {
     LocalDateTime referenceDate = thursday_2023_08_31_23_56;
 
     LocalDateTime lastOccurrence =
-        DateTool.getLastOccurrence(occurrenceDayOfWeek, occurrenceTime, referenceDate);
+        LocalDateTimeUtils.getLastOccurrence(occurrenceDayOfWeek, occurrenceTime, referenceDate);
     LocalDateTime nextOccurrence =
-        DateTool.getNextOccurrence(occurrenceDayOfWeek, occurrenceTime, referenceDate);
+        LocalDateTimeUtils.getNextOccurrence(occurrenceDayOfWeek, occurrenceTime, referenceDate);
     LocalDateTime nearestOccuence =
-        DateTool.getNearestOccurrence(occurrenceDayOfWeek, occurrenceTime, referenceDate);
+        LocalDateTimeUtils.getNearestOccurrence(occurrenceDayOfWeek, occurrenceTime, referenceDate);
 
     LocalDateTime expectedLastOccurrence = LocalDate.of(2023, 8, 27).atTime(occurrenceTime);
     LocalDateTime expectedNextOccurrence = LocalDate.of(2023, 9, 3).atTime(occurrenceTime);
@@ -132,11 +132,11 @@ class DateToolGetNearOccurrencesTest {
     LocalDateTime referenceDate = saturday_2023_09_02_00_00;
 
     LocalDateTime lastOccurrence =
-        DateTool.getLastOccurrence(occurrenceDayOfWeek, occurrenceTime, referenceDate);
+        LocalDateTimeUtils.getLastOccurrence(occurrenceDayOfWeek, occurrenceTime, referenceDate);
     LocalDateTime nextOccurrence =
-        DateTool.getNextOccurrence(occurrenceDayOfWeek, occurrenceTime, referenceDate);
+        LocalDateTimeUtils.getNextOccurrence(occurrenceDayOfWeek, occurrenceTime, referenceDate);
     LocalDateTime nearestOccuence =
-        DateTool.getNearestOccurrence(occurrenceDayOfWeek, occurrenceTime, referenceDate);
+        LocalDateTimeUtils.getNearestOccurrence(occurrenceDayOfWeek, occurrenceTime, referenceDate);
 
     LocalDateTime expectedLastOccurrence = LocalDate.of(2023, 8, 31).atTime(occurrenceTime);
     LocalDateTime expectedNextOccurrence = LocalDate.of(2023, 9, 7).atTime(occurrenceTime);
@@ -156,11 +156,11 @@ class DateToolGetNearOccurrencesTest {
     LocalDateTime referenceDate = wednesday_2023_09_06_00_14;
 
     LocalDateTime lastOccurrence =
-        DateTool.getLastOccurrence(occurrenceDayOfWeek, occurrenceTime, referenceDate);
+        LocalDateTimeUtils.getLastOccurrence(occurrenceDayOfWeek, occurrenceTime, referenceDate);
     LocalDateTime nextOccurrence =
-        DateTool.getNextOccurrence(occurrenceDayOfWeek, occurrenceTime, referenceDate);
+        LocalDateTimeUtils.getNextOccurrence(occurrenceDayOfWeek, occurrenceTime, referenceDate);
     LocalDateTime nearestOccuence =
-        DateTool.getNearestOccurrence(occurrenceDayOfWeek, occurrenceTime, referenceDate);
+        LocalDateTimeUtils.getNearestOccurrence(occurrenceDayOfWeek, occurrenceTime, referenceDate);
 
     LocalDateTime expectedLastOccurrence = LocalDate.of(2023, 8, 31).atTime(occurrenceTime);
     LocalDateTime expectedNextOccurrence = LocalDate.of(2023, 9, 7).atTime(occurrenceTime);
@@ -180,11 +180,11 @@ class DateToolGetNearOccurrencesTest {
     LocalDateTime referenceDate = friday_2023_09_08_23_19;
 
     LocalDateTime lastOccurrence =
-        DateTool.getLastOccurrence(occurrenceDayOfWeek, occurrenceTime, referenceDate);
+        LocalDateTimeUtils.getLastOccurrence(occurrenceDayOfWeek, occurrenceTime, referenceDate);
     LocalDateTime nextOccurrence =
-        DateTool.getNextOccurrence(occurrenceDayOfWeek, occurrenceTime, referenceDate);
+        LocalDateTimeUtils.getNextOccurrence(occurrenceDayOfWeek, occurrenceTime, referenceDate);
     LocalDateTime nearestOccuence =
-        DateTool.getNearestOccurrence(occurrenceDayOfWeek, occurrenceTime, referenceDate);
+        LocalDateTimeUtils.getNearestOccurrence(occurrenceDayOfWeek, occurrenceTime, referenceDate);
 
     LocalDateTime expectedLastOccurrence = LocalDate.of(2023, 9, 8).atTime(occurrenceTime);
     LocalDateTime expectedNextOccurrence = LocalDate.of(2023, 9, 15).atTime(occurrenceTime);
@@ -204,11 +204,11 @@ class DateToolGetNearOccurrencesTest {
     LocalDateTime referenceDate = friday_2023_09_08_23_19;
 
     LocalDateTime lastOccurrence =
-        DateTool.getLastOccurrence(occurrenceDayOfWeek, occurrenceTime, referenceDate);
+        LocalDateTimeUtils.getLastOccurrence(occurrenceDayOfWeek, occurrenceTime, referenceDate);
     LocalDateTime nextOccurrence =
-        DateTool.getNextOccurrence(occurrenceDayOfWeek, occurrenceTime, referenceDate);
+        LocalDateTimeUtils.getNextOccurrence(occurrenceDayOfWeek, occurrenceTime, referenceDate);
     LocalDateTime nearestOccuence =
-        DateTool.getNearestOccurrence(occurrenceDayOfWeek, occurrenceTime, referenceDate);
+        LocalDateTimeUtils.getNearestOccurrence(occurrenceDayOfWeek, occurrenceTime, referenceDate);
 
     LocalDateTime expectedLastOccurrence = LocalDate.of(2023, 9, 1).atTime(occurrenceTime);
     LocalDateTime expectedNextOccurrence = LocalDate.of(2023, 9, 8).atTime(occurrenceTime);
@@ -228,11 +228,11 @@ class DateToolGetNearOccurrencesTest {
     LocalDateTime referenceDate = friday_2023_09_08_23_19;
 
     LocalDateTime lastOccurrence =
-        DateTool.getLastOccurrence(occurrenceDayOfWeek, occurrenceTime, referenceDate);
+        LocalDateTimeUtils.getLastOccurrence(occurrenceDayOfWeek, occurrenceTime, referenceDate);
     LocalDateTime nextOccurrence =
-        DateTool.getNextOccurrence(occurrenceDayOfWeek, occurrenceTime, referenceDate);
+        LocalDateTimeUtils.getNextOccurrence(occurrenceDayOfWeek, occurrenceTime, referenceDate);
     LocalDateTime nearestOccuence =
-        DateTool.getNearestOccurrence(occurrenceDayOfWeek, occurrenceTime, referenceDate);
+        LocalDateTimeUtils.getNearestOccurrence(occurrenceDayOfWeek, occurrenceTime, referenceDate);
 
     LocalDateTime expectedLastOccurrence = friday_2023_09_08_23_19;
     LocalDateTime expectedNextOccurrence = friday_2023_09_08_23_19;
@@ -252,11 +252,11 @@ class DateToolGetNearOccurrencesTest {
     LocalDateTime referenceDate = friday_2023_09_08_23_19;
 
     LocalDateTime lastOccurrence =
-        DateTool.getLastOccurrence(occurrenceDayOfWeek, occurrenceTime, referenceDate);
+        LocalDateTimeUtils.getLastOccurrence(occurrenceDayOfWeek, occurrenceTime, referenceDate);
     LocalDateTime nextOccurrence =
-        DateTool.getNextOccurrence(occurrenceDayOfWeek, occurrenceTime, referenceDate);
+        LocalDateTimeUtils.getNextOccurrence(occurrenceDayOfWeek, occurrenceTime, referenceDate);
     LocalDateTime nearestOccuence =
-        DateTool.getNearestOccurrence(occurrenceDayOfWeek, occurrenceTime, referenceDate);
+        LocalDateTimeUtils.getNearestOccurrence(occurrenceDayOfWeek, occurrenceTime, referenceDate);
 
     LocalDateTime expectedLastOccurrence = LocalDate.of(2023, 9, 5).atTime(occurrenceTime);
     LocalDateTime expectedNextOccurrence = LocalDate.of(2023, 9, 12).atTime(occurrenceTime);
@@ -276,11 +276,11 @@ class DateToolGetNearOccurrencesTest {
     LocalDateTime referenceDate = friday_2023_09_08_23_19.minusMinutes(1);
 
     LocalDateTime lastOccurrence =
-        DateTool.getLastOccurrence(occurrenceDayOfWeek, occurrenceTime, referenceDate);
+        LocalDateTimeUtils.getLastOccurrence(occurrenceDayOfWeek, occurrenceTime, referenceDate);
     LocalDateTime nextOccurrence =
-        DateTool.getNextOccurrence(occurrenceDayOfWeek, occurrenceTime, referenceDate);
+        LocalDateTimeUtils.getNextOccurrence(occurrenceDayOfWeek, occurrenceTime, referenceDate);
     LocalDateTime nearestOccuence =
-        DateTool.getNearestOccurrence(occurrenceDayOfWeek, occurrenceTime, referenceDate);
+        LocalDateTimeUtils.getNearestOccurrence(occurrenceDayOfWeek, occurrenceTime, referenceDate);
 
     LocalDateTime expectedLastOccurrence = LocalDate.of(2023, 9, 5).atTime(occurrenceTime);
     LocalDateTime expectedNextOccurrence = LocalDate.of(2023, 9, 12).atTime(occurrenceTime);
@@ -300,11 +300,11 @@ class DateToolGetNearOccurrencesTest {
     LocalDateTime referenceDate = friday_2023_09_08_23_19.plusMinutes(1);
 
     LocalDateTime lastOccurrence =
-        DateTool.getLastOccurrence(occurrenceDayOfWeek, occurrenceTime, referenceDate);
+        LocalDateTimeUtils.getLastOccurrence(occurrenceDayOfWeek, occurrenceTime, referenceDate);
     LocalDateTime nextOccurrence =
-        DateTool.getNextOccurrence(occurrenceDayOfWeek, occurrenceTime, referenceDate);
+        LocalDateTimeUtils.getNextOccurrence(occurrenceDayOfWeek, occurrenceTime, referenceDate);
     LocalDateTime nearestOccuence =
-        DateTool.getNearestOccurrence(occurrenceDayOfWeek, occurrenceTime, referenceDate);
+        LocalDateTimeUtils.getNearestOccurrence(occurrenceDayOfWeek, occurrenceTime, referenceDate);
 
     LocalDateTime expectedLastOccurrence = LocalDate.of(2023, 9, 5).atTime(occurrenceTime);
     LocalDateTime expectedNextOccurrence = LocalDate.of(2023, 9, 12).atTime(occurrenceTime);

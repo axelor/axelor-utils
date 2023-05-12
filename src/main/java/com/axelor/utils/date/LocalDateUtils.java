@@ -20,32 +20,26 @@ package com.axelor.utils.date;
 import static java.time.temporal.ChronoUnit.DAYS;
 
 import com.axelor.common.ObjectUtils;
-import com.axelor.common.StringUtils;
 import java.lang.invoke.MethodHandles;
 import java.time.DayOfWeek;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
 import java.time.Month;
 import java.time.ZoneId;
-import java.time.ZonedDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayDeque;
 import java.util.Collection;
 import java.util.Date;
 import java.util.Deque;
 import java.util.List;
-import java.util.Objects;
 import java.util.stream.Collectors;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-/** Deprecated in favor of LocalDateUtils & LocalDateTimeUtils */
-@Deprecated
-public class DateTool {
+public class LocalDateUtils {
 
-  private DateTool() {
+  private LocalDateUtils() {
     throw new IllegalStateException("Utility class");
   }
 
@@ -310,36 +304,13 @@ public class DateTool {
     return instant.atZone(ZoneId.systemDefault()).toLocalDate();
   }
 
-  public static LocalDateTime toLocalDateT(Date date) {
-
-    Instant instant = date.toInstant();
-
-    return instant.atZone(ZoneId.systemDefault()).toLocalDateTime();
-  }
-
   public static Date toDate(LocalDate date) {
 
     return Date.from(date.atStartOfDay(ZoneId.systemDefault()).toInstant());
   }
 
-  /**
-   * Returns the maximum of two dates. A null date is treated as being less than any non-null date.
-   */
-  public static LocalDateTime max(LocalDateTime d1, LocalDateTime d2) {
-    if (d1 == null && d2 == null) return null;
-    if (d1 == null) return d2;
-    if (d2 == null) return d1;
-    return (d1.isAfter(d2)) ? d1 : d2;
-  }
-
-  public static ZonedDateTime getTodayDateTime(String timeZone) {
-    return StringUtils.notBlank(timeZone)
-        ? ZonedDateTime.now(ZoneId.of(timeZone))
-        : ZonedDateTime.now();
-  }
-
   public static LocalDate getTodayDate(String timeZone) {
-    return getTodayDateTime(timeZone).toLocalDate();
+    return LocalDateTimeUtils.getTodayDateTime(timeZone).toLocalDate();
   }
 
   /** True if the dates are in the same month of the same year. */
@@ -348,17 +319,17 @@ public class DateTool {
   }
 
   /**
-   * @param intervals list of DatesInterval
+   * @param intervals list of LocalDateInterval
    * @param day not null
-   * @return a DatesInterval object representing the biggest continuous period containing the given
-   *     LocalDate day & with each day of the interval contained into at least one of the given
-   *     intervals returns null if there is no given intervals
+   * @return a LocalDateInterval object representing the biggest continuous period containing the
+   *     given LocalDate day & with each day of the interval contained into at least one of the
+   *     given intervals returns null if there is no given intervals
    * @return null if the given date is before the startDate of the firstInterval or after the
    *     endDate of the lastInterval
    * @throws IllegalArgumentException if the given LocalDate is null
    */
-  public static DatesInterval getMergedIntervalContainingDay(
-      Collection<DatesInterval> intervals, LocalDate day) throws IllegalArgumentException {
+  public static LocalDateInterval getMergedIntervalContainingDay(
+      Collection<LocalDateInterval> intervals, LocalDate day) throws IllegalArgumentException {
 
     if (day == null) {
       throw new IllegalArgumentException("day cannot be null");
@@ -368,87 +339,33 @@ public class DateTool {
       return null;
     }
 
-    Deque<DatesInterval> mergedIntervals = new ArrayDeque<>();
-    List<DatesInterval> sortedIntervals = intervals.stream().sorted().collect(Collectors.toList());
-
-    for (DatesInterval interval : sortedIntervals) {
-      if (mergedIntervals.isEmpty()) {
-        mergedIntervals.addFirst(interval);
-        continue;
-      }
-
-      DatesInterval lastInterval = mergedIntervals.peekFirst();
-      // lastInterval.getEndDate().plusDays(2) because we want to merge as following
-      // [12 May : 13 May] & [14 May : 16 May] --> [12 May : 16 May]
-      if (interval.isContinuousAtStartWith(lastInterval)) {
-        if (interval.endsAfter(lastInterval)) {
-          mergedIntervals.removeFirst();
-          mergedIntervals.addFirst(
-              new DatesInterval(lastInterval.getStartDate(), interval.getEndDate()));
-        }
-      } else {
-        mergedIntervals.addFirst(interval);
-      }
-    }
-
-    for (DatesInterval interval : mergedIntervals) {
-      if (interval.contains(day)) {
-        return new DatesInterval(interval.getStartDate(), interval.getEndDate());
-      }
-    }
-
-    return null;
-  }
-
-  /**
-   * @param intervals list of LocalDateTimeInterval
-   * @param instant not null
-   * @return a LocalDateTimeInterval object representing the biggest continuous period containing
-   *     the given LocalDate day & with each day of the interval contained into at least one of the
-   *     given intervals returns null if there is no given intervals
-   * @return null if the given instant is before the startDateT of the firstInterval or after the
-   *     endDateT of the lastInterval
-   * @throws IllegalArgumentException if the given LocalDate is null
-   */
-  public static LocalDateTimeInterval getMergedIntervalContainingInstant(
-      Collection<LocalDateTimeInterval> intervals, LocalDateTime instant)
-      throws IllegalArgumentException {
-
-    if (instant == null) {
-      throw new IllegalArgumentException("day cannot be null");
-    }
-
-    if (ObjectUtils.isEmpty(intervals)) {
-      return null;
-    }
-
-    Deque<LocalDateTimeInterval> mergedIntervals = new ArrayDeque<>();
-    List<LocalDateTimeInterval> sortedIntervals =
+    Deque<LocalDateInterval> mergedIntervals = new ArrayDeque<>();
+    List<LocalDateInterval> sortedIntervals =
         intervals.stream().sorted().collect(Collectors.toList());
 
-    for (LocalDateTimeInterval interval : sortedIntervals) {
+    for (LocalDateInterval interval : sortedIntervals) {
       if (mergedIntervals.isEmpty()) {
         mergedIntervals.addFirst(interval);
         continue;
       }
 
-      LocalDateTimeInterval lastInterval = mergedIntervals.peekFirst();
+      LocalDateInterval lastInterval = mergedIntervals.peekFirst();
       // lastInterval.getEndDate().plusDays(2) because we want to merge as following
       // [12 May : 13 May] & [14 May : 16 May] --> [12 May : 16 May]
       if (interval.isContinuousAtStartWith(lastInterval)) {
         if (interval.endsAfter(lastInterval)) {
           mergedIntervals.removeFirst();
           mergedIntervals.addFirst(
-              new LocalDateTimeInterval(lastInterval.getStartDateT(), interval.getEndDateT()));
+              new LocalDateInterval(lastInterval.getStartDate(), interval.getEndDate()));
         }
       } else {
         mergedIntervals.addFirst(interval);
       }
     }
 
-    for (LocalDateTimeInterval interval : mergedIntervals) {
-      if (interval.contains(instant)) {
-        return new LocalDateTimeInterval(interval.getStartDateT(), interval.getEndDateT());
+    for (LocalDateInterval interval : mergedIntervals) {
+      if (interval.contains(day)) {
+        return new LocalDateInterval(interval.getStartDate(), interval.getEndDate());
       }
     }
 
@@ -538,133 +455,6 @@ public class DateTool {
   }
 
   /**
-   * @param occurrenceDayOfWeek: expected dayOfWeek of the result
-   * @param occurrenceTime: expected time of the result
-   * @param referenceDate: date from which the result is searched
-   * @return the last date (inclusive) before given referenceDate having same dayOfWeek & same time
-   *     as occurrences named parameters.
-   */
-  public static LocalDateTime getLastOccurrence(
-      DayOfWeek occurrenceDayOfWeek, LocalTime occurrenceTime, LocalDateTime referenceDate) {
-
-    if (occurrenceDayOfWeek == null || occurrenceTime == null || referenceDate == null) {
-      return null;
-    }
-
-    LocalDateTime lastOccurrence = referenceDate.toLocalDate().atTime(occurrenceTime);
-
-    DayOfWeek referenceDayOfWeek = referenceDate.getDayOfWeek();
-    if (occurrenceDayOfWeek == referenceDayOfWeek) {
-      if (occurrenceTime.isAfter(referenceDate.toLocalTime())) {
-        lastOccurrence = lastOccurrence.minusWeeks(1);
-      }
-      return lastOccurrence;
-    }
-
-    int occurrenceDayValue = occurrenceDayOfWeek.getValue();
-    int referenceDayValue = referenceDayOfWeek.getValue();
-    if (occurrenceDayValue > referenceDayValue) {
-      lastOccurrence = lastOccurrence.minusWeeks(1);
-    }
-
-    return lastOccurrence.plusDays((long) occurrenceDayValue - referenceDayValue);
-  }
-
-  /**
-   * @param occurrenceDayOfWeek: expected dayOfWeek of the result
-   * @param occurrenceTime: expected time of the result
-   * @param referenceDate: date from which the result is searched
-   * @return the next date (inclusive) from given referenceDate having same dayOfWeek & same time as
-   *     occurrences named parameters.
-   */
-  public static LocalDateTime getNextOccurrence(
-      DayOfWeek occurrenceDayOfWeek, LocalTime occurrenceTime, LocalDateTime referenceDate) {
-
-    if (occurrenceDayOfWeek == null || occurrenceTime == null || referenceDate == null) {
-      return null;
-    }
-
-    LocalDateTime nextOccurrence = referenceDate.toLocalDate().atTime(occurrenceTime);
-
-    DayOfWeek referenceDayOfWeek = referenceDate.getDayOfWeek();
-    if (occurrenceDayOfWeek == referenceDayOfWeek) {
-      if (occurrenceTime.isBefore(referenceDate.toLocalTime())) {
-        nextOccurrence = nextOccurrence.plusWeeks(1);
-      }
-      return nextOccurrence;
-    }
-
-    int occurrenceDayValue = occurrenceDayOfWeek.getValue();
-    int referenceDayValue = referenceDayOfWeek.getValue();
-    if (occurrenceDayValue < referenceDayValue) {
-      nextOccurrence = nextOccurrence.plusWeeks(1);
-    }
-
-    return nextOccurrence.plusDays((long) occurrenceDayValue - referenceDayValue);
-  }
-
-  /**
-   * In case of having the last & the next occurrences at exact same time distance, the next
-   * occurrence is returned (to mimic rounding in Math).
-   *
-   * @param occurrenceDayOfWeek: expected dayOfWeek of the result
-   * @param occurrenceTime: expected time of the result
-   * @param referenceDate: date from which the result is searched
-   * @return the nearest date (inclusive) from given referenceDate having same dayOfWeek & same time
-   *     as occurrences named parameters.
-   */
-  public static LocalDateTime getNearestOccurrence(
-      DayOfWeek occurrenceDayOfWeek, LocalTime occurrenceTime, LocalDateTime referenceDate) {
-    if (occurrenceDayOfWeek == null || occurrenceTime == null || referenceDate == null) {
-      return null;
-    }
-
-    LocalDateTime lastOccurrence =
-        getLastOccurrence(occurrenceDayOfWeek, occurrenceTime, referenceDate);
-
-    // 5040 min is half a week
-    return ChronoUnit.MINUTES.between(lastOccurrence, referenceDate) < 5040
-        ? lastOccurrence
-        : lastOccurrence.plusWeeks(1);
-  }
-
-  /**
-   * Object to contain both start date of a month & end date of a month and being able to return it
-   * in one return statement.
-   */
-  public static class MonthBoundaries {
-    public LocalDate firstDayOfMonth = null;
-    public LocalDate lastDayOfMonth = null;
-
-    @Override
-    public boolean equals(Object obj) {
-
-      if (obj == null || obj.getClass() != MonthBoundaries.class) {
-        return false;
-      }
-
-      MonthBoundaries monthBoundaries = (MonthBoundaries) obj;
-      return Objects.equals(this.firstDayOfMonth, monthBoundaries.firstDayOfMonth)
-          && Objects.equals(this.lastDayOfMonth, monthBoundaries.lastDayOfMonth);
-    }
-  }
-
-  /**
-   * @param targetMonth: given java.time.Month to search boundaries on
-   * @param referenceDateTime: date from which the result is searched
-   * @return a MonthBoundaries object containing the start date and the end date of the first month
-   *     in the past from the @param referenceDateTime exclusive corresponding to the given @param
-   *     targetMonth
-   */
-  public static MonthBoundaries getLastMonthOccurenceBoundaries(
-      Month targetMonth, LocalDateTime referenceDateTime) {
-    if (targetMonth == null || referenceDateTime == null) {
-      return null;
-    }
-    return getLastMonthOccurenceBoundaries(targetMonth, referenceDateTime.toLocalDate());
-  }
-
-  /**
    * @param month: given java.time.Month to search boundaries on
    * @param referenceDate: date from which the result is searched
    * @return a MonthBoundaries object containing the start date and the end date of the first month
@@ -688,21 +478,6 @@ public class DateTool {
     monthBoundaries.lastDayOfMonth = monthBoundaries.firstDayOfMonth.plusMonths(1).minusDays(1);
 
     return monthBoundaries;
-  }
-
-  /**
-   * @param targetMonth: given java.time.Month to search boundaries on
-   * @param referenceDateTime: date from which the result is searched
-   * @return a MonthBoundaries object containing the start date and the end date of the first month
-   *     in the future from the @param referenceDateTime exclusive corresponding to the given @param
-   *     targetMonth
-   */
-  public static MonthBoundaries getNextMonthOccurenceBoundaries(
-      Month targetMonth, LocalDateTime referenceDateTime) {
-    if (targetMonth == null || referenceDateTime == null) {
-      return null;
-    }
-    return getNextMonthOccurenceBoundaries(targetMonth, referenceDateTime.toLocalDate());
   }
 
   /**

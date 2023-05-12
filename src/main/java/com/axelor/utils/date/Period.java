@@ -84,13 +84,13 @@ public class Period {
   }
 
   public long getDays() {
-    return DateTool.daysBetween(this.from, this.to, this.days360);
+    return LocalDateUtils.daysBetween(this.from, this.to, this.days360);
   }
 
   public long getMonths() {
 
     if (this.days360) {
-      return DateTool.days360MonthsBetween(this.from, this.to);
+      return LocalDateUtils.days360MonthsBetween(this.from, this.to);
     } else {
       return java.time.Period.between(this.from, this.to).getMonths();
     }
@@ -104,7 +104,7 @@ public class Period {
 
     Period p = null;
 
-    if (DateTool.isProrata(this.from, this.to, date1, date2)) {
+    if (LocalDateUtils.isProrata(this.from, this.to, date1, date2)) {
 
       p = new Period(this);
 
@@ -121,21 +121,21 @@ public class Period {
   }
 
   public boolean isProrata(Period period) {
-    return DateTool.isProrata(this.from, this.to, period.getFrom(), period.getTo());
+    return LocalDateUtils.isProrata(this.from, this.to, period.getFrom(), period.getTo());
   }
 
   public boolean fromBetween(LocalDate date1, LocalDate date2) {
 
-    return DateTool.isBetween(date1, date2, this.from);
+    return LocalDateUtils.isBetween(date1, date2, this.from);
   }
 
   public boolean toBetween(LocalDate date1, LocalDate date2) {
 
-    return DateTool.isBetween(date1, date2, this.to);
+    return LocalDateUtils.isBetween(date1, date2, this.to);
   }
 
   public boolean contains(LocalDate date) {
-    return DateTool.isBetween(this.from, this.to, date);
+    return LocalDateUtils.isBetween(this.from, this.to, date);
   }
 
   public boolean isNotNull() {

@@ -2,13 +2,12 @@ package com.axelor.utils.date;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import com.axelor.utils.date.DateTool.MonthBoundaries;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.Month;
 import org.junit.jupiter.api.Test;
 
-class DateToolGetNearMonthOccurenceBoundariesTest {
+class LocalDateUtilsLocalDateTimeUtilsGetNearMonthOccurenceBoundariesTest {
 
   /**
    * Test the case of having a reference date (time) later on the year calendar than the given
@@ -21,22 +20,23 @@ class DateToolGetNearMonthOccurenceBoundariesTest {
     LocalDate referenceDate = LocalDate.of(2023, 9, 8);
     LocalDateTime referenceDateTime = referenceDate.atTime(23, 19);
 
-    MonthBoundaries actual = DateTool.getLastMonthOccurenceBoundaries(targetMonth, referenceDate);
+    MonthBoundaries actual =
+        LocalDateUtils.getLastMonthOccurenceBoundaries(targetMonth, referenceDate);
     MonthBoundaries expected = new MonthBoundaries();
     expected.firstDayOfMonth = LocalDate.of(2023, 1, 1);
     expected.lastDayOfMonth = LocalDate.of(2023, 1, 31);
     assertEquals(expected, actual);
 
-    actual = DateTool.getLastMonthOccurenceBoundaries(targetMonth, referenceDateTime);
+    actual = LocalDateTimeUtils.getLastMonthOccurenceBoundaries(targetMonth, referenceDateTime);
     assertEquals(expected, actual);
 
-    actual = DateTool.getNextMonthOccurenceBoundaries(targetMonth, referenceDate);
+    actual = LocalDateUtils.getNextMonthOccurenceBoundaries(targetMonth, referenceDate);
     expected = new MonthBoundaries();
     expected.firstDayOfMonth = LocalDate.of(2024, 1, 1);
     expected.lastDayOfMonth = LocalDate.of(2024, 1, 31);
     assertEquals(expected, actual);
 
-    actual = DateTool.getNextMonthOccurenceBoundaries(targetMonth, referenceDateTime);
+    actual = LocalDateTimeUtils.getNextMonthOccurenceBoundaries(targetMonth, referenceDateTime);
     assertEquals(expected, actual);
   }
 
@@ -51,22 +51,23 @@ class DateToolGetNearMonthOccurenceBoundariesTest {
     LocalDate referenceDate = LocalDate.of(2023, 9, 8);
     LocalDateTime referenceDateTime = referenceDate.atTime(23, 19);
 
-    MonthBoundaries actual = DateTool.getLastMonthOccurenceBoundaries(targetMonth, referenceDate);
+    MonthBoundaries actual =
+        LocalDateUtils.getLastMonthOccurenceBoundaries(targetMonth, referenceDate);
     MonthBoundaries expected = new MonthBoundaries();
     expected.firstDayOfMonth = LocalDate.of(2022, 12, 1);
     expected.lastDayOfMonth = LocalDate.of(2022, 12, 31);
     assertEquals(expected, actual);
 
-    actual = DateTool.getLastMonthOccurenceBoundaries(targetMonth, referenceDateTime);
+    actual = LocalDateTimeUtils.getLastMonthOccurenceBoundaries(targetMonth, referenceDateTime);
     assertEquals(expected, actual);
 
-    actual = DateTool.getNextMonthOccurenceBoundaries(targetMonth, referenceDate);
+    actual = LocalDateUtils.getNextMonthOccurenceBoundaries(targetMonth, referenceDate);
     expected = new MonthBoundaries();
     expected.firstDayOfMonth = LocalDate.of(2023, 12, 1);
     expected.lastDayOfMonth = LocalDate.of(2023, 12, 31);
     assertEquals(expected, actual);
 
-    actual = DateTool.getNextMonthOccurenceBoundaries(targetMonth, referenceDateTime);
+    actual = LocalDateTimeUtils.getNextMonthOccurenceBoundaries(targetMonth, referenceDateTime);
     assertEquals(expected, actual);
   }
 
@@ -81,22 +82,23 @@ class DateToolGetNearMonthOccurenceBoundariesTest {
     LocalDate referenceDate = LocalDate.of(2023, 9, 8);
     LocalDateTime referenceDateTime = referenceDate.atTime(23, 19);
 
-    MonthBoundaries actual = DateTool.getLastMonthOccurenceBoundaries(targetMonth, referenceDate);
+    MonthBoundaries actual =
+        LocalDateUtils.getLastMonthOccurenceBoundaries(targetMonth, referenceDate);
     MonthBoundaries expected = new MonthBoundaries();
     expected.firstDayOfMonth = LocalDate.of(2022, 9, 1);
     expected.lastDayOfMonth = LocalDate.of(2022, 9, 30);
     assertEquals(expected, actual);
 
-    actual = DateTool.getLastMonthOccurenceBoundaries(targetMonth, referenceDateTime);
+    actual = LocalDateTimeUtils.getLastMonthOccurenceBoundaries(targetMonth, referenceDateTime);
     assertEquals(expected, actual);
 
-    actual = DateTool.getNextMonthOccurenceBoundaries(targetMonth, referenceDate);
+    actual = LocalDateUtils.getNextMonthOccurenceBoundaries(targetMonth, referenceDate);
     expected = new MonthBoundaries();
     expected.firstDayOfMonth = LocalDate.of(2024, 9, 1);
     expected.lastDayOfMonth = LocalDate.of(2024, 9, 30);
     assertEquals(expected, actual);
 
-    actual = DateTool.getNextMonthOccurenceBoundaries(targetMonth, referenceDateTime);
+    actual = LocalDateTimeUtils.getNextMonthOccurenceBoundaries(targetMonth, referenceDateTime);
     assertEquals(expected, actual);
   }
 
@@ -112,19 +114,20 @@ class DateToolGetNearMonthOccurenceBoundariesTest {
     LocalDate referenceDate = LocalDate.of(2040, 9, 8);
     LocalDateTime referenceDateTime = referenceDate.atTime(23, 19);
 
-    MonthBoundaries actual = DateTool.getLastMonthOccurenceBoundaries(targetMonth, referenceDate);
+    MonthBoundaries actual =
+        LocalDateUtils.getLastMonthOccurenceBoundaries(targetMonth, referenceDate);
     assertEquals(expected, actual);
 
-    actual = DateTool.getLastMonthOccurenceBoundaries(targetMonth, referenceDateTime);
+    actual = LocalDateTimeUtils.getLastMonthOccurenceBoundaries(targetMonth, referenceDateTime);
     assertEquals(expected, actual);
 
     referenceDate = referenceDate.minusYears(1);
     referenceDateTime = referenceDateTime.minusYears(1);
 
-    actual = DateTool.getNextMonthOccurenceBoundaries(targetMonth, referenceDate);
+    actual = LocalDateUtils.getNextMonthOccurenceBoundaries(targetMonth, referenceDate);
     assertEquals(expected, actual);
 
-    actual = DateTool.getNextMonthOccurenceBoundaries(targetMonth, referenceDateTime);
+    actual = LocalDateTimeUtils.getNextMonthOccurenceBoundaries(targetMonth, referenceDateTime);
     assertEquals(expected, actual);
   }
 }
