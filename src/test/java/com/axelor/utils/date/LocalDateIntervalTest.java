@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import java.time.LocalDate;
 import org.junit.jupiter.api.Test;
 
-class DatesIntervalTest {
+class LocalDateIntervalTest {
 
   private LocalDate T = LocalDate.of(2000, 1, 1);
 
@@ -32,17 +32,17 @@ class DatesIntervalTest {
     LocalDate I = null;
     LocalDate J = null;
 
-    DatesInterval AB = new DatesInterval(A, B);
-    DatesInterval CD = new DatesInterval(C, D);
-    DatesInterval EF = new DatesInterval(E, F);
-    DatesInterval GH = new DatesInterval(G, H);
-    DatesInterval IJ = new DatesInterval(I, J);
+    LocalDateInterval AB = new LocalDateInterval(A, B);
+    LocalDateInterval CD = new LocalDateInterval(C, D);
+    LocalDateInterval EF = new LocalDateInterval(E, F);
+    LocalDateInterval GH = new LocalDateInterval(G, H);
+    LocalDateInterval IJ = new LocalDateInterval(I, J);
 
-    DatesInterval AB2 = new DatesInterval(A, B);
-    DatesInterval CD2 = new DatesInterval(C, D);
-    DatesInterval EF2 = new DatesInterval(E, F);
-    DatesInterval GH2 = new DatesInterval(G, H);
-    DatesInterval IJ2 = new DatesInterval(I, J);
+    LocalDateInterval AB2 = new LocalDateInterval(A, B);
+    LocalDateInterval CD2 = new LocalDateInterval(C, D);
+    LocalDateInterval EF2 = new LocalDateInterval(E, F);
+    LocalDateInterval GH2 = new LocalDateInterval(G, H);
+    LocalDateInterval IJ2 = new LocalDateInterval(I, J);
 
     assertEquals(AB, AB);
     assertEquals(CD, CD);
@@ -92,8 +92,8 @@ class DatesIntervalTest {
     LocalDate C = T.plusDays(-6);
     LocalDate D = T.plusDays(-2);
 
-    DatesInterval AB = new DatesInterval(A, B);
-    DatesInterval CD = new DatesInterval(C, D);
+    LocalDateInterval AB = new LocalDateInterval(A, B);
+    LocalDateInterval CD = new LocalDateInterval(C, D);
 
     assertTrue(AB.compareTo(CD) > 0);
     assertTrue(CD.compareTo(AB) < 0);
@@ -143,8 +143,8 @@ class DatesIntervalTest {
     LocalDate C = null;
     LocalDate D = T;
 
-    DatesInterval AB = new DatesInterval(A, B);
-    DatesInterval CD = new DatesInterval(C, D);
+    LocalDateInterval AB = new LocalDateInterval(A, B);
+    LocalDateInterval CD = new LocalDateInterval(C, D);
 
     assertTrue(AB.compareTo(CD) > 0);
     assertTrue(CD.compareTo(AB) < 0);
@@ -194,8 +194,8 @@ class DatesIntervalTest {
     LocalDate C = null;
     LocalDate D = T.plusDays(-5);
 
-    DatesInterval AB = new DatesInterval(A, B);
-    DatesInterval CD = new DatesInterval(C, D);
+    LocalDateInterval AB = new LocalDateInterval(A, B);
+    LocalDateInterval CD = new LocalDateInterval(C, D);
 
     assertTrue(AB.compareTo(CD) > 0);
     assertTrue(CD.compareTo(AB) < 0);
@@ -245,8 +245,8 @@ class DatesIntervalTest {
     LocalDate C = T;
     LocalDate D = C;
 
-    DatesInterval AB = new DatesInterval(A, B);
-    DatesInterval CD = new DatesInterval(C, D);
+    LocalDateInterval AB = new LocalDateInterval(A, B);
+    LocalDateInterval CD = new LocalDateInterval(C, D);
 
     assertEquals(0, AB.compareTo(CD));
     assertEquals(0, CD.compareTo(AB));
@@ -296,8 +296,8 @@ class DatesIntervalTest {
     LocalDate C = T.plusDays(6);
     LocalDate D = null;
 
-    DatesInterval AB = new DatesInterval(A, B);
-    DatesInterval CD = new DatesInterval(C, D);
+    LocalDateInterval AB = new LocalDateInterval(A, B);
+    LocalDateInterval CD = new LocalDateInterval(C, D);
 
     assertTrue(AB.compareTo(CD) < 0);
     assertTrue(CD.compareTo(AB) > 0);
@@ -347,8 +347,8 @@ class DatesIntervalTest {
     LocalDate C = null;
     LocalDate D = T.plusDays(-1);
 
-    DatesInterval AB = new DatesInterval(A, B);
-    DatesInterval CD = new DatesInterval(C, D);
+    LocalDateInterval AB = new LocalDateInterval(A, B);
+    LocalDateInterval CD = new LocalDateInterval(C, D);
 
     assertTrue(AB.compareTo(CD) > 0);
     assertTrue(CD.compareTo(AB) < 0);

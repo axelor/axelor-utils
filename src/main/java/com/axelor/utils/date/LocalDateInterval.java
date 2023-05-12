@@ -21,27 +21,24 @@ import java.time.LocalDate;
 import java.util.Objects;
 
 /**
- * @Deprecated in favor of LocalDateInterval
+ * LocalDateInterval is a class used to define intervals of time with precision of a day.
  *
- * <p>DatesInterval is a class used to define intervals of time with precision of a day.
- *
- * <p>DatesInterval are closed intervals when bounded -> startDate & endDate are included in the
+ * <p>LocalDateInterval are closed intervals when bounded -> startDate & endDate are included in the
  * interval -> A one day interval is represented by startDate = endDate
  *
  * <p>startDate = null means minus-infinite endDate = null means plus-infinite -> new
- * DatesInterval(null, null) represent all the past & future
+ * LocalDateInterval(null, null) represent all the past & future
  *
  * <p>{@link Comparable} on startDate
  *
  * @author Maxence GALLANCHER
  */
-@Deprecated
-public class DatesInterval implements Comparable<DatesInterval> {
+public class LocalDateInterval implements Comparable<LocalDateInterval> {
 
   private LocalDate startDate;
   private LocalDate endDate;
 
-  public DatesInterval(LocalDate startDate, LocalDate endDate) {
+  public LocalDateInterval(LocalDate startDate, LocalDate endDate) {
     if (startDate != null && endDate != null && startDate.isAfter(endDate)) {
       throw new IllegalStateException("endDate cannot be before startDate");
     }
@@ -70,11 +67,11 @@ public class DatesInterval implements Comparable<DatesInterval> {
   @Override
   public boolean equals(Object obj) {
 
-    if (obj == null || obj.getClass() != DatesInterval.class) {
+    if (obj == null || obj.getClass() != LocalDateInterval.class) {
       return false;
     }
 
-    DatesInterval interval = (DatesInterval) obj;
+    LocalDateInterval interval = (LocalDateInterval) obj;
     return Objects.equals(this.getStartDate(), interval.getStartDate())
         && Objects.equals(this.getEndDate(), interval.getEndDate());
   }
@@ -85,7 +82,7 @@ public class DatesInterval implements Comparable<DatesInterval> {
   }
 
   @Override
-  public int compareTo(DatesInterval interval) {
+  public int compareTo(LocalDateInterval interval) {
 
     LocalDate comparedStartDate = interval.getStartDate();
     boolean thisStartsNull = this.startDate == null;
@@ -133,7 +130,7 @@ public class DatesInterval implements Comparable<DatesInterval> {
 
   //////////////////////////////////////////////////////////////
 
-  public boolean startsBefore(DatesInterval comparedInterval) {
+  public boolean startsBefore(LocalDateInterval comparedInterval) {
     LocalDate comparedStartDate = comparedInterval.getStartDate();
     if (comparedStartDate == null) {
       return false;
@@ -144,7 +141,7 @@ public class DatesInterval implements Comparable<DatesInterval> {
     return this.startDate.isBefore(comparedStartDate);
   }
 
-  public boolean startsAfter(DatesInterval comparedInterval) {
+  public boolean startsAfter(LocalDateInterval comparedInterval) {
     LocalDate comparedStartDate = comparedInterval.getStartDate();
     if (this.startDate == null) {
       return false;
@@ -155,7 +152,7 @@ public class DatesInterval implements Comparable<DatesInterval> {
     return this.startDate.isAfter(comparedStartDate);
   }
 
-  public boolean endsBefore(DatesInterval comparedInterval) {
+  public boolean endsBefore(LocalDateInterval comparedInterval) {
     LocalDate comparedEndDate = comparedInterval.getEndDate();
     if (this.endDate == null) {
       return false;
@@ -166,7 +163,7 @@ public class DatesInterval implements Comparable<DatesInterval> {
     return this.endDate.isBefore(comparedEndDate);
   }
 
-  public boolean endsAfter(DatesInterval comparedInterval) {
+  public boolean endsAfter(LocalDateInterval comparedInterval) {
     LocalDate comparedEndDate = comparedInterval.getEndDate();
     if (comparedEndDate == null) {
       return false;
@@ -179,7 +176,7 @@ public class DatesInterval implements Comparable<DatesInterval> {
 
   //////////////////////////////////////////////////////////////
 
-  public boolean overlapsOrIsContinuousWith(DatesInterval comparedInterval) {
+  public boolean overlapsOrIsContinuousWith(LocalDateInterval comparedInterval) {
     int order = this.compareTo(comparedInterval);
     if (order == 0) {
       return true;
@@ -195,7 +192,7 @@ public class DatesInterval implements Comparable<DatesInterval> {
    * @return true if and only if the {@code comparedInterval.startDate} is before, the same or the
    *     day right after {@code this.endDate}.
    */
-  public boolean isContinuousAtEndWith(DatesInterval comparedInterval) {
+  public boolean isContinuousAtEndWith(LocalDateInterval comparedInterval) {
     LocalDate comparedStartDate = comparedInterval.getStartDate();
     if (comparedStartDate == null || this.endDate == null) {
       return true;
@@ -212,7 +209,7 @@ public class DatesInterval implements Comparable<DatesInterval> {
    * @return true if and only if the {@code comparedInterval.endDate} is after, the same or the day
    *     right before {@code this.startDate}.
    */
-  public boolean isContinuousAtStartWith(DatesInterval comparedInterval) {
+  public boolean isContinuousAtStartWith(LocalDateInterval comparedInterval) {
     LocalDate comparedEndDate = comparedInterval.getEndDate();
     if (comparedEndDate == null || this.startDate == null) {
       return true;

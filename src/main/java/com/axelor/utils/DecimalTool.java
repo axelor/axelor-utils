@@ -17,7 +17,7 @@
  */
 package com.axelor.utils;
 
-import com.axelor.utils.date.DateTool;
+import com.axelor.utils.date.LocalDateUtils;
 import java.lang.invoke.MethodHandles;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -72,8 +72,8 @@ public final class DecimalTool {
       return prorataValue;
     }
 
-    BigDecimal totalDays = new BigDecimal(DateTool.daysBetween(fromDate, toDate, false));
-    BigDecimal days = new BigDecimal(DateTool.daysBetween(date, toDate, false));
+    BigDecimal totalDays = new BigDecimal(LocalDateUtils.daysBetween(fromDate, toDate, false));
+    BigDecimal days = new BigDecimal(LocalDateUtils.daysBetween(date, toDate, false));
 
     prorataValue = prorata(totalDays, days, value, scale);
 
