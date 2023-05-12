@@ -55,7 +55,7 @@ public class ActionViewHelper {
     Optional<String> title = fetchViewField(firstViewName, String.class, "title");
     if (title.isEmpty()) {
       throw new IllegalArgumentException(
-          String.format(I18n.get("No title found for the view %s."), firstViewName));
+          String.format(I18n.get("No title found for the view '%s'."), firstViewName));
     }
     ActionViewBuilder actionViewBuilder =
         ActionView.define(I18n.get(title.get())).model(klass.getName());

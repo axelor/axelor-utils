@@ -17,9 +17,36 @@
  */
 package com.axelor.utils.exception;
 
+import com.axelor.i18n.I18n;
+
 public final class ToolExceptionMessage {
 
   private ToolExceptionMessage() {}
+
+  /**
+   * Used to factorize code & increase readability by avoiding String.format(I18n.get(...), ...,
+   * ...) calls.
+   *
+   * <p>Better use static import in classes using this method to keep short name.
+   */
+  public static String formatAndTranslate(String keyMessage, Object... args) {
+    return String.format(I18n.get(keyMessage), args);
+  }
+
+  /** SelectTool */
+  public static final String UNKNOWN_SELECTION = /*$$(*/ "Unknown selection: '%s'." /*)*/;
+
+  public static final String UNKNOWN_SELECTION_AND_TITLE_PAIR = /*$$(*/
+      "Unknown selection and title pair: '%s' / '%s'." /*)*/;
+  public static final String UNKNOWN_SELECTION_AND_VALUE_PAIR = /*$$(*/
+      "Unknown selection and value pair: '%s' / '%s'." /*)*/;
+  public static final String NULL_GIVEN_VALUE = /*$$(*/ "Null given value." /*)*/;
+  public static final String ERROR_WHILE_SEARCHING_NULL_TITLE_ON_SELECTION = /*$$(*/
+      "Error while searching null title from following selection: '%s'." /*)*/;
+  public static final String SELECTION_S_IS_NOT_AN_INTEGER_ONE_OR_IS_WRONGLY_DEFINED = /*$$(*/
+      "Selection '%s' is not an integer one or is wrongly defined." /*)*/;
+  public static final String GIVEN_COUPLE_S_S_MATCH_A_VALUE_WHICH_IS_NOT_AN_INTEGER = /*$$(*/
+      "Given couple %s / %s match a value which is not an integer." /*)*/;
 
   /** Period service */
   public static final String PERIOD_1 = /*$$(*/ "Years in 360 days" /*)*/;
