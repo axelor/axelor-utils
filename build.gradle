@@ -1,4 +1,4 @@
-import com.axelor.utils.gradle.tasks.GenerateChangelog
+import com.axelor.gradle.tasks.GenerateChangelog
 
 buildscript {
     apply from: "gradle/common.gradle"
@@ -71,7 +71,7 @@ dependencies {
     testImplementation 'org.junit.vintage:junit-vintage-engine'
 }
 
-task generateChangelog(type: GenerateChangelog) {
+tasks.register('generateChangelog', GenerateChangelog) {
     description "Generate changelog from unreleased entries."
     group "Axelor"
     files = fileTree(projectDir) {
