@@ -1,4 +1,7 @@
+import com.axelor.utils.gradle.tasks.GenerateChangelog
+
 buildscript {
+    apply from: "gradle/common.gradle"
     ext.repos = {
         mavenCentral() {
             content { excludeGroupByRegex "com\\.axelor.*" }
@@ -9,8 +12,8 @@ buildscript {
         }
         maven { url 'https://repository.axelor.com/nexus/repository/maven-public/' }
     }
-    ext.aopVersion = '6.1.0'
     repositories repos
+    buildscript.repositories repos
     dependencies {
         classpath "com.axelor:axelor-gradle:${aopVersion}"
         classpath "com.adarshr:gradle-test-logger-plugin:2.+"
@@ -18,6 +21,7 @@ buildscript {
 }
 
 repositories repos
+buildscript.repositories repos
 
 apply from: "version.gradle"
 apply plugin: "com.axelor.app"
@@ -65,6 +69,15 @@ dependencies {
     implementation 'org.reflections:reflections:0.10.2'
 
     testImplementation 'org.junit.vintage:junit-vintage-engine'
+}
+
+task generateChangelog(type: GenerateChangelog) {
+    description "Generate changelog from unreleased entries."
+    group "Axelor"
+    files = fileTree(projectDir) {
+        include 'changelogs/unreleased/*.yml'
+        include 'changelogs/unreleased/*.yaml'
+    }
 }
 
 //
