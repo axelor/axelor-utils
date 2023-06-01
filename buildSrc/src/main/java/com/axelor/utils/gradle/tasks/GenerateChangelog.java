@@ -19,7 +19,6 @@
 package com.axelor.utils.gradle.tasks;
 
 import com.axelor.common.ObjectUtils;
-import com.axelor.common.VersionUtils;
 import com.axelor.tools.changelog.ChangelogEntry;
 import com.axelor.tools.changelog.ChangelogEntryParser;
 import com.axelor.tools.changelog.Release;
