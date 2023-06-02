@@ -143,9 +143,7 @@ prepare() {
 
   if [[ -f "CHANGELOG.md" ]]; then
       print_sub_step "  * Update CHANGELOG.md"
-
-      sed -i "1 s/^## Current .*$/## $tag/" CHANGELOG.md
-      sed -i '1s/^/## Current \(unreleased\)\n\n/' CHANGELOG.md
+      # TODO: Add a changelog generation + version replacement sed
   fi
 }
 
