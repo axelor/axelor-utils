@@ -32,6 +32,8 @@ import com.axelor.utils.service.ListToolService;
 import com.axelor.utils.service.ListToolServiceImpl;
 import com.axelor.utils.service.TranslationService;
 import com.axelor.utils.service.TranslationServiceImpl;
+import com.axelor.utils.service.dmsfile.DMSFileToolService;
+import com.axelor.utils.service.dmsfile.DMSFileToolServiceImpl;
 import com.google.inject.matcher.Matchers;
 
 public class UtilsModule extends AxelorModule {
@@ -44,6 +46,7 @@ public class UtilsModule extends AxelorModule {
     bind(ListToolService.class).to(ListToolServiceImpl.class);
     bind(ConvertBinaryToMetafileService.class).to(ConvertBinaryToMetafileServiceImpl.class);
     bind(AppSettingsService.class).to(AppSettingsServiceImpl.class);
+    bind(DMSFileToolService.class).to(DMSFileToolServiceImpl.class);
     bindInterceptor(
         Matchers.any(),
         Matchers.annotatedWith(HttpExceptionHandler.class),

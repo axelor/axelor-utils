@@ -1,0 +1,5 @@
+"fullName";"name";"packageName";"tableName"
+"com.axelor.auth.db.User";"User";"com.axelor.auth.db";"AUTH_USER"
+"com.axelor.dms.db.DMSFile";"DMSFile";"com.axelor.dms.db";"DMS_FILE"
+"com.axelor.utils.db.MoveLine";"MoveLine";"com.axelor.utils.db";"TEST_MOVE_LINE"
+"com.axelor.utils.db.Move";"Move";"com.axelor.utils.db";"TEST_MOVE"
