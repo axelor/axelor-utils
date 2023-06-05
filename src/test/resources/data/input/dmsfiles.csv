@@ -1,0 +1,7 @@
+"fileName";"relatedId";"relatedModel";"isDirectory";"parentFileName"
+"Mes Documents";0;"com.axelor.auth.db.User";true;
+"Mes Documents";1;"com.axelor.utils.db.Move";true;
+"adminReport.pdf";1;"com.axelor.auth.db.User";false;"Mes Documents"
+"export.csv";1;"com.axelor.auth.db.User";false;"Mes Documents"
+"test.txt";2;"com.axelor.auth.db.User";false;"Mes Documents"
+"hotcoffee.mkv";1;"com.axelor.utils.db.Move";false;"Ecriture 001"
