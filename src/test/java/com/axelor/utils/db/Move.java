@@ -26,6 +26,7 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
@@ -46,6 +47,11 @@ public class Move extends JpaModel {
       fetch = FetchType.LAZY,
       cascade = {CascadeType.PERSIST, CascadeType.MERGE})
   private Invoice invoice;
+
+  @OneToOne(
+      fetch = FetchType.LAZY,
+      cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+  private MoveReference moveReference;
 
   public String getCode() {
     return code;
@@ -69,6 +75,14 @@ public class Move extends JpaModel {
 
   public void setInvoice(Invoice invoice) {
     this.invoice = invoice;
+  }
+
+  public MoveReference getMoveReference() {
+    return moveReference;
+  }
+
+  public void setMoveReference(MoveReference moveReference) {
+    this.moveReference = moveReference;
   }
 
   public Move persist() {

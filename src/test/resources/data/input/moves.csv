@@ -1,2 +1,3 @@
-"code"
-TEST_MOVE_1
+"code";"moveReference.code"
+TEST_MOVE_1;TEST_MOVE_REFERENCE_1
+TEST_MOVE_2;TEST_MOVE_REFERENCE_2

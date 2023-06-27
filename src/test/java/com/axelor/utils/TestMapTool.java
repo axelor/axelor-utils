@@ -140,7 +140,7 @@ class TestMapTool extends BaseTest {
 
   @Test
   void findParent_whenParentContextIsNull() {
-    Context moveLine = new Context(2L, MoveLine.class);
+    Context moveLine = new Context(3L, MoveLine.class);
     Move move = MapTools.findParent(MoveLine.class, Move.class, moveLine, MoveLine::getMove);
     Assertions.assertEquals(move.getId(), 1L);
   }
@@ -157,7 +157,7 @@ class TestMapTool extends BaseTest {
 
   @Test
   void findParent_whenNoParent() {
-    Context moveLine = new Context(5L, MoveLine.class);
+    Context moveLine = new Context(6L, MoveLine.class);
     Move move = MapTools.findParent(MoveLine.class, Move.class, moveLine, MoveLine::getMove);
     Assertions.assertNull(move);
   }
