@@ -59,15 +59,33 @@ public final class ContextTool {
     for (int i = 0; i < depth; i++) {
       if (context.getParent() == null) {
         return null;
-      } else {
-        context = context.getParent();
       }
+      context = context.getParent();
     }
 
     if (context.containsKey("_model") && context.get("_model").equals(klass.getName())) {
       return context.asType(klass);
-    } else {
-      return null;
     }
+    return null;
+  }
+
+  /**
+   * Function that returns the object instance of the desired field from the context or all its
+   * parents
+   *
+   * @param context The context
+   * @param fieldName The field name in the context
+   * @param klass The class of the desired field
+   * @return The desired field, or null if it doesn't exist
+   */
+  public static <T> T getFieldFromContextParent(Context context, String fieldName, Class<T> klass) {
+    while (context != null) {
+      T object = MapTools.get(context, klass, fieldName);
+      if (object != null) {
+        return object;
+      }
+      context = context.getParent();
+    }
+    return null;
   }
 }
