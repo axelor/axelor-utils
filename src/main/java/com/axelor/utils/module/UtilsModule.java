@@ -20,6 +20,8 @@ package com.axelor.utils.module;
 import com.axelor.app.AxelorModule;
 import com.axelor.utils.api.HttpExceptionHandler;
 import com.axelor.utils.api.HttpExceptionHandlerImpl;
+import com.axelor.utils.rest.UtilsRestService;
+import com.axelor.utils.rest.UtilsRestServiceImpl;
 import com.axelor.utils.api.ResponseMessageComputeService;
 import com.axelor.utils.api.ResponseMessageComputeServiceImpl;
 import com.axelor.utils.service.ActionService;
@@ -51,6 +53,7 @@ public class UtilsModule extends AxelorModule {
     bind(ConvertBinaryToMetafileService.class).to(ConvertBinaryToMetafileServiceImpl.class);
     bind(AppSettingsService.class).to(AppSettingsServiceImpl.class);
     bind(DMSFileToolService.class).to(DMSFileToolServiceImpl.class);
+    bind(UtilsRestService.class).to(UtilsRestServiceImpl.class);
     bind(ActionService.class).to(ActionServiceImpl.class);
     bind(ResponseMessageComputeService.class).to(ResponseMessageComputeServiceImpl.class);
     bindInterceptor(
