@@ -1,4 +1,4 @@
 "code";"name"
-"admins";"Admin"
-"clients";"Clients"
-"suppliers";"Suppliers"
+"admins";"AdminGroup"
+"clients";"ClientsGroup"
+"suppliers";"SuppliersGroup"

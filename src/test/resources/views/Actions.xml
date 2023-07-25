@@ -9,4 +9,24 @@
     <domain>self.id IS NOT NULL</domain>
   </action-view>
 
+  <action-record name="test.user.action.modify.code.to.test"
+    model="com.axelor.auth.db.User">
+    <field name="code" expr="test"/>
+  </action-record>
+
+  <action-record name="test.user.action.modify.code.to.name"
+    model="com.axelor.auth.db.User">
+    <field name="code" expr="eval: __this__.name"/>
+  </action-record>
+
+  <action-record name="test.user.action.modify.name.to.test"
+    model="com.axelor.auth.db.User">
+    <field name="name" expr="test"/>
+  </action-record>
+
+  <action-record name="test.user.action.set.name.from.group"
+    model="com.axelor.auth.db.User">
+    <field name="name" expr="eval: __this__.group?.name"/>
+  </action-record>
+
 </object-views>
