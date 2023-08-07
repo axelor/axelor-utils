@@ -10,6 +10,7 @@ import com.axelor.rpc.Context;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
@@ -81,19 +82,21 @@ public class EntityUtils {
   @SuppressWarnings("unchecked")
   private static <T extends Model> void processMultiRelation(
       T dbEntity, Property property, Object object) {
-    Object dbObject = property.get(dbEntity);
     object = wrap((Collection<Map<String, Object>>) object, property.getType());
-    dbObject = wrap((Collection<?>) dbObject, property.getType());
     Collection<Map<String, Object>> list = (Collection<Map<String, Object>>) object;
-    Collection<Model> dbList = (Collection<Model>) dbObject;
     String mappedBy = property.getMappedBy();
 
     Mapper mappedByMapper = Mapper.of(property.getTarget());
     Property mappedByProperty =
         StringUtils.notBlank(mappedBy) ? mappedByMapper.getProperty(mappedBy) : null;
-    for (Map<String, Object> map : list) {
-      processCollectionContext(dbEntity, property, dbList, mappedByProperty, map);
-    }
+    Collection<Model> collection =
+        list.stream()
+            .map(map -> processCollectionContext(dbEntity, property, mappedByProperty, map))
+            .collect(
+                () -> EntityUtils.getDefaultCollection(property.getType()),
+                Collection::add,
+                Collection::addAll);
+    property.set(dbEntity, collection);
   }
 
   private static <T extends Model> void processSimpleField(
@@ -102,19 +105,13 @@ public class EntityUtils {
   }
 
   @SuppressWarnings("unchecked")
-  private static <T extends Model> void processCollectionContext(
-      T dbEntity,
-      Property property,
-      Collection<Model> dbList,
-      Property mappedByProperty,
-      Map<String, Object> map) {
-    Model model = merge(map, (Class<T>) property.getTarget());
+  private static <T extends Model> T processCollectionContext(
+      T dbEntity, Property property, Property mappedByProperty, Map<String, Object> map) {
+    T model = merge(map, (Class<T>) property.getTarget());
     if (mappedByProperty != null) {
       mappedByProperty.set(model, dbEntity);
     }
-    if (!dbList.contains(model)) {
-      dbList.add(model);
-    }
+    return model;
   }
 
   private static <T> Collection<T> wrap(Collection<T> collection, PropertyType propertyType) {
@@ -131,7 +128,7 @@ public class EntityUtils {
       case MANY_TO_MANY:
         return new HashSet<>();
       default:
-        return null;
+        return Collections.emptyList();
     }
   }
 }

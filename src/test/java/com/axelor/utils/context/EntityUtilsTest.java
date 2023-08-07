@@ -17,8 +17,10 @@ import com.google.inject.persist.Transactional;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.stream.Collectors;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -181,10 +183,33 @@ public class EntityUtilsTest extends BaseTest {
     Assertions.assertTrue(mergedUser.getRoles().contains(role));
   }
 
+  @Test
+  void manyToManyRemoveEntityFromList() {
+
+    Role role = createRole("Test Removing role");
+
+    User user = JpaRepository.of(User.class).all().filter("self.code LIKE 'admin'").fetchOne();
+    user = addRoleToUser(role, user);
+    Assertions.assertNotNull(user);
+    Assertions.assertFalse(user.getRoles().isEmpty());
+
+    Context context = new Context(user.getId(), User.class);
+    context.put("roles", new HashSet<>());
+
+    User mergedUser = EntityUtils.merge(context, User.class);
+    Assertions.assertTrue(mergedUser.getRoles().isEmpty());
+  }
+
   @Transactional
   public Role createRole(String roleName) {
     Role role = new Role();
     role.setName(roleName);
     return JpaRepository.of(Role.class).save(role);
+  }
+
+  @Transactional
+  public User addRoleToUser(Role role, User user) {
+    Optional.ofNullable(user).map(User::getRoles).ifPresent(roles -> roles.add(role));
+    return JpaRepository.of(User.class).save(user);
   }
 }
