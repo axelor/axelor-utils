@@ -1,3 +1,13 @@
+## 6.1.3 (2023-08-25)
+
+#### Changes
+
+* Update javax.xml.bind:jaxb-api and com.sun.xml.bind:jaxb-impl from 2.2.2 to 2.3.1.
+
+#### Fixed
+
+* EntityUtils: Fix o2m and m2m fields are properly emptied from the view modifications
+
 ## 1.2.0 (2023-07-03)
 
 #### Features

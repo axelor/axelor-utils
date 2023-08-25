@@ -1,2 +1,0 @@
-title: "EntityUtils: Fix o2m and m2m fields are properly emptied from the view modifications"
-type: fix
