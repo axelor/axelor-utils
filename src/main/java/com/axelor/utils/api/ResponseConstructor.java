@@ -17,6 +17,8 @@
  */
 package com.axelor.utils.api;
 
+import com.axelor.db.Model;
+import com.axelor.inject.Beans;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
@@ -39,5 +41,18 @@ public class ResponseConstructor {
 
   public static Response build(Response.Status statusCode, Object object) {
     return Response.status(statusCode).type(MediaType.APPLICATION_JSON).entity(object).build();
+  }
+
+  public static Response buildCreateResponse(Model model) {
+    return build(
+        Response.Status.CREATED,
+        Beans.get(ResponseMessageComputeService.class).computeCreateMessage(model));
+  }
+
+  public static Response buildCreateResponse(Model model, ResponseStructure object) {
+    return build(
+        Response.Status.CREATED,
+        Beans.get(ResponseMessageComputeService.class).computeCreateMessage(model),
+        object);
   }
 }
