@@ -71,6 +71,16 @@ dependencies {
     testImplementation 'org.junit.vintage:junit-vintage-engine'
 }
 
+jar {
+    from sourceSets.main.java
+    from sourceSets.test.java
+    includeEmptyDirs = false
+}
+
+configurations {
+    testClasses
+}
+
 tasks.register('generateChangelog', GenerateChangelog) {
     description "Generate changelog from unreleased entries."
     group "Axelor"
