@@ -1,7 +1,6 @@
 import com.axelor.gradle.tasks.GenerateChangelog
 
 buildscript {
-    apply from: "gradle/common.gradle"
     ext.repos = {
         mavenCentral() {
             content { excludeGroupByRegex "com\\.axelor.*" }
@@ -12,6 +11,7 @@ buildscript {
         }
         maven { url 'https://repository.axelor.com/nexus/repository/maven-public/' }
     }
+    ext.aopVersion = '6.1.+'
     repositories repos
     buildscript.repositories repos
     dependencies {
@@ -68,17 +68,9 @@ dependencies {
     implementation 'javax.jws:javax.jws-api:1.1'
     implementation 'org.reflections:reflections:0.10.2'
 
+    implementation "com.axelor:axelor-test:${aopVersion}"
+
     testImplementation 'org.junit.vintage:junit-vintage-engine'
-}
-
-jar {
-    from sourceSets.main.java
-    from sourceSets.test.java
-    includeEmptyDirs = false
-}
-
-configurations {
-    testClasses
 }
 
 tasks.register('generateChangelog', GenerateChangelog) {
