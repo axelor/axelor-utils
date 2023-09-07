@@ -20,6 +20,7 @@
 "Templating can not be empty","Templating non può essere vuoto",,
 "The collection of IDs cannot be null.","L'insieme di ID non può essere nullo.",,
 "The consumer cannot be null.","Il consumatore non può essere nullo.",,
+"The object",,,
 "The parameter copyNumber should be superior to 0.","Il parametro copyNumber dovrebbe essere superiore a 0.",,
 "This field needs to be unique.","Questo campo deve essere unico.",,
 "Type %s could not be converted to json type.",,,
@@ -28,3 +29,5 @@
 "Unknown selection: '%s'.",,,
 "Url %s is malformed.","Url %s è malformato.",,
 "Years in 360 days","Anni in 360 giorni",,
+"has been correctly created with the id :",,,
+"has been created",,,

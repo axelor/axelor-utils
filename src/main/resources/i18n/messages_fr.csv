@@ -20,6 +20,7 @@
 "Templating can not be empty","Le modèle ne peut pas être vide",,
 "The collection of IDs cannot be null.","Les Ids sélectionnés ne peuvent être vide.",,
 "The consumer cannot be null.","La personne qui consomme ne peut être vide.",,
+"The object","L'objet",,
 "The parameter copyNumber should be superior to 0.","Le paramètre copyNumber devrait être plus grand que 0.",,
 "This field needs to be unique.","Ce champ doit être unique.",,
 "Type %s could not be converted to json type.","Le type %s n'a pas pu être converti en type de champ personnalisé.",,
@@ -28,3 +29,5 @@
 "Unknown selection: '%s'.","Sélection inconnue : « %s »",,
 "Url %s is malformed.","Le format de l’url %s est incorrect.",,
 "Years in 360 days","L'année en 360 jours",,
+"has been correctly created with the id :","a été corretement créé avec l'id :",,
+"has been created","a bien été créé",,

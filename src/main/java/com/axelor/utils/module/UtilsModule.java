@@ -20,6 +20,8 @@ package com.axelor.utils.module;
 import com.axelor.app.AxelorModule;
 import com.axelor.utils.api.HttpExceptionHandler;
 import com.axelor.utils.api.HttpExceptionHandlerImpl;
+import com.axelor.utils.api.ResponseMessageComputeService;
+import com.axelor.utils.api.ResponseMessageComputeServiceImpl;
 import com.axelor.utils.service.ActionService;
 import com.axelor.utils.service.ActionServiceImpl;
 import com.axelor.utils.service.AppSettingsService;
@@ -50,6 +52,7 @@ public class UtilsModule extends AxelorModule {
     bind(AppSettingsService.class).to(AppSettingsServiceImpl.class);
     bind(DMSFileToolService.class).to(DMSFileToolServiceImpl.class);
     bind(ActionService.class).to(ActionServiceImpl.class);
+    bind(ResponseMessageComputeService.class).to(ResponseMessageComputeServiceImpl.class);
     bindInterceptor(
         Matchers.any(),
         Matchers.annotatedWith(HttpExceptionHandler.class),

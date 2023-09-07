@@ -20,6 +20,7 @@
 "Templating can not be empty",,,
 "The collection of IDs cannot be null.",,,
 "The consumer cannot be null.",,,
+"The object",,,
 "The parameter copyNumber should be superior to 0.",,,
 "This field needs to be unique.",,,
 "Type %s could not be converted to json type.",,,
@@ -28,3 +29,5 @@
 "Unknown selection: '%s'.",,,
 "Url %s is malformed.",,,
 "Years in 360 days",,,
+"has been correctly created with the id :",,,
+"has been created",,,

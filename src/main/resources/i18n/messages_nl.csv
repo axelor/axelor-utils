@@ -20,6 +20,7 @@
 "Templating can not be empty","Templateren kan niet leeg zijn",,
 "The collection of IDs cannot be null.","De verzameling van ID's kan niet ongeldig zijn.",,
 "The consumer cannot be null.","De consument kan niet ongeldig zijn.",,
+"The object",,,
 "The parameter copyNumber should be superior to 0.","De parameter copyNumber moet superieur zijn aan 0.",,
 "This field needs to be unique.","Dit veld moet uniek zijn.",,
 "Type %s could not be converted to json type.",,,
@@ -28,3 +29,5 @@
 "Unknown selection: '%s'.",,,
 "Url %s is malformed.","Url %s is misvormd.",,
 "Years in 360 days","Jaren in 360 dagen",,
+"has been correctly created with the id :",,,
+"has been created",,,
