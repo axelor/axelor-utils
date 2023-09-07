@@ -36,4 +36,12 @@ public class DMSFileToolServiceImpl implements DMSFileToolService {
         .bind("model", metaModel.getFullName())
         .fetch();
   }
+
+  @Override
+  public String getInlineUrl(DMSFile dmsFile) {
+    if (dmsFile == null) {
+      return "";
+    }
+    return String.format("ws/dms/inline/%d", dmsFile.getId());
+  }
 }

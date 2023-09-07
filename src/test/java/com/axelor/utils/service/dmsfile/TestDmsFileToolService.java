@@ -4,6 +4,7 @@ import com.axelor.auth.db.User;
 import com.axelor.auth.db.repo.UserRepository;
 import com.axelor.db.JPA;
 import com.axelor.dms.db.DMSFile;
+import com.axelor.dms.db.repo.DMSFileRepository;
 import com.axelor.meta.loader.LoaderHelper;
 import com.axelor.utils.db.Move;
 import com.axelor.utils.db.MoveLine;
@@ -22,15 +23,18 @@ class TestDmsFileToolService extends BaseTest {
   protected final DMSFileToolService dmsFileToolService;
 
   protected final UserRepository userRepository;
+  protected final DMSFileRepository dmsFileRepository;
 
   @Inject
   TestDmsFileToolService(
       LoaderHelper loaderHelper,
       DMSFileToolService dmsFileToolService,
-      UserRepository userRepository) {
+      UserRepository userRepository,
+      DMSFileRepository dmsFileRepository) {
     this.loaderHelper = loaderHelper;
     this.dmsFileToolService = dmsFileToolService;
     this.userRepository = userRepository;
+    this.dmsFileRepository = dmsFileRepository;
   }
 
   @BeforeEach
@@ -75,5 +79,16 @@ class TestDmsFileToolService extends BaseTest {
     MoveLine moveLine = new MoveLine();
     List<DMSFile> result = dmsFileToolService.fetchAttachedDMSFiles(moveLine);
     Assertions.assertTrue(result.isEmpty());
+  }
+
+  @Test
+  void getInlineUrl_noDmsFile() {
+    Assertions.assertEquals("", dmsFileToolService.getInlineUrl(null));
+  }
+
+  @Test
+  void getInlineUrl_presentDmsFile() {
+    DMSFile dmsFile = dmsFileRepository.find(1L);
+    Assertions.assertEquals("ws/dms/inline/1", dmsFileToolService.getInlineUrl(dmsFile));
   }
 }

@@ -15,4 +15,13 @@ public interface DMSFileToolService {
    *     no id.
    */
   List<DMSFile> fetchAttachedDMSFiles(Model model);
+
+  /**
+   * Given any DMS file, returns the inline URL of the DMS file. The inline URL is mostly used to
+   * display a PDF file in a viewer in a form view.
+   *
+   * @param dmsFile any DMS file
+   * @return the inline URL in a string.
+   */
+  String getInlineUrl(DMSFile dmsFile);
 }
