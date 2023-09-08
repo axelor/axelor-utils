@@ -1,3 +1,13 @@
+## 1.3.0 (2023-09-08)
+
+#### Features
+
+* Expose unit test's design core classes to allow usage in other modules
+* ResponseConstructor: add new build methods computing automatic responses
+* Add ActionService utility to allow usage of action-record in java
+* New permissions system : backend side
+* DMSFileToolService: add an inline URL getter
+
 ## 1.2.1 (2023-08-25)
 
 #### Changes
