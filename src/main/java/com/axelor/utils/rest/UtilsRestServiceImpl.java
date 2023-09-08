@@ -17,7 +17,6 @@
  */
 package com.axelor.utils.rest;
 
-import com.axelor.db.Model;
 import com.axelor.db.mapper.Mapper;
 import com.axelor.inject.Beans;
 import com.axelor.meta.db.MetaModel;
