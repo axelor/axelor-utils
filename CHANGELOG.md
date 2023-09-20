@@ -1,3 +1,9 @@
+## 1.3.2 (2023-09-20)
+
+#### Changes
+
+* Update org.apache.pdfbox:pdfbox from 2.0.9 to 3.0.0
+
 ## 1.3.1 (2023-09-14)
 
 #### Fixed
