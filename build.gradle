@@ -71,6 +71,9 @@ dependencies {
     implementation "com.axelor:axelor-test:${aopVersion}"
 
     testImplementation 'org.junit.vintage:junit-vintage-engine'
+
+    compileOnly 'org.projectlombok:lombok:1.18.24'
+    annotationProcessor 'org.projectlombok:lombok:1.18.24'
 }
 
 tasks.register('generateChangelog', GenerateChangelog) {
