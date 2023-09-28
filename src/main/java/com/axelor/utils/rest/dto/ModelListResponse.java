@@ -20,7 +20,9 @@ package com.axelor.utils.rest.dto;
 import com.axelor.meta.db.MetaModel;
 import com.axelor.utils.api.ResponseStructure;
 import java.util.List;
+import lombok.Getter;
 
+@Getter
 public class ModelListResponse extends ResponseStructure {
 
   protected List<MetaModel> modelList;
@@ -28,9 +30,5 @@ public class ModelListResponse extends ResponseStructure {
   public ModelListResponse(List<MetaModel> modelList, MetaModel model) {
     super(model.getVersion());
     this.modelList = modelList;
-  }
-
-  public List<MetaModel> getModelList() {
-    return modelList;
   }
 }

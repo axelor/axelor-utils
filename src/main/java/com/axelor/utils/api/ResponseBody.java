@@ -18,12 +18,14 @@
 package com.axelor.utils.api;
 
 import javax.ws.rs.core.Response;
+import lombok.Getter;
 
-public class ResponseBody {
+@Getter
+public class ResponseBody<T> {
 
   private final int codeStatus;
   private final String messageStatus;
-  private final ResponseStructure object;
+  private final T object;
 
   public ResponseBody(Response.Status codeStatus, String messageStatus) {
     this.codeStatus = codeStatus.getStatusCode();
@@ -31,21 +33,10 @@ public class ResponseBody {
     this.object = null;
   }
 
-  public ResponseBody(Response.Status codeStatus, String messageStatus, ResponseStructure object) {
+  public ResponseBody(Response.Status codeStatus, String messageStatus, T object) {
     this.codeStatus = codeStatus.getStatusCode();
     this.messageStatus = messageStatus;
     this.object = object;
   }
 
-  public int getCodeStatus() {
-    return codeStatus;
-  }
-
-  public String getMessageStatus() {
-    return messageStatus;
-  }
-
-  public ResponseStructure getObject() {
-    return object;
-  }
 }

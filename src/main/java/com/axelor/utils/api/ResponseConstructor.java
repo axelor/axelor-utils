@@ -24,18 +24,20 @@ import javax.ws.rs.core.Response;
 
 public class ResponseConstructor {
 
-  public static Response build(
-      Response.Status statusCode, String message, ResponseStructure object) {
+  private ResponseConstructor() {}
+
+  public static <T> Response build(
+      Response.Status statusCode, String message, T object) {
     return Response.status(statusCode)
         .type(MediaType.APPLICATION_JSON)
-        .entity(new ResponseBody(statusCode, message, object))
+        .entity(new ResponseBody<>(statusCode, message, object))
         .build();
   }
 
   public static Response build(Response.Status statusCode, String message) {
     return Response.status(statusCode)
         .type(MediaType.APPLICATION_JSON)
-        .entity(new ResponseBody(statusCode, message))
+        .entity(new ResponseBody<>(statusCode, message))
         .build();
   }
 

@@ -19,18 +19,16 @@ package com.axelor.utils.rest.dto;
 
 import com.axelor.meta.db.MetaMenu;
 import com.axelor.utils.api.ResponseStructure;
-import java.util.List;
+import java.util.Set;
+import lombok.Getter;
 
+@Getter
 public class MenuListResponse extends ResponseStructure {
 
-  protected final List<MetaMenu> menuList;
+  protected final Set<MetaMenu> menuList;
 
-  public MenuListResponse(List<MetaMenu> menuList, MetaMenu menu) {
-    super(menu.getVersion());
+  public MenuListResponse(Set<MetaMenu> menuList, Integer version) {
+    super(version);
     this.menuList = menuList;
-  }
-
-  public List<MetaMenu> getMenuList() {
-    return menuList;
   }
 }

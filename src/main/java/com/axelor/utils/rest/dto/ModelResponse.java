@@ -19,17 +19,16 @@ package com.axelor.utils.rest.dto;
 
 import com.axelor.meta.db.MetaModel;
 import com.axelor.utils.api.ResponseStructure;
+import java.util.Map;
+import lombok.Getter;
 
+@Getter
 public class ModelResponse extends ResponseStructure {
 
-  protected MetaModel metaModel;
+  protected Map<String, MetaModel> metaModelByMenu;
 
-  public ModelResponse(MetaModel metaModel) {
-    super(metaModel.getVersion());
-    this.metaModel = metaModel;
-  }
-
-  public MetaModel getMetaModel() {
-    return metaModel;
+  public ModelResponse(Map<String, MetaModel> metaModelByMenu, Integer version) {
+    super(version);
+    this.metaModelByMenu = metaModelByMenu;
   }
 }
