@@ -1,6 +1,11 @@
 package com.axelor.utils.service;
 
+import com.axelor.db.Model;
+import com.axelor.utils.context.FullContext;
+
 public interface ActionService {
 
-  Object applyActions(String actions, Object bean);
+  <T extends Model> T applyActions(String actions, T bean);
+
+  FullContext applyActions(String actions, FullContext context);
 }

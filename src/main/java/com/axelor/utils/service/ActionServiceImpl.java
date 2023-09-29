@@ -2,7 +2,6 @@ package com.axelor.utils.service;
 
 import com.axelor.common.ObjectUtils;
 import com.axelor.common.StringUtils;
-import com.axelor.db.EntityHelper;
 import com.axelor.db.JPA;
 import com.axelor.db.Model;
 import com.axelor.db.mapper.Mapper;
@@ -12,8 +11,7 @@ import com.axelor.meta.ActionHandler;
 import com.axelor.rpc.ActionRequest;
 import com.axelor.rpc.ActionResponse;
 import com.axelor.rpc.ContextEntity;
-import com.axelor.rpc.ContextHandlerFactory;
-import com.axelor.rpc.Resource;
+import com.axelor.utils.context.FullContext;
 import com.google.inject.Inject;
 import java.util.Collection;
 import java.util.HashMap;
@@ -32,6 +30,7 @@ public class ActionServiceImpl implements ActionService {
   public ActionServiceImpl(ActionExecutor executor) {
     this.executor = executor;
   }
+
   /**
    * Utility method to apply action-record to an object
    *
@@ -39,13 +38,12 @@ public class ActionServiceImpl implements ActionService {
    * @param bean object to apply actions to
    * @return updated bean parameter
    */
-  @SuppressWarnings("unchecked")
   @Override
-  public Object applyActions(String actions, Object bean) {
+  public <T extends Model> T applyActions(String actions, T bean) {
     if (StringUtils.isBlank(actions) || bean == null) {
       return bean;
     }
-    final Class<? extends Model> klass = (Class<? extends Model>) bean.getClass();
+    final Class<? extends Model> klass = bean.getClass();
     this.modelName = klass.getName();
     this.context = Mapper.toMap(bean);
 
@@ -54,12 +52,24 @@ public class ActionServiceImpl implements ActionService {
     return this.updateBean(bean);
   }
 
+  @Override
+  public FullContext applyActions(String actions, FullContext context) {
+    if (StringUtils.isBlank(actions) || context == null) {
+      return context;
+    }
+    this.modelName = context.getContextClass().getName();
+    this.context = Mapper.toMap(context.getTarget());
+
+    this.apply(actions);
+
+    return this.updateFullContext(context);
+  }
+
   @SuppressWarnings("unchecked")
   protected void apply(String actions) {
     ActionHandler handler = this.createHandler(actions);
-    Object value = handler.execute();
-    ActionResponse response = (ActionResponse) value;
-    List<Map<String, Object>> dataList = (List<Map<String, Object>>) response.getData();
+    ActionResponse value = handler.execute();
+    List<Map<String, Object>> dataList = (List<Map<String, Object>>) value.getData();
 
     for (Map<String, Object> map : dataList) {
       this.updateContext(map);
@@ -114,7 +124,7 @@ public class ActionServiceImpl implements ActionService {
   }
 
   @SuppressWarnings("unchecked")
-  protected <T extends Model> Object updateBean(Object bean) {
+  protected <T extends Model> T updateBean(T bean) {
     final Class<T> klass = (Class<T>) JPA.model(this.modelName);
     var updatedBean = Mapper.toBean(klass, this.context);
 
@@ -122,10 +132,43 @@ public class ActionServiceImpl implements ActionService {
       Object oldValue = property.get(bean);
       Object newValue = property.get(updatedBean);
       if (!ObjectUtils.isEmpty(newValue) && property.valueChanged(updatedBean, oldValue)) {
-        property.set(bean, this.validate(property, newValue));
+        property.set(bean, postProcess(bean, property, this.validate(property, newValue)));
       }
     }
     return bean;
+  }
+
+  @SuppressWarnings("unchecked")
+  protected FullContext updateFullContext(FullContext fullContext) {
+    final Class<? extends Model> klass = (Class<? extends Model>) JPA.model(this.modelName);
+    var updatedBean = Mapper.toBean(klass, this.context);
+
+    for (Property property : JPA.fields(klass)) {
+      Object oldValue = fullContext.get(property.getName());
+      Object newValue = property.get(updatedBean);
+      if (!ObjectUtils.isEmpty(newValue) && property.valueChanged(updatedBean, oldValue)) {
+        fullContext.put(
+            property.getName(),
+            postProcess(fullContext.getTarget(), property, this.validate(property, newValue)));
+      }
+    }
+    return fullContext;
+  }
+
+  protected Object postProcess(Object model, Property property, Object value) {
+    if (property == null || property.getTarget() == null) {
+      return value;
+    }
+    var mapper = Mapper.of(property.getTarget());
+    if (property.isCollection()
+        && value instanceof Collection
+        && StringUtils.notBlank(property.getMappedBy())
+        && mapper.getProperty(property.getMappedBy()).isReference()) {
+      for (var item : (Collection<?>) value) {
+        mapper.set(item, property.getMappedBy(), model);
+      }
+    }
+    return value;
   }
 
   protected Object validate(Property property, Object value) {
@@ -146,19 +189,15 @@ public class ActionServiceImpl implements ActionService {
 
   protected Object createOrFind(Property property, Object item) {
     if (item == null) {
-      return item;
+      return null;
     }
 
     final Long id = ((Model) item).getId();
 
-    if (id == null || id <= 0) {
-      return EntityHelper.getEntity(
-          ContextHandlerFactory.newHandler(property.getTarget(), Resource.toMapCompact(item))
-              .getProxy());
+    if (id != null && id > 0) {
+      return JPA.em().find(property.getTarget(), id);
     }
 
-    final Object bean = JPA.em().find(property.getTarget(), id);
-
-    return bean;
+    return item;
   }
 }
