@@ -55,11 +55,7 @@ public class UtilsRestController {
   private Set<MetaMenu> getAllParents(
       MetaMenuRepository metaMenuRepository, Set<String> menuNames) {
     var parentMenus =
-        metaMenuRepository
-            .all()
-            .filter("self.name in (:names)")
-            .bind("names", menuNames)
-            .fetch()
+        metaMenuRepository.all().filter("self.name in (:names)").bind("names", menuNames).fetch()
             .stream()
             .map(MetaMenu::getParent)
             .collect(Collectors.toSet());

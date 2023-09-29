@@ -26,8 +26,7 @@ public class ResponseConstructor {
 
   private ResponseConstructor() {}
 
-  public static <T> Response build(
-      Response.Status statusCode, String message, T object) {
+  public static <T> Response build(Response.Status statusCode, String message, T object) {
     return Response.status(statusCode)
         .type(MediaType.APPLICATION_JSON)
         .entity(new ResponseBody<>(statusCode, message, object))

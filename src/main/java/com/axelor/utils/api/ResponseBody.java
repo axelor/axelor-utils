@@ -38,5 +38,4 @@ public class ResponseBody<T> {
     this.messageStatus = messageStatus;
     this.object = object;
   }
-
 }
