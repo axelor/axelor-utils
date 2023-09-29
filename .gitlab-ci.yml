@@ -33,6 +33,8 @@ build:
   script:
     - ./gradlew -xtest clean build --refresh-dependencies
   interruptible: true
+  rules:
+    - if: $CI_PIPELINE_SOURCE != "schedule"
 
 # Check code formatting
 spotless:
