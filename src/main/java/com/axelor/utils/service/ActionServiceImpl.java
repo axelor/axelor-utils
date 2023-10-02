@@ -6,6 +6,7 @@ import com.axelor.db.JPA;
 import com.axelor.db.Model;
 import com.axelor.db.mapper.Mapper;
 import com.axelor.db.mapper.Property;
+import com.axelor.db.mapper.PropertyType;
 import com.axelor.meta.ActionExecutor;
 import com.axelor.meta.ActionHandler;
 import com.axelor.rpc.ActionRequest;
@@ -16,8 +17,10 @@ import com.google.inject.Inject;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.stream.Collectors;
 import org.apache.commons.collections.CollectionUtils;
 
@@ -143,20 +146,28 @@ public class ActionServiceImpl implements ActionService {
   @SuppressWarnings("unchecked")
   protected Object getOldValue(FullContext fullContext, Property property) {
     if (property.isReference()) {
-      var context = (FullContext) fullContext.get(property.getName());
-      return context != null ? context.getTarget() : null;
+      var propertyContext = (FullContext) fullContext.get(property.getName());
+      return propertyContext != null ? propertyContext.getTarget() : null;
     } else if (property.isCollection()) {
-      var contextList = (List<FullContext>) fullContext.get(property.getName());
-      var list = new ArrayList<>();
-      if (CollectionUtils.isEmpty(contextList)) {
-        return new ArrayList<>();
+      var contextCollection = (Collection<FullContext>) fullContext.get(property.getName());
+      var list = newCollection(property);
+      if (CollectionUtils.isEmpty(contextCollection)) {
+        return newCollection(property);
       }
-      for (FullContext fullContextValue : contextList) {
+      for (FullContext fullContextValue : contextCollection) {
         list.add(fullContextValue.getTarget());
       }
       return list;
     } else {
       return fullContext.get(property.getName());
+    }
+  }
+
+  protected Collection<Object> newCollection(Property property) {
+    if (property.getType().equals(PropertyType.MANY_TO_MANY)) {
+      return new HashSet<>();
+    } else {
+      return new ArrayList<>();
     }
   }
 
