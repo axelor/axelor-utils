@@ -13,11 +13,13 @@ import com.axelor.rpc.ActionResponse;
 import com.axelor.rpc.ContextEntity;
 import com.axelor.utils.context.FullContext;
 import com.google.inject.Inject;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
+import org.apache.commons.collections.CollectionUtils;
 
 public class ActionServiceImpl implements ActionService {
 
@@ -78,7 +80,7 @@ public class ActionServiceImpl implements ActionService {
 
   @SuppressWarnings("unchecked")
   private void updateContext(Map<String, Object> value) {
-    if (value == null) {
+    if (value == null || !value.containsKey("values")) {
       return;
     }
 
@@ -139,12 +141,32 @@ public class ActionServiceImpl implements ActionService {
   }
 
   @SuppressWarnings("unchecked")
+  protected Object getOldValue(FullContext fullContext, Property property) {
+    if (property.isReference()) {
+      var context = (FullContext) fullContext.get(property.getName());
+      return context != null ? context.getTarget() : null;
+    } else if (property.isCollection()) {
+      var contextList = (List<FullContext>) fullContext.get(property.getName());
+      var list = new ArrayList<>();
+      if (CollectionUtils.isEmpty(contextList)) {
+        return new ArrayList<>();
+      }
+      for (FullContext fullContextValue : contextList) {
+        list.add(fullContextValue.getTarget());
+      }
+      return list;
+    } else {
+      return fullContext.get(property.getName());
+    }
+  }
+
+  @SuppressWarnings("unchecked")
   protected FullContext updateFullContext(FullContext fullContext) {
     final Class<? extends Model> klass = (Class<? extends Model>) JPA.model(this.modelName);
     var updatedBean = Mapper.toBean(klass, this.context);
 
     for (Property property : JPA.fields(klass)) {
-      Object oldValue = fullContext.get(property.getName());
+      Object oldValue = getOldValue(fullContext, property);
       Object newValue = property.get(updatedBean);
       if (!ObjectUtils.isEmpty(newValue) && property.valueChanged(updatedBean, oldValue)) {
         fullContext.put(
