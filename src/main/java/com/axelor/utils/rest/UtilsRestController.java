@@ -23,19 +23,16 @@ import com.axelor.meta.db.MetaAction;
 import com.axelor.meta.db.MetaMenu;
 import com.axelor.meta.db.MetaModel;
 import com.axelor.meta.db.repo.MetaMenuRepository;
-import com.axelor.meta.db.repo.MetaModelRepository;
 import com.axelor.utils.api.HttpExceptionHandler;
 import com.axelor.utils.api.ResponseConstructor;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 import java.util.stream.Collectors;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
@@ -55,7 +52,11 @@ public class UtilsRestController {
   private Set<MetaMenu> getAllParents(
       MetaMenuRepository metaMenuRepository, Set<String> menuNames) {
     var parentMenus =
-        metaMenuRepository.all().filter("self.name in (:names)").bind("names", menuNames).fetch()
+        metaMenuRepository
+            .all()
+            .filter("self.name in (:names)")
+            .bind("names", menuNames)
+            .fetch()
             .stream()
             .map(MetaMenu::getParent)
             .collect(Collectors.toSet());
@@ -118,41 +119,30 @@ public class UtilsRestController {
   @Path("/related-model")
   @HttpExceptionHandler
   public Response getRelatedMetaModel(@QueryParam("menus") String menuNames) {
-    var map = new HashMap<String, MetaModel>();
+    var map = new HashMap<String, Object>();
     var menuRepo = Beans.get(MetaMenuRepository.class);
     var utilsRestService = Beans.get(UtilsRestService.class);
 
     for (String menuName : split(menuNames)) {
       MetaMenu menu = menuRepo.findByName(menuName);
       MetaAction view = menu.getAction();
+      var menuMap = new HashMap<String, Object>();
       if (view != null && view.getModel() != null) {
-        map.put(menuName, utilsRestService.getModel(view.getModel()));
+        var model = utilsRestService.getModel(view.getModel());
+        menuMap.put("model", model);
+
+        var directReferences = new ArrayList<MetaModel>();
+        utilsRestService.addReferences(model, directReferences, "ONE_TO_ONE", "ONE_TO_MANY");
+        menuMap.put("directReferences", directReferences);
+
+        var indirectReferences = new ArrayList<MetaModel>();
+        utilsRestService.addReferences(model, indirectReferences, "MANY_TO_ONE", "MANY_TO_MANY");
+        menuMap.put("indirectReferences", indirectReferences);
+
+        map.put(menuName, menuMap);
       }
     }
 
     return ResponseConstructor.build(Response.Status.OK, RESPONSE_SUCCESS, map);
-  }
-
-  @GET
-  @Path("/direct-references/{id}")
-  @HttpExceptionHandler
-  public Response getDirectReferences(@PathParam("id") Long modelId) {
-    MetaModel model = Beans.get(MetaModelRepository.class).find(modelId);
-    List<MetaModel> listOfRef = new ArrayList<>();
-    Beans.get(UtilsRestService.class).addReferences(model, listOfRef, "ONE_TO_ONE", "ONE_TO_MANY");
-
-    return ResponseConstructor.build(Response.Status.OK, RESPONSE_SUCCESS, listOfRef);
-  }
-
-  @GET
-  @Path("/indirect-references/{id}")
-  @HttpExceptionHandler
-  public Response getIndirectReferences(@PathParam("id") Long modelId) {
-    MetaModel model = Beans.get(MetaModelRepository.class).find(modelId);
-    List<MetaModel> listOfRef = new ArrayList<>();
-    Beans.get(UtilsRestService.class)
-        .addReferences(model, listOfRef, "MANY_TO_ONE", "MANY_TO_MANY");
-
-    return ResponseConstructor.build(Response.Status.OK, RESPONSE_SUCCESS, listOfRef);
   }
 }
