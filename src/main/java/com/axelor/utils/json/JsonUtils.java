@@ -54,8 +54,9 @@ public class JsonUtils {
       Arrays.sort(properties, Comparator.comparing(Property::getType));
       for (Property property : properties) {
         Object fieldValue = mapper.get(value, property.getName());
-        if (fieldValue == null || (fieldValue instanceof Collection
-            && CollectionUtils.isEmpty((Collection<?>) fieldValue))) {
+        if (fieldValue == null
+            || (fieldValue instanceof Collection
+                && CollectionUtils.isEmpty((Collection<?>) fieldValue))) {
           continue;
         }
         if (Objects.equals(property.getType(), PropertyType.MANY_TO_ONE)) {
@@ -63,9 +64,10 @@ public class JsonUtils {
           gen.writeObjectField(property.getName(), map);
         } else if (Objects.equals(property.getType(), PropertyType.MANY_TO_MANY)
             && fieldValue instanceof Collection) {
-          gen.writeObjectField(property.getName(),
-              ((Set<Model>) fieldValue).stream().map(this::processModel)
-                  .collect(Collectors.toSet()));
+          gen.writeObjectField(
+              property.getName(),
+              ((Set<Model>) fieldValue)
+                  .stream().map(this::processModel).collect(Collectors.toSet()));
         } else {
           gen.writeObjectField(property.getName(), fieldValue);
         }
@@ -94,11 +96,11 @@ public class JsonUtils {
   }
 
   /**
-   * Returns the ObjectMapper instance used by this class.
-   * <br><br>
+   * Returns the ObjectMapper instance used by this class. <br>
+   * <br>
    * This ObjectMapper contains a custom serializer for Model objects that only serializes the ID
-   * and model name for all ManyToOne and ManyToMany fields to avoid infinite recursion.
-   * <br><br>
+   * and model name for all ManyToOne and ManyToMany fields to avoid infinite recursion. <br>
+   * <br>
    * This ObjectMapper also uses the JavaTimeModule to serialize dates to ISO format.
    *
    * @return the ObjectMapper instance
@@ -110,7 +112,7 @@ public class JsonUtils {
   /**
    * Parses the given JSON string into an object of the specified class.
    *
-   * @param json  the JSON string to parse
+   * @param json the JSON string to parse
    * @param klass the class of the object to parse the JSON into
    * @return the parsed object
    * @throws IOException if there is an error parsing the JSON string
