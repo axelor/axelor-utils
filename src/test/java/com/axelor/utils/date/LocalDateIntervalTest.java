@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import com.axelor.utils.helpers.date.LocalDateInterval;
 import java.time.LocalDate;
 import org.junit.jupiter.api.Test;
 

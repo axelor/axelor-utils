@@ -12,7 +12,7 @@ import com.axelor.meta.ActionHandler;
 import com.axelor.rpc.ActionRequest;
 import com.axelor.rpc.ActionResponse;
 import com.axelor.rpc.ContextEntity;
-import com.axelor.utils.context.FullContext;
+import com.axelor.utils.helpers.context.FullContext;
 import com.google.inject.Inject;
 import java.util.ArrayList;
 import java.util.Collection;

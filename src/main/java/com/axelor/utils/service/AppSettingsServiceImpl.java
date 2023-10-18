@@ -24,4 +24,9 @@ public class AppSettingsServiceImpl implements AppSettingsService {
   public String encryptionKey() {
     return appSettings.get("application.encryptionkey");
   }
+
+  @Override
+  public int processTimeout() {
+    return appSettings.getInt("utils.process.timeout", 10);
+  }
 }

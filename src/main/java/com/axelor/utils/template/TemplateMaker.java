@@ -26,7 +26,7 @@ import com.axelor.meta.db.MetaJsonRecord;
 import com.axelor.meta.db.repo.MetaJsonRecordRepository;
 import com.axelor.rpc.Context;
 import com.axelor.text.StringTemplates;
-import com.axelor.utils.exception.ToolExceptionMessage;
+import com.axelor.utils.exception.UtilsExceptionMessage;
 import com.google.common.base.Charsets;
 import com.google.common.base.Preconditions;
 import com.google.common.base.Strings;
@@ -112,7 +112,7 @@ public class TemplateMaker {
   public void setTemplate(File file) throws FileNotFoundException {
     if (!file.isFile()) {
       throw new FileNotFoundException(
-          I18n.get(ToolExceptionMessage.TEMPLATE_MAKER_1) + ": " + file.getName());
+          I18n.get(UtilsExceptionMessage.TEMPLATE_MAKER_1) + ": " + file.getName());
     }
 
     String text;
@@ -153,7 +153,7 @@ public class TemplateMaker {
 
   public String make() {
     if (Strings.isNullOrEmpty(this.template)) {
-      throw new IllegalArgumentException(I18n.get(ToolExceptionMessage.TEMPLATE_MAKER_2));
+      throw new IllegalArgumentException(I18n.get(UtilsExceptionMessage.TEMPLATE_MAKER_2));
     }
 
     Map<String, Object> ctx = context == null ? new HashMap<>() : context;

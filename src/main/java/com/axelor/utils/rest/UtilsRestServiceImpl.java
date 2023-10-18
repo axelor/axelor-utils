@@ -21,7 +21,7 @@ import com.axelor.db.mapper.Mapper;
 import com.axelor.inject.Beans;
 import com.axelor.meta.db.MetaModel;
 import com.axelor.meta.db.repo.MetaModelRepository;
-import com.axelor.utils.ExceptionTool;
+import com.axelor.utils.helpers.ExceptionHelper;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -51,7 +51,7 @@ public class UtilsRestServiceImpl implements UtilsRestService {
       modelList.forEach(metaModel -> addReferences(metaModel, listOfRef, types));
 
     } catch (ClassNotFoundException e) {
-      ExceptionTool.trace(e);
+      ExceptionHelper.trace(e);
     }
   }
 

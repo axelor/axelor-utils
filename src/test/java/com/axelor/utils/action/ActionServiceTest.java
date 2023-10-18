@@ -3,7 +3,7 @@ package com.axelor.utils.action;
 import com.axelor.auth.db.repo.UserRepository;
 import com.axelor.db.Model;
 import com.axelor.meta.loader.LoaderHelper;
-import com.axelor.utils.context.FullContextHelper;
+import com.axelor.utils.helpers.context.FullContextHelper;
 import com.axelor.utils.junit.BaseTest;
 import com.axelor.utils.service.ActionService;
 import com.google.inject.Inject;

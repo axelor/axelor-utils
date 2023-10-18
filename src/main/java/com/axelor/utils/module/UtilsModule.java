@@ -28,18 +28,18 @@ import com.axelor.utils.service.ActionService;
 import com.axelor.utils.service.ActionServiceImpl;
 import com.axelor.utils.service.AppSettingsService;
 import com.axelor.utils.service.AppSettingsServiceImpl;
-import com.axelor.utils.service.ArchivingToolService;
-import com.axelor.utils.service.ArchivingToolServiceImpl;
+import com.axelor.utils.service.ArchivingService;
+import com.axelor.utils.service.ArchivingServiceImpl;
+import com.axelor.utils.service.BinaryConversionService;
+import com.axelor.utils.service.BinaryConversionServiceImpl;
 import com.axelor.utils.service.CipherService;
 import com.axelor.utils.service.CipherServiceImpl;
-import com.axelor.utils.service.ConvertBinaryToMetafileService;
-import com.axelor.utils.service.ConvertBinaryToMetafileServiceImpl;
-import com.axelor.utils.service.ListToolService;
-import com.axelor.utils.service.ListToolServiceImpl;
 import com.axelor.utils.service.TranslationService;
 import com.axelor.utils.service.TranslationServiceImpl;
-import com.axelor.utils.service.dmsfile.DMSFileToolService;
-import com.axelor.utils.service.dmsfile.DMSFileToolServiceImpl;
+import com.axelor.utils.service.dmsfile.DmsFileService;
+import com.axelor.utils.service.dmsfile.DmsFileServiceImpl;
+import com.axelor.utils.service.reader.DataReaderFactory;
+import com.axelor.utils.service.reader.DataReaderFactoryImpl;
 import com.google.inject.matcher.Matchers;
 
 public class UtilsModule extends AxelorModule {
@@ -48,13 +48,13 @@ public class UtilsModule extends AxelorModule {
   protected void configure() {
     bind(CipherService.class).to(CipherServiceImpl.class);
     bind(TranslationService.class).to(TranslationServiceImpl.class);
-    bind(ArchivingToolService.class).to(ArchivingToolServiceImpl.class);
-    bind(ListToolService.class).to(ListToolServiceImpl.class);
-    bind(ConvertBinaryToMetafileService.class).to(ConvertBinaryToMetafileServiceImpl.class);
+    bind(ArchivingService.class).to(ArchivingServiceImpl.class);
+    bind(BinaryConversionService.class).to(BinaryConversionServiceImpl.class);
     bind(AppSettingsService.class).to(AppSettingsServiceImpl.class);
-    bind(DMSFileToolService.class).to(DMSFileToolServiceImpl.class);
+    bind(DmsFileService.class).to(DmsFileServiceImpl.class);
     bind(UtilsRestService.class).to(UtilsRestServiceImpl.class);
     bind(ActionService.class).to(ActionServiceImpl.class);
+    bind(DataReaderFactory.class).to(DataReaderFactoryImpl.class);
     bind(ResponseMessageComputeService.class).to(ResponseMessageComputeServiceImpl.class);
     bindInterceptor(
         Matchers.any(),

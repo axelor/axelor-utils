@@ -1,7 +1,7 @@
 package com.axelor.utils.service;
 
 import com.axelor.db.Model;
-import com.axelor.utils.context.FullContext;
+import com.axelor.utils.helpers.context.FullContext;
 
 public interface ActionService {
 

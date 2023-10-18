@@ -5,8 +5,9 @@ import com.axelor.meta.loader.LoaderHelper;
 import com.axelor.meta.schema.ObjectViews;
 import com.axelor.meta.schema.actions.ActionView;
 import com.axelor.meta.schema.actions.ActionView.ActionViewBuilder;
+import com.axelor.utils.helpers.context.ActionViewHelper;
 import com.axelor.utils.junit.BaseTest;
-import com.axelor.utils.utils.TestHelper;
+import com.axelor.utils.utils.TestingHelper;
 import com.google.inject.Inject;
 import java.io.IOException;
 import javax.xml.bind.JAXBException;
@@ -15,12 +16,12 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 class ActionViewHelperTest extends BaseTest {
-  protected final TestHelper testHelper;
+  protected final TestingHelper testingHelper;
   protected final LoaderHelper loaderHelper;
 
   @Inject
-  public ActionViewHelperTest(TestHelper testHelper, LoaderHelper loaderHelper) {
-    this.testHelper = testHelper;
+  public ActionViewHelperTest(TestingHelper testingHelper, LoaderHelper loaderHelper) {
+    this.testingHelper = testingHelper;
     this.loaderHelper = loaderHelper;
   }
 
@@ -32,7 +33,7 @@ class ActionViewHelperTest extends BaseTest {
 
   @Test
   void build() throws JAXBException, IOException {
-    ObjectViews objectViews = testHelper.unmarshal("views/Actions.xml", ObjectViews.class);
+    ObjectViews objectViews = testingHelper.unmarshal("views/Actions.xml", ObjectViews.class);
     ActionView action =
         (ActionView)
             objectViews.getActions().stream()

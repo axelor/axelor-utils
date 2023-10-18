@@ -5,4 +5,6 @@ public interface AppSettingsService {
   boolean isApiEnabled();
 
   String encryptionKey();
+
+  int processTimeout();
 }

@@ -19,8 +19,8 @@ package com.axelor.utils.api;
 
 import com.axelor.i18n.I18n;
 import com.axelor.inject.Beans;
-import com.axelor.utils.ExceptionTool;
-import com.axelor.utils.exception.ToolExceptionMessage;
+import com.axelor.utils.exception.UtilsExceptionMessage;
+import com.axelor.utils.helpers.ExceptionHelper;
 import com.axelor.utils.service.AppSettingsService;
 import javax.ws.rs.BadRequestException;
 import javax.ws.rs.ClientErrorException;
@@ -38,7 +38,7 @@ public class HttpExceptionHandlerImpl implements MethodInterceptor {
       if (Beans.get(AppSettingsService.class).isApiEnabled()) {
         return invocation.proceed();
       } else {
-        throw new ForbiddenException(I18n.get(ToolExceptionMessage.API_DISABLED));
+        throw new ForbiddenException(I18n.get(UtilsExceptionMessage.API_DISABLED));
       }
     } catch (BadRequestException e) {
       return ResponseConstructor.build(Response.Status.BAD_REQUEST, e.getMessage());
@@ -49,7 +49,7 @@ public class HttpExceptionHandlerImpl implements MethodInterceptor {
     } catch (ClientErrorException e) {
       return ResponseConstructor.build(Response.Status.CONFLICT, e.getMessage());
     } catch (Exception e) {
-      ExceptionTool.trace(e);
+      ExceptionHelper.trace(e);
       return ResponseConstructor.build(Response.Status.INTERNAL_SERVER_ERROR, e.getMessage());
     }
   }

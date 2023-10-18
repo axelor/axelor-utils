@@ -18,7 +18,7 @@
 package com.axelor.utils.service;
 
 import com.axelor.common.StringUtils;
-import com.axelor.utils.ExceptionTool;
+import com.axelor.utils.helpers.ExceptionHelper;
 import com.google.inject.Inject;
 import java.io.UnsupportedEncodingException;
 import java.security.InvalidKeyException;
@@ -61,7 +61,7 @@ public class CipherServiceImpl implements CipherService {
       }
 
     } catch (Exception e) {
-      ExceptionTool.trace(e);
+      ExceptionHelper.trace(e);
     }
     return encryptedString;
   }
@@ -83,7 +83,7 @@ public class CipherServiceImpl implements CipherService {
       }
 
     } catch (Exception e) {
-      ExceptionTool.trace(e);
+      ExceptionHelper.trace(e);
     }
     return decryptedText;
   }
