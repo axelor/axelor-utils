@@ -77,7 +77,7 @@ public final class UtilsExceptionMessage {
   public static final String ERROR_CONVERT_JSON_TYPE_TO_TYPE = /*$$(*/
       "Meta json field type %s could not be converted to a meta field type." /*)*/;
 
-  // Callable Tool
+  /** ControllerCallableHelper */
   public static final String PROCESS_BEING_COMPUTED = /*$$(*/ "Computation in progress..." /*)*/;
 
   public static final String EXCEPTION_OCCURRED = /*$$(*/
