@@ -66,7 +66,9 @@ public class ProWeb extends Service {
     super(WSDL_LOCATION, SERVICE);
   }
 
-  /** @return returns QAPortType */
+  /**
+   * @return returns QAPortType
+   */
   @WebEndpoint(name = "QAPortType")
   public QAPortType getQAPortType() {
     return super.getPort(QAPortType, QAPortType.class);

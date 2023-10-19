@@ -63,8 +63,7 @@ public class MassUpdateHelper {
     List<List<T>> dataList = Lists.partition(objectList, 25);
     AtomicInteger counter = new AtomicInteger(0);
 
-    dataList
-        .parallelStream()
+    dataList.parallelStream()
         .forEach(
             list -> executor.add(() -> updateStatus(list, newValue, property, counter, beanRepo)));
     executor.run();

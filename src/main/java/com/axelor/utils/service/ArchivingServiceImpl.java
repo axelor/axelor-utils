@@ -25,7 +25,9 @@ import java.util.Map;
 import javax.persistence.NoResultException;
 import javax.persistence.Query;
 
-/** @author axelor */
+/**
+ * @author axelor
+ */
 public class ArchivingServiceImpl implements ArchivingService {
 
   /** */
