@@ -33,6 +33,9 @@ build:
   script:
     - ./gradlew -xtest -xspotlessApply -xlicenseFormat clean build
   interruptible: true
+  except:
+    - tags
+    - schedules
 
 # Check code formatting
 spotless:
@@ -43,8 +46,9 @@ spotless:
   script:
     - ./gradlew spotlessCheck
   interruptible: true
-  only:
-    - branches
+  except:
+    - tags
+    - schedules
 
 # Run tests
 test:
@@ -55,8 +59,9 @@ test:
   script:
     - ./gradlew test
   interruptible: true
-  only:
-    - branches
+  except:
+    - tags
+    - schedules
   artifacts:
     expire_in: 31d
     paths:
@@ -69,14 +74,16 @@ test:
   cache:
     - *global_cache_pull
   script:
-    - ./gradlew -xtest -xspotlessApply -xlicenseFormat publish -PaddonsMavenUsername=${NEXUS_ADDONS_DEPLOYMENT_USER} -PaddonsMavenPassword=${NEXUS_ADDONS_DEPLOYMENT_PASSWORD} -P${PUBLISH_TYPE}
+    - ./gradlew -xtest -xspotlessApply -xlicenseFormat clean build publish -PaddonsMavenUsername=${NEXUS_ADDONS_DEPLOYMENT_USER} -PaddonsMavenPassword=${NEXUS_ADDONS_DEPLOYMENT_PASSWORD} -P${PUBLISH_TYPE}
 
 publish snapshot:
   <<: *publish_configuration
   variables:
     PUBLISH_TYPE: "snapshotRelease"
-  rules:
-    - if: $CI_PIPELINE_SOURCE == "schedule" && ($CI_COMMIT_BRANCH == "main" || $CI_COMMIT_BRANCH =~ /next-.+/)
+  only:
+    - main
+    - /^next-.+$/
+    - schedules
 
 publish release:
   <<: *publish_configuration
