@@ -19,12 +19,8 @@ package com.axelor.utils.templating;
 
 import com.axelor.db.Model;
 import com.google.common.base.Strings;
-import com.google.common.collect.Lists;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Locale;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.stringtemplate.v4.AttributeRenderer;
 import org.stringtemplate.v4.ST;
