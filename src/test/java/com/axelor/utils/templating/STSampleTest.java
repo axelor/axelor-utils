@@ -20,6 +20,7 @@ package com.axelor.utils.templating;
 import com.axelor.db.Model;
 import com.google.common.base.Strings;
 import com.google.common.collect.Lists;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 import org.junit.jupiter.api.Assertions;
@@ -33,20 +34,11 @@ class STSampleTest {
 
   public String template = "Hi $contact.name;format=\"upper\"$ $contact.lastName$";
 
-  private static final List<Contact> data = Lists.newArrayList();
-
   private static final int MAX_ITER = 5000;
 
   private static final char CHAR = '$';
 
   private STGroup stGroup;
-
-  @BeforeEach
-  public void before() {
-    for (int i = 0; i < MAX_ITER; i++) {
-      data.add(new Contact("Name" + i, "LastName" + i));
-    }
-  }
 
   @Test
   void test() {
@@ -54,7 +46,8 @@ class STSampleTest {
     stGroup = new STGroup(CHAR, CHAR);
     stGroup.registerRenderer(String.class, new BasicFormatRenderer());
 
-    for (Contact contact : data) {
+    for (int i = 0; i < MAX_ITER; i++) {
+      Contact contact = new Contact("Name" + i, "LastName" + i);
       String result = run(contact);
 
       String expected = "Hi " + contact.getName().toUpperCase() + " " + contact.getLastName();
@@ -69,7 +62,7 @@ class STSampleTest {
     return st.render();
   }
 
-  class BasicFormatRenderer implements AttributeRenderer {
+  static class BasicFormatRenderer implements AttributeRenderer {
 
     public String toString(Object o) {
       return o.toString();
@@ -98,7 +91,7 @@ class STSampleTest {
     }
   }
 
-  class Contact extends Model {
+  static class Contact extends Model {
     private Long id;
     private String name;
     private String lastName;
