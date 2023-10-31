@@ -20,20 +20,21 @@ package com.axelor.utils.service.reader;
 import com.axelor.meta.MetaFiles;
 import com.axelor.meta.db.MetaFile;
 import com.axelor.utils.helpers.ExceptionHelper;
-import com.opencsv.CSVReader;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import org.apache.commons.collections.CollectionUtils;
+import org.apache.commons.csv.CSVFormat;
+import org.apache.commons.csv.CSVRecord;
 
 public class CsvReader implements DataReader {
 
-  private CSVReader csvReader = null;
-  private List<String[]> totalRows = new ArrayList<>();
+  private CSVFormat format = null;
+  private List<CSVRecord> totalRows = new ArrayList<>();
   private String fileName;
 
   @Override
@@ -49,13 +50,10 @@ public class CsvReader implements DataReader {
       return false;
     }
 
-    try (FileInputStream inSteam = new FileInputStream(inFile)) {
-
-      csvReader =
-          new CSVReader(
-              new InputStreamReader(inSteam, StandardCharsets.UTF_8), separator.charAt(0));
-      totalRows = csvReader.readAll();
-      if (csvReader.getLinesRead() == 0) {
+    try (FileReader reader = new FileReader(inFile)) {
+      format = CSVFormat.Builder.create().setDelimiter(separator.charAt(0)).build();
+      totalRows = format.parse(reader).getRecords();
+      if (CollectionUtils.isEmpty(totalRows)) {
         return false;
       }
     } catch (IOException e) {
@@ -68,26 +66,26 @@ public class CsvReader implements DataReader {
   @Override
   public String[] read(String sheetName, int index, int headerSize) {
 
-    if (csvReader == null || CollectionUtils.isEmpty(totalRows)) {
+    if (format == null || CollectionUtils.isEmpty(totalRows)) {
       return new String[0];
     }
 
-    return totalRows.get(index);
+    return totalRows.get(index).stream().toArray(String[]::new);
   }
 
   @Override
   public int getTotalLines(String sheetName) {
-    if (csvReader == null) {
+    if (format == null) {
       return 0;
     }
 
-    return (int) csvReader.getLinesRead();
+    return totalRows.size();
   }
 
   @Override
   public String[] getSheetNames() {
 
-    if (csvReader == null || CollectionUtils.isEmpty(totalRows)) {
+    if (format == null || CollectionUtils.isEmpty(totalRows)) {
       return new String[0];
     }
 

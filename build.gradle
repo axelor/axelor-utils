@@ -50,11 +50,11 @@ axelor {
 }
 
 dependencies {
-    implementation 'commons-net:commons-net:2.0'
-    implementation 'org.apache.commons:commons-io:1.3.2'
-    implementation 'org.apache.commons:commons-lang3:3.2'
+    implementation 'commons-net:commons-net:3.10.0'
+    implementation 'commons-io:commons-io:2.15.0'
+    implementation 'org.apache.commons:commons-lang3:3.13.0'
     implementation 'org.apache.pdfbox:pdfbox:3.0.0'
-    implementation 'org.apache.commons:commons-text:1.9'
+    implementation 'org.apache.commons:commons-text:1.11.0'
 
     // JSch
     implementation 'com.jcraft:jsch:0.1.55'
@@ -62,9 +62,9 @@ dependencies {
     compileOnly 'javax.xml.ws:jaxws-api:2.3.1'
     compileOnly 'javax.xml.bind:jaxb-api:2.3.1'
 
-    implementation 'com.sun.xml.bind:jaxb-impl:2.3.1'
-    api 'com.opencsv:opencsv:4.6'
-    implementation 'javax.xml.ws:jaxws-api:2.3.1'
+    implementation 'com.sun.xml.bind:jaxb-impl:4.0.4'
+    implementation 'org.apache.commons:commons-csv:1.10.0'
+
     implementation 'javax.jws:javax.jws-api:1.1'
     implementation 'org.reflections:reflections:0.10.2'
     implementation 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.15.3'
@@ -73,8 +73,8 @@ dependencies {
 
     testImplementation 'org.junit.vintage:junit-vintage-engine'
 
-    compileOnly 'org.projectlombok:lombok:1.18.24'
-    annotationProcessor 'org.projectlombok:lombok:1.18.24'
+    compileOnly 'org.projectlombok:lombok:1.18.30'
+    annotationProcessor 'org.projectlombok:lombok:1.18.30'
 }
 
 tasks.register('generateChangelog', GenerateChangelog) {

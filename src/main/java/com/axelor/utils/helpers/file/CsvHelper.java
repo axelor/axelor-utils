@@ -1,21 +1,19 @@
 package com.axelor.utils.helpers.file;
 
-import com.opencsv.CSVParser;
-import com.opencsv.CSVParserBuilder;
-import com.opencsv.CSVReader;
-import com.opencsv.CSVReaderBuilder;
-import com.opencsv.CSVWriter;
-import com.opencsv.ICSVWriter;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.Writer;
+import java.util.Arrays;
 import java.util.List;
+import org.apache.commons.csv.CSVFormat;
+import org.apache.commons.csv.CSVPrinter;
+import org.apache.commons.csv.CSVRecord;
 
 public final class CsvHelper {
 
-  private CsvHelper() {}
+  private CsvHelper() {
+  }
 
   /**
    * Read the content of a file.
@@ -25,15 +23,11 @@ public final class CsvHelper {
    * @return a list of arrays with all the lines
    * @throws IOException
    */
-  public static List<String[]> cSVFileReader(String fileName, char separator) throws IOException {
-
-    final CSVParser parser = new CSVParserBuilder().withSeparator(separator).build();
-    final CSVReader reader =
-        new CSVReaderBuilder(new FileReader(fileName)).withCSVParser(parser).build();
-    List<String[]> myEntries = reader.readAll();
-    reader.close();
-
-    return myEntries;
+  public static List<CSVRecord> csvFileReader(String fileName, char separator)
+      throws IOException {
+    CSVFormat format = CSVFormat.Builder.create().setDelimiter(separator).build();
+    var records = format.parse(new FileReader(fileName));
+    return records.getRecords();
   }
 
   /*
@@ -45,36 +39,36 @@ public final class CsvHelper {
    * @return
    * @throws IOException
    */
-  public static CSVWriter setCsvFile(final String filePath, final String fileName, char separator)
+  public static CSVPrinter setCsvFile(final String filePath, final String fileName, char separator)
       throws IOException {
-
-    Writer w = new FileWriter(filePath + File.separator + fileName);
-    return new CSVWriter(
-        w, separator, ICSVWriter.NO_QUOTE_CHARACTER, ICSVWriter.DEFAULT_ESCAPE_CHARACTER, "\r\n");
+    try (var writer = new FileWriter(filePath + File.separator + fileName)) {
+      return new CSVPrinter(writer,
+          CSVFormat.Builder.create().setDelimiter(separator).setQuote(null).build());
+    }
   }
 
-  public static CSVWriter setCsvFile(
+  public static CSVPrinter setCsvFile(
       final String filePath, final String fileName, char separator, char quoteChar)
       throws IOException {
-
-    Writer w = new FileWriter(filePath + File.separator + fileName);
-    return new CSVWriter(w, separator, quoteChar, ICSVWriter.DEFAULT_ESCAPE_CHARACTER, "\r\n");
+    try (var writer = new FileWriter(filePath + File.separator + fileName)) {
+      return new CSVPrinter(writer,
+          CSVFormat.Builder.create().setDelimiter(separator).setQuote(quoteChar).build());
+    }
   }
 
   public static void csvWriter(
       String filePath, String fileName, char separator, String[] headers, List<String[]> dataList)
       throws IOException {
-    CSVWriter reconWriter = setCsvFile(filePath, fileName, separator);
+    var printer = setCsvFile(filePath, fileName, separator);
     if (headers != null) {
-      reconWriter.writeNext(headers);
+      printer.printRecord(Arrays.asList(headers));
     }
-    reconWriter.writeAll(dataList);
-    reconWriter.flush();
+    printer.printRecords(dataList);
+    printer.flush();
     try {
-      reconWriter.close();
+      printer.close();
     } catch (IOException e) {
-
-      reconWriter = null;
+      printer = null;
     }
   }
 
@@ -86,17 +80,16 @@ public final class CsvHelper {
       String[] headers,
       List<String[]> dataList)
       throws IOException {
-    CSVWriter reconWriter = setCsvFile(filePath, fileName, separator, quoteChar);
+    var printer = setCsvFile(filePath, fileName, separator, quoteChar);
     if (headers != null) {
-      reconWriter.writeNext(headers);
+      printer.printRecord(Arrays.asList(headers));
     }
-    reconWriter.writeAll(dataList);
-    reconWriter.flush();
+    printer.printRecords(dataList);
+    printer.flush();
     try {
-      reconWriter.close();
+      printer.close();
     } catch (IOException e) {
-
-      reconWriter = null;
+      printer = null;
     }
   }
 }

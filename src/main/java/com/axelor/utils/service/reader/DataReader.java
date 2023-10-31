@@ -18,6 +18,8 @@
 package com.axelor.utils.service.reader;
 
 import com.axelor.meta.db.MetaFile;
+import java.util.Optional;
+import org.apache.commons.csv.CSVRecord;
 
 public interface DataReader {
 
@@ -32,7 +34,7 @@ public interface DataReader {
   /**
    * Returns record/row of a particular line.
    *
-   * @param key
+   * @param sheetName
    * @param index
    * @param headerSize
    * @return
@@ -42,7 +44,7 @@ public interface DataReader {
   /**
    * Returns total number of lines.
    *
-   * @param key
+   * @param sheetName
    * @return
    */
   public int getTotalLines(String sheetName);
