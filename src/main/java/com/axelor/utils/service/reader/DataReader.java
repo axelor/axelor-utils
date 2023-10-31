@@ -18,8 +18,6 @@
 package com.axelor.utils.service.reader;
 
 import com.axelor.meta.db.MetaFile;
-import java.util.Optional;
-import org.apache.commons.csv.CSVRecord;
 
 public interface DataReader {
 

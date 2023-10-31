@@ -12,8 +12,7 @@ import org.apache.commons.csv.CSVRecord;
 
 public final class CsvHelper {
 
-  private CsvHelper() {
-  }
+  private CsvHelper() {}
 
   /**
    * Read the content of a file.
@@ -23,8 +22,7 @@ public final class CsvHelper {
    * @return a list of arrays with all the lines
    * @throws IOException
    */
-  public static List<CSVRecord> csvFileReader(String fileName, char separator)
-      throws IOException {
+  public static List<CSVRecord> csvFileReader(String fileName, char separator) throws IOException {
     CSVFormat format = CSVFormat.Builder.create().setDelimiter(separator).build();
     var records = format.parse(new FileReader(fileName));
     return records.getRecords();
@@ -42,8 +40,8 @@ public final class CsvHelper {
   public static CSVPrinter setCsvFile(final String filePath, final String fileName, char separator)
       throws IOException {
     try (var writer = new FileWriter(filePath + File.separator + fileName)) {
-      return new CSVPrinter(writer,
-          CSVFormat.Builder.create().setDelimiter(separator).setQuote(null).build());
+      return new CSVPrinter(
+          writer, CSVFormat.Builder.create().setDelimiter(separator).setQuote(null).build());
     }
   }
 
@@ -51,8 +49,8 @@ public final class CsvHelper {
       final String filePath, final String fileName, char separator, char quoteChar)
       throws IOException {
     try (var writer = new FileWriter(filePath + File.separator + fileName)) {
-      return new CSVPrinter(writer,
-          CSVFormat.Builder.create().setDelimiter(separator).setQuote(quoteChar).build());
+      return new CSVPrinter(
+          writer, CSVFormat.Builder.create().setDelimiter(separator).setQuote(quoteChar).build());
     }
   }
 
