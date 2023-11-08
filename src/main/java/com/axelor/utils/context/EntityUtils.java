@@ -72,18 +72,20 @@ public class EntityUtils {
     }
   }
 
+  @SuppressWarnings("unchecked")
   private static <T extends Model> void processSimpleRelation(
-      T dbEntity, Property property, Object object) {
-    @SuppressWarnings("unchecked")
-    Model model = merge((Map<String, Object>) object, (Class<T>) property.getTarget());
-    property.set(dbEntity, model);
+    T dbEntity, Property property, Object object) {
+    if (object instanceof Map) {
+      object = merge((Map<String, Object>) object, (Class<T>) property.getTarget());
+    }
+    property.set(dbEntity, object);
   }
 
   @SuppressWarnings("unchecked")
   private static <T extends Model> void processMultiRelation(
       T dbEntity, Property property, Object object) {
-    object = wrap((Collection<Map<String, Object>>) object, property.getType());
-    Collection<Map<String, Object>> list = (Collection<Map<String, Object>>) object;
+    object = wrap((Collection<Object>) object, property.getType());
+    Collection<Object> list = (Collection<Object>) object;
     String mappedBy = property.getMappedBy();
 
     Mapper mappedByMapper = Mapper.of(property.getTarget());
@@ -106,8 +108,15 @@ public class EntityUtils {
 
   @SuppressWarnings("unchecked")
   private static <T extends Model> T processCollectionContext(
-      T dbEntity, Property property, Property mappedByProperty, Map<String, Object> map) {
-    T model = merge(map, (Class<T>) property.getTarget());
+      T dbEntity, Property property, Property mappedByProperty, Object map) {
+    T model;
+    if (map instanceof Map){
+      model = merge((Map<String, Object>) map, (Class<T>) property.getTarget());
+    } else if (map instanceof Model) {
+      model = (T) map;
+    } else {
+      return null;
+    }
     if (mappedByProperty != null) {
       mappedByProperty.set(model, dbEntity);
     }
