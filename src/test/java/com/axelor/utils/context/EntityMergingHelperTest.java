@@ -5,7 +5,8 @@ import com.axelor.auth.db.Role;
 import com.axelor.auth.db.User;
 import com.axelor.auth.db.repo.GroupRepository;
 import com.axelor.auth.db.repo.UserRepository;
-import com.axelor.db.JpaRepository;
+import com.axelor.db.JPA;
+import com.axelor.db.Query;
 import com.axelor.meta.loader.LoaderHelper;
 import com.axelor.rpc.Context;
 import com.axelor.utils.db.Move;
@@ -23,11 +24,12 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-public class EntityMergingHelperTest extends BaseTest {
+class EntityMergingHelperTest extends BaseTest {
   protected final LoaderHelper loaderHelper;
   protected final UserRepository userRepository;
   protected final GroupRepository groupRepository;
@@ -47,6 +49,29 @@ public class EntityMergingHelperTest extends BaseTest {
     loaderHelper.importCsv("data/move-references-input.xml");
     loaderHelper.importCsv("data/moves-input.xml");
     loaderHelper.importCsv("data/move-lines-input.xml");
+    createRole("Test");
+  }
+
+  @Transactional
+  public Role createRole(String roleName) {
+    Role role = new Role();
+    role.setName(roleName);
+    return JPA.save(role);
+  }
+
+  public Role findRole(String roleName) {
+    return Query.of(Role.class).filter("self.name = :name").bind("name", roleName).fetchOne();
+  }
+
+  @AfterEach
+  @Transactional
+  public void afterEach() {
+    Query.of(MoveLine.class).delete();
+    Query.of(Move.class).delete();
+    Query.of(MoveReference.class).delete();
+    Query.of(User.class).delete();
+    Query.of(Group.class).delete();
+    Query.of(Role.class).delete();
   }
 
   @Test
@@ -78,7 +103,7 @@ public class EntityMergingHelperTest extends BaseTest {
   @Test
   void oneToOne() {
     List<Move> dbMoves =
-        JpaRepository.of(Move.class).all().filter("self.moveReference IS NOT NULL").fetch();
+        Query.of(Move.class).filter("self.moveReference IS NOT NULL").fetch();
     Assertions.assertTrue(dbMoves.size() >= 2);
     Move firstMove = dbMoves.stream().findFirst().orElse(null);
     Assertions.assertNotNull(firstMove);
@@ -126,7 +151,7 @@ public class EntityMergingHelperTest extends BaseTest {
 
   @Test
   void oneToMany() {
-    Move move = JpaRepository.of(Move.class).all().filter("self.code = 'TEST_MOVE_1'").fetchOne();
+    Move move = Query.of(Move.class).filter("self.code = 'TEST_MOVE_1'").fetchOne();
     Assertions.assertNotNull(move);
 
     List<MoveLine> moveLines = move.getMoveLines();
@@ -165,9 +190,9 @@ public class EntityMergingHelperTest extends BaseTest {
 
   @Test
   void manyToMany() {
-    Role role = createRole("Test Role");
+    Role role = findRole("Test");
 
-    User user = JpaRepository.of(User.class).all().filter("self.code LIKE 'admin'").fetchOne();
+    User user = Query.of(User.class).filter("self.code LIKE 'admin'").fetchOne();
     Assertions.assertNotNull(user);
 
     Map<String, Object> roleMap = new HashMap<>();
@@ -186,10 +211,9 @@ public class EntityMergingHelperTest extends BaseTest {
 
   @Test
   void manyToManyRemoveEntityFromList() {
+    Role role = findRole("Test");
 
-    Role role = createRole("Test Removing role");
-
-    User user = JpaRepository.of(User.class).all().filter("self.code LIKE 'admin'").fetchOne();
+    User user = Query.of(User.class).filter("self.code LIKE 'admin'").fetchOne();
     user = addRoleToUser(role, user);
     Assertions.assertNotNull(user);
     Assertions.assertFalse(user.getRoles().isEmpty());
@@ -202,15 +226,63 @@ public class EntityMergingHelperTest extends BaseTest {
   }
 
   @Transactional
-  public Role createRole(String roleName) {
-    Role role = new Role();
-    role.setName(roleName);
-    return JpaRepository.of(Role.class).save(role);
+  public User addRoleToUser(Role role, User user) {
+    Optional.ofNullable(user).map(User::getRoles).ifPresent(roles -> roles.add(role));
+    return JPA.save(user);
+  }
+
+  @Test
+  void dottedManyToManyInContext() {
+    Role role = findRole("Test");
+
+    User user = Query.of(User.class).filter("self.code LIKE 'admin'").fetchOne();
+    Group group = user.getGroup();
+
+    Assertions.assertNotNull(user);
+
+    Map<String, Object> roleMap = new HashMap<>();
+    roleMap.put("id", role.getId());
+    List<Map<String, Object>> rolesMapList = new ArrayList<>();
+    rolesMapList.add(roleMap);
+
+    Map<String, Object> groupMap = new HashMap<>();
+    groupMap.put("id", group.getId());
+    groupMap.put("roles", rolesMapList);
+
+    Map<String, Object> userMap = new HashMap<>();
+    userMap.put("id", user.getId());
+    userMap.put("name", "Tutu");
+    userMap.put("group", groupMap);
+
+    Context context = new Context(userMap, User.class);
+    Integer groupVersion = group.getVersion();
+    User mergedUser = getUser(context);
+
+    Assertions.assertEquals(mergedUser.getGroup().getVersion(), groupVersion);
+    Assertions.assertEquals("Tutu", mergedUser.getName());
   }
 
   @Transactional
-  public User addRoleToUser(Role role, User user) {
-    Optional.ofNullable(user).map(User::getRoles).ifPresent(roles -> roles.add(role));
-    return JpaRepository.of(User.class).save(user);
+  protected User getUser(Context context) {
+    return JPA.save(EntityMergingHelper.merge(context, User.class));
+  }
+
+  @Test
+  void realEntityInContext() {
+    Role role = findRole("Test");
+
+    User user = Query.of(User.class).filter("self.code LIKE 'admin'").fetchOne();
+    Assertions.assertNotNull(user);
+
+    List<Role> rolesList = new ArrayList<>();
+    rolesList.add(role);
+
+    Map<String, Object> userMap = new HashMap<>();
+    userMap.put("id", user.getId());
+    userMap.put("roles", rolesList);
+    Context context = new Context(userMap, User.class);
+    User mergedUser = EntityMergingHelper.merge(context, User.class);
+
+    Assertions.assertTrue(mergedUser.getRoles().contains(role));
   }
 }
