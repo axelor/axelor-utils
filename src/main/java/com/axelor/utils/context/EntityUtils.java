@@ -74,7 +74,7 @@ public class EntityUtils {
 
   @SuppressWarnings("unchecked")
   private static <T extends Model> void processSimpleRelation(
-    T dbEntity, Property property, Object object) {
+      T dbEntity, Property property, Object object) {
     if (object instanceof Map) {
       object = merge((Map<String, Object>) object, (Class<T>) property.getTarget());
     }
@@ -110,7 +110,7 @@ public class EntityUtils {
   private static <T extends Model> T processCollectionContext(
       T dbEntity, Property property, Property mappedByProperty, Object map) {
     T model;
-    if (map instanceof Map){
+    if (map instanceof Map) {
       model = merge((Map<String, Object>) map, (Class<T>) property.getTarget());
     } else if (map instanceof Model) {
       model = (T) map;
