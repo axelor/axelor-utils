@@ -102,8 +102,7 @@ class EntityMergingHelperTest extends BaseTest {
 
   @Test
   void oneToOne() {
-    List<Move> dbMoves =
-        Query.of(Move.class).filter("self.moveReference IS NOT NULL").fetch();
+    List<Move> dbMoves = Query.of(Move.class).filter("self.moveReference IS NOT NULL").fetch();
     Assertions.assertTrue(dbMoves.size() >= 2);
     Move firstMove = dbMoves.stream().findFirst().orElse(null);
     Assertions.assertNotNull(firstMove);
