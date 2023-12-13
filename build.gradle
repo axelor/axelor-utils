@@ -1,4 +1,4 @@
-import com.axelor.gradle.tasks.GenerateChangelog
+import com.axelor.gradle.support.ChangelogSupport
 
 buildscript {
     ext.repos = {
@@ -26,6 +26,7 @@ buildscript.repositories repos
 apply from: "version.gradle"
 apply plugin: "com.axelor.app"
 apply plugin: 'com.adarshr.test-logger'
+apply plugin: ChangelogSupport
 
 try {
     tasks.named("spotlessCheck")
@@ -77,13 +78,12 @@ dependencies {
     annotationProcessor 'org.projectlombok:lombok:1.18.30'
 }
 
-tasks.register('generateChangelog', GenerateChangelog) {
-    description "Generate changelog from unreleased entries."
-    group "Axelor"
-    files = fileTree(projectDir) {
-        include 'changelogs/unreleased/*.yml'
-        include 'changelogs/unreleased/*.yaml'
-    }
+changelog {
+    version baseVersion
+    output.set(file("CHANGELOG.md"))
+    inputPath.set(file("changelogs/unreleased"))
+    types.set(["Feature", "Change", "Deprecate", "Remove", "Fix", "Security"])
+    header.set("${version.get()} (${new Date().format("yyyy-MM-dd")})")
 }
 
 //
