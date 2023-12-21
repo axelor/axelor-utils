@@ -67,7 +67,7 @@ test:
       junit: build/test-results/test/**/TEST-*.xml
 
 .publish_template: &publish_configuration
-  stage: publish
+  stage: plan
   cache:
     - *global_cache_pull
   script:
