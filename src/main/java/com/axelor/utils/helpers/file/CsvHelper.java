@@ -9,64 +9,68 @@ import java.util.List;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVPrinter;
 import org.apache.commons.csv.CSVRecord;
+import org.slf4j.Logger;
 
 public final class CsvHelper {
+
+  private static final Logger log = org.slf4j.LoggerFactory.getLogger(CsvHelper.class);
 
   private CsvHelper() {}
 
   /**
    * Read the content of a file.
    *
-   * @param fileName
-   * @param separator
+   * @param fileName the file name
+   * @param separator the separator
    * @return a list of arrays with all the lines
-   * @throws IOException
+   * @throws IOException if an error occurs during the file reading
    */
   public static List<CSVRecord> csvFileReader(String fileName, char separator) throws IOException {
-    CSVFormat format = CSVFormat.Builder.create().setDelimiter(separator).build();
+    CSVFormat format =
+        CSVFormat.Builder.create()
+            .setDelimiter(separator)
+            .setHeader()
+            .setSkipHeaderRecord(true)
+            .build();
     var records = format.parse(new FileReader(fileName));
     return records.getRecords();
   }
 
-  /*
+  /**
    * Windows format, without double quote and CR/LF at each line end.
    *
-   * @param filePath
-   * @param fileName
-   * @param separator
-   * @return
-   * @throws IOException
+   * @param filePath the file path
+   * @param fileName the file name
+   * @param separator the separator
+   * @return a CSVPrinter
+   * @throws IOException if an error occurs during the creation of the printer
    */
   public static CSVPrinter setCsvFile(final String filePath, final String fileName, char separator)
       throws IOException {
-    try (var writer = new FileWriter(filePath + File.separator + fileName)) {
-      return new CSVPrinter(
-          writer, CSVFormat.Builder.create().setDelimiter(separator).setQuote(null).build());
-    }
+    return new CSVPrinter(
+        new FileWriter(filePath + File.separator + fileName),
+        CSVFormat.Builder.create().setDelimiter(separator).setQuote(null).build());
   }
 
   public static CSVPrinter setCsvFile(
       final String filePath, final String fileName, char separator, char quoteChar)
       throws IOException {
-    try (var writer = new FileWriter(filePath + File.separator + fileName)) {
-      return new CSVPrinter(
-          writer, CSVFormat.Builder.create().setDelimiter(separator).setQuote(quoteChar).build());
-    }
+    return new CSVPrinter(
+        new FileWriter(filePath + File.separator + fileName),
+        CSVFormat.Builder.create().setDelimiter(separator).setQuote(quoteChar).build());
   }
 
   public static void csvWriter(
       String filePath, String fileName, char separator, String[] headers, List<String[]> dataList)
       throws IOException {
     var printer = setCsvFile(filePath, fileName, separator);
-    if (headers != null) {
-      printer.printRecord(Arrays.asList(headers));
-    }
+    printHeaders(headers, printer);
     printer.printRecords(dataList);
     printer.flush();
     try {
       printer.close();
     } catch (IOException e) {
-      printer = null;
+      log.error(e.getMessage(), e);
     }
   }
 
@@ -79,15 +83,19 @@ public final class CsvHelper {
       List<String[]> dataList)
       throws IOException {
     var printer = setCsvFile(filePath, fileName, separator, quoteChar);
-    if (headers != null) {
-      printer.printRecord(Arrays.asList(headers));
-    }
+    printHeaders(headers, printer);
     printer.printRecords(dataList);
     printer.flush();
     try {
       printer.close();
     } catch (IOException e) {
-      printer = null;
+      log.error(e.getMessage(), e);
+    }
+  }
+
+  private static void printHeaders(String[] headers, CSVPrinter printer) throws IOException {
+    if (headers != null) {
+      printer.printRecord(Arrays.asList(headers));
     }
   }
 }
