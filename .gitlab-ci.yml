@@ -35,7 +35,8 @@ build:
   interruptible: true
   rules:
     - if: '$CI_PIPELINE_SOURCE != "schedule"'
-    - if: $CI_PIPELINE_SOURCE != "merge_request_event"
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+      when: never
 
 # Check code formatting
 spotless:
@@ -48,7 +49,8 @@ spotless:
   interruptible: true
   rules:
     - if: '$CI_PIPELINE_SOURCE != "schedule"'
-    - if: $CI_PIPELINE_SOURCE != "merge_request_event"
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+      when: never
 
 # Run tests
 test:
@@ -61,7 +63,8 @@ test:
   interruptible: true
   rules:
     - if: '$CI_PIPELINE_SOURCE != "schedule"'
-    - if: $CI_PIPELINE_SOURCE != "merge_request_event"
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+      when: never
   artifacts:
     expire_in: 31d
     paths:
