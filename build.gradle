@@ -1,31 +1,11 @@
 import com.axelor.gradle.support.ChangelogSupport
 
-buildscript {
-    ext.repos = {
-        mavenCentral() {
-            content { excludeGroupByRegex "com\\.axelor.*" }
-        }
-        maven {
-            url 'https://plugins.gradle.org/m2/'
-            content { excludeGroupByRegex "com\\.axelor.*" }
-        }
-        maven { url 'https://repository.axelor.com/nexus/repository/maven-public/' }
-    }
-    ext.aopVersion = '7.0.0'
-    repositories repos
-    buildscript.repositories repos
-    dependencies {
-        classpath "com.axelor:axelor-gradle:${aopVersion}"
-        classpath "com.adarshr:gradle-test-logger-plugin:2.+"
-    }
+plugins {
+    id 'com.axelor.app'
+    id "com.adarshr.test-logger" version "2.+"
 }
 
-repositories repos
-buildscript.repositories repos
-
 apply from: "version.gradle"
-apply plugin: "com.axelor.app"
-apply plugin: 'com.adarshr.test-logger'
 apply plugin: ChangelogSupport
 
 try {
