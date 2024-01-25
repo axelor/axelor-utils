@@ -20,12 +20,12 @@ buildscript {
     }
 }
 
-plugins {
-    id 'com.axelor.app'
-    id "com.adarshr.test-logger" version "2.+"
-}
+repositories repos
+buildscript.repositories repos
 
 apply from: "version.gradle"
+apply plugin: "com.axelor.app"
+apply plugin: 'com.adarshr.test-logger'
 apply plugin: ChangelogSupport
 
 try {
