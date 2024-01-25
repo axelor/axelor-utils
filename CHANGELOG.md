@@ -1,3 +1,41 @@
+## 2.0.0 (2024-01-25)
+
+#### Feature
+
+* Add JsonUtils class to convert beans to json and json to beans
+* Add ControllerCallableHelper to run services in controller asynchronously
+
+#### Change
+
+* Apply naming convention to all utils classes
+
+  <details>
+  
+  Please take notes of the following changes: 
+  - Deleted DateTool, DatesInterval and Period classes
+  - Renamed ToolExceptionMessage to UtilsExceptionMessage
+  - Renamed all classes with Tool and Utils suffix to Helper suffix
+  - Move all helper classes to com.axelor.utils.helpers package
+  - Deleted ListToolService and its implementation in favor of ListHelper and updated the implementation
+  - Renamed WrapUtils to WrappingHelper
+  - Renamed SFTPUtils to SftpHelper
+  - Renamed StringHTMLListBuilder to StringHtmlListBuilder
+  - Renamed EntityUtils to EntityMergingHelper
+  - Renamed MyFtp to FtpHelper
+  - Renamed URLService to UrlHelper
+  - Renamed ArchivingToolService and its implementation to ArchivingService and ArchivingServiceImpl
+  - Renamed ConvertBinaryToMetafileService and its implementation to BinaryConversionService and BinaryConversionServiceImpl
+  - Renamed ConvertBinaryToMetafileService.convertByteTabPictureInMetafile() method to BinaryConversionService.toMetafile()
+  - Renamed DMSFileToolService and its implementation to DmsFileService and DmsFileServiceImpl
+  - Renamed DataReaderService, CSVReaderService and ExcelReaderService to DataReader, CSVReader and ExcelReader
+  - Made DataReaderFactory a real service with its implementation to allow for easier extensions
+  - Deleted DateToXML and moved its methods to LocalDateTimeHelper
+  - Renamed Marschaller to MarshallingHelper
+  - Renamed XPathParse to XPathParser
+  
+  </details>
+
+
 ## 1.3.2 (2023-09-20)
 
 #### Changes
