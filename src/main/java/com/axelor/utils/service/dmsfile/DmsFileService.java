@@ -24,4 +24,33 @@ public interface DmsFileService {
    * @return the inline URL in a string.
    */
   String getInlineUrl(DMSFile dmsFile);
+
+  /**
+   * Given any Model object and a list of model objects, it changes the DMS file of any object in
+   * the list by linked them to the object merged .
+   *
+   * @param entityList List of Model objects
+   * @param entityMerged Model object
+   * @return void.
+   */
+  void addLinkedDMSFiles(List<? extends Model> entityList, Model entityMerged);
+
+  /**
+   * Given any Model object, returns the DMS file root of the DMS file. The DMS root file is a file
+   * with a relatedId equal to 0 and isDirectory with a value set to true display a PDF file in a
+   * viewer in a form view.
+   *
+   * @param model DMS file
+   * @return the DMS file root .
+   */
+  DMSFile getDMSRoot(Model model);
+
+  /**
+   * Given any Model object and DMS file, returns the DMS file home of the model passed.
+   *
+   * @param model any Model object
+   * @param dmsRoot any dms root file
+   * @return the DMS file .
+   */
+  DMSFile getDMSHome(Model model, DMSFile dmsRoot);
 }
