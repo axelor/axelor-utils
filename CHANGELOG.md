@@ -1,3 +1,20 @@
+## 3.0.0 (2024-04-03)
+
+#### Feature
+
+* Integrate AOS dms file methods to utils
+
+#### Change
+
+* chore: Don't trigger pipelines several times
+
+  <details>
+  
+  apply new workflow to improve our CI\CD efficiency
+  
+  </details>
+
+
 ## 2.0.0 (2024-01-25)
 
 #### Feature

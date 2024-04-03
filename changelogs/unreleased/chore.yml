@@ -1,5 +1,0 @@
----
-title: "chore: Don't trigger pipelines several times"
-type: change
-description : |
-  apply new workflow to improve our CI\CD efficiency
