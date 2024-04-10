@@ -3,7 +3,7 @@ buildscript {
     gradlePluginPortal()
   }
   dependencies {
-    classpath "com.diffplug.spotless:spotless-plugin-gradle:6.11.0"
+    classpath "com.diffplug.spotless:spotless-plugin-gradle:6.25.0"
   }
 }
 
@@ -25,7 +25,6 @@ spotless {
       exclude '**/webapp/**'
       exclude '**/.gradle/**'
       exclude '**/build/**'
-      exclude '**/node_modules/**'
     }
     indentWithSpaces(2)
     trimTrailingWhitespace()
@@ -37,7 +36,6 @@ spotless {
       include '**/*.md'
       exclude 'CHANGELOG.md'
       exclude '**/build/**'
-      exclude '**/node_modules/**'
     }
     indentWithSpaces(2)
     endWithNewline()
@@ -48,8 +46,6 @@ spotless {
       include '**/*.xml'
       exclude '**/build/**'
       exclude '**/.gradle/**'
-      exclude '**/node_modules/**'
-      exclude '**/bolt-module/src/main/resources/configurators/**'
       exclude '.idea/**'
     }
     eclipseWtp('xml').configFile("${project.projectDir}/gradle/spotless.xml.prefs")
@@ -60,7 +56,6 @@ spotless {
     target fileTree(projectDir) {
       include '**/*.java'
       exclude '**/build/**'
-      exclude '**/node_modules/**'
     }
     googleJavaFormat()
   }

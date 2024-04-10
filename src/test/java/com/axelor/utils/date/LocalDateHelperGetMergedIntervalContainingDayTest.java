@@ -421,6 +421,7 @@ class LocalDateHelperGetMergedIntervalContainingDayTest {
 
     assertEquals(actual, expected);
   }
+
   // i: -----------A_B-----------
   // i: T = null
   // o: IllegalArgumentException

@@ -89,8 +89,11 @@ public class CipherServiceImpl implements CipherService {
   }
 
   private SecretKey initEncryptOrDecrypt()
-      throws UnsupportedEncodingException, InvalidKeyException, NoSuchAlgorithmException,
-          NoSuchPaddingException, InvalidKeySpecException {
+      throws UnsupportedEncodingException,
+          InvalidKeyException,
+          NoSuchAlgorithmException,
+          NoSuchPaddingException,
+          InvalidKeySpecException {
 
     String encryptionScheme = DESEDE_ENCRYPTION_SCHEME;
     String encryptionkey = appSettingsService.encryptionKey();

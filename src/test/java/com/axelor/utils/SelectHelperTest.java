@@ -188,6 +188,7 @@ class SelectHelperTest extends BaseTest {
     result = getOptionalTitleFromStringValue(null, null);
     Assertions.assertEquals(result, Optional.empty());
   }
+
   // ____________________________________________________________________________________________
   // ____________________________________________________________________________________________
   // getTitleFromStringValue
@@ -410,6 +411,7 @@ class SelectHelperTest extends BaseTest {
     result = getOptionalTitleFromIntegerValue(null, null);
     Assertions.assertEquals(result, Optional.empty());
   }
+
   // ____________________________________________________________________________________________
   // ____________________________________________________________________________________________
   // getTitleFromIntegerValue
