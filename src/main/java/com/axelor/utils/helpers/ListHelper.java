@@ -1,13 +1,32 @@
 package com.axelor.utils.helpers;
 
 import com.google.common.base.Optional;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 public class ListHelper {
-  public <T> List<T> intersection(List<T> list1, List<T> list2) {
+
+  private ListHelper() {
+    throw new IllegalStateException("Cannot instantiate utility classes.");
+  }
+
+  /**
+   * Returns the intersection of two lists
+   *
+   * <p>It returns a list containing only the elements that are present in both lists
+   *
+   * @param list1 the first {@code List}
+   * @param list2 the second {@code List}
+   * @param <T> type of elements in list
+   * @return the intersection of list1 and list2
+   */
+  public static <T> List<T> intersection(List<T> list1, List<T> list2) {
+    if (list1 == null || list2 == null) {
+      return Collections.emptyList();
+    }
     return list1.stream().filter(list2::contains).distinct().collect(Collectors.toList());
   }
 
