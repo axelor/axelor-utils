@@ -1,5 +1,6 @@
 package com.axelor.utils;
 
+import com.axelor.utils.utils.StringToStringListArgumentConverter;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import com.axelor.utils.helpers.ListHelper;
@@ -9,7 +10,9 @@ import java.util.Collections;
 import java.util.List;
 import java.util.stream.Stream;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.converter.ConvertWith;
 import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.MethodSource;
 
 class ListHelperTest {
@@ -43,17 +46,19 @@ class ListHelperTest {
         Arguments.of(Arrays.asList(1, 2, 3), Arrays.asList(4, 5, 6), Collections.emptyList()));
   }
 
-  @ParameterizedTest
-  @MethodSource("provideDataToTestFirst")
-  <T> void testFirst(List<T> list, Optional<T> expected) {
-    assertEquals(expected, ListHelper.first(list));
+  @ParameterizedTest(name = "ListHelper.first({0}) = {1}")
+  @CsvSource({
+    ",",
+    "'',",
+    "'element1,element2,element3', 'element1'",
+    "',,',",
+    "'1,2,3', '1'",
+    "',element2,',''"
+  })
+  void testFirst(
+      @ConvertWith(StringToStringListArgumentConverter.class) List<String> list, String expected) {
+    Optional<String> first = ListHelper.first(list);
+    assertEquals(expected, first.orNull());
   }
 
-  private static Stream<Arguments> provideDataToTestFirst() {
-    return Stream.of(
-        Arguments.of(null, Optional.absent()),
-        Arguments.of(Collections.emptyList(), Optional.absent()),
-        Arguments.of(Arrays.asList("element1", "element2", "element3"), Optional.of("element1")),
-        Arguments.of(Arrays.asList(null, null, null), Optional.absent()));
-  }
 }
