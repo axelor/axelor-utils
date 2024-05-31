@@ -1,3 +1,17 @@
+## 3.1.0 (2024-05-31)
+
+#### Feature
+
+* Add new method to ListHelper to get an Optional for the first element of a list
+
+#### Change
+
+* ListHelper.intersection is now a static method
+
+#### Fix
+
+* Use java Optional instead of guava
+
 ## 3.0.0 (2024-04-03)
 
 #### Feature
