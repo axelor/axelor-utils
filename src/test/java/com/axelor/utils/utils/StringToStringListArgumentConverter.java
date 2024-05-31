@@ -1,12 +1,11 @@
 package com.axelor.utils.utils;
 
+import java.util.List;
 import org.junit.jupiter.params.converter.ArgumentConversionException;
 import org.junit.jupiter.params.converter.TypedArgumentConverter;
-import java.util.List;
 
 @SuppressWarnings("rawtypes")
-public class StringToStringListArgumentConverter
-    extends TypedArgumentConverter<String, List> {
+public class StringToStringListArgumentConverter extends TypedArgumentConverter<String, List> {
   protected StringToStringListArgumentConverter() {
     super(String.class, List.class);
   }

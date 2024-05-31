@@ -1,13 +1,13 @@
 package com.axelor.utils;
 
-import com.axelor.utils.utils.StringToStringListArgumentConverter;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import com.axelor.utils.helpers.ListHelper;
-import com.google.common.base.Optional;
+import com.axelor.utils.utils.StringToStringListArgumentConverter;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Stream;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.converter.ConvertWith;
@@ -58,7 +58,6 @@ class ListHelperTest {
   void testFirst(
       @ConvertWith(StringToStringListArgumentConverter.class) List<String> list, String expected) {
     Optional<String> first = ListHelper.first(list);
-    assertEquals(expected, first.orNull());
+    assertEquals(expected, first.orElse(null));
   }
-
 }

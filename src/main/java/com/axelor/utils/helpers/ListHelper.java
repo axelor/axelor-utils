@@ -1,8 +1,8 @@
 package com.axelor.utils.helpers;
 
-import com.google.common.base.Optional;
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -33,17 +33,17 @@ public class ListHelper {
   /**
    * Safely gets the first element of a {@link List}
    *
-   * <p>If first element is null or the list is empty, then it returns {@link Optional#absent()}
+   * <p>If first element is null or the list is empty, then it returns {@link Optional#empty()}
    *
    * @param list the {@code List}
    * @param <E> type of elements in list
-   * @return the first element of list or {@link Optional#absent()} if absent or null
+   * @return the first element of list or {@link Optional#empty()} if absent or null
    */
   @Nonnull
   public static <E> Optional<E> first(@Nullable List<E> list) {
     if (list == null || list.isEmpty()) {
-      return Optional.absent();
+      return Optional.empty();
     }
-    return Optional.fromNullable(list.get(0));
+    return Optional.ofNullable(list.get(0));
   }
 }
