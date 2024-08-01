@@ -88,4 +88,25 @@ public final class ContextHelper {
     }
     return null;
   }
+
+  /**
+   * Function that returns the very first parent of the current context
+   *
+   * @param context The context
+   * @param parentClass The class of the desired parent
+   * @return The very first parent of the current context
+   */
+  public static <T> T getOriginParent(Context context, Class<T> parentClass) {
+    Context parentContext = context.getParent();
+
+    if (parentContext == null) {
+      return null;
+    }
+
+    if (parentContext.getContextClass().equals(parentClass)) {
+      return parentContext.asType(parentClass);
+    }
+
+    return getOriginParent(parentContext, parentClass);
+  }
 }

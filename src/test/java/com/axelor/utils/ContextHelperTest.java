@@ -6,6 +6,8 @@ import com.axelor.db.JpaRepository;
 import com.axelor.db.mapper.Mapper;
 import com.axelor.meta.loader.LoaderHelper;
 import com.axelor.rpc.Context;
+import com.axelor.utils.db.Invoice;
+import com.axelor.utils.db.InvoiceLine;
 import com.axelor.utils.db.Move;
 import com.axelor.utils.db.MoveLine;
 import com.axelor.utils.helpers.ContextHelper;
@@ -56,6 +58,35 @@ class ContextHelperTest extends BaseTest {
     String code = ContextHelper.getFieldFromContextParent(moveLineCtx, "code", String.class);
 
     Assertions.assertEquals(code, move.getCode());
+  }
+
+  @Test
+  void getOriginParent_twoLevelsParent() {
+    Invoice invoice = new Invoice();
+    invoice.setCode("invoice1");
+
+    InvoiceLine invoiceLine1 = new InvoiceLine();
+    invoice.addInvoiceLineListItem(invoiceLine1);
+
+    InvoiceLine invoiceLine2 = new InvoiceLine();
+    invoiceLine1.addInvoiceLineListItem(invoiceLine2);
+
+    Map<String, Object> invoiceValues = Mapper.toMap(invoice);
+    Context invoiceCtx = new Context(invoiceValues, Invoice.class);
+    invoiceCtx.put("_model", Invoice.class.getName());
+
+    Map<String, Object> invoiceLineValues1 = Mapper.toMap(invoiceLine1);
+    Context invoiceLineCtx = new Context(invoiceLineValues1, InvoiceLine.class);
+    invoiceLineCtx.put("_model", InvoiceLine.class.getName());
+    invoiceLineCtx.put("_parent", invoiceCtx);
+
+    Map<String, Object> invoiceLineValues2 = Mapper.toMap(invoiceLine2);
+    Context invoiceLineCtx2 = new Context(invoiceLineValues2, InvoiceLine.class);
+    invoiceLineCtx2.put("_model", InvoiceLine.class.getName());
+    invoiceLineCtx2.put("_parent", invoiceLineCtx);
+
+    Assertions.assertEquals(
+        invoice.getCode(), ContextHelper.getOriginParent(invoiceLineCtx2, Invoice.class).getCode());
   }
 
   @Test
