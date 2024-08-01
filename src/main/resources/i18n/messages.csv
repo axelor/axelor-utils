@@ -22,6 +22,7 @@
 "The consumer cannot be null.",,,
 "The object",,,
 "The parameter copyNumber should be superior to 0.",,,
+"The process was stopped because the computation might be stuck in an infinite loop.",,,
 "This field needs to be unique.",,,
 "Type %s could not be converted to json type.",,,
 "Unknown selection and title pair: '%s' / '%s'.",,,

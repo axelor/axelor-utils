@@ -90,6 +90,30 @@ class ContextHelperTest extends BaseTest {
   }
 
   @Test
+  void getOriginParent_nullContext() {
+    Assertions.assertNull(ContextHelper.getOriginParent(null, Invoice.class));
+  }
+
+  @Test
+  void getOriginParent_nullClass() {
+    Invoice invoice = new Invoice();
+    invoice.setCode("invoice1");
+    InvoiceLine invoiceLine1 = new InvoiceLine();
+    invoice.addInvoiceLineListItem(invoiceLine1);
+
+    Map<String, Object> invoiceValues = Mapper.toMap(invoice);
+    Context invoiceCtx = new Context(invoiceValues, Invoice.class);
+    invoiceCtx.put("_model", Invoice.class.getName());
+
+    Map<String, Object> invoiceLineValues1 = Mapper.toMap(invoiceLine1);
+    Context invoiceLineCtx = new Context(invoiceLineValues1, InvoiceLine.class);
+    invoiceLineCtx.put("_model", InvoiceLine.class.getName());
+    invoiceLineCtx.put("_parent", invoiceCtx);
+
+    Assertions.assertNull(ContextHelper.getOriginParent(invoiceLineCtx, null));
+  }
+
+  @Test
   void getFieldFromContextParent_whenObjectInParentParentContext() {
     User user = userRepository.findByCode("admin");
     Map<String, Object> userValues = Mapper.toMap(user);
