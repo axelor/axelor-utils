@@ -1,3 +1,9 @@
+## 3.1.2 (2024-08-05)
+
+#### Feature
+
+* ContextHelper: add parent origin fetcher
+
 ## 3.1.1 (2024-06-27)
 
 #### Change
