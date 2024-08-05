@@ -18,6 +18,7 @@
 package com.axelor.utils.helpers;
 
 import com.axelor.rpc.Context;
+import com.axelor.utils.exception.UtilsExceptionMessage;
 
 public final class ContextHelper {
 
@@ -87,5 +88,40 @@ public final class ContextHelper {
       context = context.getParent();
     }
     return null;
+  }
+
+  /**
+   * Function that returns the very first parent of the current context
+   *
+   * @param context The context
+   * @param parentClass The class of the desired parent
+   * @return The very first parent of the current context
+   */
+  public static <T> T getOriginParent(Context context, Class<T> parentClass) {
+
+    return getOriginParentProcess(context, parentClass, 0);
+  }
+
+  private static <T> T getOriginParentProcess(Context context, Class<T> parentClass, int counter) {
+    if (context == null || parentClass == null) {
+      return null;
+    }
+
+    Context parentContext = context.getParent();
+    final int MAX_ITERATION = 500;
+
+    if (counter > MAX_ITERATION) {
+      throw new IllegalStateException(UtilsExceptionMessage.ORIGIN_FETCHER_TOO_MANY_ITERATIONS);
+    }
+
+    if (parentContext == null) {
+      return null;
+    }
+
+    if (parentContext.getContextClass().equals(parentClass)) {
+      return parentContext.asType(parentClass);
+    }
+
+    return getOriginParentProcess(parentContext, parentClass, counter + 1);
   }
 }
