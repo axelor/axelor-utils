@@ -21,7 +21,7 @@ import java.util.Map;
 
 public interface ArchivingService {
 
-  public Map<String, String> getObjectLinkTo(Object object, Long id);
+  Map<String, String> getObjectLinkTo(Object object, Long id);
 
-  public String getModelTitle(String modelName);
+  String getModelTitle(String modelName);
 }

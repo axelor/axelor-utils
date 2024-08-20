@@ -25,24 +25,20 @@ import java.util.Map;
 import javax.persistence.NoResultException;
 import javax.persistence.Query;
 
-/**
- * @author axelor
- */
 public class ArchivingServiceImpl implements ArchivingService {
 
-  /** */
   @Override
   public Map<String, String> getObjectLinkTo(Object object, Long id) {
-    Map<String, String> objectsLinkToMap = new HashMap<String, String>();
-    Query FindModelWithobjectFieldQuery =
+    Map<String, String> objectsLinkToMap = new HashMap<>();
+    Query findModelWithobjectFieldQuery =
         JPA.em()
             .createNativeQuery(
                 "SELECT field.name as fieldName, model.name as ModelName,field.relationship as relationship,field.mapped_by as mappedBy,model.table_name as tableName"
                     + " FROM meta_field field"
                     + " LEFT JOIN meta_model model on field.meta_model = model.id"
                     + " WHERE field.type_name like :objectName");
-    FindModelWithobjectFieldQuery.setParameter("objectName", object.getClass().getSimpleName());
-    List<Object[]> resultList = FindModelWithobjectFieldQuery.getResultList();
+    findModelWithobjectFieldQuery.setParameter("objectName", object.getClass().getSimpleName());
+    List<Object[]> resultList = findModelWithobjectFieldQuery.getResultList();
     for (Object[] result : resultList) {
 
       String fieldName = ((String) result[0]).replaceAll("([A-Z])", "_$1").toLowerCase();
@@ -112,7 +108,7 @@ public class ArchivingServiceImpl implements ArchivingService {
       if (findobjectQuery != null) {
         Object objectToCheck = null;
         try {
-          objectToCheck = (Object) findobjectQuery.getSingleResult();
+          objectToCheck = findobjectQuery.getSingleResult();
         } catch (NoResultException nRE) {
           // nothing to do
         }
@@ -136,21 +132,20 @@ public class ArchivingServiceImpl implements ArchivingService {
             .toLowerCase();
     String objectName =
         object.getClass().getSimpleName().replaceAll("([A-Z])", "_$1").toLowerCase();
-    ;
     return moduleName + objectName;
   }
 
   @Override
   public String getModelTitle(String modelName) {
-    Query FindModelWithobjectFieldQuery =
+    Query findModelWithobjectFieldQuery =
         JPA.em()
             .createNativeQuery(
                 "SELECT view.title as viewTitle"
                     + " FROM meta_view view"
                     + " WHERE view.name like :viewtName");
-    FindModelWithobjectFieldQuery.setParameter(
+    findModelWithobjectFieldQuery.setParameter(
         "viewtName", modelName.replaceAll("([a-z])([A-Z])", "$1-$2").toLowerCase() + "-form");
-    List<String> modelNameList = FindModelWithobjectFieldQuery.getResultList();
+    List<String> modelNameList = findModelWithobjectFieldQuery.getResultList();
     return !ObjectUtils.isEmpty(modelNameList) ? (String) modelNameList.get(0) : modelName;
   }
 }
