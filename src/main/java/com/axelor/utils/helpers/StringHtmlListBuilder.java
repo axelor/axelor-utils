@@ -29,6 +29,10 @@ public class StringHtmlListBuilder {
     listElements = new ArrayList<>();
   }
 
+  protected StringHtmlListBuilder(List<String> listElements) {
+    this.listElements = listElements;
+  }
+
   public void append(String s) {
     listElements.add(s);
   }
@@ -43,6 +47,19 @@ public class StringHtmlListBuilder {
       sb.append("</li>");
     }
     sb.append("</ul>");
+    return sb.toString();
+  }
+
+  public static String formatMessage(String title, List<String> listElements) {
+    String message = formatMessage(listElements);
+    if (title != null && !title.isEmpty()) {
+      message = String.format("<b>%s</b><br/>", title) + message;
+    }
+    return message;
+  }
+
+  public static String formatMessage(List<String> listElements) {
+    StringHtmlListBuilder sb = new StringHtmlListBuilder(listElements);
     return sb.toString();
   }
 }
