@@ -22,6 +22,7 @@
 "The consumer cannot be null.","La personne qui consomme ne peut être vide.",,
 "The object","L'objet",,
 "The parameter copyNumber should be superior to 0.","Le paramètre copyNumber devrait être plus grand que 0.",,
+"The process was stopped because the computation might be stuck in an infinite loop.","Le processus a été arrêté car le calcul est peut-être bloqué dans une boucle infinie.",,
 "This field needs to be unique.","Ce champ doit être unique.",,
 "Type %s could not be converted to json type.","Le type %s n'a pas pu être converti en type de champ personnalisé.",,
 "Unknown selection and title pair: '%s' / '%s'.","Paire de sélection et titre inconnue : « %s » / « %s ».",,

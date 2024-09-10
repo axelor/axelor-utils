@@ -21,15 +21,20 @@ import com.axelor.db.JPA;
 import com.axelor.db.JpaModel;
 import com.axelor.db.Query;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "TEST_INVOICE")
 public class Invoice extends JpaModel {
+
+  private String code;
 
   @ManyToOne(
       fetch = FetchType.LAZY,
@@ -49,6 +54,21 @@ public class Invoice extends JpaModel {
   private LocalDate date;
 
   private LocalDate dueDate;
+
+  @OneToMany(
+      fetch = FetchType.LAZY,
+      mappedBy = "invoice",
+      cascade = CascadeType.ALL,
+      orphanRemoval = true)
+  private List<InvoiceLine> invoiceLines;
+
+  public String getCode() {
+    return code;
+  }
+
+  public void setCode(String code) {
+    this.code = code;
+  }
 
   public Move getMove() {
     return move;
@@ -88,6 +108,22 @@ public class Invoice extends JpaModel {
 
   public void setDueDate(LocalDate dueDate) {
     this.dueDate = dueDate;
+  }
+
+  public List<InvoiceLine> getInvoiceLines() {
+    return invoiceLines;
+  }
+
+  public void setInvoiceLines(List<InvoiceLine> invoiceLines) {
+    this.invoiceLines = invoiceLines;
+  }
+
+  public void addInvoiceLineListItem(InvoiceLine item) {
+    if (getInvoiceLines() == null) {
+      setInvoiceLines(new ArrayList<>());
+    }
+    getInvoiceLines().add(item);
+    item.setInvoice(this);
   }
 
   public Invoice persist() {

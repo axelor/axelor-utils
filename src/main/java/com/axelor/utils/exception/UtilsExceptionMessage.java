@@ -85,4 +85,7 @@ public final class UtilsExceptionMessage {
 
   public static final String API_DISABLED = /*$$(*/
       "AOS API calls are disabled, please contact your administrator. The property utils.api.enable is false in application.properties." /*)*/;
+
+  public static final String ORIGIN_FETCHER_TOO_MANY_ITERATIONS = /*$$(*/
+      "The process was stopped because the computation might be stuck in an infinite loop." /*)*/;
 }
