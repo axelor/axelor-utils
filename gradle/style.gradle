@@ -25,6 +25,7 @@ spotless {
       exclude '**/webapp/**'
       exclude '**/.gradle/**'
       exclude '**/build/**'
+      exclude '**/javadoc/**'
     }
     indentWithSpaces(2)
     trimTrailingWhitespace()
@@ -36,6 +37,7 @@ spotless {
       include '**/*.md'
       exclude 'CHANGELOG.md'
       exclude '**/build/**'
+      exclude '**/javadoc/**'
     }
     indentWithSpaces(2)
     endWithNewline()
@@ -47,6 +49,7 @@ spotless {
       exclude '**/build/**'
       exclude '**/.gradle/**'
       exclude '.idea/**'
+      exclude '**/javadoc/**'
     }
     eclipseWtp('xml').configFile("${project.projectDir}/gradle/spotless.xml.prefs")
     trimTrailingWhitespace()
@@ -56,6 +59,7 @@ spotless {
     target fileTree(projectDir) {
       include '**/*.java'
       exclude '**/build/**'
+      exclude '**/javadoc/**'
     }
     googleJavaFormat()
   }
