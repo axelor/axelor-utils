@@ -44,7 +44,8 @@ public class XPathParser {
     this.doc = doc;
   }
 
-  public XPathParser() {}
+  public XPathParser() {
+  }
 
   public XPathParser(String xml) {
 
@@ -93,12 +94,15 @@ public class XPathParser {
   }
 
   /**
-   * public static TreeMap<String,String> parse(String xml, ArrayList<String> xpeList) throws
-   * ParserConfigurationException, SAXException, IOException, XPathExpressionException
+   * public static TreeMap&lt;String,String&gt; parse(String xml, ArrayList&lt;String&gt; xpeList)
+   * throws ParserConfigurationException, SAXException, IOException, XPathExpressionException
    *
-   * <p>Ref: <a href="http://www.ibm.com/developerworks/library/x-javaxpathapi/index.html"/>HashMap
-   * replaced by TreeMap since it is sorted Exceptions catched here since no way to catch them in
-   * aml
+   * <p>Ref: <a href="http://www.ibm.com/developerworks/library/x-javaxpathapi/index.html">HashMap
+   * replaced by TreeMap since it is sorted Exceptions caught here since no way to catch them in
+   * aml</a>
+   *
+   * @param xpeList List of XPath expressions
+   * @return Map of XPath expressions and their values
    */
   public Map<String, String> parse(List<String> xpeList) {
 

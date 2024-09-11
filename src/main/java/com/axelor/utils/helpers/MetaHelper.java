@@ -107,12 +107,11 @@ public class MetaHelper {
   }
 
   /**
-   * Get Model class name of wantedType in case wantedType is a ManyToOne or Custom-ManyToOne. This
-   * method return wantedType if wantedType is not a ManyToOne or Custom-ManyToOne
+   * Get Model class name of wantedType in case wantedType is a ManyToOne or Custom-ManyToOne.
    *
-   * @param indicator
-   * @param wantedType
-   * @return
+   * @param indicator The field to get the class name from
+   * @param wantedType The desired type of the field
+   * @return The wantedType if wantedType is not a ManyToOne or Custom-ManyToOne
    */
   public static String getWantedClassName(MetaJsonField indicator, String wantedType) {
     String wantedClassName;

@@ -26,24 +26,22 @@ import javax.xml.bind.annotation.XmlType;
  *
  * <p>Le fragment de schéma suivant indique le contenu attendu figurant dans cette classe.
  *
- * <p>
- *
  * <pre>
- * &lt;simpleType name="LicenceWarningLevel">
- *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
- *     &lt;enumeration value="None"/>
- *     &lt;enumeration value="DataExpiring"/>
- *     &lt;enumeration value="LicenceExpiring"/>
- *     &lt;enumeration value="ClicksLow"/>
- *     &lt;enumeration value="Evaluation"/>
- *     &lt;enumeration value="NoClicks"/>
- *     &lt;enumeration value="DataExpired"/>
- *     &lt;enumeration value="EvalLicenceExpired"/>
- *     &lt;enumeration value="FullLicenceExpired"/>
- *     &lt;enumeration value="LicenceNotFound"/>
- *     &lt;enumeration value="DataUnreadable"/>
- *   &lt;/restriction>
- * &lt;/simpleType>
+ * &lt;simpleType name="LicenceWarningLevel"&gt;
+ *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
+ *     &lt;enumeration value="None"/&gt;
+ *     &lt;enumeration value="DataExpiring"/&gt;
+ *     &lt;enumeration value="LicenceExpiring"/&gt;
+ *     &lt;enumeration value="ClicksLow"/&gt;
+ *     &lt;enumeration value="Evaluation"/&gt;
+ *     &lt;enumeration value="NoClicks"/&gt;
+ *     &lt;enumeration value="DataExpired"/&gt;
+ *     &lt;enumeration value="EvalLicenceExpired"/&gt;
+ *     &lt;enumeration value="FullLicenceExpired"/&gt;
+ *     &lt;enumeration value="LicenceNotFound"/&gt;
+ *     &lt;enumeration value="DataUnreadable"/&gt;
+ *   &lt;/restriction&gt;
+ * &lt;/simpleType&gt;
  * </pre>
  */
 @XmlType(name = "LicenceWarningLevel")

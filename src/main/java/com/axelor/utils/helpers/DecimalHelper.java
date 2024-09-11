@@ -37,8 +37,8 @@ public final class DecimalHelper {
   /**
    * Check if the decimal is null or equal to 0.
    *
-   * @param decimal
-   * @return
+   * @param decimal The decimal to check.
+   * @return True if the decimal is null or equal to 0.
    */
   public static boolean isNullOrZero(BigDecimal decimal) {
     return decimal == null || decimal.signum() == 0;
@@ -47,21 +47,22 @@ public final class DecimalHelper {
   /**
    * If the decimal is null, return 0. Otherwise, return its value.
    *
-   * @param decimal
-   * @return
+   * @param decimal The decimal to check.
+   * @return 0 if the decimal is null, otherwise its value.
    */
   public static BigDecimal getZeroOrValue(BigDecimal decimal) {
     return decimal == null ? BigDecimal.ZERO : decimal;
   }
 
   /**
-   * Proratiser une valeur en fonction de date.
+   * Répartir proportionnellement selon un prorata une valeur en fonction de dates.
    *
    * @param fromDate Date de début de la période de conso.
    * @param toDate Date de fin de la période de conso.
-   * @param date Date de proratisation.
+   * @param date Date de référence.
    * @param value Valeur initiale.
-   * @return La quantité proratisée.
+   * @param scale Précision.
+   * @return La quantité répartie.
    */
   public static BigDecimal prorata(
       LocalDate fromDate, LocalDate toDate, LocalDate date, BigDecimal value, int scale) {
@@ -83,12 +84,13 @@ public final class DecimalHelper {
   }
 
   /**
-   * Proratiser une valeur en fonction du nombre de jours. (Règle de 3)
+   * Répartir proportionnellement selon un prorata une valeur en fonction du nombre de jours. (Règle de 3)
    *
-   * @param totalDays Le nombre total de jour.
-   * @param days Le nombre de jour.
-   * @param value La valeur à proratiser.
-   * @return La valeur proratisée.
+   * @param totalDays Le nombre total de jours.
+   * @param days Le nombre de jours.
+   * @param value La valeur initiale.
+   * @param scale Précision.
+   * @return La valeur répartie.
    */
   public static BigDecimal prorata(
       BigDecimal totalDays, BigDecimal days, BigDecimal value, int scale) {

@@ -41,8 +41,9 @@ public class QueryBuilder<T extends Model> {
   /**
    * Get a query builder.
    *
-   * @param modelClass
-   * @return
+   * @param modelClass Model class.
+   * @param <T> Model type.
+   * @return Query builder.
    */
   public static <T extends Model> QueryBuilder<T> of(Class<T> modelClass) {
     return new QueryBuilder<>(modelClass);
@@ -51,8 +52,8 @@ public class QueryBuilder<T extends Model> {
   /**
    * Add filter.
    *
-   * @param filter
-   * @return
+   * @param filter Filter.
+   * @return Query builder.
    */
   public QueryBuilder<T> add(String filter) {
     filterList.add(filter);
@@ -62,9 +63,9 @@ public class QueryBuilder<T extends Model> {
   /**
    * Add binding.
    *
-   * @param name
-   * @param value
-   * @return
+   * @param name Binding name.
+   * @param value Binding value.
+   * @return Query builder.
    */
   public QueryBuilder<T> bind(String name, Object value) {
     bindingMap.put(name, value);
@@ -74,7 +75,7 @@ public class QueryBuilder<T extends Model> {
   /**
    * Build the query.
    *
-   * @return
+   * @return Built query.
    */
   public Query<T> build() {
     String filter =

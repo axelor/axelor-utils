@@ -25,6 +25,7 @@ public final class ControllerCallableHelper {
    *
    * @param callable service to be executed asynchronously
    * @param response available in a controller to be modified by the process
+   * @param <V> type of the service return
    * @return what is returned by the service
    */
   public static <V> V runInSeparateThread(Callable<V> callable, ActionResponse response) {

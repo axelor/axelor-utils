@@ -45,7 +45,7 @@ public final class FileHelper {
    *
    * @param fileName Le nom du fichier
    * @return Une liste contenant l'ensemble des lignes
-   * @throws IOException
+   * @throws IOException Si le fichier n'existe pas
    */
   public static List<String> reader(String fileName) throws IOException {
 
@@ -67,7 +67,7 @@ public final class FileHelper {
    * @param destinationFolder Le chemin du fichier
    * @param fileName Le nom du fichier
    * @param line La ligne à écrire
-   * @throws IOException
+   * @throws IOException Si le fichier n'existe pas
    */
   public static void writer(String destinationFolder, String fileName, String line)
       throws IOException {
@@ -84,8 +84,9 @@ public final class FileHelper {
    *
    * @param destinationFolder Le chemin du fichier
    * @param fileName Le nom du fichier
-   * @param line La liste de ligne à écrire
-   * @throws IOException
+   * @param multiLine La liste de ligne à écrire
+   * @throws IOException Si le fichier n'existe pas
+   * @return Le fichier créé
    */
   public static File writer(String destinationFolder, String fileName, List<String> multiLine)
       throws IOException {
@@ -113,11 +114,10 @@ public final class FileHelper {
   }
 
   /**
-   * Création d'un fichier avec son chemin si il n'existe pas
+   * Création d'un fichier avec son chemin s'il n'existe pas
    *
-   * @param fileName
-   * @return
-   * @throws IOException
+   * @param fileName Le chemin du fichier
+   * @return Le fichier créé
    */
   public static File create(String fileName) {
 
@@ -129,10 +129,9 @@ public final class FileHelper {
   /**
    * Création d'un fichier avec son chemin si il n'existe pas
    *
-   * @param destinationFolder
-   * @param fileName
-   * @return
-   * @throws IOException
+   * @param destinationFolder Le chemin du fichier
+   * @param fileName Le nom du fichier
+   * @return Le fichier créé
    */
   public static File create(String destinationFolder, String fileName) {
 
@@ -149,8 +148,7 @@ public final class FileHelper {
    *
    * @param fileSrc Le chemin du fichier source
    * @param fileDest Le chemin du fichier destination
-   * @throws IOException
-   * @throws FileNotFoundException
+   * @throws IOException Si le fichier n'existe pas
    */
   public static void copy(String fileSrc, String fileDest) throws IOException {
 
@@ -164,12 +162,9 @@ public final class FileHelper {
    * Copy all files and directories from a Folder to a destination Folder. Must be called like:
    * listAllFilesInFolder(srcFolderPath, "", srcFolderPath, destFolderPath)
    *
-   * @param currentFolder Used for the recursive called.
-   * @param relatedPath Used for the recursive called.
    * @param sourceFolder Source directory.
    * @param destinationFolder Destination directory.
-   * @param logger A logger.
-   * @throws IOException
+   * @throws IOException If the file does not exist.
    */
   public static void copyFolderToFolder(String sourceFolder, String destinationFolder)
       throws IOException {

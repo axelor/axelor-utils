@@ -25,19 +25,31 @@ public final class NamingHelper {
 
   private NamingHelper() {}
 
-  /** Check whether the given name is Java reserved keyword. */
+  /**
+   * Check whether the given name is Java reserved keyword.
+   * @param name the name to check
+   * @return true if the name is reserved, false otherwise
+   */
   public static boolean isReserved(String name) {
     return RESERVED_JAVA.contains(name);
   }
 
-  /** Check whether the given name is SQL reserved keyword. */
+  /**
+   * Check whether the given name is SQL reserved keyword.
+   * @param name the name to check
+   * @return true if the name is reserved, false otherwise
+   */
   public static boolean isKeyword(String name) {
     return RESERVED_POSTGRESQL.contains(name)
         || RESERVED_MYSQL.contains(name)
         || RESERVED_ORACLE.contains(name);
   }
 
-  /** Quote the given column name. */
+  /**
+   * Quote the given column name.
+   * @param name the column name
+   * @return the quoted column name
+   */
   public static String quoteColumn(String name) {
     return "`" + name + "`";
   }

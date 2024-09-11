@@ -20,7 +20,7 @@ package com.axelor.utils;
 /**
  * Represents an operation that accepts one argument, returns no result and can throws exception.
  *
- * @param <T>
+ * @param <T> the type of the input to the operation.
  */
 @FunctionalInterface
 public interface ThrowConsumer<T, E extends Exception> {
@@ -28,6 +28,7 @@ public interface ThrowConsumer<T, E extends Exception> {
    * Performs this operation on the given argument.
    *
    * @param t the input argument.
+   * @throws E the exception that may be thrown.
    */
   void accept(T t) throws E;
 }

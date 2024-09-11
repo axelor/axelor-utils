@@ -20,23 +20,28 @@ package com.axelor.utils.helpers.date;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.Objects;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
- * LocalDateTimeInterval is a class used to define intervals of time with with variable precision.
+ * LocalDateTimeInterval is a class used to define intervals of time with variable precision.
  *
- * <p>For precision of a day better {@link DateInterval}
+ * <p>For precision of a day better {@link LocalDateInterval}
  *
- * <p>LocalDateTimeInterval are closed intervals when bounded -> startDateT & endDateT are included
+ * <p>LocalDateTimeInterval are closed intervals when bounded -&gt; startDateT &amp; endDateT are
+ * included
  * in the interval
  *
  * <p>startDateT = null means minus-infinite endDateT = null means plus-infinite
  *
- * <p>-> new LocalDateTimeInterval(null, null) represent all the past & future
+ * <p>-&gt; new LocalDateTimeInterval(null, null) represent all the past &amp; future
  *
  * <p>{@link Comparable} on startDateT
  *
  * @author Maxence GALLANCHER
  */
+@Setter
+@Getter
 public class LocalDateTimeInterval implements Comparable<LocalDateTimeInterval> {
 
   private LocalDateTime startDateT;
@@ -52,10 +57,11 @@ public class LocalDateTimeInterval implements Comparable<LocalDateTimeInterval> 
   private Integer continuousToleranceAmount;
 
   /**
-   * By default the tolrance
+   * By default, the continuousToleranceUnit is set to MINUTES and the continuousToleranceAmount is
+   * set to 1
    *
-   * @param startDateT
-   * @param endDateT
+   * @param startDateT the start date of the interval
+   * @param endDateT   the end date of the interval
    */
   public LocalDateTimeInterval(LocalDateTime startDateT, LocalDateTime endDateT) {
     this(startDateT, endDateT, ChronoUnit.MINUTES, 1);
@@ -80,38 +86,6 @@ public class LocalDateTimeInterval implements Comparable<LocalDateTimeInterval> 
     this.startDateT = startDateT;
     this.endDateT = endDateT;
     this.continuousToleranceUnit = continuousToleranceUnit;
-    this.continuousToleranceAmount = continuousToleranceAmount;
-  }
-
-  public LocalDateTime getStartDateT() {
-    return startDateT;
-  }
-
-  public void setStartDateT(LocalDateTime startDateT) {
-    this.startDateT = startDateT;
-  }
-
-  public LocalDateTime getEndDateT() {
-    return endDateT;
-  }
-
-  public void setEndDateT(LocalDateTime endDateT) {
-    this.endDateT = endDateT;
-  }
-
-  public ChronoUnit getContinuousToleranceUnit() {
-    return continuousToleranceUnit;
-  }
-
-  public void setContinuousToleranceUnit(ChronoUnit continuousToleranceUnit) {
-    this.continuousToleranceUnit = continuousToleranceUnit;
-  }
-
-  public Integer getContinuousToleranceAmount() {
-    return continuousToleranceAmount;
-  }
-
-  public void setContinuousToleranceAmount(Integer continuousToleranceAmount) {
     this.continuousToleranceAmount = continuousToleranceAmount;
   }
 
@@ -243,10 +217,10 @@ public class LocalDateTimeInterval implements Comparable<LocalDateTimeInterval> 
   //////////////////////////////////////////////////////////////
 
   /**
-   * @param comparedInterval
-   * @return true if and only if - the two interval overlaps, - or if {@code
-   *     comparedInterval.startDateT} is before, or at the same moment than the {@code
-   *     this.endDateT} + tolerance from this interval
+   * @param comparedInterval the interval to compare with
+   * @return true if and only if - the two interval overlaps, - or if
+   * {@code comparedInterval.startDateT} is before, or at the same moment as the
+   * {@code this.endDateT} + tolerance from this interval
    */
   public boolean overlapsOrIsContinuousWith(LocalDateTimeInterval comparedInterval) {
     int order = this.compareTo(comparedInterval);
@@ -262,11 +236,11 @@ public class LocalDateTimeInterval implements Comparable<LocalDateTimeInterval> 
   }
 
   /**
-   * @param comparedInterval
+   * @param comparedInterval the interval to compare with
    * @return true if and only if the {@code comparedInterval.startDateT} is before, or at the same
-   *     moment than the {@code this.endDateT} + tolerance from this interval
-   *     <p>- Warning, this method will return true if {@code this} ends before {@code
-   *     comparedInterval} starts, so even if the 2 intervals does not overlap
+   * moment as the {@code this.endDateT} + tolerance from this interval
+   * <p>- Warning, this method will return true if {@code this} ends before {@code
+   * comparedInterval} starts, so even if the 2 intervals does not overlap
    */
   public boolean isContinuousAtEndWith(LocalDateTimeInterval comparedInterval) {
     LocalDateTime comparedStartDate = comparedInterval.getStartDateT();
@@ -289,11 +263,11 @@ public class LocalDateTimeInterval implements Comparable<LocalDateTimeInterval> 
   }
 
   /**
-   * @param comparedInterval
+   * @param comparedInterval the interval to compare with
    * @return true if and only if the {@code comparedInterval.startDateT} is before, or at the same
-   *     moment than the {@code this.endDateT} + tolerance from the compared interval
-   *     <p>- Warning, this method will return true if {@code comparedInterval} ends before {@code
-   *     this} starts, so even if the 2 intervals does not overlap
+   * moment as the {@code this.endDateT} + tolerance from the compared interval
+   * <p>- Warning, this method will return true if {@code comparedInterval} ends before {@code
+   * this} starts, so even if the 2 intervals does not overlap
    */
   public boolean isContinuousAtStartWith(LocalDateTimeInterval comparedInterval) {
     return comparedInterval.isContinuousAtEndWith(this);

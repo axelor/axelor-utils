@@ -42,7 +42,7 @@ public final class PdfHelper {
    * @param fileList a list of files to merge
    * @param fileName the name of the created file
    * @return the link to the file
-   * @throws IOException
+   * @throws IOException if mergePdfToFileLink fails to write the new file.
    */
   public static String mergePdfToFileLink(List<File> fileList, String fileName) throws IOException {
     return getFileLinkFromPdfFile(mergePdf(fileList), fileName);
@@ -53,6 +53,8 @@ public final class PdfHelper {
    *
    * @param fileList a list of path of PDF files to merge.
    * @return The link to access the generated PDF.
+   * @throws IOException if mergePdf fails to write the new file.
+   * @throws IllegalArgumentException if the fileList is empty.
    */
   public static File mergePdf(List<File> fileList) throws IOException {
     PDFMergerUtility pdfMergerUtility = new PDFMergerUtility();

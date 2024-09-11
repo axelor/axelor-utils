@@ -31,32 +31,32 @@ import javax.xml.bind.annotation.XmlType;
  * <p>Le fragment de schéma suivant indique le contenu attendu figurant dans cette classe.
  *
  * <pre>
- * &lt;complexType name="PicklistEntryType">
- *   &lt;complexContent>
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *       &lt;sequence>
- *         &lt;element name="Moniker" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="PartialAddress" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="Picklist" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="Postcode" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="Score" type="{http://www.w3.org/2001/XMLSchema}nonNegativeInteger"/>
- *       &lt;/sequence>
- *       &lt;attribute name="FullAddress" type="{http://www.w3.org/2001/XMLSchema}boolean" default="false" />
- *       &lt;attribute name="Multiples" type="{http://www.w3.org/2001/XMLSchema}boolean" default="false" />
- *       &lt;attribute name="CanStep" type="{http://www.w3.org/2001/XMLSchema}boolean" default="false" />
- *       &lt;attribute name="AliasMatch" type="{http://www.w3.org/2001/XMLSchema}boolean" default="false" />
- *       &lt;attribute name="PostcodeRecoded" type="{http://www.w3.org/2001/XMLSchema}boolean" default="false" />
- *       &lt;attribute name="CrossBorderMatch" type="{http://www.w3.org/2001/XMLSchema}boolean" default="false" />
- *       &lt;attribute name="DummyPOBox" type="{http://www.w3.org/2001/XMLSchema}boolean" default="false" />
- *       &lt;attribute name="Name" type="{http://www.w3.org/2001/XMLSchema}boolean" default="false" />
- *       &lt;attribute name="Information" type="{http://www.w3.org/2001/XMLSchema}boolean" default="false" />
- *       &lt;attribute name="WarnInformation" type="{http://www.w3.org/2001/XMLSchema}boolean" default="false" />
- *       &lt;attribute name="IncompleteAddr" type="{http://www.w3.org/2001/XMLSchema}boolean" default="false" />
- *       &lt;attribute name="UnresolvableRange" type="{http://www.w3.org/2001/XMLSchema}boolean" default="false" />
- *       &lt;attribute name="PhantomPrimaryPoint" type="{http://www.w3.org/2001/XMLSchema}boolean" default="false" />
- *     &lt;/restriction>
- *   &lt;/complexContent>
- * &lt;/complexType>
+ * &lt;complexType name="PicklistEntryType"&gt;
+ *   &lt;complexContent&gt;
+ *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
+ *       &lt;sequence&gt;
+ *         &lt;element name="Moniker" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
+ *         &lt;element name="PartialAddress" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
+ *         &lt;element name="Picklist" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
+ *         &lt;element name="Postcode" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
+ *         &lt;element name="Score" type="{http://www.w3.org/2001/XMLSchema}nonNegativeInteger"/&gt;
+ *       &lt;/sequence&gt;
+ *       &lt;attribute name="FullAddress" type="{http://www.w3.org/2001/XMLSchema}boolean" default="false" /&gt;
+ *       &lt;attribute name="Multiples" type="{http://www.w3.org/2001/XMLSchema}boolean" default="false" /&gt;
+ *       &lt;attribute name="CanStep" type="{http://www.w3.org/2001/XMLSchema}boolean" default="false" /&gt;
+ *       &lt;attribute name="AliasMatch" type="{http://www.w3.org/2001/XMLSchema}boolean" default="false" /&gt;
+ *       &lt;attribute name="PostcodeRecoded" type="{http://www.w3.org/2001/XMLSchema}boolean" default="false" /&gt;
+ *       &lt;attribute name="CrossBorderMatch" type="{http://www.w3.org/2001/XMLSchema}boolean" default="false" /&gt;
+ *       &lt;attribute name="DummyPOBox" type="{http://www.w3.org/2001/XMLSchema}boolean" default="false" /&gt;
+ *       &lt;attribute name="Name" type="{http://www.w3.org/2001/XMLSchema}boolean" default="false" /&gt;
+ *       &lt;attribute name="Information" type="{http://www.w3.org/2001/XMLSchema}boolean" default="false" /&gt;
+ *       &lt;attribute name="WarnInformation" type="{http://www.w3.org/2001/XMLSchema}boolean" default="false" /&gt;
+ *       &lt;attribute name="IncompleteAddr" type="{http://www.w3.org/2001/XMLSchema}boolean" default="false" /&gt;
+ *       &lt;attribute name="UnresolvableRange" type="{http://www.w3.org/2001/XMLSchema}boolean" default="false" /&gt;
+ *       &lt;attribute name="PhantomPrimaryPoint" type="{http://www.w3.org/2001/XMLSchema}boolean" default="false" /&gt;
+ *     &lt;/restriction&gt;
+ *   &lt;/complexContent&gt;
+ * &lt;/complexType&gt;
  * </pre>
  */
 @XmlAccessorType(XmlAccessType.FIELD)

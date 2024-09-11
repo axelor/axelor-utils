@@ -33,11 +33,11 @@ public final class ObjectHelper {
   private static final Logger LOG = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
   /**
-   * Méthode permettant de récupéré un champ d'une classe depuis son nom
+   * Méthode permettant de récupérer un champ d'une classe depuis son nom
    *
    * @param fieldName Le nom d'un champ
    * @param classGotten La classe portant le champ
-   * @return
+   * @return Le champ trouvé
    */
   public static Field getField(String fieldName, @SuppressWarnings("rawtypes") Class classGotten) {
     Field field = null;
@@ -53,12 +53,12 @@ public final class ObjectHelper {
   }
 
   /**
-   * Methode permettant de récupéré un object enfant (d'après le nom d'un champ) depuis un object
+   * Methode permettant de récupérer un object enfant (d'après le nom d'un champ) depuis un object
    * parent
    *
    * @param obj Un objet parent
    * @param fieldName Un nom de champ
-   * @return
+   * @return L'objet enfant trouvé
    */
   public static Object getObject(Object obj, String fieldName) {
     Method m = null;
@@ -83,14 +83,15 @@ public final class ObjectHelper {
   }
 
   /**
-   * Usefull to remove all duplicates on a list. Here we can choose on which key we want to check
+   * Usefully to remove all duplicates on a list. Here we can choose on which key we want to check
    * for duplicate
    *
-   * <p>ex: If we want to check on ids List<Person> distinctElements = list.stream().filter(
-   * distinctByKey(p -> p.getId()) ).collect( Collectors.toList() );
+   * <p>ex: If we want to check on ids List&lt;Person&gt; distinctElements = list.stream().filter(
+   * distinctByKey(p -&gt; p.getId()) ).collect( Collectors.toList() );
    *
    * @param keyExtractor Extract method use
-   * @return
+   * @param <T> The type of the input arguments of the predicate
+   * @return The predicate
    */
   public static <T> Predicate<T> distinctByKey(Function<? super T, Object> keyExtractor) {
     Map<Object, Boolean> map = new ConcurrentHashMap<>();

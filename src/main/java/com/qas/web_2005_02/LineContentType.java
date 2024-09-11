@@ -26,18 +26,16 @@ import javax.xml.bind.annotation.XmlType;
  *
  * <p>Le fragment de schéma suivant indique le contenu attendu figurant dans cette classe.
  *
- * <p>
- *
  * <pre>
- * &lt;simpleType name="LineContentType">
- *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
- *     &lt;enumeration value="None"/>
- *     &lt;enumeration value="Address"/>
- *     &lt;enumeration value="Name"/>
- *     &lt;enumeration value="Ancillary"/>
- *     &lt;enumeration value="DataPlus"/>
- *   &lt;/restriction>
- * &lt;/simpleType>
+ * &lt;simpleType name="LineContentType"&gt;
+ *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
+ *     &lt;enumeration value="None"/&gt;
+ *     &lt;enumeration value="Address"/&gt;
+ *     &lt;enumeration value="Name"/&gt;
+ *     &lt;enumeration value="Ancillary"/&gt;
+ *     &lt;enumeration value="DataPlus"/&gt;
+ *   &lt;/restriction&gt;
+ * &lt;/simpleType&gt;
  * </pre>
  */
 @XmlType(name = "LineContentType")

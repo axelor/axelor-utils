@@ -52,6 +52,7 @@ public final class ModelHelper {
    * @param modelClass Model of collection elements.
    * @param ids collection of IDs.
    * @param consumer to apply on each record.
+   * @param <T> Model type.
    * @return the number of errors that occurred.
    */
   public static <T extends Model> int apply(
@@ -87,9 +88,9 @@ public final class ModelHelper {
   /**
    * Get unique constraint errors.
    *
-   * @param model
-   * @param messages
-   * @return
+   * @param model Model to check.
+   * @param messages Custom error messages.
+   * @return Map of unique constraint errors.
    */
   public static Map<String, String> getUniqueErrors(Model model, Map<String, String> messages) {
     Map<String, String> errors = new HashMap<>();
@@ -107,8 +108,8 @@ public final class ModelHelper {
   /**
    * Get unique constraint errors.
    *
-   * @param model
-   * @return
+   * @param model Model to check.
+   * @return Map of unique constraint errors.
    */
   public static Map<String, String> getUniqueErrors(Model model) {
     return getUniqueErrors(model, Collections.emptyMap());
@@ -117,8 +118,8 @@ public final class ModelHelper {
   /**
    * Get set of fields affected by unique constraint error.
    *
-   * @param model
-   * @return
+   * @param model Model to check.
+   * @return Set of unique fields.
    */
   private static Set<Field> checkUniqueFields(Model model) {
     Set<Field> errors = new HashSet<>();

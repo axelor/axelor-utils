@@ -114,6 +114,7 @@ public class JsonHelper {
    *
    * @param json the JSON string to parse
    * @param klass the class of the object to parse the JSON into
+   * @param <T> the type of the object to parse the JSON into
    * @return the parsed object
    * @throws IOException if there is an error parsing the JSON string
    */
@@ -125,6 +126,7 @@ public class JsonHelper {
    * Converts the given object to a JSON string.
    *
    * @param object the object to convert to JSON
+   * @param <T> the type of the object to convert to JSON
    * @return the JSON string representation of the object
    * @throws JsonProcessingException if there is an error converting the object to JSON
    */

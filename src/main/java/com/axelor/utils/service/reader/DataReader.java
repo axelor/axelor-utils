@@ -24,33 +24,34 @@ public interface DataReader {
   /**
    * Initialize the input file.
    *
-   * @param input
-   * @return
+   * @param input MetaFile to be read.
+   * @param separator Separator of the file.
+   * @return True if the file is initialized successfully.
    */
   public boolean initialize(MetaFile input, String separator);
 
   /**
    * Returns record/row of a particular line.
    *
-   * @param sheetName
-   * @param index
-   * @param headerSize
-   * @return
+   * @param sheetName Name of the sheet.
+   * @param index Index of the line.
+   * @param headerSize Size of the header.
+   * @return All the records of the line.
    */
   public String[] read(String sheetName, int index, int headerSize);
 
   /**
    * Returns total number of lines.
    *
-   * @param sheetName
-   * @return
+   * @param sheetName Name of the sheet.
+   * @return Total number of lines.
    */
   public int getTotalLines(String sheetName);
 
   /**
    * Returns name of sheets.
    *
-   * @return
+   * @return All sheet names.
    */
   public String[] getSheetNames();
 }

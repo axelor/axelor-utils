@@ -40,8 +40,8 @@ public final class StringHelper {
   /**
    * First character lower
    *
-   * @param string
-   * @return
+   * @param string string
+   * @return string
    */
   public static String toFirstLower(String string) {
 
@@ -51,8 +51,8 @@ public final class StringHelper {
   /**
    * First character upper.
    *
-   * @param string
-   * @return
+   * @param string string
+   * @return string
    */
   public static String toFirstUpper(String string) {
 
@@ -62,10 +62,10 @@ public final class StringHelper {
   /**
    * Complete string with fixed length.
    *
-   * @param s
-   * @param fillChar
-   * @param size
-   * @return
+   * @param s string
+   * @param fillChar fill char
+   * @param size size
+   * @return string
    */
   public static String fillStringRight(String s, char fillChar, int size) {
 
@@ -83,10 +83,10 @@ public final class StringHelper {
   /**
    * Complete string with fixed length.
    *
-   * @param s
-   * @param fillChar
-   * @param size
-   * @return
+   * @param s string
+   * @param fillChar fill char
+   * @param size size
+   * @return string
    */
   public static String fillStringLeft(String s, char fillChar, int size) {
 
@@ -104,9 +104,9 @@ public final class StringHelper {
   /**
    * Truncate string with the first chars at size.
    *
-   * @param s
-   * @param size
-   * @return
+   * @param s string
+   * @param size size
+   * @return string
    */
   public static String truncRight(String s, int size) {
 
@@ -122,16 +122,16 @@ public final class StringHelper {
   /**
    * Truncate string with the s length subtract size at s length.
    *
-   * @param s
-   * @param size
-   * @return
+   * @param s string
+   * @param size size
+   * @return string
    */
   public static String truncLeft(String s, int size) {
 
     String string = s;
 
     if (string.length() > size) {
-      string = string.substring(string.length() - size, string.length());
+      string = string.substring(string.length() - size);
     }
 
     return string;
@@ -140,9 +140,9 @@ public final class StringHelper {
   /**
    * Create string with one char * count.
    *
-   * @param fillChar
-   * @param count
-   * @return
+   * @param fillChar fill char
+   * @param count count
+   * @return string
    */
   public static String fillString(char fillChar, int count) {
 
@@ -165,8 +165,8 @@ public final class StringHelper {
   /**
    * Check if string s contain only digital character
    *
-   * @param s
-   * @return
+   * @param s string
+   * @return boolean
    */
   public static boolean isDigital(String s) {
 
@@ -183,10 +183,10 @@ public final class StringHelper {
   /**
    * Extract a string from right
    *
-   * @param string
-   * @param startIndex
-   * @param lenght
-   * @return
+   * @param string string
+   * @param startIndex start index
+   * @param lenght length
+   * @return string
    */
   public static String extractStringFromRight(String string, int startIndex, int lenght) {
     String extractString = "";
@@ -211,8 +211,8 @@ public final class StringHelper {
    * Fonction permettant de convertir un tableau de bytes en une chaine hexadécimale Convert to
    * hexadecimal string from bytes table
    *
-   * @param bytes
-   * @return
+   * @param bytes tableau de bytes
+   * @return chaine hexadécimale
    */
   public static String getHexString(byte[] bytes) {
 
@@ -234,8 +234,8 @@ public final class StringHelper {
   /**
    * Fonction permettant de mettre la première lettre d'une chaine de caractère en majuscule
    *
-   * @param s
-   * @return
+   * @param s chaine de caractère
+   * @return chaine de caractère
    */
   public static String capitalizeFirstLetter(String s) {
     if (s == null) {
@@ -252,7 +252,7 @@ public final class StringHelper {
   /**
    * Get a list of integers from a string.
    *
-   * @param string
+   * @param string string
    * @return list of integers
    */
   public static List<Integer> getIntegerList(String string) {
@@ -265,8 +265,8 @@ public final class StringHelper {
    * Retrieve an ID list string from a collection of model objects. If the collection is empty, this
    * method will return "0".
    *
-   * @param collection
-   * @return
+   * @param collection the collection of model objects
+   * @return the ID list string
    */
   public static String getIdListString(Collection<? extends Model> collection) {
     if (CollectionUtils.isEmpty(collection)) {
@@ -286,6 +286,11 @@ public final class StringHelper {
     return idStringBuilder.toString();
   }
 
+  /**
+   * Retrieve an ID list string from a collection of model objects. If the collection is empty, this
+   * @param name the name to be cleaned
+   * @return the cleaned name
+   */
   public static String getFilename(String name) {
     return StringUtils.replaceEach(name, FILENAME_SEARCH_LIST, FILENAME_REPLACEMENT_LIST);
   }
@@ -294,6 +299,7 @@ public final class StringHelper {
    * Some strings cannot be over 255 char because of database restriction. Cut it to 252 char then
    * add "..." to indicate the string has been cut.
    *
+   * @param str the string to cut
    * @return the cut string
    */
   public static String cutTooLongString(String str) {
@@ -305,6 +311,8 @@ public final class StringHelper {
    * char then add "..." to indicate the string has been cut. offset must be between 0 and 255.
    * Throw exception if offset is out of bound.
    *
+   * @param str the string to cut
+   * @param offset the offset to cut
    * @return the cut string
    */
   public static String cutTooLongStringWithOffset(String str, int offset) {
@@ -323,8 +331,8 @@ public final class StringHelper {
   /**
    * Escapes the characters in a string using HTML entities.
    *
-   * @param string
-   * @return
+   * @param string the string to escape
+   * @return the escaped string
    */
   public static String escapeHtml(String string) {
     return StringEscapeUtils.escapeHtml4(string);

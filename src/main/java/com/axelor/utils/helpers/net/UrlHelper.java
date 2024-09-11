@@ -44,7 +44,7 @@ public final class UrlHelper {
    * Test la validité d'une url.
    *
    * @param url L'URL à tester.
-   * @return
+   * @return null si l'URL est valide, un message d'erreur sinon.
    */
   public static String notExist(String url) {
 

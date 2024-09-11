@@ -33,27 +33,27 @@ import javax.xml.bind.annotation.XmlType;
  * <p>Le fragment de schéma suivant indique le contenu attendu figurant dans cette classe.
  *
  * <pre>
- * &lt;complexType name="QAPicklistType">
- *   &lt;complexContent>
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *       &lt;sequence>
- *         &lt;element name="FullPicklistMoniker" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="PicklistEntry" type="{http://www.qas.com/web-2005-02}PicklistEntryType" maxOccurs="unbounded" minOccurs="0"/>
- *         &lt;element name="Prompt" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="Total" type="{http://www.w3.org/2001/XMLSchema}nonNegativeInteger"/>
- *       &lt;/sequence>
- *       &lt;attribute name="AutoFormatSafe" type="{http://www.w3.org/2001/XMLSchema}boolean" default="false" />
- *       &lt;attribute name="AutoFormatPastClose" type="{http://www.w3.org/2001/XMLSchema}boolean" default="false" />
- *       &lt;attribute name="AutoStepinSafe" type="{http://www.w3.org/2001/XMLSchema}boolean" default="false" />
- *       &lt;attribute name="AutoStepinPastClose" type="{http://www.w3.org/2001/XMLSchema}boolean" default="false" />
- *       &lt;attribute name="LargePotential" type="{http://www.w3.org/2001/XMLSchema}boolean" default="false" />
- *       &lt;attribute name="MaxMatches" type="{http://www.w3.org/2001/XMLSchema}boolean" default="false" />
- *       &lt;attribute name="MoreOtherMatches" type="{http://www.w3.org/2001/XMLSchema}boolean" default="false" />
- *       &lt;attribute name="OverThreshold" type="{http://www.w3.org/2001/XMLSchema}boolean" default="false" />
- *       &lt;attribute name="Timeout" type="{http://www.w3.org/2001/XMLSchema}boolean" default="false" />
- *     &lt;/restriction>
- *   &lt;/complexContent>
- * &lt;/complexType>
+ * &lt;complexType name="QAPicklistType"&gt;
+ *   &lt;complexContent&gt;
+ *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
+ *       &lt;sequence&gt;
+ *         &lt;element name="FullPicklistMoniker" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
+ *         &lt;element name="PicklistEntry" type="{http://www.qas.com/web-2005-02}PicklistEntryType" maxOccurs="unbounded" minOccurs="0"/&gt;
+ *         &lt;element name="Prompt" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
+ *         &lt;element name="Total" type="{http://www.w3.org/2001/XMLSchema}nonNegativeInteger"/&gt;
+ *       &lt;/sequence&gt;
+ *       &lt;attribute name="AutoFormatSafe" type="{http://www.w3.org/2001/XMLSchema}boolean" default="false" /&gt;
+ *       &lt;attribute name="AutoFormatPastClose" type="{http://www.w3.org/2001/XMLSchema}boolean" default="false" /&gt;
+ *       &lt;attribute name="AutoStepinSafe" type="{http://www.w3.org/2001/XMLSchema}boolean" default="false" /&gt;
+ *       &lt;attribute name="AutoStepinPastClose" type="{http://www.w3.org/2001/XMLSchema}boolean" default="false" /&gt;
+ *       &lt;attribute name="LargePotential" type="{http://www.w3.org/2001/XMLSchema}boolean" default="false" /&gt;
+ *       &lt;attribute name="MaxMatches" type="{http://www.w3.org/2001/XMLSchema}boolean" default="false" /&gt;
+ *       &lt;attribute name="MoreOtherMatches" type="{http://www.w3.org/2001/XMLSchema}boolean" default="false" /&gt;
+ *       &lt;attribute name="OverThreshold" type="{http://www.w3.org/2001/XMLSchema}boolean" default="false" /&gt;
+ *       &lt;attribute name="Timeout" type="{http://www.w3.org/2001/XMLSchema}boolean" default="false" /&gt;
+ *     &lt;/restriction&gt;
+ *   &lt;/complexContent&gt;
+ * &lt;/complexType&gt;
  * </pre>
  */
 @XmlAccessorType(XmlAccessType.FIELD)
@@ -134,6 +134,8 @@ public class QAPicklistType {
    * </pre>
    *
    * <p>Objects of the following type(s) are allowed in the list {@link PicklistEntryType }
+   *
+   * @return All picklist entries.
    */
   public List<PicklistEntryType> getPicklistEntry() {
     if (picklistEntry == null) {

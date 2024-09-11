@@ -26,19 +26,17 @@ import javax.xml.bind.annotation.XmlType;
  *
  * <p>Le fragment de schéma suivant indique le contenu attendu figurant dans cette classe.
  *
- * <p>
- *
  * <pre>
- * &lt;simpleType name="VerifyLevelType">
- *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
- *     &lt;enumeration value="None"/>
- *     &lt;enumeration value="Verified"/>
- *     &lt;enumeration value="InteractionRequired"/>
- *     &lt;enumeration value="PremisesPartial"/>
- *     &lt;enumeration value="StreetPartial"/>
- *     &lt;enumeration value="Multiple"/>
- *   &lt;/restriction>
- * &lt;/simpleType>
+ * &lt;simpleType name="VerifyLevelType"&gt;
+ *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
+ *     &lt;enumeration value="None"/&gt;
+ *     &lt;enumeration value="Verified"/&gt;
+ *     &lt;enumeration value="InteractionRequired"/&gt;
+ *     &lt;enumeration value="PremisesPartial"/&gt;
+ *     &lt;enumeration value="StreetPartial"/&gt;
+ *     &lt;enumeration value="Multiple"/&gt;
+ *   &lt;/restriction&gt;
+ * &lt;/simpleType&gt;
  * </pre>
  */
 @XmlType(name = "VerifyLevelType")

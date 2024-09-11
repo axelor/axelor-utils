@@ -26,20 +26,18 @@ import javax.xml.bind.annotation.XmlType;
  *
  * <p>Le fragment de schéma suivant indique le contenu attendu figurant dans cette classe.
  *
- * <p>
- *
  * <pre>
- * &lt;simpleType name="PromptSetType">
- *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
- *     &lt;enumeration value="OneLine"/>
- *     &lt;enumeration value="Default"/>
- *     &lt;enumeration value="Generic"/>
- *     &lt;enumeration value="Optimal"/>
- *     &lt;enumeration value="Alternate"/>
- *     &lt;enumeration value="Alternate2"/>
- *     &lt;enumeration value="Alternate3"/>
- *   &lt;/restriction>
- * &lt;/simpleType>
+ * &lt;simpleType name="PromptSetType"&gt;
+ *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
+ *     &lt;enumeration value="OneLine"/&gt;
+ *     &lt;enumeration value="Default"/&gt;
+ *     &lt;enumeration value="Generic"/&gt;
+ *     &lt;enumeration value="Optimal"/&gt;
+ *     &lt;enumeration value="Alternate"/&gt;
+ *     &lt;enumeration value="Alternate2"/&gt;
+ *     &lt;enumeration value="Alternate3"/&gt;
+ *   &lt;/restriction&gt;
+ * &lt;/simpleType&gt;
  * </pre>
  */
 @XmlType(name = "PromptSetType")

@@ -37,147 +37,234 @@ public class ObjectFactory {
    */
   public ObjectFactory() {}
 
-  /** Create an instance of {@link QAPromptSet } */
+  /**
+   * Create an instance of {@link QAPromptSet }
+   * @return QAPromptSet instance
+   */
   public QAPromptSet createQAPromptSet() {
     return new QAPromptSet();
   }
 
-  /** Create an instance of {@link PromptLine } */
+  /**
+   * Create an instance of {@link PromptLine }
+   * @return PromptLine instance
+   */
   public PromptLine createPromptLine() {
     return new PromptLine();
   }
 
-  /** Create an instance of {@link QASearchResult } */
+  /**
+   * Create an instance of {@link QASearchResult }
+   * @return QASearchResult instance
+   */
   public QASearchResult createQASearchResult() {
     return new QASearchResult();
   }
 
-  /** Create an instance of {@link QAPicklistType } */
+  /**
+   * Create an instance of {@link QAPicklistType }
+   * @return QAPicklistType instance
+   */
   public QAPicklistType createQAPicklistType() {
     return new QAPicklistType();
   }
 
-  /** Create an instance of {@link QAAddressType } */
+  /**
+   * Create an instance of {@link QAAddressType }
+   * @return QAAddressType instance
+   */
   public QAAddressType createQAAddressType() {
     return new QAAddressType();
   }
 
-  /** Create an instance of {@link QASearchOk } */
+  /**
+   * Create an instance of {@link QASearchOk }
+   * @return QASearchOk instance
+   */
   public QASearchOk createQASearchOk() {
     return new QASearchOk();
   }
 
-  /** Create an instance of {@link QAGetAddress } */
+  /**
+   * Create an instance of {@link QAGetAddress }
+   * @return QAGetAddress instance
+   */
   public QAGetAddress createQAGetAddress() {
     return new QAGetAddress();
   }
 
-  /** Create an instance of {@link QAConfigType } */
+  /**
+   * Create an instance of {@link QAConfigType }
+   * @return QAConfigType instance
+   */
   public QAConfigType createQAConfigType() {
     return new QAConfigType();
   }
 
-  /** Create an instance of {@link QALayouts } */
+  /**
+   * Create an instance of {@link QALayouts }
+   * @return QALayouts instance
+   */
   public QALayouts createQALayouts() {
     return new QALayouts();
   }
 
-  /** Create an instance of {@link QALayout } */
+  /**
+   * Create an instance of {@link QALayout }
+   * @return QALayout instance
+   */
   public QALayout createQALayout() {
     return new QALayout();
   }
 
-  /** Create an instance of {@link QACanSearch } */
+  /**
+   * Create an instance of {@link QACanSearch }
+   * @return QACanSearch instance
+   */
   public QACanSearch createQACanSearch() {
     return new QACanSearch();
   }
 
-  /** Create an instance of {@link EngineType } */
+  /**
+   * Create an instance of {@link EngineType }
+   * @return EngineType instance
+   */
   public EngineType createEngineType() {
     return new EngineType();
   }
 
-  /** Create an instance of {@link QAGetPromptSet } */
+  /**
+   * Create an instance of {@link QAGetPromptSet }
+   * @return QAGetPromptSet instance
+   */
   public QAGetPromptSet createQAGetPromptSet() {
     return new QAGetPromptSet();
   }
 
-  /** Create an instance of {@link QASearch } */
+  /**
+   * Create an instance of {@link QASearch }
+   * @return QASearch instance
+   */
   public QASearch createQASearch() {
     return new QASearch();
   }
 
-  /** Create an instance of {@link QARefine } */
+  /**
+   * Create an instance of {@link QARefine }
+   * @return QARefine instance
+   */
   public QARefine createQARefine() {
     return new QARefine();
   }
 
-  /** Create an instance of {@link QASystemInfo } */
+  /**
+   * Create an instance of {@link QASystemInfo }
+   * @return QASystemInfo instance
+   */
   public QASystemInfo createQASystemInfo() {
     return new QASystemInfo();
   }
 
-  /** Create an instance of {@link QAData } */
+  /**
+   * Create an instance of {@link QAData }
+   * @return QAData instance
+   */
   public QAData createQAData() {
     return new QAData();
   }
 
-  /** Create an instance of {@link QADataSet } */
+  /**
+   * Create an instance of {@link QADataSet }
+   * @return QADataSet instance
+   */
   public QADataSet createQADataSet() {
     return new QADataSet();
   }
 
-  /** Create an instance of {@link Picklist } */
+  /**
+   * Create an instance of {@link Picklist }
+   * @return Picklist instance
+   */
   public Picklist createPicklist() {
     return new Picklist();
   }
 
-  /** Create an instance of {@link QALicenceInfo } */
+  /**
+   * Create an instance of {@link QALicenceInfo }
+   * @return QALicenceInfo instance
+   */
   public QALicenceInfo createQALicenceInfo() {
     return new QALicenceInfo();
   }
 
-  /** Create an instance of {@link QALicensedSet } */
+  /**
+   * Create an instance of {@link QALicensedSet }
+   * @return QALicensedSet instance
+   */
   public QALicensedSet createQALicensedSet() {
     return new QALicensedSet();
   }
 
-  /** Create an instance of {@link Address } */
+  /**
+   * Create an instance of {@link Address }
+   * @return Address instance
+   */
   public Address createAddress() {
     return new Address();
   }
 
-  /** Create an instance of {@link QAExampleAddresses } */
+  /**
+   * Create an instance of {@link QAExampleAddresses }
+   * @return QAExampleAddresses instance
+   */
   public QAExampleAddresses createQAExampleAddresses() {
     return new QAExampleAddresses();
   }
 
-  /** Create an instance of {@link QAExampleAddress } */
+  /**
+   * Create an instance of {@link QAExampleAddress }
+   * @return QAExampleAddress instance
+   */
   public QAExampleAddress createQAExampleAddress() {
     return new QAExampleAddress();
   }
 
-  /** Create an instance of {@link QAGetLayouts } */
+  /**
+   * Create an instance of {@link QAGetLayouts }
+   * @return QAGetLayouts instance
+   */
   public QAGetLayouts createQAGetLayouts() {
     return new QAGetLayouts();
   }
 
-  /** Create an instance of {@link QAFault } */
+  /**
+   * Create an instance of {@link QAFault }
+   * @return QAFault instance
+   */
   public QAFault createQAFault() {
     return new QAFault();
   }
 
-  /** Create an instance of {@link QAGetExampleAddresses } */
+  /**
+   * Create an instance of {@link QAGetExampleAddresses }
+   * @return QAGetExampleAddresses instance
+   */
   public QAGetExampleAddresses createQAGetExampleAddresses() {
     return new QAGetExampleAddresses();
   }
 
-  /** Create an instance of {@link PicklistEntryType } */
+  /**
+   * Create an instance of {@link PicklistEntryType }
+   * @return PicklistEntryType instance
+   */
   public PicklistEntryType createPicklistEntryType() {
     return new PicklistEntryType();
   }
 
-  /** Create an instance of {@link AddressLineType } */
+  /**
+   * Create an instance of {@link AddressLineType }
+   * @return AddressLineType instance
+   */
   public AddressLineType createAddressLineType() {
     return new AddressLineType();
   }

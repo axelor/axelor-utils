@@ -31,17 +31,17 @@ import javax.xml.bind.annotation.XmlType;
  * <p>Le fragment de schéma suivant indique le contenu attendu figurant dans cette classe.
  *
  * <pre>
- * &lt;complexType name="QAAddressType">
- *   &lt;complexContent>
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *       &lt;sequence>
- *         &lt;element name="AddressLine" type="{http://www.qas.com/web-2005-02}AddressLineType" maxOccurs="unbounded"/>
- *       &lt;/sequence>
- *       &lt;attribute name="Overflow" type="{http://www.w3.org/2001/XMLSchema}boolean" default="false" />
- *       &lt;attribute name="Truncated" type="{http://www.w3.org/2001/XMLSchema}boolean" default="false" />
- *     &lt;/restriction>
- *   &lt;/complexContent>
- * &lt;/complexType>
+ * &lt;complexType name="QAAddressType"&gt;
+ *   &lt;complexContent&gt;
+ *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
+ *       &lt;sequence&gt;
+ *         &lt;element name="AddressLine" type="{http://www.qas.com/web-2005-02}AddressLineType" maxOccurs="unbounded"/&gt;
+ *       &lt;/sequence&gt;
+ *       &lt;attribute name="Overflow" type="{http://www.w3.org/2001/XMLSchema}boolean" default="false" /&gt;
+ *       &lt;attribute name="Truncated" type="{http://www.w3.org/2001/XMLSchema}boolean" default="false" /&gt;
+ *     &lt;/restriction&gt;
+ *   &lt;/complexContent&gt;
+ * &lt;/complexType&gt;
  * </pre>
  */
 @XmlAccessorType(XmlAccessType.FIELD)
@@ -73,10 +73,12 @@ public class QAAddressType {
    * </pre>
    *
    * <p>Objects of the following type(s) are allowed in the list {@link AddressLineType }
+   *
+   * @return All address lines.
    */
   public List<AddressLineType> getAddressLine() {
     if (addressLine == null) {
-      addressLine = new ArrayList<AddressLineType>();
+      addressLine = new ArrayList<>();
     }
     return this.addressLine;
   }

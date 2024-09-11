@@ -32,7 +32,7 @@ public final class ContextHelper {
    * @param message The message to format
    * @param spanClass The span class (label-warning, label-important...)
    * @param length The max length of the message
-   * @return
+   * @return The formatted message
    */
   public static String formatLabel(String message, String spanClass, int length) {
     if (message.length() > 80) {
@@ -54,6 +54,7 @@ public final class ContextHelper {
    * @param context The context from which to get the parent
    * @param klass The class of the desired parent
    * @param depth The depth from which to get the parent
+   * @param <T> The type of the desired parent
    * @return The desired parent, or null if it doesn't exist or is of a different class
    */
   public static <T> T getContextParent(Context context, Class<T> klass, int depth) {
@@ -77,6 +78,7 @@ public final class ContextHelper {
    * @param context The context
    * @param fieldName The field name in the context
    * @param klass The class of the desired field
+   * @param <T> The type of the desired field
    * @return The desired field, or null if it doesn't exist
    */
   public static <T> T getFieldFromContextParent(Context context, String fieldName, Class<T> klass) {
@@ -95,6 +97,7 @@ public final class ContextHelper {
    *
    * @param context The context
    * @param parentClass The class of the desired parent
+   * @param <T> The type of the desired parent
    * @return The very first parent of the current context
    */
   public static <T> T getOriginParent(Context context, Class<T> parentClass) {

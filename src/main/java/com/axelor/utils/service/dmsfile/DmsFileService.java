@@ -31,7 +31,6 @@ public interface DmsFileService {
    *
    * @param entityList List of Model objects
    * @param entityMerged Model object
-   * @return void.
    */
   void addLinkedDMSFiles(List<? extends Model> entityList, Model entityMerged);
 

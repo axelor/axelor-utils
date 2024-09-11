@@ -26,16 +26,14 @@ import javax.xml.bind.annotation.XmlType;
  *
  * <p>Le fragment de schéma suivant indique le contenu attendu figurant dans cette classe.
  *
- * <p>
- *
  * <pre>
- * &lt;simpleType name="EngineEnumType">
- *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
- *     &lt;enumeration value="Singleline"/>
- *     &lt;enumeration value="Typedown"/>
- *     &lt;enumeration value="Verification"/>
- *   &lt;/restriction>
- * &lt;/simpleType>
+ * &lt;simpleType name="EngineEnumType"&gt;
+ *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
+ *     &lt;enumeration value="Singleline"/&gt;
+ *     &lt;enumeration value="Typedown"/&gt;
+ *     &lt;enumeration value="Verification"/&gt;
+ *   &lt;/restriction&gt;
+ * &lt;/simpleType&gt;
  * </pre>
  */
 @XmlType(name = "EngineEnumType")

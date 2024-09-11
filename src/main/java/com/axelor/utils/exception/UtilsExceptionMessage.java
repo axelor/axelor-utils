@@ -24,10 +24,12 @@ public final class UtilsExceptionMessage {
   private UtilsExceptionMessage() {}
 
   /**
-   * Used to factorize code & increase readability by avoiding String.format(I18n.get(...), ...,
+   * Used to factorize code &amp; increase readability by avoiding String.format(I18n.get(...), ...,
    * ...) calls.
    *
-   * <p>Better use static import in classes using this method to keep short name.
+   * @param keyMessage the key of the message in the i18n file
+   * @param args the arguments to replace in the message
+   * @return the formatted and translated message
    */
   public static String formatAndTranslate(String keyMessage, Object... args) {
     return String.format(I18n.get(keyMessage), args);

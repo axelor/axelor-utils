@@ -19,51 +19,53 @@ package com.axelor.utils.service;
 
 public interface TranslationService {
   /**
-   * Update formated value translations.
+   * Update formated value translation.
    *
-   * @param oldKey
-   * @param format
-   * @param args
+   * @param oldKey The old key to be updated.
+   * @param format The new format.
+   * @param args The format arguments.
    */
   void updateFormatedValueTranslations(String oldKey, String format, Object... args);
 
   /**
-   * Create formated value translations.
+   * Create formated value translation.
    *
-   * @param format
-   * @param args
+   * @param format The format.
+   * @param args The format arguments.
    */
   void createFormatedValueTranslations(String format, Object... args);
 
   /**
-   * Remove value translations.
+   * Remove value translation.
    *
-   * @param key
+   * @param key The key to be removed.
    */
   void removeValueTranslations(String key);
 
   /**
    * Get the translation of the given key.
    *
-   * @param key
+   * @param key The key to be translated.
+   * @param language The language.
+   * @return The translation.
    */
   String getTranslation(String key, String language);
 
   /**
    * Get the translation key of the given message.
    *
-   * @param value
-   * @param language
-   * @return
+   * @param message The message to be translated.
+   * @param language The language.
+   * @return The translation key.
    */
   String getTranslationKey(String message, String language);
 
   /**
    * Get the translation of the given value key.
    *
-   * @param key
-   * @param language
-   * @return
+   * @param key The key to be translated.
+   * @param language The language.
+   * @return The translation.
    */
   String getValueTranslation(String key, String language);
 }

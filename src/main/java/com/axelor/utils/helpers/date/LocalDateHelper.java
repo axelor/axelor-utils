@@ -154,11 +154,13 @@ public class LocalDateHelper {
    * @param startDate The start date
    * @param goalDate The targeted date
    * @param frequencyInMonth Number of months depicting the frequency of the event
+   *
+   * @return The date of the next occurrence of the event
    */
   public static LocalDate nextOccurency(
       LocalDate startDate, LocalDate goalDate, int frequencyInMonth) {
 
-    if (!checkValidInputs(startDate, goalDate, frequencyInMonth)) {
+    if (isInputsInvalid(startDate, goalDate, frequencyInMonth)) {
       return null;
 
     } else if (startDate.isAfter(goalDate)) {
@@ -180,11 +182,13 @@ public class LocalDateHelper {
    * @param startDate The start date
    * @param goalDate The targeted date
    * @param frequencyInMonth Number of months depicting the frequency of the event
+   *
+   * @return The date of the next occurrence of the event
    */
   public LocalDate nextOccurencyStartDateIncluded(
       LocalDate startDate, LocalDate goalDate, int frequencyInMonth) {
 
-    if (!checkValidInputs(startDate, goalDate, frequencyInMonth)) {
+    if (isInputsInvalid(startDate, goalDate, frequencyInMonth)) {
       return null;
 
     } else if (startDate.isAfter(goalDate)) {
@@ -203,14 +207,16 @@ public class LocalDateHelper {
    * adds as many times as possible the frequency in month to the start date while being less than
    * or equal to the end date.
    *
-   * @param startDate
-   * @param endDate
+   * @param startDate The start date
+   * @param endDate The end date
    * @param frequencyInMonth Number of months depicting the frequency of the event
+   *
+   * @return The date of the last occurrence of the event
    */
   public static LocalDate lastOccurency(
       LocalDate startDate, LocalDate endDate, int frequencyInMonth) {
 
-    if (!checkValidInputs(startDate, endDate, frequencyInMonth)) {
+    if (isInputsInvalid(startDate, endDate, frequencyInMonth)) {
       return null;
 
     } else if (startDate.isAfter(endDate)) {
@@ -226,24 +232,24 @@ public class LocalDateHelper {
   /**
    * Checks that the frequency is not equal to zero and that the start and end dates are not null.
    *
-   * @param startDate
-   * @param endDate
-   * @param frequencyInMonth
-   * @return
+   * @param startDate The start date
+   * @param endDate The end date
+   * @param frequencyInMonth The frequency in month
+   * @return True if the inputs are invalid, false otherwise
    */
-  private static boolean checkValidInputs(
+  private static boolean isInputsInvalid(
       LocalDate startDate, LocalDate endDate, int frequencyInMonth) {
     if (frequencyInMonth == 0) {
       LOG.debug("The frequency should not be zero.");
-      return false;
+      return true;
     } else if (startDate == null) {
       LOG.debug("The start date should not be null.");
-      return false;
+      return true;
     } else if (endDate == null) {
       LOG.debug("The end date should not be null.");
-      return false;
+      return true;
     }
-    return true;
+    return false;
   }
 
   public static LocalDate minusMonths(LocalDate date, int nbMonths) {
@@ -274,7 +280,8 @@ public class LocalDateHelper {
    * @param monthBegin The start month of the period
    * @param dayEnd The end day of the period
    * @param monthEnd The start month of the period
-   * @return
+   *
+   * @return True if the date is in the period, false otherwise
    */
   public static boolean dateInPeriod(
       LocalDate date, int dayBegin, int monthBegin, int dayEnd, int monthEnd) {
@@ -305,7 +312,6 @@ public class LocalDateHelper {
   }
 
   public static Date toDate(LocalDate date) {
-
     return Date.from(date.atStartOfDay(ZoneId.systemDefault()).toInstant());
   }
 
@@ -313,7 +319,12 @@ public class LocalDateHelper {
     return LocalDateTimeHelper.getTodayDateTime(timeZone).toLocalDate();
   }
 
-  /** True if the dates are in the same month of the same year. */
+  /**
+   * True if the dates are in the same month of the same year.
+   * @param date1 First date to check
+   * @param date2 Second date to check
+   * @return True if the dates are in the same month of the same year
+   */
   public static boolean isInTheSameMonth(LocalDate date1, LocalDate date2) {
     return date1.getMonth().equals(date2.getMonth()) && date1.getYear() == date2.getYear();
   }
@@ -322,10 +333,10 @@ public class LocalDateHelper {
    * @param intervals list of LocalDateInterval
    * @param day not null
    * @return a LocalDateInterval object representing the biggest continuous period containing the
-   *     given LocalDate day & with each day of the interval contained into at least one of the
-   *     given intervals returns null if there is no given intervals
-   * @return null if the given date is before the startDate of the firstInterval or after the
-   *     endDate of the lastInterval
+   *     given LocalDate day &amp; with each day of the interval contained into at least one of the
+   *     given intervals returns null if there is no given intervals.
+   *     <p>Or null if the given date is before the startDate of the firstInterval or after the
+   *     endDate of the lastInterval.
    * @throws IllegalArgumentException if the given LocalDate is null
    */
   public static LocalDateInterval getMergedIntervalContainingDay(
@@ -376,7 +387,7 @@ public class LocalDateHelper {
    * Useful for display in charts for example where the year charge too much the view. E.g. 03/12
    * for the 3rd of december
    *
-   * @param day
+   * @param day the date to format
    * @return the date without the year in a String
    */
   public static String getFrenchFormatWithoutYear(LocalDate day) {
@@ -390,7 +401,7 @@ public class LocalDateHelper {
   }
 
   /**
-   * Compute the sum of Saturdays & Sundays in the closed interval defined by the given dates.
+   * Compute the sum of Saturdays &amp; Sundays in the closed interval defined by the given dates.
    *
    * <p>Example:
    *
@@ -400,8 +411,8 @@ public class LocalDateHelper {
    *   <li><b>result:</b> <i>3</i> (= Sunday 18 + Saturday 24 + Sunday 25)
    * </ul>
    *
-   * @param startDate
-   * @param endDate
+   * @param startDate the start date of the interval
+   * @param endDate the end date of the interval
    * @return the number of non business days between 2 dates (both included). If the startDate is
    *     strictly after the endDate, return the opposite value of the same call with inverted
    *     parameters.
@@ -455,7 +466,7 @@ public class LocalDateHelper {
   }
 
   /**
-   * @param month: given java.time.Month to search boundaries on
+   * @param targetMonth: given java.time.Month to search boundaries on
    * @param referenceDate: date from which the result is searched
    * @return a MonthBoundaries object containing the start date and the end date of the first month
    *     in the past from the @param referenceDate exclusive corresponding to the given @param
@@ -481,7 +492,7 @@ public class LocalDateHelper {
   }
 
   /**
-   * @param month: given java.time.Month to search boundaries on
+   * @param targetMonth: given java.time.Month to search boundaries on
    * @param referenceDate: date from which the result is searched
    * @return a MonthBoundaries object containing the start date and the end date of the first month
    *     in the past from the @param referenceDate exclusive corresponding to the given @param

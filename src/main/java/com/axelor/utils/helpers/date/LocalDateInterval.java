@@ -19,20 +19,24 @@ package com.axelor.utils.helpers.date;
 
 import java.time.LocalDate;
 import java.util.Objects;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * LocalDateInterval is a class used to define intervals of time with precision of a day.
  *
- * <p>LocalDateInterval are closed intervals when bounded -> startDate & endDate are included in the
- * interval -> A one day interval is represented by startDate = endDate
+ * <p>LocalDateInterval are closed intervals when bounded -&gt; startDate &amp; endDate are included in the
+ * interval -&gt; A one day interval is represented by startDate = endDate
  *
- * <p>startDate = null means minus-infinite endDate = null means plus-infinite -> new
- * LocalDateInterval(null, null) represent all the past & future
+ * <p>startDate = null means minus-infinite endDate = null means plus-infinite -&gt; new
+ * LocalDateInterval(null, null) represent all the past &amp; future
  *
  * <p>{@link Comparable} on startDate
  *
  * @author Maxence GALLANCHER
  */
+@Setter
+@Getter
 public class LocalDateInterval implements Comparable<LocalDateInterval> {
 
   private LocalDate startDate;
@@ -44,22 +48,6 @@ public class LocalDateInterval implements Comparable<LocalDateInterval> {
     }
     this.setStartDate(startDate);
     this.setEndDate(endDate);
-  }
-
-  public LocalDate getStartDate() {
-    return startDate;
-  }
-
-  public void setStartDate(LocalDate startDate) {
-    this.startDate = startDate;
-  }
-
-  public LocalDate getEndDate() {
-    return endDate;
-  }
-
-  public void setEndDate(LocalDate endDate) {
-    this.endDate = endDate;
   }
 
   //////////////////////////////////////////////////////////////
@@ -188,7 +176,7 @@ public class LocalDateInterval implements Comparable<LocalDateInterval> {
   }
 
   /**
-   * @param comparedInterval
+   * @param comparedInterval the interval to compare with
    * @return true if and only if the {@code comparedInterval.startDate} is before, the same or the
    *     day right after {@code this.endDate}.
    */
@@ -205,7 +193,7 @@ public class LocalDateInterval implements Comparable<LocalDateInterval> {
   }
 
   /**
-   * @param comparedInterval
+   * @param comparedInterval the interval to compare with
    * @return true if and only if the {@code comparedInterval.endDate} is after, the same or the day
    *     right before {@code this.startDate}.
    */

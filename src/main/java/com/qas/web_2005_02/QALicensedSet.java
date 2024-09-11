@@ -30,25 +30,25 @@ import javax.xml.bind.annotation.XmlType;
  * <p>Le fragment de schéma suivant indique le contenu attendu figurant dans cette classe.
  *
  * <pre>
- * &lt;complexType name="QALicensedSet">
- *   &lt;complexContent>
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *       &lt;sequence>
- *         &lt;element name="ID" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="Description" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="Copyright" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="Version" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="BaseCountry" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="Status" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="Server" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="WarningLevel" type="{http://www.qas.com/web-2005-02}LicenceWarningLevel"/>
- *         &lt;element name="DaysLeft" type="{http://www.w3.org/2001/XMLSchema}nonNegativeInteger"/>
- *         &lt;element name="DataDaysLeft" type="{http://www.w3.org/2001/XMLSchema}nonNegativeInteger"/>
- *         &lt;element name="LicenceDaysLeft" type="{http://www.w3.org/2001/XMLSchema}nonNegativeInteger"/>
- *       &lt;/sequence>
- *     &lt;/restriction>
- *   &lt;/complexContent>
- * &lt;/complexType>
+ * &lt;complexType name="QALicensedSet"&gt;
+ *   &lt;complexContent&gt;
+ *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
+ *       &lt;sequence&gt;
+ *         &lt;element name="ID" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
+ *         &lt;element name="Description" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
+ *         &lt;element name="Copyright" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
+ *         &lt;element name="Version" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
+ *         &lt;element name="BaseCountry" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
+ *         &lt;element name="Status" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
+ *         &lt;element name="Server" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
+ *         &lt;element name="WarningLevel" type="{http://www.qas.com/web-2005-02}LicenceWarningLevel"/&gt;
+ *         &lt;element name="DaysLeft" type="{http://www.w3.org/2001/XMLSchema}nonNegativeInteger"/&gt;
+ *         &lt;element name="DataDaysLeft" type="{http://www.w3.org/2001/XMLSchema}nonNegativeInteger"/&gt;
+ *         &lt;element name="LicenceDaysLeft" type="{http://www.w3.org/2001/XMLSchema}nonNegativeInteger"/&gt;
+ *       &lt;/sequence&gt;
+ *     &lt;/restriction&gt;
+ *   &lt;/complexContent&gt;
+ * &lt;/complexType&gt;
  * </pre>
  */
 @XmlAccessorType(XmlAccessType.FIELD)

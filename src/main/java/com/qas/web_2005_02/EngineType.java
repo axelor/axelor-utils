@@ -29,17 +29,17 @@ import javax.xml.bind.annotation.XmlValue;
  * <p>Le fragment de schéma suivant indique le contenu attendu figurant dans cette classe.
  *
  * <pre>
- * &lt;complexType name="EngineType">
- *   &lt;simpleContent>
- *     &lt;extension base="&lt;http://www.qas.com/web-2005-02>EngineEnumType">
- *       &lt;attribute name="Flatten" type="{http://www.w3.org/2001/XMLSchema}boolean" />
- *       &lt;attribute name="Intensity" type="{http://www.qas.com/web-2005-02}EngineIntensityType" />
- *       &lt;attribute name="PromptSet" type="{http://www.qas.com/web-2005-02}PromptSetType" />
- *       &lt;attribute name="Threshold" type="{http://www.qas.com/web-2005-02}ThresholdType" />
- *       &lt;attribute name="Timeout" type="{http://www.qas.com/web-2005-02}TimeoutType" />
- *     &lt;/extension>
- *   &lt;/simpleContent>
- * &lt;/complexType>
+ * &lt;complexType name="EngineType"&gt;
+ *   &lt;simpleContent&gt;
+ *     &lt;extension base="&lt;http://www.qas.com/web-2005-02&gt;EngineEnumType"&gt;
+ *       &lt;attribute name="Flatten" type="{http://www.w3.org/2001/XMLSchema}boolean" /&gt;
+ *       &lt;attribute name="Intensity" type="{http://www.qas.com/web-2005-02}EngineIntensityType" /&gt;
+ *       &lt;attribute name="PromptSet" type="{http://www.qas.com/web-2005-02}PromptSetType" /&gt;
+ *       &lt;attribute name="Threshold" type="{http://www.qas.com/web-2005-02}ThresholdType" /&gt;
+ *       &lt;attribute name="Timeout" type="{http://www.qas.com/web-2005-02}TimeoutType" /&gt;
+ *     &lt;/extension&gt;
+ *   &lt;/simpleContent&gt;
+ * &lt;/complexType&gt;
  * </pre>
  */
 @XmlAccessorType(XmlAccessType.FIELD)

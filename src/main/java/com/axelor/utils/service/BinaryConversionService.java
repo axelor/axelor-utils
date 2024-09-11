@@ -24,9 +24,9 @@ public interface BinaryConversionService {
   /**
    * Convert bytePicture in Metafile
    *
-   * @param bytePicture : require non null
+   * @param bytePicture byte array of picture
    * @return Metafile created
-   * @throws IOException
+   * @throws IOException if any error occurs
    */
   public MetaFile toMetaFile(byte[] bytePicture) throws IOException;
 }
