@@ -33,10 +33,10 @@ public class SelectHelper {
    * Otherwise prefer using {@link #getStringValueFromTitle(String, String)}.
    *
    * @param selectName: String representing the name of a string selection.
-   * @param title:      String representing the title (as displayed before translation in views) of
-   *                    a value among the possible ones from to selection named by selectName.
+   * @param title: String representing the title (as displayed before translation in views) of a
+   *     value among the possible ones from to selection named by selectName.
    * @return an Optional String containing the value as stored in database corresponding to the
-   * given couple (selectName / title).
+   *     given couple (selectName / title).
    */
   public static Optional<String> getOptionalStringValueFromTitle(String selectName, String title) {
     final List<Option> options = MetaStore.getSelectionList(selectName);
@@ -57,12 +57,12 @@ public class SelectHelper {
    * Otherwise prefer using {@link #getOptionalStringValueFromTitle(String, String)}.
    *
    * @param selectName: String representing the name of a string selection.
-   * @param title:      String representing the title (as displayed before translation in views) of
-   *                    a value among the possible ones from to selection named by selectName.
+   * @param title: String representing the title (as displayed before translation in views) of a
+   *     value among the possible ones from to selection named by selectName.
    * @return a String value as stored in database corresponding to the given couple (selectName /
-   * title).
+   *     title).
    * @throws IllegalArgumentException if the couple (selectName / title) doesn't match any existing
-   *                                  selection.
+   *     selection.
    */
   public static String getStringValueFromTitle(String selectName, String title) {
 
@@ -90,10 +90,10 @@ public class SelectHelper {
    * result. Otherwise, prefer using {@link #getTitleFromStringValue(String, String)}.
    *
    * @param selectName String representing the name of a string selection.
-   * @param value      String representing the value among the possible ones from to selection named
-   *                   by selectName.
+   * @param value String representing the value among the possible ones from to selection named by
+   *     selectName.
    * @return an Optional String containing to the label as displayed (before translation) in views
-   * corresponding to given couple (selectName &amp; value).
+   *     corresponding to given couple (selectName &amp; value).
    */
   public static Optional<String> getOptionalTitleFromStringValue(String selectName, String value) {
     final List<Option> options = MetaStore.getSelectionList(selectName);
@@ -111,17 +111,17 @@ public class SelectHelper {
 
   /**
    * Method to search title corresponding to a couple (selectName / value) when it is sure that
-   * there is a match. Otherwise prefer using
-   * {@link #getOptionalTitleFromStringValue(String, String)}.
+   * there is a match. Otherwise prefer using {@link #getOptionalTitleFromStringValue(String,
+   * String)}.
    *
    * @param selectName: String representing the name of a string selection.
-   * @param value:      String representing the value among the possible ones from to selection
-   *                    named by selectName.
+   * @param value: String representing the value among the possible ones from to selection named by
+   *     selectName.
    * @return the String corresponding to the label as displayed (before translation) in views
-   * corresponding to given couple (selectName &amp; value). Can be null if no title is associated to
-   * the found selection option.
+   *     corresponding to given couple (selectName &amp; value). Can be null if no title is
+   *     associated to the found selection option.
    * @throws IllegalArgumentException if the couple (selectName / value) doesn't match any existing
-   *                                  selection.
+   *     selection.
    */
   public static String getTitleFromStringValue(String selectName, String value) {
     if (value == null) {
@@ -148,7 +148,7 @@ public class SelectHelper {
    * @param selectName: String representing the name of a string selection.
    * @return a List containing all the existing values associated to the selection.
    * @throws IllegalArgumentException if the selectName doen't match any selection in the
-   *                                  application.
+   *     application.
    */
   public static List<String> getPossibleValuesForStringSelection(String selectName) {
 
@@ -168,10 +168,10 @@ public class SelectHelper {
    * value. Otherwise, prefer using {@link #getIntegerValueFromTitle(String, String)}.
    *
    * @param selectName String representing the name of an integer selection.
-   * @param title      String representing the title (as displayed before translation in views) of a
-   *                   value among the possible ones from to selection named by selectName.
+   * @param title String representing the title (as displayed before translation in views) of a
+   *     value among the possible ones from to selection named by selectName.
    * @return an Optional Integer containing the value as stored in database corresponding to the
-   * given couple (selectName / title).
+   *     given couple (selectName / title).
    */
   public static Optional<Integer> getOptionalIntegerValueFromTitle(
       String selectName, String title) {
@@ -194,14 +194,14 @@ public class SelectHelper {
    * Otherwise prefer using {@link #getOptionalIntegerValueFromTitle(String, String)}.
    *
    * @param selectName: String representing the name of an integer selection.
-   * @param title:      String representing the title (as displayed before translation in views) of
-   *                    a value among the possible ones from to selection named by selectName.
+   * @param title: String representing the title (as displayed before translation in views) of a
+   *     value among the possible ones from to selection named by selectName.
    * @return Integer value as stored in database corresponding to the given couple (selectName /
-   * title).
+   *     title).
    * @throws IllegalArgumentException if the couple (selectName / title) doesn't match any existing
-   *                                  selection.
+   *     selection.
    * @throws IllegalArgumentException if the couple (selectName / title) match a selection with non
-   *                                  numeric values.
+   *     numeric values.
    */
   public static Integer getIntegerValueFromTitle(String selectName, String title) {
     String valueAsString = getStringValueFromTitle(selectName, title);
@@ -221,10 +221,10 @@ public class SelectHelper {
    * result. Otherwise prefer using {@link #getTitleFromIntegerValue(String, Integer)}.
    *
    * @param selectName: String representing the name of an integer selection.
-   * @param value:      Integer representing the value among the possible ones from to selection
-   *                    named by selectName.
+   * @param value: Integer representing the value among the possible ones from to selection named by
+   *     selectName.
    * @return an Optional String containing to the label as displayed (before translation) in views
-   * corresponding to given couple (selectName &amp; value).
+   *     corresponding to given couple (selectName &amp; value).
    */
   public static Optional<String> getOptionalTitleFromIntegerValue(
       String selectName, Integer value) {
@@ -238,16 +238,16 @@ public class SelectHelper {
 
   /**
    * Method to search title corresponding to a couple (selectName / value) when it is sure that
-   * there is a match. Otherwise, prefer using
-   * {@link #getOptionalTitleFromIntegerValue(String, Integer)}
+   * there is a match. Otherwise, prefer using {@link #getOptionalTitleFromIntegerValue(String,
+   * Integer)}
    *
    * @param selectName String representing the name of an integer selection.
-   * @param value      String representing the value among the possible ones from to selection named
-   *                   by selectName.
+   * @param value String representing the value among the possible ones from to selection named by
+   *     selectName.
    * @return the String corresponding to the label as displayed (before translation) in views
-   * corresponding to given couple (selectName &amp; value).
+   *     corresponding to given couple (selectName &amp; value).
    * @throws IllegalArgumentException if the couple (selectName / value) doesn't match any existing
-   *                                  selection.
+   *     selection.
    */
   public static String getTitleFromIntegerValue(String selectName, Integer value) {
 
@@ -260,11 +260,10 @@ public class SelectHelper {
 
   /**
    * @param selectName: String representing the name of an integer selection.
-   * @return a List containing all the existing values cast as Integer associated to the
-   * selection.
+   * @return a List containing all the existing values cast as Integer associated to the selection.
    * @throws IllegalArgumentException if the selectName doesn't match any selection in the
-   *                                  application.
-   *                                  <p>Or if the selectName match a non-integer selection.
+   *     application.
+   *     <p>Or if the selectName match a non-integer selection.
    */
   public static List<Integer> getPossibleValuesForIntegerSelection(String selectName) {
 

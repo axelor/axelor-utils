@@ -84,7 +84,8 @@ public final class DecimalHelper {
   }
 
   /**
-   * Répartir proportionnellement selon un prorata une valeur en fonction du nombre de jours. (Règle de 3)
+   * Répartir proportionnellement selon un prorata une valeur en fonction du nombre de jours. (Règle
+   * de 3)
    *
    * @param totalDays Le nombre total de jours.
    * @param days Le nombre de jours.

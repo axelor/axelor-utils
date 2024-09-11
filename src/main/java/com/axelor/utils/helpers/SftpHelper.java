@@ -32,22 +32,21 @@ import java.util.Vector;
 
 public class SftpHelper {
 
-  private SftpHelper() {
-  }
+  private SftpHelper() {}
 
   /**
-   * Returns a new session created with given {@code host}, {@code port}, {@code username},
-   * {@code password}, {@code privateKey} and optional {@code passphrase}.
+   * Returns a new session created with given {@code host}, {@code port}, {@code username}, {@code
+   * password}, {@code privateKey} and optional {@code passphrase}.
    *
-   * @param host               the host to connect to.
-   * @param port               the port to connect to.
-   * @param username           the username to use.
-   * @param password           the password to use.
+   * @param host the host to connect to.
+   * @param port the port to connect to.
+   * @param username the username to use.
+   * @param password the password to use.
    * @param privateKeyFileName the private key file to use.
-   * @param passphrase         the passphrase to use.
+   * @param passphrase the passphrase to use.
    * @return a new session.
    * @throws JSchException if {@code username} or {@code host} are invalid, or if {@code passphrase}
-   *                       is not right.
+   *     is not right.
    */
   public static Session createSession(
       String host,
@@ -74,8 +73,8 @@ public class SftpHelper {
    * Returns a new session created with given {@code host}, {@code port}, {@code username} and
    * {@code password}.
    *
-   * @param host     the host to connect to.
-   * @param port     the port to connect to.
+   * @param host the host to connect to.
+   * @param port the port to connect to.
    * @param username the username to use.
    * @param password the password to use.
    * @return a new session.
@@ -118,7 +117,7 @@ public class SftpHelper {
    * Returns a list of all files in given directory {@code dir}.
    *
    * @param channel the channel to list files from.
-   * @param dir     the directory to list files from.
+   * @param dir the directory to list files from.
    * @return a list of all files in given directory {@code dir}.
    * @throws SftpException if {@code dir} is invalid.
    */
@@ -137,7 +136,7 @@ public class SftpHelper {
    * Returns an {@link InputStream} corresponding to given {@code absoluteFilePath} in remote
    * server.
    *
-   * @param channel          the channel to get file from.
+   * @param channel the channel to get file from.
    * @param absoluteFilePath the absolute file path to get.
    * @return an {@link InputStream} corresponding to given {@code absoluteFilePath} in remote
    * @throws SftpException if {@code absoluteFilePath} is invalid.
@@ -150,9 +149,9 @@ public class SftpHelper {
    * Returns an {@link InputStream} corresponding to given {@code absoluteFilePath} in remote
    * server.
    *
-   * @param channel          the channel to get file from.
+   * @param channel the channel to get file from.
    * @param absoluteFilePath the absolute file path to get.
-   * @param monitor          the monitor to use.
+   * @param monitor the monitor to use.
    * @return an {@link InputStream} corresponding to given {@code absoluteFilePath} in remote
    * @throws SftpException if {@code absoluteFilePath} is invalid.
    */
@@ -165,8 +164,8 @@ public class SftpHelper {
   /**
    * Sends given {@code file} to given {@code absoluteFilePath} in remote server.
    *
-   * @param channel          the channel to put file to.
-   * @param file             the file to put.
+   * @param channel the channel to put file to.
+   * @param file the file to put.
    * @param absoluteFilePath the absolute file path to put.
    * @throws SftpException if {@code absoluteFilePath} is invalid.
    */
@@ -177,10 +176,11 @@ public class SftpHelper {
 
   /**
    * Sends given {@code file} to given {@code absoluteFilePath} in remote server.
-   * @param channel          the channel to put file to.
-   * @param file             the file to put.
+   *
+   * @param channel the channel to put file to.
+   * @param file the file to put.
    * @param absoluteFilePath the absolute file path to put.
-   * @param monitor          the monitor to use.
+   * @param monitor the monitor to use.
    * @throws SftpException if {@code absoluteFilePath} is invalid.
    */
   public static void put(
@@ -191,9 +191,10 @@ public class SftpHelper {
 
   /**
    * Moves given {@code src} file to given {@code dst} file, in remote server.
+   *
    * @param channel the channel to move file with.
-   * @param src     the source file to move.
-   * @param dst     the destination file to move.
+   * @param src the source file to move.
+   * @param dst the destination file to move.
    * @throws SftpException if {@code src} or {@code dst} are invalid.
    */
   public static void move(ChannelSftp channel, String src, String dst) throws SftpException {

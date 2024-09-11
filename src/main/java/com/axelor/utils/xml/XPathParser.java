@@ -44,8 +44,7 @@ public class XPathParser {
     this.doc = doc;
   }
 
-  public XPathParser() {
-  }
+  public XPathParser() {}
 
   public XPathParser(String xml) {
 

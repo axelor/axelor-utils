@@ -288,6 +288,7 @@ public final class StringHelper {
 
   /**
    * Retrieve an ID list string from a collection of model objects. If the collection is empty, this
+   *
    * @param name the name to be cleaned
    * @return the cleaned name
    */

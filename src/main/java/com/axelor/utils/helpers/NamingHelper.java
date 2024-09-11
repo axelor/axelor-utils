@@ -27,6 +27,7 @@ public final class NamingHelper {
 
   /**
    * Check whether the given name is Java reserved keyword.
+   *
    * @param name the name to check
    * @return true if the name is reserved, false otherwise
    */
@@ -36,6 +37,7 @@ public final class NamingHelper {
 
   /**
    * Check whether the given name is SQL reserved keyword.
+   *
    * @param name the name to check
    * @return true if the name is reserved, false otherwise
    */
@@ -47,6 +49,7 @@ public final class NamingHelper {
 
   /**
    * Quote the given column name.
+   *
    * @param name the column name
    * @return the quoted column name
    */

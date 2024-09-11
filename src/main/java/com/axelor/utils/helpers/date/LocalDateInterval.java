@@ -25,8 +25,8 @@ import lombok.Setter;
 /**
  * LocalDateInterval is a class used to define intervals of time with precision of a day.
  *
- * <p>LocalDateInterval are closed intervals when bounded -&gt; startDate &amp; endDate are included in the
- * interval -&gt; A one day interval is represented by startDate = endDate
+ * <p>LocalDateInterval are closed intervals when bounded -&gt; startDate &amp; endDate are included
+ * in the interval -&gt; A one day interval is represented by startDate = endDate
  *
  * <p>startDate = null means minus-infinite endDate = null means plus-infinite -&gt; new
  * LocalDateInterval(null, null) represent all the past &amp; future

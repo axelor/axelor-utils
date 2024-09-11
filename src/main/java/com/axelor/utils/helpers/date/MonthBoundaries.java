@@ -21,8 +21,8 @@ import java.time.LocalDate;
 import java.util.Objects;
 
 /**
- * Object to contain both start date of a month &amp; end date of a month and being able to return it in
- * one return statement.
+ * Object to contain both start date of a month &amp; end date of a month and being able to return
+ * it in one return statement.
  */
 public class MonthBoundaries {
   public LocalDate firstDayOfMonth = null;

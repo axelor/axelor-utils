@@ -20,9 +20,7 @@ package com.axelor.utils.helpers;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Class to create a html list as string
- */
+/** Class to create a html list as string */
 public class StringHtmlListBuilder {
 
   private final List<String> listElements;

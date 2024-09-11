@@ -154,7 +154,6 @@ public class LocalDateHelper {
    * @param startDate The start date
    * @param goalDate The targeted date
    * @param frequencyInMonth Number of months depicting the frequency of the event
-   *
    * @return The date of the next occurrence of the event
    */
   public static LocalDate nextOccurency(
@@ -182,7 +181,6 @@ public class LocalDateHelper {
    * @param startDate The start date
    * @param goalDate The targeted date
    * @param frequencyInMonth Number of months depicting the frequency of the event
-   *
    * @return The date of the next occurrence of the event
    */
   public LocalDate nextOccurencyStartDateIncluded(
@@ -210,7 +208,6 @@ public class LocalDateHelper {
    * @param startDate The start date
    * @param endDate The end date
    * @param frequencyInMonth Number of months depicting the frequency of the event
-   *
    * @return The date of the last occurrence of the event
    */
   public static LocalDate lastOccurency(
@@ -280,7 +277,6 @@ public class LocalDateHelper {
    * @param monthBegin The start month of the period
    * @param dayEnd The end day of the period
    * @param monthEnd The start month of the period
-   *
    * @return True if the date is in the period, false otherwise
    */
   public static boolean dateInPeriod(
@@ -321,6 +317,7 @@ public class LocalDateHelper {
 
   /**
    * True if the dates are in the same month of the same year.
+   *
    * @param date1 First date to check
    * @param date2 Second date to check
    * @return True if the dates are in the same month of the same year

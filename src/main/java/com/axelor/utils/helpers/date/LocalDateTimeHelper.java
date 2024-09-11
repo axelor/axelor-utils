@@ -75,8 +75,8 @@ public class LocalDateTimeHelper {
    * @param intervals list of LocalDateTimeInterval
    * @param instant not null
    * @return a LocalDateTimeInterval object representing the biggest continuous period containing
-   *     the given LocalDate day &amp; with each day of the interval contained into at least one of the
-   *     given intervals returns null if there is no given intervals.
+   *     the given LocalDate day &amp; with each day of the interval contained into at least one of
+   *     the given intervals returns null if there is no given intervals.
    *     <p>Or null if the given instant is before the startDateT of the firstInterval or after the
    *     endDateT of the lastInterval.
    * @throws IllegalArgumentException if the given LocalDate is null
@@ -130,8 +130,8 @@ public class LocalDateTimeHelper {
    * @param occurrenceDayOfWeek: expected dayOfWeek of the result
    * @param occurrenceTime: expected time of the result
    * @param referenceDateT: date from which the result is searched
-   * @return the last date (inclusive) before given referenceDate having same dayOfWeek &amp; same time
-   *     as occurrences named parameters.
+   * @return the last date (inclusive) before given referenceDate having same dayOfWeek &amp; same
+   *     time as occurrences named parameters.
    */
   public static LocalDateTime getLastOccurrence(
       DayOfWeek occurrenceDayOfWeek, LocalTime occurrenceTime, LocalDateTime referenceDateT) {
@@ -163,8 +163,8 @@ public class LocalDateTimeHelper {
    * @param occurrenceDayOfWeek: expected dayOfWeek of the result
    * @param occurrenceTime: expected time of the result
    * @param referenceDateT: date from which the result is searched
-   * @return the next date (inclusive) from given referenceDate having same dayOfWeek &amp; same time as
-   *     occurrences named parameters.
+   * @return the next date (inclusive) from given referenceDate having same dayOfWeek &amp; same
+   *     time as occurrences named parameters.
    */
   public static LocalDateTime getNextOccurrence(
       DayOfWeek occurrenceDayOfWeek, LocalTime occurrenceTime, LocalDateTime referenceDateT) {
@@ -199,8 +199,8 @@ public class LocalDateTimeHelper {
    * @param occurrenceDayOfWeek: expected dayOfWeek of the result
    * @param occurrenceTime: expected time of the result
    * @param referenceDateT: date from which the result is searched
-   * @return the nearest date (inclusive) from given referenceDate having same dayOfWeek &amp; same time
-   *     as occurrences named parameters.
+   * @return the nearest date (inclusive) from given referenceDate having same dayOfWeek &amp; same
+   *     time as occurrences named parameters.
    */
   public static LocalDateTime getNearestOccurrence(
       DayOfWeek occurrenceDayOfWeek, LocalTime occurrenceTime, LocalDateTime referenceDateT) {

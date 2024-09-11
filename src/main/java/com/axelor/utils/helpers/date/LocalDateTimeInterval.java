@@ -29,8 +29,7 @@ import lombok.Setter;
  * <p>For precision of a day better {@link LocalDateInterval}
  *
  * <p>LocalDateTimeInterval are closed intervals when bounded -&gt; startDateT &amp; endDateT are
- * included
- * in the interval
+ * included in the interval
  *
  * <p>startDateT = null means minus-infinite endDateT = null means plus-infinite
  *
@@ -61,7 +60,7 @@ public class LocalDateTimeInterval implements Comparable<LocalDateTimeInterval> 
    * set to 1
    *
    * @param startDateT the start date of the interval
-   * @param endDateT   the end date of the interval
+   * @param endDateT the end date of the interval
    */
   public LocalDateTimeInterval(LocalDateTime startDateT, LocalDateTime endDateT) {
     this(startDateT, endDateT, ChronoUnit.MINUTES, 1);
@@ -218,9 +217,9 @@ public class LocalDateTimeInterval implements Comparable<LocalDateTimeInterval> 
 
   /**
    * @param comparedInterval the interval to compare with
-   * @return true if and only if - the two interval overlaps, - or if
-   * {@code comparedInterval.startDateT} is before, or at the same moment as the
-   * {@code this.endDateT} + tolerance from this interval
+   * @return true if and only if - the two interval overlaps, - or if {@code
+   *     comparedInterval.startDateT} is before, or at the same moment as the {@code this.endDateT}
+   *     + tolerance from this interval
    */
   public boolean overlapsOrIsContinuousWith(LocalDateTimeInterval comparedInterval) {
     int order = this.compareTo(comparedInterval);
@@ -238,9 +237,9 @@ public class LocalDateTimeInterval implements Comparable<LocalDateTimeInterval> 
   /**
    * @param comparedInterval the interval to compare with
    * @return true if and only if the {@code comparedInterval.startDateT} is before, or at the same
-   * moment as the {@code this.endDateT} + tolerance from this interval
-   * <p>- Warning, this method will return true if {@code this} ends before {@code
-   * comparedInterval} starts, so even if the 2 intervals does not overlap
+   *     moment as the {@code this.endDateT} + tolerance from this interval
+   *     <p>- Warning, this method will return true if {@code this} ends before {@code
+   *     comparedInterval} starts, so even if the 2 intervals does not overlap
    */
   public boolean isContinuousAtEndWith(LocalDateTimeInterval comparedInterval) {
     LocalDateTime comparedStartDate = comparedInterval.getStartDateT();
@@ -265,9 +264,9 @@ public class LocalDateTimeInterval implements Comparable<LocalDateTimeInterval> 
   /**
    * @param comparedInterval the interval to compare with
    * @return true if and only if the {@code comparedInterval.startDateT} is before, or at the same
-   * moment as the {@code this.endDateT} + tolerance from the compared interval
-   * <p>- Warning, this method will return true if {@code comparedInterval} ends before {@code
-   * this} starts, so even if the 2 intervals does not overlap
+   *     moment as the {@code this.endDateT} + tolerance from the compared interval
+   *     <p>- Warning, this method will return true if {@code comparedInterval} ends before {@code
+   *     this} starts, so even if the 2 intervals does not overlap
    */
   public boolean isContinuousAtStartWith(LocalDateTimeInterval comparedInterval) {
     return comparedInterval.isContinuousAtEndWith(this);
