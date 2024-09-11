@@ -73,15 +73,12 @@ test:
     reports:
       junit: build/test-results/test/**/TEST-*.xml
 
-pages:
-  stage: publish
+javadoc:
+  stage: test
   script:
     - ./gradlew javadoc
-  artifacts:
-    paths:
-      - build/docs/javadoc
   rules:
-    - if: '$CI_PIPELINE_SOURCE != "schedule" && $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH || $CI_PIPELINE_SOURCE == "schedule" || $CI_COMMIT_TAG'
+    - if: '$CI_PIPELINE_SOURCE != "schedule"'
 
 .publish_template: &publish_configuration
   stage: publish

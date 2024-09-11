@@ -136,6 +136,14 @@ prepare() {
     print_sub_step "  * Update CHANGELOG.md"
     ./gradlew generateChangelog -PfinalRelease >/dev/null
   fi
+
+  if [[ -d "javadoc" ]]; then
+    print_sub_step "  * Remove Javadoc"
+    rm -rf javadoc
+  fi
+  print_sub_step '  * Generate Javadoc'
+  ./gradlew javadoc
+  mv build/docs/javadoc javadoc
 }
 
 release_source() {
