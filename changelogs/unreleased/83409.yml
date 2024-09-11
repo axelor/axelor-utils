@@ -1,0 +1,3 @@
+---
+title: "StringListHtmlBuilder: add static methods to return a list in HTML from a List<String>."
+type: feature
