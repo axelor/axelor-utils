@@ -75,8 +75,12 @@ test:
 
 javadoc:
   stage: test
+  cache:
+    - *global_cache
+  allow_failure: false
   script:
     - ./gradlew javadoc
+  interruptible: true
   rules:
     - if: '$CI_PIPELINE_SOURCE != "schedule"'
 
