@@ -55,7 +55,7 @@ public class CsvReader implements DataReader {
         return false;
       }
     } catch (IOException e) {
-      ExceptionHelper.trace(e);
+      ExceptionHelper.error(e);
       return false;
     }
     return true;

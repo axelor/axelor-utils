@@ -101,7 +101,7 @@ public class AddressHelper {
 
       return resp.isIsOk();
     } catch (Exception e) {
-      ExceptionHelper.trace(e);
+      ExceptionHelper.error(e);
       return false;
     }
   }
@@ -130,7 +130,7 @@ public class AddressHelper {
       mapSearch.put("qaAddress", respSearch.getQAAddress());
       return mapSearch;
     } catch (Exception e) {
-      ExceptionHelper.trace(e);
+      ExceptionHelper.error(e);
       return new HashMap<>();
     }
   }
@@ -147,7 +147,7 @@ public class AddressHelper {
 
       return client.doGetAddress(getAddress);
     } catch (Exception e) {
-      ExceptionHelper.trace(e);
+      ExceptionHelper.error(e);
     }
     return null;
   }

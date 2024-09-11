@@ -33,36 +33,79 @@ public class ExceptionHelper {
   }
 
   /**
+   * Deprecated in favor of {@link #error(ActionResponse, Throwable)}.
+   *
+   * @param response the ActionResponse to send the error message to.
+   * @param e the Throwable to log.
+   */
+  @Deprecated
+  public static void trace(@Nonnull ActionResponse response, @Nonnull Throwable e) {
+    error(response, e);
+  }
+
+  /**
    * Traces an exception corresponding to a bug in the logs and displays the exception message on
    * the screen via a popup.
    *
    * @param response the ActionResponse to send the error message to.
    * @param e the Throwable to log.
    */
-  public static void trace(@Nonnull ActionResponse response, @Nonnull Throwable e) {
+  public static void error(@Nonnull ActionResponse response, @Nonnull Throwable e) {
     log.error(e.getMessage(), e);
     response.setError(
         String.format(I18n.get(UtilsExceptionMessage.EXCEPTION_OCCURRED), e.getMessage()));
   }
 
   /**
+   * Deprecated in favor of {@link #error(ActionResponse, String)}.
+   *
+   * @param response the ActionResponse to send the error message to.
+   * @param message the message to display.
+   */
+  @Deprecated
+  public static void trace(@Nonnull ActionResponse response, @Nonnull String message) {
+    error(response, message);
+  }
+
+  /**
    * Displays the exception message on the screen via a popup.
    *
    * @param response the ActionResponse to send the error message to.
-   * @param message
+   * @param message the message to display.
    */
-  public static void trace(@Nonnull ActionResponse response, @Nonnull String message) {
+  public static void error(@Nonnull ActionResponse response, @Nonnull String message) {
     response.setError(String.format(I18n.get(UtilsExceptionMessage.EXCEPTION_OCCURRED), message));
+  }
+
+  /**
+   * Deprecated in favor of {@link #error(String, Throwable)}.
+   *
+   * @param message the message to log.
+   * @param e the Throwable to log.
+   */
+  @Deprecated
+  public static void trace(@Nonnull String message, @Nonnull Throwable e) {
+    error(message, e);
   }
 
   /**
    * Traces an exception with a specific message in the logs.
    *
-   * @param message
+   * @param message the message to log.
    * @param e the Throwable to log.
    */
-  public static void trace(@Nonnull String message, @Nonnull Throwable e) {
+  public static void error(@Nonnull String message, @Nonnull Throwable e) {
     log.error(message, e);
+  }
+
+  /**
+   * Deprecated in favor of {@link #error(Throwable)}.
+   *
+   * @param e the Throwable to log.
+   */
+  @Deprecated
+  public static void trace(@Nonnull Throwable e) {
+    error(e);
   }
 
   /**
@@ -70,7 +113,7 @@ public class ExceptionHelper {
    *
    * @param e the Throwable to log.
    */
-  public static void trace(@Nonnull Throwable e) {
+  public static void error(@Nonnull Throwable e) {
     log.error(e.getMessage(), e);
   }
 }

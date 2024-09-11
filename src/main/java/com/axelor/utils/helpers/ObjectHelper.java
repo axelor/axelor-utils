@@ -46,7 +46,7 @@ public final class ObjectHelper {
       field = classGotten.getDeclaredField(fieldName);
 
     } catch (SecurityException | NoSuchFieldException e) {
-      ExceptionHelper.trace(e);
+      ExceptionHelper.error(e);
     }
     LOG.debug("Found class : {}", field);
     return field;

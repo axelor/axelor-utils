@@ -259,7 +259,7 @@ public class LocalDateTimeHelper {
 
     } catch (DatatypeConfigurationException e) {
 
-      ExceptionHelper.trace(e);
+      ExceptionHelper.error(e);
     }
 
     return date;

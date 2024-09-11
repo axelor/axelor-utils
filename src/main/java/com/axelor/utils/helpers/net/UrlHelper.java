@@ -57,10 +57,10 @@ public final class UrlHelper {
       fileURL.openConnection().connect();
       return null;
     } catch (java.net.MalformedURLException ex) {
-      ExceptionHelper.trace(ex);
+      ExceptionHelper.error(ex);
       return String.format(I18n.get(UtilsExceptionMessage.URL_SERVICE_2), url);
     } catch (java.io.IOException ex) {
-      ExceptionHelper.trace(ex);
+      ExceptionHelper.error(ex);
       return String.format(I18n.get(UtilsExceptionMessage.URL_SERVICE_3), url);
     }
   }
@@ -85,7 +85,7 @@ public final class UrlHelper {
       LOG.debug("No of bytes {}", byteWritten);
 
     } catch (IOException ex) {
-      ExceptionHelper.trace(ex);
+      ExceptionHelper.error(ex);
     }
   }
 

@@ -49,7 +49,7 @@ public class HttpExceptionHandlerImpl implements MethodInterceptor {
     } catch (ClientErrorException e) {
       return ResponseConstructor.build(Response.Status.CONFLICT, e.getMessage());
     } catch (Exception e) {
-      ExceptionHelper.trace(e);
+      ExceptionHelper.error(e);
       return ResponseConstructor.build(Response.Status.INTERNAL_SERVER_ERROR, e.getMessage());
     }
   }

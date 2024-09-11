@@ -51,7 +51,7 @@ public class UtilsRestServiceImpl implements UtilsRestService {
       modelList.forEach(metaModel -> addReferences(metaModel, listOfRef, types));
 
     } catch (ClassNotFoundException e) {
-      ExceptionHelper.trace(e);
+      ExceptionHelper.error(e);
     }
   }
 

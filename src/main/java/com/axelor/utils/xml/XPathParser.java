@@ -58,7 +58,7 @@ public class XPathParser {
 
     } catch (Exception e) {
 
-      ExceptionHelper.trace(e);
+      ExceptionHelper.error(e);
     }
   }
 
@@ -86,7 +86,7 @@ public class XPathParser {
       domFactory.setExpandEntityReferences(false);
       domFactory.setFeature(XMLConstants.FEATURE_SECURE_PROCESSING, true);
     } catch (ParserConfigurationException e) {
-      ExceptionHelper.trace(e);
+      ExceptionHelper.error(e);
     }
 
     return domFactory;
@@ -129,7 +129,7 @@ public class XPathParser {
         }
       }
     } catch (Exception e) {
-      ExceptionHelper.trace("some pb occurred during xml scan", e);
+      ExceptionHelper.error("some pb occurred during xml scan", e);
     }
 
     return dict;

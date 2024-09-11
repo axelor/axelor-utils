@@ -75,7 +75,7 @@ public final class ModelHelper {
         throw new IllegalStateException(String.format(I18n.get("Cannot find record #%s"), id));
       } catch (Exception e) {
         ++errorCount;
-        ExceptionHelper.trace(e);
+        ExceptionHelper.error(e);
       } finally {
         JPA.clear();
       }

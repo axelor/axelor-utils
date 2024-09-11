@@ -45,7 +45,7 @@ public final class ControllerCallableHelper {
     } catch (TimeoutException e) {
       response.setNotify(I18n.get(UtilsExceptionMessage.PROCESS_BEING_COMPUTED));
     } catch (InterruptedException e) {
-      ExceptionHelper.trace(e);
+      ExceptionHelper.error(e);
       Thread.currentThread().interrupt();
     }
     return result;

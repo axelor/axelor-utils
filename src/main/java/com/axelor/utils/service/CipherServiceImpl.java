@@ -61,7 +61,7 @@ public class CipherServiceImpl implements CipherService {
       }
 
     } catch (Exception e) {
-      ExceptionHelper.trace(e);
+      ExceptionHelper.error(e);
     }
     return encryptedString;
   }
@@ -83,7 +83,7 @@ public class CipherServiceImpl implements CipherService {
       }
 
     } catch (Exception e) {
-      ExceptionHelper.trace(e);
+      ExceptionHelper.error(e);
     }
     return decryptedText;
   }

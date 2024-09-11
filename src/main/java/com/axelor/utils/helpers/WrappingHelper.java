@@ -46,7 +46,7 @@ public final class WrappingHelper {
         consumer.accept(value);
       }
     } catch (Exception e) {
-      ExceptionHelper.trace(e);
+      ExceptionHelper.error(e);
     }
   }
 

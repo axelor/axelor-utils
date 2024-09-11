@@ -45,7 +45,7 @@ public final class QAPortType_QAPortType_Client {
           wsdlURL = new URL(args[0]);
         }
       } catch (MalformedURLException e) {
-        ExceptionHelper.trace(e);
+        ExceptionHelper.error(e);
       }
     }
 

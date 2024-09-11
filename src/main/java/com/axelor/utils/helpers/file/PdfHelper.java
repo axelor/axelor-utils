@@ -79,7 +79,7 @@ public final class PdfHelper {
     try {
       fileLink += "?name=" + URLEncoder.encode(fileName, "UTF-8");
     } catch (UnsupportedEncodingException e) {
-      ExceptionHelper.trace(e);
+      ExceptionHelper.error(e);
     }
     return fileLink;
   }

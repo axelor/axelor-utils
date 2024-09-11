@@ -54,7 +54,7 @@ public final class FtpHelper {
       ftp.disconnect();
 
     } catch (Exception e) {
-      ExceptionHelper.trace(e);
+      ExceptionHelper.error(e);
     }
   }
 
@@ -71,7 +71,7 @@ public final class FtpHelper {
           ftp.retrieveFile(ftpFile.getName(), fos);
           file.setLastModified(fileDate.getTime());
         } catch (Exception e) {
-          ExceptionHelper.trace(e);
+          ExceptionHelper.error(e);
         }
       }
     }

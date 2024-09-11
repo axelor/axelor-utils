@@ -55,7 +55,7 @@ public class FullContextHelper {
         return new FullContext(model);
       }
     } catch (Exception e) {
-      ExceptionHelper.trace(e);
+      ExceptionHelper.error(e);
       throw new IllegalStateException(
           String.format(I18n.get("Error executing query: %s"), queryStr));
     }
@@ -72,7 +72,7 @@ public class FullContextHelper {
         return new FullContext(model);
       }
     } catch (Exception e) {
-      ExceptionHelper.trace(e);
+      ExceptionHelper.error(e);
       throw new IllegalStateException(
           String.format(I18n.get("Error executing query: %s"), queryStr));
     }
@@ -90,7 +90,7 @@ public class FullContextHelper {
         return new FullContext(model);
       }
     } catch (Exception e) {
-      ExceptionHelper.trace(e);
+      ExceptionHelper.error(e);
       throw new IllegalStateException(
           String.format(I18n.get("Error executing query: %s"), queryStr));
     }
