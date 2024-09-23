@@ -1,0 +1,3 @@
+---
+title: Add the AllModelSelectService class to initialize or update all.model.reference.select selection where items are all the meta models present in the system.
+type: feature

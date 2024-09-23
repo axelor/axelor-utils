@@ -1,0 +1,3 @@
+"title","value",select.name
+"Team","com.axelor.team.db.Team","all.model.reference.select"
+"TeamTask","com.axelor.team.db.TeamTask","all.model.reference.select"

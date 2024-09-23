@@ -26,6 +26,8 @@ import com.axelor.utils.rest.UtilsRestService;
 import com.axelor.utils.rest.UtilsRestServiceImpl;
 import com.axelor.utils.service.ActionService;
 import com.axelor.utils.service.ActionServiceImpl;
+import com.axelor.utils.service.AllModelSelectService;
+import com.axelor.utils.service.AllModelSelectServiceImpl;
 import com.axelor.utils.service.AppSettingsService;
 import com.axelor.utils.service.AppSettingsServiceImpl;
 import com.axelor.utils.service.ArchivingService;
@@ -56,6 +58,8 @@ public class UtilsModule extends AxelorModule {
     bind(ActionService.class).to(ActionServiceImpl.class);
     bind(DataReaderFactory.class).to(DataReaderFactoryImpl.class);
     bind(ResponseMessageComputeService.class).to(ResponseMessageComputeServiceImpl.class);
+    bind(AllModelSelectService.class).to(AllModelSelectServiceImpl.class);
+
     bindInterceptor(
         Matchers.any(),
         Matchers.annotatedWith(HttpExceptionHandler.class),
