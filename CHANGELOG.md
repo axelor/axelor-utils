@@ -1,3 +1,11 @@
+## 3.2.0 (2024-09-27)
+
+#### Feature
+
+* StringListHtmlBuilder: add static methods to return a list in HTML from a List<String>.
+* Add the CriteriaHelper class to provides methods to manipulate Criteria API in a more convenient way.
+* Add the AllModelSelectService class to initialize or update all.model.reference.select selection where items are all the meta models present in the system.
+
 ## 3.1.2 (2024-08-05)
 
 #### Feature
