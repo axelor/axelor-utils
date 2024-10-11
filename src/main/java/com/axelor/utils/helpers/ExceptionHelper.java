@@ -17,9 +17,7 @@
  */
 package com.axelor.utils.helpers;
 
-import com.axelor.i18n.I18n;
 import com.axelor.rpc.ActionResponse;
-import com.axelor.utils.exception.UtilsExceptionMessage;
 import javax.annotation.Nonnull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -52,8 +50,7 @@ public class ExceptionHelper {
    */
   public static void error(@Nonnull ActionResponse response, @Nonnull Throwable e) {
     log.error(e.getMessage(), e);
-    response.setError(
-        String.format(I18n.get(UtilsExceptionMessage.EXCEPTION_OCCURRED), e.getMessage()));
+    response.setError(e.getMessage());
   }
 
   /**
@@ -74,7 +71,7 @@ public class ExceptionHelper {
    * @param message the message to display.
    */
   public static void error(@Nonnull ActionResponse response, @Nonnull String message) {
-    response.setError(String.format(I18n.get(UtilsExceptionMessage.EXCEPTION_OCCURRED), message));
+    response.setError(message);
   }
 
   /**
