@@ -1,0 +1,7 @@
+---
+title: Replace ControllerCallableHelper's ForkJoinPool with a single thread executor service
+type: fix
+description: |
+  ForkJoinPool.commonPool() used by ControllerCallableHelper is statically declared. Therefore,
+  the full application classloader is not used inside ForkJoinPool's threads.
+  This caused issues with some external dependencies like resteasy.

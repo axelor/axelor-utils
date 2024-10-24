@@ -7,7 +7,7 @@ import com.axelor.utils.exception.UtilsExceptionMessage;
 import com.axelor.utils.service.AppSettingsService;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
-import java.util.concurrent.ForkJoinPool;
+import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
@@ -32,7 +32,8 @@ public final class ControllerCallableHelper {
     V result = null;
 
     // Start thread
-    Future<V> future = ForkJoinPool.commonPool().submit(callable);
+    var executor = Executors.newSingleThreadExecutor();
+    Future<V> future = executor.submit(callable);
 
     // Get timeout from application properties, 10s by default
     int processTimeout = Beans.get(AppSettingsService.class).processTimeout();
@@ -49,6 +50,8 @@ public final class ControllerCallableHelper {
       ExceptionHelper.error(e);
       Thread.currentThread().interrupt();
     }
+
+    executor.shutdown();
     return result;
   }
 }
