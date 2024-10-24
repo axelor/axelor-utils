@@ -1,3 +1,34 @@
+## 3.3.0 (2024-10-24)
+
+#### Change
+
+* Lighten messages displayed in error popups through `ExceptionHelper`
+
+  <details>
+  
+  When the methods in the class `ExceptionHelper` was called with an `ActionResponse` parameter, the message to display 
+  to the user in the UI was built from:
+  * the prefix *"An error occurred with the following message :"*
+  * the exception message itself
+  
+  However, the prefix didn't provide any additional value, as the title of the popup was already "Error". Removing it 
+  will allow users to identify faster the real errors.
+  
+  </details>
+
+#### Fix
+
+* Replace ControllerCallableHelper's ForkJoinPool with a single thread executor service
+
+  <details>
+  
+  ForkJoinPool.commonPool() used by ControllerCallableHelper is statically declared. Therefore,
+  the full application classloader is not used inside ForkJoinPool's threads.
+  This caused issues with some external dependencies like resteasy.
+  
+  </details>
+
+
 ## 3.2.0 (2024-09-27)
 
 #### Feature
