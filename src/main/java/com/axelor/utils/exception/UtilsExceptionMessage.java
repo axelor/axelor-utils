@@ -82,6 +82,10 @@ public final class UtilsExceptionMessage {
   /** ControllerCallableHelper */
   public static final String PROCESS_BEING_COMPUTED = /*$$(*/ "Computation in progress..." /*)*/;
 
+  @Deprecated
+  public static final String EXCEPTION_OCCURRED = /*$$(*/
+      "An error occurred with the following message : %s" /*)*/;
+
   public static final String API_DISABLED = /*$$(*/
       "AOS API calls are disabled, please contact your administrator. The property utils.api.enable is false in application.properties." /*)*/;
 
