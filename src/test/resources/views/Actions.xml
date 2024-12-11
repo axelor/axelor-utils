@@ -29,4 +29,9 @@
     <field name="name" expr="eval: __this__.group?.name"/>
   </action-record>
 
+  <action-attrs name="test.user.attrs.action.modify.name.to.test"
+    model="com.axelor.auth.db.User">
+    <attribute for="name" name="value" expr="test"/>
+  </action-attrs>
+
 </object-views>
