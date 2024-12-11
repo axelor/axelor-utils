@@ -1,0 +1,5 @@
+---
+title: Fix action service not taking into consideration action attrs
+type: fix
+description: |
+  When executing an action attrs using action service, the result of this action is not taken into consideration
