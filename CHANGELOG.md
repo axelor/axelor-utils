@@ -63,6 +63,19 @@
 
 * Use java Optional instead of guava
 
+## 3.0.2 (2024-12-11)
+
+#### Fix
+
+* Fix action service not taking into consideration action attrs
+
+  <details>
+  
+  When executing an action attrs using action service, the result of this action is not taken into consideration
+  
+  </details>
+
+
 ## 3.0.0 (2024-04-03)
 
 #### Feature
