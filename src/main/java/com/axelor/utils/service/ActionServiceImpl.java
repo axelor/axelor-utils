@@ -82,19 +82,23 @@ public class ActionServiceImpl implements ActionService {
 
   @SuppressWarnings("unchecked")
   private void updateContext(Map<String, Object> value) {
-    if (value == null || !value.containsKey("values")) {
+    if (value == null || (!value.containsKey("values") && !value.containsKey("attrs"))) {
       return;
     }
-
-    Object values = value.get("values");
+    Object values = null;
     Map<String, Object> map = new HashMap<>();
+    if (value.containsKey("values")) {
+      values = value.get("values");
 
-    if (values instanceof ContextEntity) {
-      map = ((ContextEntity) values).getContextMap();
-    } else if (values instanceof Model) {
-      map = Mapper.toMap(value);
-    } else if (values instanceof Map) {
-      map = (Map<String, Object>) values;
+      if (values instanceof ContextEntity) {
+        map = ((ContextEntity) values).getContextMap();
+      } else if (values instanceof Model) {
+        map = Mapper.toMap(value);
+      } else if (values instanceof Map) {
+        map = (Map<String, Object>) values;
+      }
+    } else {
+      values = value;
     }
 
     values = value.get("attrs");
