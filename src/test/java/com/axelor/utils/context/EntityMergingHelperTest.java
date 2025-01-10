@@ -237,6 +237,15 @@ class EntityMergingHelperTest extends BaseTest {
 
     Assertions.assertNotNull(user);
 
+    Context context = getContext(role, group, user);
+    Integer groupVersion = group.getVersion();
+    User mergedUser = getUser(context);
+
+    Assertions.assertEquals(mergedUser.getGroup().getVersion(), groupVersion);
+    Assertions.assertEquals("Tutu", mergedUser.getName());
+  }
+
+  private static Context getContext(Role role, Group group, User user) {
     Map<String, Object> roleMap = new HashMap<>();
     roleMap.put("id", role.getId());
     List<Map<String, Object>> rolesMapList = new ArrayList<>();
@@ -251,12 +260,7 @@ class EntityMergingHelperTest extends BaseTest {
     userMap.put("name", "Tutu");
     userMap.put("group", groupMap);
 
-    Context context = new Context(userMap, User.class);
-    Integer groupVersion = group.getVersion();
-    User mergedUser = getUser(context);
-
-    Assertions.assertEquals(mergedUser.getGroup().getVersion(), groupVersion);
-    Assertions.assertEquals("Tutu", mergedUser.getName());
+    return new Context(userMap, User.class);
   }
 
   @Transactional
