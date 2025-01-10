@@ -158,8 +158,7 @@ class EntityMergingHelperTest extends BaseTest {
     List<Map<String, Object>> moveLineMapList =
         moveLines.stream().map(this::moveLineToMap).collect(Collectors.toList());
 
-    moveLineMapList.forEach(
-        moveLineMap -> moveLineMap.put("credit", BigDecimal.ONE));
+    moveLineMapList.forEach(moveLineMap -> moveLineMap.put("credit", BigDecimal.ONE));
 
     Map<String, Object> moveMap = new HashMap<>();
     moveMap.put("moveLines", moveLineMapList);
@@ -211,8 +210,9 @@ class EntityMergingHelperTest extends BaseTest {
     Role role = findRole("Test");
 
     User user = Query.of(User.class).filter("self.code LIKE 'admin'").fetchOne();
-    user = addRoleToUser(role, user);
     Assertions.assertNotNull(user);
+
+    user = addRoleToUser(role, user);
     Assertions.assertFalse(user.getRoles().isEmpty());
 
     Context context = new Context(user.getId(), User.class);
@@ -224,7 +224,7 @@ class EntityMergingHelperTest extends BaseTest {
 
   @Transactional
   public User addRoleToUser(Role role, User user) {
-    Optional.ofNullable(user).map(User::getRoles).ifPresent(roles -> roles.add(role));
+    Optional.of(user).map(User::getRoles).ifPresent(roles -> roles.add(role));
     return JPA.save(user);
   }
 
