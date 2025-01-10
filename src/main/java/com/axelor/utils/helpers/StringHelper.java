@@ -241,7 +241,7 @@ public final class StringHelper {
     if (s == null) {
       return null;
     }
-    if (s.length() == 0) {
+    if (s.isEmpty()) {
       return s;
     }
     StringBuilder result = new StringBuilder(s);
