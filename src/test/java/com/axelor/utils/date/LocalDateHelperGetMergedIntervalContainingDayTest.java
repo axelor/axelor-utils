@@ -1,6 +1,7 @@
 package com.axelor.utils.date;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 import com.axelor.utils.helpers.date.LocalDateHelper;
 import com.axelor.utils.helpers.date.LocalDateInterval;
@@ -18,7 +19,7 @@ import org.junit.jupiter.api.Test;
 
 class LocalDateHelperGetMergedIntervalContainingDayTest {
 
-  private LocalDate T = LocalDate.of(2021, 10, 5);
+  private final LocalDate T = LocalDate.of(2021, 10, 5);
 
   // i: --------A________B-------
   // i: ------C___D--------------
@@ -235,9 +236,8 @@ class LocalDateHelperGetMergedIntervalContainingDayTest {
     intervals.add(new LocalDateInterval(C, C));
 
     LocalDateInterval actual = LocalDateHelper.getMergedIntervalContainingDay(intervals, T);
-    LocalDateInterval expected = null;
 
-    assertEquals(actual, expected);
+    assertNull(actual);
   }
 
   // i: -----A__B----------------
@@ -256,9 +256,8 @@ class LocalDateHelperGetMergedIntervalContainingDayTest {
     intervals.add(new LocalDateInterval(C, D));
 
     LocalDateInterval actual = LocalDateHelper.getMergedIntervalContainingDay(intervals, T);
-    LocalDateInterval expected = null;
 
-    assertEquals(actual, expected);
+    assertNull(actual);
   }
 
   // i: _________B---------------
@@ -403,11 +402,8 @@ class LocalDateHelperGetMergedIntervalContainingDayTest {
   // o: null
   @Test
   void getMergedIntervalContainingDay_nullGivenIntervalCollection() {
-
     LocalDateInterval actual = LocalDateHelper.getMergedIntervalContainingDay(null, T);
-    LocalDateInterval expected = null;
-
-    assertEquals(actual, expected);
+    assertNull(actual);
   }
 
   // i: intervals = null || emptyList
@@ -415,11 +411,8 @@ class LocalDateHelperGetMergedIntervalContainingDayTest {
   // o: null
   @Test
   void getMergedIntervalContainingDay_emptyGivenIntervalCollection() {
-
     LocalDateInterval actual = LocalDateHelper.getMergedIntervalContainingDay(null, T);
-    LocalDateInterval expected = null;
-
-    assertEquals(actual, expected);
+    assertNull(actual);
   }
 
   // i: -----------A_B-----------
