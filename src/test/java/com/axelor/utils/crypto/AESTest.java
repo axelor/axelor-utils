@@ -39,7 +39,7 @@ class AESTest {
    * @param buf Array of bytes to convert to hex string
    * @return Generated hex string
    */
-  public static String asHex(byte buf[]) {
+  public static String asHex(byte[] buf) {
     StringBuffer strbuf = new StringBuffer(buf.length * 2);
     int i;
 
