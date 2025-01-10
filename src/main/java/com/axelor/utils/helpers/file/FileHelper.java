@@ -180,11 +180,11 @@ public final class FileHelper {
       File[] list = current.listFiles();
       if (list != null) {
         // Read the files list.
-        for (int i = 0; i < list.length; i++) {
+        for (File file : list) {
           // Create current source File
-          File tf = new File(sourceFolder + File.separator + list[i].getName());
+          File tf = new File(sourceFolder + File.separator + file.getName());
           // Create current destination File
-          File pf = new File(destinationFolder + File.separator + list[i].getName());
+          File pf = new File(destinationFolder + File.separator + file.getName());
           if (tf.isDirectory() && !pf.exists()) {
             // If the file is a directory and does not exit in the
             // destination Folder.
@@ -198,8 +198,8 @@ public final class FileHelper {
           } else if (tf.isFile()) {
             // If it is a file.
             copy(
-                sourceFolder + File.separator + list[i].getName(),
-                destinationFolder + File.separator + list[i].getName());
+                sourceFolder + File.separator + file.getName(),
+                destinationFolder + File.separator + file.getName());
           } else {
             // Other cases.
             LOG.error("Error : Copy folder");
