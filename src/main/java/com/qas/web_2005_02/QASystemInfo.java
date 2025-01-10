@@ -71,7 +71,7 @@ public class QASystemInfo {
    */
   public List<String> getSystemInfo() {
     if (systemInfo == null) {
-      systemInfo = new ArrayList<String>();
+      systemInfo = new ArrayList<>();
     }
     return this.systemInfo;
   }

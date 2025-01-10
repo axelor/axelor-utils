@@ -139,7 +139,7 @@ public class QAPicklistType {
    */
   public List<PicklistEntryType> getPicklistEntry() {
     if (picklistEntry == null) {
-      picklistEntry = new ArrayList<PicklistEntryType>();
+      picklistEntry = new ArrayList<>();
     }
     return this.picklistEntry;
   }

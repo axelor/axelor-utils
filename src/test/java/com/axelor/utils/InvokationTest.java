@@ -138,7 +138,7 @@ class InvokationTest {
           return member != INVALID_MEMBER ? member : null;
         }
       } else {
-        members = new HashMap<String, Member>();
+        members = new HashMap<>();
         membersCache.put(clazz, members);
       }
 

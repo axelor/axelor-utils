@@ -93,7 +93,7 @@ public class QALicenceInfo {
    */
   public List<QALicensedSet> getLicensedSet() {
     if (licensedSet == null) {
-      licensedSet = new ArrayList<QALicensedSet>();
+      licensedSet = new ArrayList<>();
     }
     return this.licensedSet;
   }

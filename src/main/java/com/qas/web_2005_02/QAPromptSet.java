@@ -76,7 +76,7 @@ public class QAPromptSet {
    */
   public List<PromptLine> getLine() {
     if (line == null) {
-      line = new ArrayList<PromptLine>();
+      line = new ArrayList<>();
     }
     return this.line;
   }

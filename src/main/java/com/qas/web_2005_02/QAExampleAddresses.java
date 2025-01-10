@@ -71,7 +71,7 @@ public class QAExampleAddresses {
    */
   public List<QAExampleAddress> getExampleAddress() {
     if (exampleAddress == null) {
-      exampleAddress = new ArrayList<QAExampleAddress>();
+      exampleAddress = new ArrayList<>();
     }
     return this.exampleAddress;
   }

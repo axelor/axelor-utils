@@ -105,7 +105,7 @@ public class XPathParser {
    */
   public Map<String, String> parse(List<String> xpeList) {
 
-    Map<String, String> dict = new TreeMap<String, String>();
+    Map<String, String> dict = new TreeMap<>();
 
     try {
 

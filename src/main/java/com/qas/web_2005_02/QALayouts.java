@@ -71,7 +71,7 @@ public class QALayouts {
    */
   public List<QALayout> getLayout() {
     if (layout == null) {
-      layout = new ArrayList<QALayout>();
+      layout = new ArrayList<>();
     }
     return this.layout;
   }
