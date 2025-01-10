@@ -36,7 +36,7 @@ import org.slf4j.LoggerFactory;
 
 public final class UrlHelper {
 
-  static final int size = 1024;
+  static final int SIZE = 1024;
 
   private static final Logger LOG = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
@@ -71,7 +71,7 @@ public final class UrlHelper {
     try (OutputStream outputStream = new BufferedOutputStream(new FileOutputStream(file))) {
       int byteRead;
       int byteWritten = 0;
-      byte[] buf = new byte[size];
+      byte[] buf = new byte[SIZE];
       URL url = new URL(fAddress);
       URLConnection urlConnection = url.openConnection();
       InputStream inputStream = urlConnection.getInputStream();
