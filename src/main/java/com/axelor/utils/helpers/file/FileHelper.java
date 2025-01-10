@@ -49,7 +49,7 @@ public final class FileHelper {
   public static List<String> reader(String fileName) throws IOException {
 
     List<String> content = new ArrayList<>();
-    try (BufferedReader br = new BufferedReader(new FileReader(new File(fileName)))) {
+    try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
       String ligne = "";
 
       while ((ligne = br.readLine()) != null) {
