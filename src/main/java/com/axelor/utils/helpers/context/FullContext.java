@@ -30,9 +30,8 @@ import java.util.stream.Collectors;
 
 public class FullContext extends Context {
 
-  private Model entity;
-
-  private PropertyChangeSupport changeListener;
+  private final Model entity;
+  private final PropertyChangeSupport changeListener;
 
   public FullContext(Model entity) {
     super(valueMap(entity), EntityHelper.getEntityClass(entity));
