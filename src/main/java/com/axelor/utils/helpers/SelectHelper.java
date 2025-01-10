@@ -177,7 +177,7 @@ public class SelectHelper {
       String selectName, String title) {
     Optional<String> optionalStringValueFromTitle =
         getOptionalStringValueFromTitle(selectName, title);
-    if (!optionalStringValueFromTitle.isPresent()) {
+    if (optionalStringValueFromTitle.isEmpty()) {
       return Optional.empty();
     }
 
