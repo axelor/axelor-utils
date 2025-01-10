@@ -67,7 +67,7 @@ public final class FtpHelper {
 
         // Download a file from the FTP Server
         File file = new File(destinationFolder + File.separator + ftpFile.getName());
-        try (FileOutputStream fos = new FileOutputStream(file); ) {
+        try (FileOutputStream fos = new FileOutputStream(file)) {
           ftp.retrieveFile(ftpFile.getName(), fos);
           file.setLastModified(fileDate.getTime());
         } catch (Exception e) {

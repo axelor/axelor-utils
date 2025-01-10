@@ -73,7 +73,7 @@ public final class FileHelper {
     System.setProperty("line.separator", "\r\n");
 
     File file = create(destinationFolder, fileName);
-    try (FileWriter writer = new FileWriter(file); ) {
+    try (FileWriter writer = new FileWriter(file)) {
       writer.write(line);
     }
   }
