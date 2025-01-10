@@ -17,7 +17,7 @@ class LocalDateTimeIntervalTest {
   // Instead, the test cases are represented with comments above each test method and the method
   // name only refer to which method is tested.
 
-  private LocalDateTime T = LocalDate.of(2000, 1, 1).atTime(12, 12);
+  private final LocalDateTime T = LocalDate.of(2000, 1, 1).atTime(12, 12);
 
   // i: ------------T------------
   // i: --------A________B------- (AB)

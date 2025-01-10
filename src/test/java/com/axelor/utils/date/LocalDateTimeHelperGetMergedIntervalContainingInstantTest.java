@@ -14,7 +14,7 @@ import org.junit.jupiter.api.Test;
 
 class LocalDateTimeHelperGetMergedIntervalContainingInstantTest {
 
-  private LocalDateTime T = LocalDateTime.now();
+  private final LocalDateTime T = LocalDateTime.now();
 
   // i: ------------T------------
   // i: --------A________B-------
