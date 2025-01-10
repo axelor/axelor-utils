@@ -137,7 +137,7 @@ class DmsFileServiceTest extends BaseTest {
       Assertions.assertEquals(dmsFile.getRelatedId(), userToMerge.getId());
       if (JPA.find(DMSFile.class, dmsFile.getId()).getParent() != null
           && dmsRoot != null
-          && JPA.find(DMSFile.class, dmsFile.getId()).getParent().getId() == dmsRoot.getId()) {
+          && JPA.find(DMSFile.class, dmsFile.getId()).getParent().getId().equals(dmsRoot.getId())) {
         Assertions.assertEquals(dmsFile.getParent(), getDMSHome(userToMerge, dmsRoot));
       }
     }
@@ -179,7 +179,7 @@ class DmsFileServiceTest extends BaseTest {
       for (DMSFile dmsFile : dmsFileList) {
         if (dmsFile.getParent() != null
             && dmsRoot != null
-            && dmsFile.getParent().getId() == dmsRoot.getId()) {
+            && dmsFile.getParent().getId().equals(dmsRoot.getId())) {
           dmsFile.setParent(dmsHome);
         }
         dmsFile.setRelatedId(entityMerged.getId());
