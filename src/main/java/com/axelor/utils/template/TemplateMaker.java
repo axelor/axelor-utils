@@ -27,31 +27,31 @@ import com.axelor.meta.db.repo.MetaJsonRecordRepository;
 import com.axelor.rpc.Context;
 import com.axelor.text.StringTemplates;
 import com.axelor.utils.exception.UtilsExceptionMessage;
-import com.google.common.base.Charsets;
 import com.google.common.base.Preconditions;
 import com.google.common.base.Strings;
 import com.google.common.io.Files;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
+import lombok.Getter;
+import lombok.Setter;
 import org.apache.commons.text.StringEscapeUtils;
 
 public class TemplateMaker {
   private Map<String, Object> context;
   private Map<String, Object> localContext;
 
-  private StringTemplates st;
+  private final StringTemplates st;
   private String template;
-  private Locale locale;
-  private String timeZone;
+  @Getter @Setter private Locale locale;
 
   public TemplateMaker(
       String timeZone, Locale locale, char delimiterStartChar, char delimiterStopChar) {
     this.locale = locale;
-    this.timeZone = timeZone;
     this.st = new StringTemplates(delimiterStartChar, delimiterStopChar).withLocale(locale);
   }
 
@@ -117,7 +117,7 @@ public class TemplateMaker {
 
     String text;
     try {
-      text = Files.asCharSource(file, Charsets.UTF_8).read();
+      text = Files.asCharSource(file, StandardCharsets.UTF_8).read();
     } catch (IOException e) {
       throw new IllegalArgumentException(e);
     }
@@ -141,14 +141,6 @@ public class TemplateMaker {
 
   public Class<?> getBeanClass(Model model) {
     return model.getClass();
-  }
-
-  public void setLocale(Locale locale) {
-    this.locale = locale;
-  }
-
-  public Locale getLocale() {
-    return locale;
   }
 
   public String make() {
