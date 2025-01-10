@@ -224,12 +224,12 @@ public class LocalDateTimeHelper {
    *     in the past from the @param referenceDateTime exclusive corresponding to the given @param
    *     targetMonth
    */
-  public static MonthBoundaries getLastMonthOccurenceBoundaries(
+  public static MonthBoundaries getLastMonthOccurrenceBoundaries(
       Month targetMonth, LocalDateTime referenceDateTime) {
     if (targetMonth == null || referenceDateTime == null) {
       return null;
     }
-    return LocalDateHelper.getLastMonthOccurenceBoundaries(
+    return LocalDateHelper.getLastMonthOccurrenceBoundaries(
         targetMonth, referenceDateTime.toLocalDate());
   }
 
@@ -240,12 +240,12 @@ public class LocalDateTimeHelper {
    *     in the future from the @param referenceDateTime exclusive corresponding to the given @param
    *     targetMonth
    */
-  public static MonthBoundaries getNextMonthOccurenceBoundaries(
+  public static MonthBoundaries getNextMonthOccurrenceBoundaries(
       Month targetMonth, LocalDateTime referenceDateTime) {
     if (targetMonth == null || referenceDateTime == null) {
       return null;
     }
-    return LocalDateHelper.getNextMonthOccurenceBoundaries(
+    return LocalDateHelper.getNextMonthOccurrenceBoundaries(
         targetMonth, referenceDateTime.toLocalDate());
   }
 

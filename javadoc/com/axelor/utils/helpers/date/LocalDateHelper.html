@@ -186,7 +186,7 @@ extends java.lang.Object</pre>
 </tr>
 <tr id="i4" class="altColor">
 <td class="colFirst"><code>static <a href="MonthBoundaries.html" title="class in com.axelor.utils.helpers.date">MonthBoundaries</a></code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getLastMonthOccurenceBoundaries(java.time.Month,java.time.LocalDate)">getLastMonthOccurenceBoundaries</a></span>&#8203;(java.time.Month&nbsp;targetMonth,
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getLastMonthOccurrenceBoundaries(java.time.Month,java.time.LocalDate)">getLastMonthOccurrenceBoundaries</a></span>&#8203;(java.time.Month&nbsp;targetMonth,
                                java.time.LocalDate&nbsp;referenceDate)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
@@ -198,7 +198,7 @@ extends java.lang.Object</pre>
 </tr>
 <tr id="i6" class="altColor">
 <td class="colFirst"><code>static <a href="MonthBoundaries.html" title="class in com.axelor.utils.helpers.date">MonthBoundaries</a></code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getNextMonthOccurenceBoundaries(java.time.Month,java.time.LocalDate)">getNextMonthOccurenceBoundaries</a></span>&#8203;(java.time.Month&nbsp;targetMonth,
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getNextMonthOccurrenceBoundaries(java.time.Month,java.time.LocalDate)">getNextMonthOccurrenceBoundaries</a></span>&#8203;(java.time.Month&nbsp;targetMonth,
                                java.time.LocalDate&nbsp;referenceDate)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
@@ -240,7 +240,7 @@ extends java.lang.Object</pre>
 </tr>
 <tr id="i12" class="altColor">
 <td class="colFirst"><code>static java.time.LocalDate</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#lastOccurency(java.time.LocalDate,java.time.LocalDate,int)">lastOccurency</a></span>&#8203;(java.time.LocalDate&nbsp;startDate,
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#lastOccurrence(java.time.LocalDate,java.time.LocalDate,int)">lastOccurrence</a></span>&#8203;(java.time.LocalDate&nbsp;startDate,
              java.time.LocalDate&nbsp;endDate,
              int&nbsp;frequencyInMonth)</code></th>
 <td class="colLast">
@@ -263,7 +263,7 @@ extends java.lang.Object</pre>
 </tr>
 <tr id="i15" class="rowColor">
 <td class="colFirst"><code>static java.time.LocalDate</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#nextOccurency(java.time.LocalDate,java.time.LocalDate,int)">nextOccurency</a></span>&#8203;(java.time.LocalDate&nbsp;startDate,
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#nextOccurrence(java.time.LocalDate,java.time.LocalDate,int)">nextOccurrence</a></span>&#8203;(java.time.LocalDate&nbsp;startDate,
              java.time.LocalDate&nbsp;goalDate,
              int&nbsp;frequencyInMonth)</code></th>
 <td class="colLast">
@@ -274,7 +274,7 @@ extends java.lang.Object</pre>
 </tr>
 <tr id="i16" class="altColor">
 <td class="colFirst"><code>java.time.LocalDate</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#nextOccurencyStartDateIncluded(java.time.LocalDate,java.time.LocalDate,int)">nextOccurencyStartDateIncluded</a></span>&#8203;(java.time.LocalDate&nbsp;startDate,
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#nextOccurrenceStartDateIncluded(java.time.LocalDate,java.time.LocalDate,int)">nextOccurrenceStartDateIncluded</a></span>&#8203;(java.time.LocalDate&nbsp;startDate,
                               java.time.LocalDate&nbsp;goalDate,
                               int&nbsp;frequencyInMonth)</code></th>
 <td class="colLast">
@@ -373,13 +373,13 @@ extends java.lang.Object</pre>
                                 java.time.LocalDate&nbsp;date)</pre>
 </li>
 </ul>
-<a id="nextOccurency(java.time.LocalDate,java.time.LocalDate,int)">
+<a id="nextOccurrence(java.time.LocalDate,java.time.LocalDate,int)">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
-<h4>nextOccurency</h4>
-<pre class="methodSignature">public static&nbsp;java.time.LocalDate&nbsp;nextOccurency&#8203;(java.time.LocalDate&nbsp;startDate,
+<h4>nextOccurrence</h4>
+<pre class="methodSignature">public static&nbsp;java.time.LocalDate&nbsp;nextOccurrence&#8203;(java.time.LocalDate&nbsp;startDate,
                                                 java.time.LocalDate&nbsp;goalDate,
                                                 int&nbsp;frequencyInMonth)</pre>
 <div class="block">Computes the date of the next occurrence of an event according to the following calculation:
@@ -395,13 +395,13 @@ extends java.lang.Object</pre>
 </dl>
 </li>
 </ul>
-<a id="nextOccurencyStartDateIncluded(java.time.LocalDate,java.time.LocalDate,int)">
+<a id="nextOccurrenceStartDateIncluded(java.time.LocalDate,java.time.LocalDate,int)">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
-<h4>nextOccurencyStartDateIncluded</h4>
-<pre class="methodSignature">public&nbsp;java.time.LocalDate&nbsp;nextOccurencyStartDateIncluded&#8203;(java.time.LocalDate&nbsp;startDate,
+<h4>nextOccurrenceStartDateIncluded</h4>
+<pre class="methodSignature">public&nbsp;java.time.LocalDate&nbsp;nextOccurrenceStartDateIncluded&#8203;(java.time.LocalDate&nbsp;startDate,
                                                           java.time.LocalDate&nbsp;goalDate,
                                                           int&nbsp;frequencyInMonth)</pre>
 <div class="block">Computes the date of the next occurrence of an event according to the following calculation:
@@ -417,13 +417,13 @@ extends java.lang.Object</pre>
 </dl>
 </li>
 </ul>
-<a id="lastOccurency(java.time.LocalDate,java.time.LocalDate,int)">
+<a id="lastOccurrence(java.time.LocalDate,java.time.LocalDate,int)">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
-<h4>lastOccurency</h4>
-<pre class="methodSignature">public static&nbsp;java.time.LocalDate&nbsp;lastOccurency&#8203;(java.time.LocalDate&nbsp;startDate,
+<h4>lastOccurrence</h4>
+<pre class="methodSignature">public static&nbsp;java.time.LocalDate&nbsp;lastOccurrence&#8203;(java.time.LocalDate&nbsp;startDate,
                                                 java.time.LocalDate&nbsp;endDate,
                                                 int&nbsp;frequencyInMonth)</pre>
 <div class="block">Computes the date of the last occurrence of an event according to the following calculation:
@@ -617,13 +617,13 @@ extends java.lang.Object</pre>
 </dl>
 </li>
 </ul>
-<a id="getLastMonthOccurenceBoundaries(java.time.Month,java.time.LocalDate)">
+<a id="getLastMonthOccurrenceBoundaries(java.time.Month,java.time.LocalDate)">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
-<h4>getLastMonthOccurenceBoundaries</h4>
-<pre class="methodSignature">public static&nbsp;<a href="MonthBoundaries.html" title="class in com.axelor.utils.helpers.date">MonthBoundaries</a>&nbsp;getLastMonthOccurenceBoundaries&#8203;(java.time.Month&nbsp;targetMonth,
+<h4>getLastMonthOccurrenceBoundaries</h4>
+<pre class="methodSignature">public static&nbsp;<a href="MonthBoundaries.html" title="class in com.axelor.utils.helpers.date">MonthBoundaries</a>&nbsp;getLastMonthOccurrenceBoundaries&#8203;(java.time.Month&nbsp;targetMonth,
                                                               java.time.LocalDate&nbsp;referenceDate)</pre>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
@@ -636,13 +636,13 @@ extends java.lang.Object</pre>
 </dl>
 </li>
 </ul>
-<a id="getNextMonthOccurenceBoundaries(java.time.Month,java.time.LocalDate)">
+<a id="getNextMonthOccurrenceBoundaries(java.time.Month,java.time.LocalDate)">
 <!--   -->
 </a>
 <ul class="blockListLast">
 <li class="blockList">
-<h4>getNextMonthOccurenceBoundaries</h4>
-<pre class="methodSignature">public static&nbsp;<a href="MonthBoundaries.html" title="class in com.axelor.utils.helpers.date">MonthBoundaries</a>&nbsp;getNextMonthOccurenceBoundaries&#8203;(java.time.Month&nbsp;targetMonth,
+<h4>getNextMonthOccurrenceBoundaries</h4>
+<pre class="methodSignature">public static&nbsp;<a href="MonthBoundaries.html" title="class in com.axelor.utils.helpers.date">MonthBoundaries</a>&nbsp;getNextMonthOccurrenceBoundaries&#8203;(java.time.Month&nbsp;targetMonth,
                                                               java.time.LocalDate&nbsp;referenceDate)</pre>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
