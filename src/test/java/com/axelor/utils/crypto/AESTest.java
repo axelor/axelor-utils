@@ -40,7 +40,7 @@ class AESTest {
    * @return Generated hex string
    */
   public static String asHex(byte[] buf) {
-    StringBuffer strbuf = new StringBuffer(buf.length * 2);
+    StringBuilder strbuf = new StringBuilder(buf.length * 2);
     int i;
 
     for (i = 0; i < buf.length; i++) {
