@@ -28,7 +28,7 @@ public interface DataReader {
    * @param separator Separator of the file.
    * @return True if the file is initialized successfully.
    */
-  public boolean initialize(MetaFile input, String separator);
+  boolean initialize(MetaFile input, String separator);
 
   /**
    * Returns record/row of a particular line.
@@ -38,7 +38,7 @@ public interface DataReader {
    * @param headerSize Size of the header.
    * @return All the records of the line.
    */
-  public String[] read(String sheetName, int index, int headerSize);
+  String[] read(String sheetName, int index, int headerSize);
 
   /**
    * Returns total number of lines.
@@ -46,12 +46,12 @@ public interface DataReader {
    * @param sheetName Name of the sheet.
    * @return Total number of lines.
    */
-  public int getTotalLines(String sheetName);
+  int getTotalLines(String sheetName);
 
   /**
    * Returns name of sheets.
    *
    * @return All sheet names.
    */
-  public String[] getSheetNames();
+  String[] getSheetNames();
 }

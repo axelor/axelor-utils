@@ -28,5 +28,5 @@ public interface BinaryConversionService {
    * @return Metafile created
    * @throws IOException if any error occurs
    */
-  public MetaFile toMetaFile(byte[] bytePicture) throws IOException;
+  MetaFile toMetaFile(byte[] bytePicture) throws IOException;
 }
