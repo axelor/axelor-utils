@@ -32,7 +32,7 @@ public class RequestValidator {
 
     Set<ConstraintViolation<RequestStructure>> constraintViolations = validator.validate(body);
 
-    if (constraintViolations.size() > 0) {
+    if (!constraintViolations.isEmpty()) {
       StringBuilder errorMsg = new StringBuilder("Some constraints are invalid : ");
       for (ConstraintViolation<RequestStructure> constraint : constraintViolations) {
         errorMsg
@@ -51,7 +51,7 @@ public class RequestValidator {
 
     Set<ConstraintViolation<RequestPostStructure>> constraintViolations = validator.validate(body);
 
-    if (constraintViolations.size() > 0) {
+    if (!constraintViolations.isEmpty()) {
       StringBuilder errorMsg = new StringBuilder("Some constraints are invalid : ");
       for (ConstraintViolation<RequestPostStructure> constraint : constraintViolations) {
         errorMsg
