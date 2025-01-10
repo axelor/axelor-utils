@@ -73,7 +73,7 @@ public class LocalDateHelper {
 
     int nbDayOfFirstMonth = 0;
     int nbDayOfOthersMonths = 0;
-    int nbDayOfLastMonth = 0;
+    int nbDayOfLastMonth;
 
     LocalDate start = startDate;
 
