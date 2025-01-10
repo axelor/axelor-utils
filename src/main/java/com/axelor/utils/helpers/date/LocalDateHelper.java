@@ -47,7 +47,7 @@ public class LocalDateHelper {
 
   public static long daysBetween(LocalDate date1, LocalDate date2, boolean days360) {
 
-    long days = 0;
+    long days;
 
     if (days360) {
       days = date1.isBefore(date2) ? days360Between(date1, date2) : -days360Between(date2, date1);
