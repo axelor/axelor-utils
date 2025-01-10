@@ -20,12 +20,10 @@ package com.axelor.utils.helpers.file;
 import com.axelor.i18n.I18n;
 import com.axelor.meta.MetaFiles;
 import com.axelor.utils.exception.UtilsExceptionMessage;
-import com.axelor.utils.helpers.ExceptionHelper;
 import com.google.common.base.Preconditions;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Path;
@@ -79,8 +77,8 @@ public final class PdfHelper {
   public static String getFileLinkFromPdfFile(File file, String fileName) {
 
     String fileLink = "ws/files/report/" + file.getName();
-      fileLink += "?name=" + URLEncoder.encode(fileName, StandardCharsets.UTF_8);
-      return fileLink;
+    fileLink += "?name=" + URLEncoder.encode(fileName, StandardCharsets.UTF_8);
+    return fileLink;
   }
 
   /**

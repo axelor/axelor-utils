@@ -4,7 +4,6 @@ import com.axelor.common.ResourceUtils;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
-import java.io.IOException;
 import java.io.InputStream;
 import javax.annotation.concurrent.ThreadSafe;
 import javax.xml.bind.JAXBContext;
