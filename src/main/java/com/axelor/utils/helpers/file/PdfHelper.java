@@ -27,6 +27,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Path;
 import java.util.Collections;
 import java.util.List;
@@ -78,12 +79,8 @@ public final class PdfHelper {
   public static String getFileLinkFromPdfFile(File file, String fileName) {
 
     String fileLink = "ws/files/report/" + file.getName();
-    try {
-      fileLink += "?name=" + URLEncoder.encode(fileName, "UTF-8");
-    } catch (UnsupportedEncodingException e) {
-      ExceptionHelper.error(e);
-    }
-    return fileLink;
+      fileLink += "?name=" + URLEncoder.encode(fileName, StandardCharsets.UTF_8);
+      return fileLink;
   }
 
   /**

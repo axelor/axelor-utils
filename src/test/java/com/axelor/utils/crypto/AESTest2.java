@@ -77,7 +77,7 @@ class AESTest2 {
     // the scope of this post
     byte[] iv = CRYPTO_IV_EXT; // Ditto
 
-    byte[] plaintext = message.getBytes("UTF8"); // Whatever you want to
+    byte[] plaintext = message.getBytes(StandardCharsets.UTF_8); // Whatever you want to
     // encrypt/decrypt
     Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
     // You can use ENCRYPT_MODE or DECRYPT_MODE
