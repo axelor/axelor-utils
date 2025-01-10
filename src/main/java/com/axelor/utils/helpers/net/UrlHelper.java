@@ -89,8 +89,7 @@ public final class UrlHelper {
     }
   }
 
-  public static File fileDownload(String fAddress, String destinationDir, String fileName)
-      throws IOException {
+  public static File fileDownload(String fAddress, String destinationDir, String fileName) {
 
     int slashIndex = fAddress.lastIndexOf('/');
     int periodIndex = fAddress.lastIndexOf('.');
@@ -111,7 +110,7 @@ public final class UrlHelper {
   }
 
   public static void fileDownload(
-      File file, String fAddress, String destinationDir, String fileName) throws IOException {
+      File file, String fAddress, String destinationDir, String fileName) {
 
     int slashIndex = fAddress.lastIndexOf('/');
     int periodIndex = fAddress.lastIndexOf('.');

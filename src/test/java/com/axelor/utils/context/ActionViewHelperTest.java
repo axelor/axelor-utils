@@ -32,7 +32,7 @@ class ActionViewHelperTest extends BaseTest {
   }
 
   @Test
-  void build() throws JAXBException, IOException {
+  void build() throws JAXBException {
     ObjectViews objectViews = testingHelper.unmarshal("views/Actions.xml", ObjectViews.class);
     ActionView action =
         (ActionView)
