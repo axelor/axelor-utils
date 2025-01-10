@@ -159,9 +159,7 @@ class EntityMergingHelperTest extends BaseTest {
         moveLines.stream().map(this::moveLineToMap).collect(Collectors.toList());
 
     moveLineMapList.forEach(
-        moveLineMap -> {
-          moveLineMap.put("credit", BigDecimal.ONE);
-        });
+        moveLineMap -> moveLineMap.put("credit", BigDecimal.ONE));
 
     Map<String, Object> moveMap = new HashMap<>();
     moveMap.put("moveLines", moveLineMapList);
