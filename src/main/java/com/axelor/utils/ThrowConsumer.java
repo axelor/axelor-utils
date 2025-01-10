@@ -18,7 +18,7 @@
 package com.axelor.utils;
 
 /**
- * Represents an operation that accepts one argument, returns no result and can throws exception.
+ * Represents an operation that accepts one argument, returns no result and can throw exception.
  *
  * @param <T> the type of the input to the operation.
  */
