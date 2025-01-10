@@ -275,7 +275,7 @@ public final class StringHelper {
     StringBuilder idStringBuilder = new StringBuilder();
     for (Model item : collection) {
       if (item != null && item.getId() != null) {
-        idStringBuilder.append(String.valueOf(item.getId()));
+        idStringBuilder.append(item.getId());
         idStringBuilder.append(",");
       }
     }
