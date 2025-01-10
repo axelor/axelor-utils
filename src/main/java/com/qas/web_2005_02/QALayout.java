@@ -21,6 +21,8 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * Classe Java pour QALayout complex type.
@@ -40,6 +42,8 @@ import javax.xml.bind.annotation.XmlType;
  * &lt;/complexType&gt;
  * </pre>
  */
+@Setter
+@Getter
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(
     name = "QALayout",
@@ -51,40 +55,4 @@ public class QALayout {
 
   @XmlElement(name = "Comment", required = true)
   protected String comment;
-
-  /**
-   * Obtient la valeur de la propriété name.
-   *
-   * @return possible object is {@link String }
-   */
-  public String getName() {
-    return name;
-  }
-
-  /**
-   * Définit la valeur de la propriété name.
-   *
-   * @param value allowed object is {@link String }
-   */
-  public void setName(String value) {
-    this.name = value;
-  }
-
-  /**
-   * Obtient la valeur de la propriété comment.
-   *
-   * @return possible object is {@link String }
-   */
-  public String getComment() {
-    return comment;
-  }
-
-  /**
-   * Définit la valeur de la propriété comment.
-   *
-   * @param value allowed object is {@link String }
-   */
-  public void setComment(String value) {
-    this.comment = value;
-  }
 }

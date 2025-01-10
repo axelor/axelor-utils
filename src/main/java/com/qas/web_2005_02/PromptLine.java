@@ -23,6 +23,8 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * Classe Java pour PromptLine complex type.
@@ -43,6 +45,8 @@ import javax.xml.bind.annotation.XmlType;
  * &lt;/complexType&gt;
  * </pre>
  */
+@Setter
+@Getter
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(
     name = "PromptLine",
@@ -58,58 +62,4 @@ public class PromptLine {
 
   @XmlElement(name = "Example", required = true)
   protected String example;
-
-  /**
-   * Obtient la valeur de la propriété prompt.
-   *
-   * @return possible object is {@link String }
-   */
-  public String getPrompt() {
-    return prompt;
-  }
-
-  /**
-   * Définit la valeur de la propriété prompt.
-   *
-   * @param value allowed object is {@link String }
-   */
-  public void setPrompt(String value) {
-    this.prompt = value;
-  }
-
-  /**
-   * Obtient la valeur de la propriété suggestedInputLength.
-   *
-   * @return possible object is {@link BigInteger }
-   */
-  public BigInteger getSuggestedInputLength() {
-    return suggestedInputLength;
-  }
-
-  /**
-   * Définit la valeur de la propriété suggestedInputLength.
-   *
-   * @param value allowed object is {@link BigInteger }
-   */
-  public void setSuggestedInputLength(BigInteger value) {
-    this.suggestedInputLength = value;
-  }
-
-  /**
-   * Obtient la valeur de la propriété example.
-   *
-   * @return possible object is {@link String }
-   */
-  public String getExample() {
-    return example;
-  }
-
-  /**
-   * Définit la valeur de la propriété example.
-   *
-   * @param value allowed object is {@link String }
-   */
-  public void setExample(String value) {
-    this.example = value;
-  }
 }

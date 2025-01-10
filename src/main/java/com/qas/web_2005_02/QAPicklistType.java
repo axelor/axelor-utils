@@ -27,6 +27,8 @@ import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * Classe Java pour QAPicklistType complex type.
@@ -63,63 +65,60 @@ import javax.xml.bind.annotation.XmlType;
     propOrder = {"fullPicklistMoniker", "picklistEntry", "prompt", "total"})
 public class QAPicklistType {
 
+  @Setter
+  @Getter
   @XmlElement(name = "FullPicklistMoniker", required = true)
   protected String fullPicklistMoniker;
 
   @XmlElement(name = "PicklistEntry")
   protected List<PicklistEntryType> picklistEntry;
 
+  @Setter
+  @Getter
   @XmlElement(name = "Prompt", required = true)
   protected String prompt;
 
+  @Setter
+  @Getter
   @XmlElement(name = "Total", required = true)
   @XmlSchemaType(name = "nonNegativeInteger")
   protected BigInteger total;
 
+  @Setter
   @XmlAttribute(name = "AutoFormatSafe")
   protected Boolean autoFormatSafe;
 
+  @Setter
   @XmlAttribute(name = "AutoFormatPastClose")
   protected Boolean autoFormatPastClose;
 
+  @Setter
   @XmlAttribute(name = "AutoStepinSafe")
   protected Boolean autoStepinSafe;
 
+  @Setter
   @XmlAttribute(name = "AutoStepinPastClose")
   protected Boolean autoStepinPastClose;
 
+  @Setter
   @XmlAttribute(name = "LargePotential")
   protected Boolean largePotential;
 
+  @Setter
   @XmlAttribute(name = "MaxMatches")
   protected Boolean maxMatches;
 
+  @Setter
   @XmlAttribute(name = "MoreOtherMatches")
   protected Boolean moreOtherMatches;
 
+  @Setter
   @XmlAttribute(name = "OverThreshold")
   protected Boolean overThreshold;
 
+  @Setter
   @XmlAttribute(name = "Timeout")
   protected Boolean timeout;
-
-  /**
-   * Obtient la valeur de la propriété fullPicklistMoniker.
-   *
-   * @return possible object is {@link String }
-   */
-  public String getFullPicklistMoniker() {
-    return fullPicklistMoniker;
-  }
-
-  /**
-   * Définit la valeur de la propriété fullPicklistMoniker.
-   *
-   * @param value allowed object is {@link String }
-   */
-  public void setFullPicklistMoniker(String value) {
-    this.fullPicklistMoniker = value;
-  }
 
   /**
    * Gets the value of the picklistEntry property.
@@ -145,201 +144,39 @@ public class QAPicklistType {
     return this.picklistEntry;
   }
 
-  /**
-   * Obtient la valeur de la propriété prompt.
-   *
-   * @return possible object is {@link String }
-   */
-  public String getPrompt() {
-    return prompt;
-  }
-
-  /**
-   * Définit la valeur de la propriété prompt.
-   *
-   * @param value allowed object is {@link String }
-   */
-  public void setPrompt(String value) {
-    this.prompt = value;
-  }
-
-  /**
-   * Obtient la valeur de la propriété total.
-   *
-   * @return possible object is {@link BigInteger }
-   */
-  public BigInteger getTotal() {
-    return total;
-  }
-
-  /**
-   * Définit la valeur de la propriété total.
-   *
-   * @param value allowed object is {@link BigInteger }
-   */
-  public void setTotal(BigInteger value) {
-    this.total = value;
-  }
-
-  /**
-   * Obtient la valeur de la propriété autoFormatSafe.
-   *
-   * @return possible object is {@link Boolean }
-   */
   public boolean isAutoFormatSafe() {
-      return Objects.requireNonNullElse(autoFormatSafe, false);
+    return Objects.requireNonNullElse(autoFormatSafe, false);
   }
 
-  /**
-   * Définit la valeur de la propriété autoFormatSafe.
-   *
-   * @param value allowed object is {@link Boolean }
-   */
-  public void setAutoFormatSafe(Boolean value) {
-    this.autoFormatSafe = value;
-  }
-
-  /**
-   * Obtient la valeur de la propriété autoFormatPastClose.
-   *
-   * @return possible object is {@link Boolean }
-   */
   public boolean isAutoFormatPastClose() {
-      return Objects.requireNonNullElse(autoFormatPastClose, false);
+    return Objects.requireNonNullElse(autoFormatPastClose, false);
   }
 
-  /**
-   * Définit la valeur de la propriété autoFormatPastClose.
-   *
-   * @param value allowed object is {@link Boolean }
-   */
-  public void setAutoFormatPastClose(Boolean value) {
-    this.autoFormatPastClose = value;
-  }
-
-  /**
-   * Obtient la valeur de la propriété autoStepinSafe.
-   *
-   * @return possible object is {@link Boolean }
-   */
   public boolean isAutoStepinSafe() {
-      return Objects.requireNonNullElse(autoStepinSafe, false);
+    return Objects.requireNonNullElse(autoStepinSafe, false);
   }
 
-  /**
-   * Définit la valeur de la propriété autoStepinSafe.
-   *
-   * @param value allowed object is {@link Boolean }
-   */
-  public void setAutoStepinSafe(Boolean value) {
-    this.autoStepinSafe = value;
-  }
-
-  /**
-   * Obtient la valeur de la propriété autoStepinPastClose.
-   *
-   * @return possible object is {@link Boolean }
-   */
   public boolean isAutoStepinPastClose() {
-      return Objects.requireNonNullElse(autoStepinPastClose, false);
+    return Objects.requireNonNullElse(autoStepinPastClose, false);
   }
 
-  /**
-   * Définit la valeur de la propriété autoStepinPastClose.
-   *
-   * @param value allowed object is {@link Boolean }
-   */
-  public void setAutoStepinPastClose(Boolean value) {
-    this.autoStepinPastClose = value;
-  }
-
-  /**
-   * Obtient la valeur de la propriété largePotential.
-   *
-   * @return possible object is {@link Boolean }
-   */
   public boolean isLargePotential() {
-      return Objects.requireNonNullElse(largePotential, false);
+    return Objects.requireNonNullElse(largePotential, false);
   }
 
-  /**
-   * Définit la valeur de la propriété largePotential.
-   *
-   * @param value allowed object is {@link Boolean }
-   */
-  public void setLargePotential(Boolean value) {
-    this.largePotential = value;
-  }
-
-  /**
-   * Obtient la valeur de la propriété maxMatches.
-   *
-   * @return possible object is {@link Boolean }
-   */
   public boolean isMaxMatches() {
-      return Objects.requireNonNullElse(maxMatches, false);
+    return Objects.requireNonNullElse(maxMatches, false);
   }
 
-  /**
-   * Définit la valeur de la propriété maxMatches.
-   *
-   * @param value allowed object is {@link Boolean }
-   */
-  public void setMaxMatches(Boolean value) {
-    this.maxMatches = value;
-  }
-
-  /**
-   * Obtient la valeur de la propriété moreOtherMatches.
-   *
-   * @return possible object is {@link Boolean }
-   */
   public boolean isMoreOtherMatches() {
-      return Objects.requireNonNullElse(moreOtherMatches, false);
+    return Objects.requireNonNullElse(moreOtherMatches, false);
   }
 
-  /**
-   * Définit la valeur de la propriété moreOtherMatches.
-   *
-   * @param value allowed object is {@link Boolean }
-   */
-  public void setMoreOtherMatches(Boolean value) {
-    this.moreOtherMatches = value;
-  }
-
-  /**
-   * Obtient la valeur de la propriété overThreshold.
-   *
-   * @return possible object is {@link Boolean }
-   */
   public boolean isOverThreshold() {
-      return Objects.requireNonNullElse(overThreshold, false);
+    return Objects.requireNonNullElse(overThreshold, false);
   }
 
-  /**
-   * Définit la valeur de la propriété overThreshold.
-   *
-   * @param value allowed object is {@link Boolean }
-   */
-  public void setOverThreshold(Boolean value) {
-    this.overThreshold = value;
-  }
-
-  /**
-   * Obtient la valeur de la propriété timeout.
-   *
-   * @return possible object is {@link Boolean }
-   */
   public boolean isTimeout() {
-      return Objects.requireNonNullElse(timeout, false);
-  }
-
-  /**
-   * Définit la valeur de la propriété timeout.
-   *
-   * @param value allowed object is {@link Boolean }
-   */
-  public void setTimeout(Boolean value) {
-    this.timeout = value;
+    return Objects.requireNonNullElse(timeout, false);
   }
 }

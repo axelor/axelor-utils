@@ -22,6 +22,8 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * Classe Java pour anonymous complex type.
@@ -49,65 +51,23 @@ import javax.xml.bind.annotation.XmlType;
 @XmlRootElement(name = "QAGetAddress")
 public class QAGetAddress {
 
+  @Setter
+  @Getter
   @XmlElement(name = "Layout", required = true)
   protected String layout;
 
+  @Setter
+  @Getter
   @XmlElement(name = "Moniker", required = true)
   protected String moniker;
 
   @XmlElement(name = "QAConfig")
   protected QAConfigType qaConfig;
 
-  /**
-   * Obtient la valeur de la propriété layout.
-   *
-   * @return possible object is {@link String }
-   */
-  public String getLayout() {
-    return layout;
-  }
-
-  /**
-   * Définit la valeur de la propriété layout.
-   *
-   * @param value allowed object is {@link String }
-   */
-  public void setLayout(String value) {
-    this.layout = value;
-  }
-
-  /**
-   * Obtient la valeur de la propriété moniker.
-   *
-   * @return possible object is {@link String }
-   */
-  public String getMoniker() {
-    return moniker;
-  }
-
-  /**
-   * Définit la valeur de la propriété moniker.
-   *
-   * @param value allowed object is {@link String }
-   */
-  public void setMoniker(String value) {
-    this.moniker = value;
-  }
-
-  /**
-   * Obtient la valeur de la propriété qaConfig.
-   *
-   * @return possible object is {@link QAConfigType }
-   */
   public QAConfigType getQAConfig() {
     return qaConfig;
   }
 
-  /**
-   * Définit la valeur de la propriété qaConfig.
-   *
-   * @param value allowed object is {@link QAConfigType }
-   */
   public void setQAConfig(QAConfigType value) {
     this.qaConfig = value;
   }

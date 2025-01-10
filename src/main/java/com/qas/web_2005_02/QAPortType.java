@@ -54,10 +54,10 @@ public interface QAPortType {
       operationName = "DoGetExampleAddresses",
       action = "http://www.qas.com/web-2005-02/DoGetExampleAddresses")
   QAExampleAddresses doGetExampleAddresses(
-          @WebParam(
-                  partName = "body",
-                  name = "QAGetExampleAddresses",
-                  targetNamespace = "http://www.qas.com/web-2005-02")
+      @WebParam(
+              partName = "body",
+              name = "QAGetExampleAddresses",
+              targetNamespace = "http://www.qas.com/web-2005-02")
           QAGetExampleAddresses body)
       throws Fault;
 
@@ -67,10 +67,10 @@ public interface QAPortType {
       partName = "body")
   @WebMethod(operationName = "DoRefine", action = "http://www.qas.com/web-2005-02/DoRefine")
   Picklist doRefine(
-          @WebParam(
-                  partName = "body",
-                  name = "QARefine",
-                  targetNamespace = "http://www.qas.com/web-2005-02")
+      @WebParam(
+              partName = "body",
+              name = "QARefine",
+              targetNamespace = "http://www.qas.com/web-2005-02")
           QARefine body)
       throws Fault;
 
@@ -80,10 +80,10 @@ public interface QAPortType {
       partName = "body")
   @WebMethod(operationName = "DoGetAddress", action = "http://www.qas.com/web-2005-02/DoGetAddress")
   Address doGetAddress(
-          @WebParam(
-                  partName = "body",
-                  name = "QAGetAddress",
-                  targetNamespace = "http://www.qas.com/web-2005-02")
+      @WebParam(
+              partName = "body",
+              name = "QAGetAddress",
+              targetNamespace = "http://www.qas.com/web-2005-02")
           QAGetAddress body)
       throws Fault;
 
@@ -93,10 +93,10 @@ public interface QAPortType {
       partName = "body")
   @WebMethod(operationName = "DoSearch", action = "http://www.qas.com/web-2005-02/DoSearch")
   QASearchResult doSearch(
-          @WebParam(
-                  partName = "body",
-                  name = "QASearch",
-                  targetNamespace = "http://www.qas.com/web-2005-02")
+      @WebParam(
+              partName = "body",
+              name = "QASearch",
+              targetNamespace = "http://www.qas.com/web-2005-02")
           QASearch body)
       throws Fault;
 
@@ -106,10 +106,10 @@ public interface QAPortType {
       partName = "body")
   @WebMethod(operationName = "DoCanSearch", action = "http://www.qas.com/web-2005-02/DoCanSearch")
   QASearchOk doCanSearch(
-          @WebParam(
-                  partName = "body",
-                  name = "QACanSearch",
-                  targetNamespace = "http://www.qas.com/web-2005-02")
+      @WebParam(
+              partName = "body",
+              name = "QACanSearch",
+              targetNamespace = "http://www.qas.com/web-2005-02")
           QACanSearch body)
       throws Fault;
 
@@ -119,10 +119,10 @@ public interface QAPortType {
       partName = "body")
   @WebMethod(operationName = "DoGetLayouts", action = "http://www.qas.com/web-2005-02/DoGetLayouts")
   QALayouts doGetLayouts(
-          @WebParam(
-                  partName = "body",
-                  name = "QAGetLayouts",
-                  targetNamespace = "http://www.qas.com/web-2005-02")
+      @WebParam(
+              partName = "body",
+              name = "QAGetLayouts",
+              targetNamespace = "http://www.qas.com/web-2005-02")
           QAGetLayouts body)
       throws Fault;
 
@@ -134,10 +134,10 @@ public interface QAPortType {
       operationName = "DoGetPromptSet",
       action = "http://www.qas.com/web-2005-02/DoGetPromptSet")
   QAPromptSet doGetPromptSet(
-          @WebParam(
-                  partName = "body",
-                  name = "QAGetPromptSet",
-                  targetNamespace = "http://www.qas.com/web-2005-02")
+      @WebParam(
+              partName = "body",
+              name = "QAGetPromptSet",
+              targetNamespace = "http://www.qas.com/web-2005-02")
           QAGetPromptSet body)
       throws Fault;
 

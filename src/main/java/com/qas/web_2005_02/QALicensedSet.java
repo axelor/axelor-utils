@@ -23,6 +23,8 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * Classe Java pour QALicensedSet complex type.
@@ -72,234 +74,64 @@ public class QALicensedSet {
   @XmlElement(name = "ID", required = true)
   protected String id;
 
+  @Setter
+  @Getter
   @XmlElement(name = "Description", required = true)
   protected String description;
 
+  @Setter
+  @Getter
   @XmlElement(name = "Copyright", required = true)
   protected String copyright;
 
+  @Setter
+  @Getter
   @XmlElement(name = "Version", required = true)
   protected String version;
 
+  @Setter
+  @Getter
   @XmlElement(name = "BaseCountry", required = true)
   protected String baseCountry;
 
+  @Setter
+  @Getter
   @XmlElement(name = "Status", required = true)
   protected String status;
 
+  @Setter
+  @Getter
   @XmlElement(name = "Server", required = true)
   protected String server;
 
+  @Setter
+  @Getter
   @XmlElement(name = "WarningLevel", required = true)
   protected LicenceWarningLevel warningLevel;
 
+  @Setter
+  @Getter
   @XmlElement(name = "DaysLeft", required = true)
   @XmlSchemaType(name = "nonNegativeInteger")
   protected BigInteger daysLeft;
 
+  @Setter
+  @Getter
   @XmlElement(name = "DataDaysLeft", required = true)
   @XmlSchemaType(name = "nonNegativeInteger")
   protected BigInteger dataDaysLeft;
 
+  @Setter
+  @Getter
   @XmlElement(name = "LicenceDaysLeft", required = true)
   @XmlSchemaType(name = "nonNegativeInteger")
   protected BigInteger licenceDaysLeft;
 
-  /**
-   * Obtient la valeur de la propriété id.
-   *
-   * @return possible object is {@link String }
-   */
   public String getID() {
     return id;
   }
 
-  /**
-   * Définit la valeur de la propriété id.
-   *
-   * @param value allowed object is {@link String }
-   */
   public void setID(String value) {
     this.id = value;
-  }
-
-  /**
-   * Obtient la valeur de la propriété description.
-   *
-   * @return possible object is {@link String }
-   */
-  public String getDescription() {
-    return description;
-  }
-
-  /**
-   * Définit la valeur de la propriété description.
-   *
-   * @param value allowed object is {@link String }
-   */
-  public void setDescription(String value) {
-    this.description = value;
-  }
-
-  /**
-   * Obtient la valeur de la propriété copyright.
-   *
-   * @return possible object is {@link String }
-   */
-  public String getCopyright() {
-    return copyright;
-  }
-
-  /**
-   * Définit la valeur de la propriété copyright.
-   *
-   * @param value allowed object is {@link String }
-   */
-  public void setCopyright(String value) {
-    this.copyright = value;
-  }
-
-  /**
-   * Obtient la valeur de la propriété version.
-   *
-   * @return possible object is {@link String }
-   */
-  public String getVersion() {
-    return version;
-  }
-
-  /**
-   * Définit la valeur de la propriété version.
-   *
-   * @param value allowed object is {@link String }
-   */
-  public void setVersion(String value) {
-    this.version = value;
-  }
-
-  /**
-   * Obtient la valeur de la propriété baseCountry.
-   *
-   * @return possible object is {@link String }
-   */
-  public String getBaseCountry() {
-    return baseCountry;
-  }
-
-  /**
-   * Définit la valeur de la propriété baseCountry.
-   *
-   * @param value allowed object is {@link String }
-   */
-  public void setBaseCountry(String value) {
-    this.baseCountry = value;
-  }
-
-  /**
-   * Obtient la valeur de la propriété status.
-   *
-   * @return possible object is {@link String }
-   */
-  public String getStatus() {
-    return status;
-  }
-
-  /**
-   * Définit la valeur de la propriété status.
-   *
-   * @param value allowed object is {@link String }
-   */
-  public void setStatus(String value) {
-    this.status = value;
-  }
-
-  /**
-   * Obtient la valeur de la propriété server.
-   *
-   * @return possible object is {@link String }
-   */
-  public String getServer() {
-    return server;
-  }
-
-  /**
-   * Définit la valeur de la propriété server.
-   *
-   * @param value allowed object is {@link String }
-   */
-  public void setServer(String value) {
-    this.server = value;
-  }
-
-  /**
-   * Obtient la valeur de la propriété warningLevel.
-   *
-   * @return possible object is {@link LicenceWarningLevel }
-   */
-  public LicenceWarningLevel getWarningLevel() {
-    return warningLevel;
-  }
-
-  /**
-   * Définit la valeur de la propriété warningLevel.
-   *
-   * @param value allowed object is {@link LicenceWarningLevel }
-   */
-  public void setWarningLevel(LicenceWarningLevel value) {
-    this.warningLevel = value;
-  }
-
-  /**
-   * Obtient la valeur de la propriété daysLeft.
-   *
-   * @return possible object is {@link BigInteger }
-   */
-  public BigInteger getDaysLeft() {
-    return daysLeft;
-  }
-
-  /**
-   * Définit la valeur de la propriété daysLeft.
-   *
-   * @param value allowed object is {@link BigInteger }
-   */
-  public void setDaysLeft(BigInteger value) {
-    this.daysLeft = value;
-  }
-
-  /**
-   * Obtient la valeur de la propriété dataDaysLeft.
-   *
-   * @return possible object is {@link BigInteger }
-   */
-  public BigInteger getDataDaysLeft() {
-    return dataDaysLeft;
-  }
-
-  /**
-   * Définit la valeur de la propriété dataDaysLeft.
-   *
-   * @param value allowed object is {@link BigInteger }
-   */
-  public void setDataDaysLeft(BigInteger value) {
-    this.dataDaysLeft = value;
-  }
-
-  /**
-   * Obtient la valeur de la propriété licenceDaysLeft.
-   *
-   * @return possible object is {@link BigInteger }
-   */
-  public BigInteger getLicenceDaysLeft() {
-    return licenceDaysLeft;
-  }
-
-  /**
-   * Définit la valeur de la propriété licenceDaysLeft.
-   *
-   * @param value allowed object is {@link BigInteger }
-   */
-  public void setLicenceDaysLeft(BigInteger value) {
-    this.licenceDaysLeft = value;
   }
 }

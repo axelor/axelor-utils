@@ -21,6 +21,8 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * Classe Java pour QAExampleAddress complex type.
@@ -40,6 +42,8 @@ import javax.xml.bind.annotation.XmlType;
  * &lt;/complexType&gt;
  * </pre>
  */
+@Setter
+@Getter
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(
     name = "QAExampleAddress",
@@ -51,40 +55,4 @@ public class QAExampleAddress {
 
   @XmlElement(name = "Comment", required = true)
   protected String comment;
-
-  /**
-   * Obtient la valeur de la propriété address.
-   *
-   * @return possible object is {@link QAAddressType }
-   */
-  public QAAddressType getAddress() {
-    return address;
-  }
-
-  /**
-   * Définit la valeur de la propriété address.
-   *
-   * @param value allowed object is {@link QAAddressType }
-   */
-  public void setAddress(QAAddressType value) {
-    this.address = value;
-  }
-
-  /**
-   * Obtient la valeur de la propriété comment.
-   *
-   * @return possible object is {@link String }
-   */
-  public String getComment() {
-    return comment;
-  }
-
-  /**
-   * Définit la valeur de la propriété comment.
-   *
-   * @param value allowed object is {@link String }
-   */
-  public void setComment(String value) {
-    this.comment = value;
-  }
 }

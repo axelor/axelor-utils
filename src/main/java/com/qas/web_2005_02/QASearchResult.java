@@ -17,13 +17,14 @@
  */
 package com.qas.web_2005_02;
 
+import java.util.Objects;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
-import java.util.Objects;
+import lombok.Setter;
 
 /**
  * Classe Java pour anonymous complex type.
@@ -57,60 +58,27 @@ public class QASearchResult {
   @XmlElement(name = "QAAddress")
   protected QAAddressType qaAddress;
 
+  @Setter
   @XmlAttribute(name = "VerifyLevel")
   protected VerifyLevelType verifyLevel;
 
-  /**
-   * Obtient la valeur de la propriété qaPicklist.
-   *
-   * @return possible object is {@link QAPicklistType }
-   */
   public QAPicklistType getQAPicklist() {
     return qaPicklist;
   }
 
-  /**
-   * Définit la valeur de la propriété qaPicklist.
-   *
-   * @param value allowed object is {@link QAPicklistType }
-   */
   public void setQAPicklist(QAPicklistType value) {
     this.qaPicklist = value;
   }
 
-  /**
-   * Obtient la valeur de la propriété qaAddress.
-   *
-   * @return possible object is {@link QAAddressType }
-   */
   public QAAddressType getQAAddress() {
     return qaAddress;
   }
 
-  /**
-   * Définit la valeur de la propriété qaAddress.
-   *
-   * @param value allowed object is {@link QAAddressType }
-   */
   public void setQAAddress(QAAddressType value) {
     this.qaAddress = value;
   }
 
-  /**
-   * Obtient la valeur de la propriété verifyLevel.
-   *
-   * @return possible object is {@link VerifyLevelType }
-   */
   public VerifyLevelType getVerifyLevel() {
-      return Objects.requireNonNullElse(verifyLevel, VerifyLevelType.NONE);
-  }
-
-  /**
-   * Définit la valeur de la propriété verifyLevel.
-   *
-   * @param value allowed object is {@link VerifyLevelType }
-   */
-  public void setVerifyLevel(VerifyLevelType value) {
-    this.verifyLevel = value;
+    return Objects.requireNonNullElse(verifyLevel, VerifyLevelType.NONE);
   }
 }

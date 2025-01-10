@@ -21,6 +21,8 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * Classe Java pour QAConfigType complex type.
@@ -40,6 +42,8 @@ import javax.xml.bind.annotation.XmlType;
  * &lt;/complexType&gt;
  * </pre>
  */
+@Setter
+@Getter
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(
     name = "QAConfigType",
@@ -51,40 +55,4 @@ public class QAConfigType {
 
   @XmlElement(name = "IniSection")
   protected String iniSection;
-
-  /**
-   * Obtient la valeur de la propriété iniFile.
-   *
-   * @return possible object is {@link String }
-   */
-  public String getIniFile() {
-    return iniFile;
-  }
-
-  /**
-   * Définit la valeur de la propriété iniFile.
-   *
-   * @param value allowed object is {@link String }
-   */
-  public void setIniFile(String value) {
-    this.iniFile = value;
-  }
-
-  /**
-   * Obtient la valeur de la propriété iniSection.
-   *
-   * @return possible object is {@link String }
-   */
-  public String getIniSection() {
-    return iniSection;
-  }
-
-  /**
-   * Définit la valeur de la propriété iniSection.
-   *
-   * @param value allowed object is {@link String }
-   */
-  public void setIniSection(String value) {
-    this.iniSection = value;
-  }
 }
