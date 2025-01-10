@@ -18,6 +18,7 @@
 package com.qas.web_2005_02;
 
 import java.math.BigInteger;
+import java.util.Objects;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
@@ -216,11 +217,7 @@ public class PicklistEntryType {
    * @return possible object is {@link Boolean }
    */
   public boolean isFullAddress() {
-    if (fullAddress == null) {
-      return false;
-    } else {
-      return fullAddress;
-    }
+      return Objects.requireNonNullElse(fullAddress, false);
   }
 
   /**
@@ -238,11 +235,7 @@ public class PicklistEntryType {
    * @return possible object is {@link Boolean }
    */
   public boolean isMultiples() {
-    if (multiples == null) {
-      return false;
-    } else {
-      return multiples;
-    }
+      return Objects.requireNonNullElse(multiples, false);
   }
 
   /**
@@ -260,11 +253,7 @@ public class PicklistEntryType {
    * @return possible object is {@link Boolean }
    */
   public boolean isCanStep() {
-    if (canStep == null) {
-      return false;
-    } else {
-      return canStep;
-    }
+      return Objects.requireNonNullElse(canStep, false);
   }
 
   /**
@@ -282,11 +271,7 @@ public class PicklistEntryType {
    * @return possible object is {@link Boolean }
    */
   public boolean isAliasMatch() {
-    if (aliasMatch == null) {
-      return false;
-    } else {
-      return aliasMatch;
-    }
+      return Objects.requireNonNullElse(aliasMatch, false);
   }
 
   /**
@@ -304,11 +289,7 @@ public class PicklistEntryType {
    * @return possible object is {@link Boolean }
    */
   public boolean isPostcodeRecoded() {
-    if (postcodeRecoded == null) {
-      return false;
-    } else {
-      return postcodeRecoded;
-    }
+      return Objects.requireNonNullElse(postcodeRecoded, false);
   }
 
   /**
@@ -326,11 +307,7 @@ public class PicklistEntryType {
    * @return possible object is {@link Boolean }
    */
   public boolean isCrossBorderMatch() {
-    if (crossBorderMatch == null) {
-      return false;
-    } else {
-      return crossBorderMatch;
-    }
+      return Objects.requireNonNullElse(crossBorderMatch, false);
   }
 
   /**
@@ -348,11 +325,7 @@ public class PicklistEntryType {
    * @return possible object is {@link Boolean }
    */
   public boolean isDummyPOBox() {
-    if (dummyPOBox == null) {
-      return false;
-    } else {
-      return dummyPOBox;
-    }
+      return Objects.requireNonNullElse(dummyPOBox, false);
   }
 
   /**
@@ -392,11 +365,7 @@ public class PicklistEntryType {
    * @return possible object is {@link Boolean }
    */
   public boolean isInformation() {
-    if (information == null) {
-      return false;
-    } else {
-      return information;
-    }
+      return Objects.requireNonNullElse(information, false);
   }
 
   /**
@@ -414,11 +383,7 @@ public class PicklistEntryType {
    * @return possible object is {@link Boolean }
    */
   public boolean isWarnInformation() {
-    if (warnInformation == null) {
-      return false;
-    } else {
-      return warnInformation;
-    }
+      return Objects.requireNonNullElse(warnInformation, false);
   }
 
   /**
@@ -436,11 +401,7 @@ public class PicklistEntryType {
    * @return possible object is {@link Boolean }
    */
   public boolean isIncompleteAddr() {
-    if (incompleteAddr == null) {
-      return false;
-    } else {
-      return incompleteAddr;
-    }
+      return Objects.requireNonNullElse(incompleteAddr, false);
   }
 
   /**
@@ -458,11 +419,7 @@ public class PicklistEntryType {
    * @return possible object is {@link Boolean }
    */
   public boolean isUnresolvableRange() {
-    if (unresolvableRange == null) {
-      return false;
-    } else {
-      return unresolvableRange;
-    }
+      return Objects.requireNonNullElse(unresolvableRange, false);
   }
 
   /**
@@ -480,11 +437,7 @@ public class PicklistEntryType {
    * @return possible object is {@link Boolean }
    */
   public boolean isPhantomPrimaryPoint() {
-    if (phantomPrimaryPoint == null) {
-      return false;
-    } else {
-      return phantomPrimaryPoint;
-    }
+      return Objects.requireNonNullElse(phantomPrimaryPoint, false);
   }
 
   /**

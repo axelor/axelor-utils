@@ -22,6 +22,7 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
+import java.util.Objects;
 
 /**
  * Classe Java pour AddressLineType complex type.
@@ -107,11 +108,7 @@ public class AddressLineType {
    * @return possible object is {@link LineContentType }
    */
   public LineContentType getLineContent() {
-    if (lineContent == null) {
-      return LineContentType.ADDRESS;
-    } else {
-      return lineContent;
-    }
+      return Objects.requireNonNullElse(lineContent, LineContentType.ADDRESS);
   }
 
   /**
@@ -129,11 +126,7 @@ public class AddressLineType {
    * @return possible object is {@link Boolean }
    */
   public boolean isOverflow() {
-    if (overflow == null) {
-      return false;
-    } else {
-      return overflow;
-    }
+      return Objects.requireNonNullElse(overflow, false);
   }
 
   /**
@@ -151,11 +144,7 @@ public class AddressLineType {
    * @return possible object is {@link Boolean }
    */
   public boolean isTruncated() {
-    if (truncated == null) {
-      return false;
-    } else {
-      return truncated;
-    }
+      return Objects.requireNonNullElse(truncated, false);
   }
 
   /**

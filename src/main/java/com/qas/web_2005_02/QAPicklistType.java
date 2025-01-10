@@ -20,6 +20,7 @@ package com.qas.web_2005_02;
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
@@ -186,11 +187,7 @@ public class QAPicklistType {
    * @return possible object is {@link Boolean }
    */
   public boolean isAutoFormatSafe() {
-    if (autoFormatSafe == null) {
-      return false;
-    } else {
-      return autoFormatSafe;
-    }
+      return Objects.requireNonNullElse(autoFormatSafe, false);
   }
 
   /**
@@ -208,11 +205,7 @@ public class QAPicklistType {
    * @return possible object is {@link Boolean }
    */
   public boolean isAutoFormatPastClose() {
-    if (autoFormatPastClose == null) {
-      return false;
-    } else {
-      return autoFormatPastClose;
-    }
+      return Objects.requireNonNullElse(autoFormatPastClose, false);
   }
 
   /**
@@ -230,11 +223,7 @@ public class QAPicklistType {
    * @return possible object is {@link Boolean }
    */
   public boolean isAutoStepinSafe() {
-    if (autoStepinSafe == null) {
-      return false;
-    } else {
-      return autoStepinSafe;
-    }
+      return Objects.requireNonNullElse(autoStepinSafe, false);
   }
 
   /**
@@ -252,11 +241,7 @@ public class QAPicklistType {
    * @return possible object is {@link Boolean }
    */
   public boolean isAutoStepinPastClose() {
-    if (autoStepinPastClose == null) {
-      return false;
-    } else {
-      return autoStepinPastClose;
-    }
+      return Objects.requireNonNullElse(autoStepinPastClose, false);
   }
 
   /**
@@ -274,11 +259,7 @@ public class QAPicklistType {
    * @return possible object is {@link Boolean }
    */
   public boolean isLargePotential() {
-    if (largePotential == null) {
-      return false;
-    } else {
-      return largePotential;
-    }
+      return Objects.requireNonNullElse(largePotential, false);
   }
 
   /**
@@ -296,11 +277,7 @@ public class QAPicklistType {
    * @return possible object is {@link Boolean }
    */
   public boolean isMaxMatches() {
-    if (maxMatches == null) {
-      return false;
-    } else {
-      return maxMatches;
-    }
+      return Objects.requireNonNullElse(maxMatches, false);
   }
 
   /**
@@ -318,11 +295,7 @@ public class QAPicklistType {
    * @return possible object is {@link Boolean }
    */
   public boolean isMoreOtherMatches() {
-    if (moreOtherMatches == null) {
-      return false;
-    } else {
-      return moreOtherMatches;
-    }
+      return Objects.requireNonNullElse(moreOtherMatches, false);
   }
 
   /**
@@ -340,11 +313,7 @@ public class QAPicklistType {
    * @return possible object is {@link Boolean }
    */
   public boolean isOverThreshold() {
-    if (overThreshold == null) {
-      return false;
-    } else {
-      return overThreshold;
-    }
+      return Objects.requireNonNullElse(overThreshold, false);
   }
 
   /**
@@ -362,11 +331,7 @@ public class QAPicklistType {
    * @return possible object is {@link Boolean }
    */
   public boolean isTimeout() {
-    if (timeout == null) {
-      return false;
-    } else {
-      return timeout;
-    }
+      return Objects.requireNonNullElse(timeout, false);
   }
 
   /**

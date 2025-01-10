@@ -23,6 +23,7 @@ import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
+import java.util.Objects;
 
 /**
  * Classe Java pour anonymous complex type.
@@ -101,11 +102,7 @@ public class QASearchResult {
    * @return possible object is {@link VerifyLevelType }
    */
   public VerifyLevelType getVerifyLevel() {
-    if (verifyLevel == null) {
-      return VerifyLevelType.NONE;
-    } else {
-      return verifyLevel;
-    }
+      return Objects.requireNonNullElse(verifyLevel, VerifyLevelType.NONE);
   }
 
   /**

@@ -19,6 +19,7 @@ package com.qas.web_2005_02;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
@@ -89,11 +90,7 @@ public class QAAddressType {
    * @return possible object is {@link Boolean }
    */
   public boolean isOverflow() {
-    if (overflow == null) {
-      return false;
-    } else {
-      return overflow;
-    }
+      return Objects.requireNonNullElse(overflow, false);
   }
 
   /**
@@ -111,11 +108,7 @@ public class QAAddressType {
    * @return possible object is {@link Boolean }
    */
   public boolean isTruncated() {
-    if (truncated == null) {
-      return false;
-    } else {
-      return truncated;
-    }
+      return Objects.requireNonNullElse(truncated, false);
   }
 
   /**
