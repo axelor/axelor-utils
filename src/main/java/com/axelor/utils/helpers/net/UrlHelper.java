@@ -41,10 +41,10 @@ public final class UrlHelper {
   private static final Logger LOG = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
   /**
-   * Test la validité d'une url.
+   * Test the validity of an url.
    *
-   * @param url L'URL à tester.
-   * @return null si l'URL est valide, un message d'erreur sinon.
+   * @param url the URL to test
+   * @return null if the URL is valid, an error otherwise
    */
   public static String notExist(String url) {
 
