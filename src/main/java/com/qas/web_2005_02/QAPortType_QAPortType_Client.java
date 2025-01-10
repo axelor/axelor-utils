@@ -60,7 +60,7 @@ public final class QAPortType_QAPortType_Client {
 
       } catch (Fault e) {
         System.out.println("Expected exception: Fault has occurred.");
-        System.out.println(e.toString());
+        System.out.println(e);
       }
     }
     {
@@ -71,7 +71,7 @@ public final class QAPortType_QAPortType_Client {
 
       } catch (Fault e) {
         System.out.println("Expected exception: Fault has occurred.");
-        System.out.println(e.toString());
+        System.out.println(e);
       }
     }
     {
@@ -84,7 +84,7 @@ public final class QAPortType_QAPortType_Client {
 
       } catch (Fault e) {
         System.out.println("Expected exception: Fault has occurred.");
-        System.out.println(e.toString());
+        System.out.println(e);
       }
     }
     {
@@ -96,7 +96,7 @@ public final class QAPortType_QAPortType_Client {
 
       } catch (Fault e) {
         System.out.println("Expected exception: Fault has occurred.");
-        System.out.println(e.toString());
+        System.out.println(e);
       }
     }
     {
@@ -108,7 +108,7 @@ public final class QAPortType_QAPortType_Client {
 
       } catch (Fault e) {
         System.out.println("Expected exception: Fault has occurred.");
-        System.out.println(e.toString());
+        System.out.println(e);
       }
     }
     {
@@ -120,7 +120,7 @@ public final class QAPortType_QAPortType_Client {
 
       } catch (Fault e) {
         System.out.println("Expected exception: Fault has occurred.");
-        System.out.println(e.toString());
+        System.out.println(e);
       }
     }
     {
@@ -132,7 +132,7 @@ public final class QAPortType_QAPortType_Client {
 
       } catch (Fault e) {
         System.out.println("Expected exception: Fault has occurred.");
-        System.out.println(e.toString());
+        System.out.println(e);
       }
     }
     {
@@ -144,7 +144,7 @@ public final class QAPortType_QAPortType_Client {
 
       } catch (Fault e) {
         System.out.println("Expected exception: Fault has occurred.");
-        System.out.println(e.toString());
+        System.out.println(e);
       }
     }
     {
@@ -157,7 +157,7 @@ public final class QAPortType_QAPortType_Client {
 
       } catch (Fault e) {
         System.out.println("Expected exception: Fault has occurred.");
-        System.out.println(e.toString());
+        System.out.println(e);
       }
     }
     {
@@ -168,7 +168,7 @@ public final class QAPortType_QAPortType_Client {
 
       } catch (Fault e) {
         System.out.println("Expected exception: Fault has occurred.");
-        System.out.println(e.toString());
+        System.out.println(e);
       }
     }
 
