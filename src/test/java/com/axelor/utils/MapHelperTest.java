@@ -143,7 +143,7 @@ class MapHelperTest extends BaseTest {
   void findParent_whenParentContextIsNull() {
     Context moveLine = new Context(3L, MoveLine.class);
     Move move = MapHelper.findParent(MoveLine.class, Move.class, moveLine, MoveLine::getMove);
-    Assertions.assertEquals(move.getId(), 1L);
+    Assertions.assertEquals(1L, move.getId());
   }
 
   @Test
@@ -153,7 +153,7 @@ class MapHelperTest extends BaseTest {
     Context moveLineCtx = new Context(2L, MoveLine.class);
     moveLineCtx.put("_parent", moveCtx);
     Move move = MapHelper.findParent(MoveLine.class, Move.class, moveLineCtx, MoveLine::getMove);
-    Assertions.assertEquals(move.getId(), 1L);
+    Assertions.assertEquals(1L, move.getId());
   }
 
   @Test

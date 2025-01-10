@@ -70,10 +70,10 @@ class ActionServiceTest extends BaseTest {
     user = userRepository.find(3L);
     user.setGroup(null);
     user = actionService.applyActions("test.user.action.set.name.from.group", user);
-    Assertions.assertEquals(user.getName(), "Supplier");
+    Assertions.assertEquals("Supplier", user.getName());
     // Action attrs
     user = actionService.applyActions("test.user.attrs.action.modify.name.to.test", user);
-    Assertions.assertEquals(user.getName(), "test");
+    Assertions.assertEquals("test", user.getName());
     // Non existing action
     user = actionService.applyActions("test.not.existing.action", user);
   }

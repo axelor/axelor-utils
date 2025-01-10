@@ -37,17 +37,17 @@ class LocalDateTimeHelperGetNearOccurrencesTest {
         LocalDateTimeHelper.getLastOccurrence(occurrenceDayOfWeek, occurrenceTime, referenceDate);
     LocalDateTime nextOccurrence =
         LocalDateTimeHelper.getNextOccurrence(occurrenceDayOfWeek, occurrenceTime, referenceDate);
-    LocalDateTime nearestOccuence =
+    LocalDateTime nearestOccurrence =
         LocalDateTimeHelper.getNearestOccurrence(
             occurrenceDayOfWeek, occurrenceTime, referenceDate);
 
     LocalDateTime expectedLastOccurrence = LocalDate.of(2022, 12, 26).atTime(occurrenceTime);
     LocalDateTime expectedNextOccurrence = LocalDate.of(2023, 1, 2).atTime(occurrenceTime);
-    LocalDateTime expectedNearestOccuence = expectedLastOccurrence;
+    LocalDateTime expectedNearestOccurrence = expectedLastOccurrence;
 
     Assertions.assertEquals(expectedLastOccurrence, lastOccurrence);
     Assertions.assertEquals(expectedNextOccurrence, nextOccurrence);
-    Assertions.assertEquals(expectedNearestOccuence, nearestOccuence);
+    Assertions.assertEquals(expectedNearestOccurrence, nearestOccurrence);
   }
 
   /** last occurrence being the precedent year */
@@ -62,17 +62,17 @@ class LocalDateTimeHelperGetNearOccurrencesTest {
         LocalDateTimeHelper.getLastOccurrence(occurrenceDayOfWeek, occurrenceTime, referenceDate);
     LocalDateTime nextOccurrence =
         LocalDateTimeHelper.getNextOccurrence(occurrenceDayOfWeek, occurrenceTime, referenceDate);
-    LocalDateTime nearestOccuence =
+    LocalDateTime nearestOccurrence =
         LocalDateTimeHelper.getNearestOccurrence(
             occurrenceDayOfWeek, occurrenceTime, referenceDate);
 
     LocalDateTime expectedLastOccurrence = LocalDate.of(2022, 12, 27).atTime(occurrenceTime);
     LocalDateTime expectedNextOccurrence = LocalDate.of(2023, 1, 3).atTime(occurrenceTime);
-    LocalDateTime expectedNearestOccuence = expectedNextOccurrence;
+    LocalDateTime expectedNearestOccurrence = expectedNextOccurrence;
 
     Assertions.assertEquals(expectedLastOccurrence, lastOccurrence);
     Assertions.assertEquals(expectedNextOccurrence, nextOccurrence);
-    Assertions.assertEquals(expectedNearestOccuence, nearestOccuence);
+    Assertions.assertEquals(expectedNearestOccurrence, nearestOccurrence);
   }
 
   /**
@@ -89,17 +89,17 @@ class LocalDateTimeHelperGetNearOccurrencesTest {
         LocalDateTimeHelper.getLastOccurrence(occurrenceDayOfWeek, occurrenceTime, referenceDate);
     LocalDateTime nextOccurrence =
         LocalDateTimeHelper.getNextOccurrence(occurrenceDayOfWeek, occurrenceTime, referenceDate);
-    LocalDateTime nearestOccuence =
+    LocalDateTime nearestOccurrence =
         LocalDateTimeHelper.getNearestOccurrence(
             occurrenceDayOfWeek, occurrenceTime, referenceDate);
 
     LocalDateTime expectedLastOccurrence = LocalDate.of(2023, 8, 30).atTime(occurrenceTime);
     LocalDateTime expectedNextOccurrence = LocalDate.of(2023, 9, 6).atTime(occurrenceTime);
-    LocalDateTime expectedNearestOccuence = expectedLastOccurrence;
+    LocalDateTime expectedNearestOccurrence = expectedLastOccurrence;
 
     Assertions.assertEquals(expectedLastOccurrence, lastOccurrence);
     Assertions.assertEquals(expectedNextOccurrence, nextOccurrence);
-    Assertions.assertEquals(expectedNearestOccuence, nearestOccuence);
+    Assertions.assertEquals(expectedNearestOccurrence, nearestOccurrence);
   }
 
   /** occurrence day later than reference day on the week, with next occurrence on the next month */
@@ -114,17 +114,17 @@ class LocalDateTimeHelperGetNearOccurrencesTest {
         LocalDateTimeHelper.getLastOccurrence(occurrenceDayOfWeek, occurrenceTime, referenceDate);
     LocalDateTime nextOccurrence =
         LocalDateTimeHelper.getNextOccurrence(occurrenceDayOfWeek, occurrenceTime, referenceDate);
-    LocalDateTime nearestOccuence =
+    LocalDateTime nearestOccurrence =
         LocalDateTimeHelper.getNearestOccurrence(
             occurrenceDayOfWeek, occurrenceTime, referenceDate);
 
     LocalDateTime expectedLastOccurrence = LocalDate.of(2023, 8, 27).atTime(occurrenceTime);
     LocalDateTime expectedNextOccurrence = LocalDate.of(2023, 9, 3).atTime(occurrenceTime);
-    LocalDateTime expectedNearestOccuence = expectedNextOccurrence;
+    LocalDateTime expectedNearestOccurrence = expectedNextOccurrence;
 
     Assertions.assertEquals(expectedLastOccurrence, lastOccurrence);
     Assertions.assertEquals(expectedNextOccurrence, nextOccurrence);
-    Assertions.assertEquals(expectedNearestOccuence, nearestOccuence);
+    Assertions.assertEquals(expectedNearestOccurrence, nearestOccurrence);
   }
 
   /** occurrence day earlier than reference day, with last occurrence on the precedent month */
@@ -139,17 +139,17 @@ class LocalDateTimeHelperGetNearOccurrencesTest {
         LocalDateTimeHelper.getLastOccurrence(occurrenceDayOfWeek, occurrenceTime, referenceDate);
     LocalDateTime nextOccurrence =
         LocalDateTimeHelper.getNextOccurrence(occurrenceDayOfWeek, occurrenceTime, referenceDate);
-    LocalDateTime nearestOccuence =
+    LocalDateTime nearestOccurrence =
         LocalDateTimeHelper.getNearestOccurrence(
             occurrenceDayOfWeek, occurrenceTime, referenceDate);
 
     LocalDateTime expectedLastOccurrence = LocalDate.of(2023, 8, 31).atTime(occurrenceTime);
     LocalDateTime expectedNextOccurrence = LocalDate.of(2023, 9, 7).atTime(occurrenceTime);
-    LocalDateTime expectedNearestOccuence = expectedLastOccurrence;
+    LocalDateTime expectedNearestOccurrence = expectedLastOccurrence;
 
     Assertions.assertEquals(expectedLastOccurrence, lastOccurrence);
     Assertions.assertEquals(expectedNextOccurrence, nextOccurrence);
-    Assertions.assertEquals(expectedNearestOccuence, nearestOccuence);
+    Assertions.assertEquals(expectedNearestOccurrence, nearestOccurrence);
   }
 
   /** occurrence day later than reference day, with last occurrence on the precedent month */
@@ -164,17 +164,17 @@ class LocalDateTimeHelperGetNearOccurrencesTest {
         LocalDateTimeHelper.getLastOccurrence(occurrenceDayOfWeek, occurrenceTime, referenceDate);
     LocalDateTime nextOccurrence =
         LocalDateTimeHelper.getNextOccurrence(occurrenceDayOfWeek, occurrenceTime, referenceDate);
-    LocalDateTime nearestOccuence =
+    LocalDateTime nearestOccurrence =
         LocalDateTimeHelper.getNearestOccurrence(
             occurrenceDayOfWeek, occurrenceTime, referenceDate);
 
     LocalDateTime expectedLastOccurrence = LocalDate.of(2023, 8, 31).atTime(occurrenceTime);
     LocalDateTime expectedNextOccurrence = LocalDate.of(2023, 9, 7).atTime(occurrenceTime);
-    LocalDateTime expectedNearestOccuence = expectedNextOccurrence;
+    LocalDateTime expectedNearestOccurrence = expectedNextOccurrence;
 
     Assertions.assertEquals(expectedLastOccurrence, lastOccurrence);
     Assertions.assertEquals(expectedNextOccurrence, nextOccurrence);
-    Assertions.assertEquals(expectedNearestOccuence, nearestOccuence);
+    Assertions.assertEquals(expectedNearestOccurrence, nearestOccurrence);
   }
 
   /** occurrence day equals reference day occurrence hour earlier than reference hour */
@@ -189,17 +189,17 @@ class LocalDateTimeHelperGetNearOccurrencesTest {
         LocalDateTimeHelper.getLastOccurrence(occurrenceDayOfWeek, occurrenceTime, referenceDate);
     LocalDateTime nextOccurrence =
         LocalDateTimeHelper.getNextOccurrence(occurrenceDayOfWeek, occurrenceTime, referenceDate);
-    LocalDateTime nearestOccuence =
+    LocalDateTime nearestOccurrence =
         LocalDateTimeHelper.getNearestOccurrence(
             occurrenceDayOfWeek, occurrenceTime, referenceDate);
 
     LocalDateTime expectedLastOccurrence = LocalDate.of(2023, 9, 8).atTime(occurrenceTime);
     LocalDateTime expectedNextOccurrence = LocalDate.of(2023, 9, 15).atTime(occurrenceTime);
-    LocalDateTime expectedNearestOccuence = expectedLastOccurrence;
+    LocalDateTime expectedNearestOccurrence = expectedLastOccurrence;
 
     Assertions.assertEquals(expectedLastOccurrence, lastOccurrence);
     Assertions.assertEquals(expectedNextOccurrence, nextOccurrence);
-    Assertions.assertEquals(expectedNearestOccuence, nearestOccuence);
+    Assertions.assertEquals(expectedNearestOccurrence, nearestOccurrence);
   }
 
   /** occurrence day equals reference day occurrence hour later than reference hour */
@@ -214,17 +214,17 @@ class LocalDateTimeHelperGetNearOccurrencesTest {
         LocalDateTimeHelper.getLastOccurrence(occurrenceDayOfWeek, occurrenceTime, referenceDate);
     LocalDateTime nextOccurrence =
         LocalDateTimeHelper.getNextOccurrence(occurrenceDayOfWeek, occurrenceTime, referenceDate);
-    LocalDateTime nearestOccuence =
+    LocalDateTime nearestOccurrence =
         LocalDateTimeHelper.getNearestOccurrence(
             occurrenceDayOfWeek, occurrenceTime, referenceDate);
 
     LocalDateTime expectedLastOccurrence = LocalDate.of(2023, 9, 1).atTime(occurrenceTime);
     LocalDateTime expectedNextOccurrence = LocalDate.of(2023, 9, 8).atTime(occurrenceTime);
-    LocalDateTime expectedNearestOccuence = expectedNextOccurrence;
+    LocalDateTime expectedNearestOccurrence = expectedNextOccurrence;
 
     Assertions.assertEquals(expectedLastOccurrence, lastOccurrence);
     Assertions.assertEquals(expectedNextOccurrence, nextOccurrence);
-    Assertions.assertEquals(expectedNearestOccuence, nearestOccuence);
+    Assertions.assertEquals(expectedNearestOccurrence, nearestOccurrence);
   }
 
   /** occurrence day equals reference day occurrence hour equals reference hour */
@@ -239,17 +239,17 @@ class LocalDateTimeHelperGetNearOccurrencesTest {
         LocalDateTimeHelper.getLastOccurrence(occurrenceDayOfWeek, occurrenceTime, referenceDate);
     LocalDateTime nextOccurrence =
         LocalDateTimeHelper.getNextOccurrence(occurrenceDayOfWeek, occurrenceTime, referenceDate);
-    LocalDateTime nearestOccuence =
+    LocalDateTime nearestOccurrence =
         LocalDateTimeHelper.getNearestOccurrence(
             occurrenceDayOfWeek, occurrenceTime, referenceDate);
 
     LocalDateTime expectedLastOccurrence = friday_2023_09_08_23_19;
     LocalDateTime expectedNextOccurrence = friday_2023_09_08_23_19;
-    LocalDateTime expectedNearestOccuence = friday_2023_09_08_23_19;
+    LocalDateTime expectedNearestOccurrence = friday_2023_09_08_23_19;
 
     Assertions.assertEquals(expectedLastOccurrence, lastOccurrence);
     Assertions.assertEquals(expectedNextOccurrence, nextOccurrence);
-    Assertions.assertEquals(expectedNearestOccuence, nearestOccuence);
+    Assertions.assertEquals(expectedNearestOccurrence, nearestOccurrence);
   }
 
   /** At the precise time between the last & next occurrences */
@@ -264,17 +264,17 @@ class LocalDateTimeHelperGetNearOccurrencesTest {
         LocalDateTimeHelper.getLastOccurrence(occurrenceDayOfWeek, occurrenceTime, referenceDate);
     LocalDateTime nextOccurrence =
         LocalDateTimeHelper.getNextOccurrence(occurrenceDayOfWeek, occurrenceTime, referenceDate);
-    LocalDateTime nearestOccuence =
+    LocalDateTime nearestOccurrence =
         LocalDateTimeHelper.getNearestOccurrence(
             occurrenceDayOfWeek, occurrenceTime, referenceDate);
 
     LocalDateTime expectedLastOccurrence = LocalDate.of(2023, 9, 5).atTime(occurrenceTime);
     LocalDateTime expectedNextOccurrence = LocalDate.of(2023, 9, 12).atTime(occurrenceTime);
-    LocalDateTime expectedNearestOccuence = expectedNextOccurrence;
+    LocalDateTime expectedNearestOccurrence = expectedNextOccurrence;
 
     Assertions.assertEquals(expectedLastOccurrence, lastOccurrence);
     Assertions.assertEquals(expectedNextOccurrence, nextOccurrence);
-    Assertions.assertEquals(expectedNearestOccuence, nearestOccuence);
+    Assertions.assertEquals(expectedNearestOccurrence, nearestOccurrence);
   }
 
   /** Just 1 minute before the precise time between the last & next occurrences */
@@ -289,17 +289,17 @@ class LocalDateTimeHelperGetNearOccurrencesTest {
         LocalDateTimeHelper.getLastOccurrence(occurrenceDayOfWeek, occurrenceTime, referenceDate);
     LocalDateTime nextOccurrence =
         LocalDateTimeHelper.getNextOccurrence(occurrenceDayOfWeek, occurrenceTime, referenceDate);
-    LocalDateTime nearestOccuence =
+    LocalDateTime nearestOccurrence =
         LocalDateTimeHelper.getNearestOccurrence(
             occurrenceDayOfWeek, occurrenceTime, referenceDate);
 
     LocalDateTime expectedLastOccurrence = LocalDate.of(2023, 9, 5).atTime(occurrenceTime);
     LocalDateTime expectedNextOccurrence = LocalDate.of(2023, 9, 12).atTime(occurrenceTime);
-    LocalDateTime expectedNearestOccuence = expectedLastOccurrence;
+    LocalDateTime expectedNearestOccurrence = expectedLastOccurrence;
 
     Assertions.assertEquals(expectedLastOccurrence, lastOccurrence);
     Assertions.assertEquals(expectedNextOccurrence, nextOccurrence);
-    Assertions.assertEquals(expectedNearestOccuence, nearestOccuence);
+    Assertions.assertEquals(expectedNearestOccurrence, nearestOccurrence);
   }
 
   /** Just 1 minute after the precise time between the last & next occurrences */
@@ -314,16 +314,16 @@ class LocalDateTimeHelperGetNearOccurrencesTest {
         LocalDateTimeHelper.getLastOccurrence(occurrenceDayOfWeek, occurrenceTime, referenceDate);
     LocalDateTime nextOccurrence =
         LocalDateTimeHelper.getNextOccurrence(occurrenceDayOfWeek, occurrenceTime, referenceDate);
-    LocalDateTime nearestOccuence =
+    LocalDateTime nearestOccurrence =
         LocalDateTimeHelper.getNearestOccurrence(
             occurrenceDayOfWeek, occurrenceTime, referenceDate);
 
     LocalDateTime expectedLastOccurrence = LocalDate.of(2023, 9, 5).atTime(occurrenceTime);
     LocalDateTime expectedNextOccurrence = LocalDate.of(2023, 9, 12).atTime(occurrenceTime);
-    LocalDateTime expectedNearestOccuence = expectedNextOccurrence;
+    LocalDateTime expectedNearestOccurrence = expectedNextOccurrence;
 
     Assertions.assertEquals(expectedLastOccurrence, lastOccurrence);
     Assertions.assertEquals(expectedNextOccurrence, nextOccurrence);
-    Assertions.assertEquals(expectedNearestOccuence, nearestOccuence);
+    Assertions.assertEquals(expectedNearestOccurrence, nearestOccurrence);
   }
 }
