@@ -11,7 +11,7 @@ import org.junit.jupiter.api.Test;
 class LocalDateTimeHelperGetNearOccurrencesTest {
 
   private final LocalDateTime monday_2022_12_26_12_26 = LocalDateTime.of(2022, 12, 26, 12, 26);
-  private final LocalDateTime monday_2023_01_02_03_04 = LocalDateTime.of(2023, 1, 2, 03, 04);
+  private final LocalDateTime monday_2023_01_02_03_04 = LocalDateTime.of(2023, 1, 2, 3, 4);
   private final LocalDateTime thursday_2023_08_31_23_56 = LocalDateTime.of(2023, 8, 31, 23, 56);
   private final LocalDateTime saturday_2023_09_02_00_00 = LocalDateTime.of(2023, 9, 2, 0, 0);
   private final LocalDateTime wednesday_2023_09_06_00_14 = LocalDateTime.of(2023, 9, 6, 0, 14);
