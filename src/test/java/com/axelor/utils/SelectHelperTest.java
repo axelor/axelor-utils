@@ -100,9 +100,7 @@ class SelectHelperTest extends BaseTest {
     IllegalArgumentException e =
         Assertions.assertThrows(
             IllegalArgumentException.class,
-            () -> {
-              getStringValueFromTitle(STRING_SELECT, "Non exiting title");
-            });
+            () -> getStringValueFromTitle(STRING_SELECT, "Non exiting title"));
     String expectedMessage =
         formatAndTranslate(UNKNOWN_SELECTION_AND_TITLE_PAIR, STRING_SELECT, "Non exiting title");
     Assertions.assertEquals(expectedMessage, e.getMessage());
@@ -113,9 +111,7 @@ class SelectHelperTest extends BaseTest {
     IllegalArgumentException e =
         Assertions.assertThrows(
             IllegalArgumentException.class,
-            () -> {
-              getStringValueFromTitle(UNKWOWN_SELECT, "Non blank title");
-            });
+            () -> getStringValueFromTitle(UNKWOWN_SELECT, "Non blank title"));
     String expectedMessage = formatAndTranslate(UNKNOWN_SELECTION, UNKWOWN_SELECT);
     Assertions.assertEquals(expectedMessage, e.getMessage());
   }
@@ -124,10 +120,7 @@ class SelectHelperTest extends BaseTest {
   void getStringValueFromTitle_nullParameter() {
     IllegalArgumentException e =
         Assertions.assertThrows(
-            IllegalArgumentException.class,
-            () -> {
-              getStringValueFromTitle(STRING_SELECT, null);
-            });
+            IllegalArgumentException.class, () -> getStringValueFromTitle(STRING_SELECT, null));
     String expectedMessage =
         formatAndTranslate(ERROR_WHILE_SEARCHING_NULL_TITLE_ON_SELECTION, STRING_SELECT);
     Assertions.assertEquals(expectedMessage, e.getMessage());
@@ -135,18 +128,13 @@ class SelectHelperTest extends BaseTest {
     e =
         Assertions.assertThrows(
             IllegalArgumentException.class,
-            () -> {
-              getStringValueFromTitle(null, "String option title");
-            });
+            () -> getStringValueFromTitle(null, "String option title"));
     expectedMessage = formatAndTranslate(UNKNOWN_SELECTION, "null");
     Assertions.assertEquals(expectedMessage, e.getMessage());
 
     e =
         Assertions.assertThrows(
-            IllegalArgumentException.class,
-            () -> {
-              getStringValueFromTitle(null, null);
-            });
+            IllegalArgumentException.class, () -> getStringValueFromTitle(null, null));
     expectedMessage = formatAndTranslate(ERROR_WHILE_SEARCHING_NULL_TITLE_ON_SELECTION, "null");
     Assertions.assertEquals(expectedMessage, e.getMessage());
   }
@@ -210,9 +198,7 @@ class SelectHelperTest extends BaseTest {
     IllegalArgumentException e =
         Assertions.assertThrows(
             IllegalArgumentException.class,
-            () -> {
-              getTitleFromStringValue(STRING_SELECT, "Non exiting value");
-            });
+            () -> getTitleFromStringValue(STRING_SELECT, "Non exiting value"));
     String expectedMessage =
         formatAndTranslate(UNKNOWN_SELECTION_AND_VALUE_PAIR, STRING_SELECT, "Non exiting value");
     Assertions.assertEquals(expectedMessage, e.getMessage());
@@ -223,9 +209,7 @@ class SelectHelperTest extends BaseTest {
     IllegalArgumentException e =
         Assertions.assertThrows(
             IllegalArgumentException.class,
-            () -> {
-              getTitleFromStringValue(UNKWOWN_SELECT, "Non blank value");
-            });
+            () -> getTitleFromStringValue(UNKWOWN_SELECT, "Non blank value"));
     String expectedMessage = formatAndTranslate(UNKNOWN_SELECTION, UNKWOWN_SELECT);
     Assertions.assertEquals(expectedMessage, e.getMessage());
   }
@@ -234,28 +218,19 @@ class SelectHelperTest extends BaseTest {
   void getTitleFromStringValue_nullParameter() {
     IllegalArgumentException e =
         Assertions.assertThrows(
-            IllegalArgumentException.class,
-            () -> {
-              getTitleFromStringValue(STRING_SELECT, null);
-            });
+            IllegalArgumentException.class, () -> getTitleFromStringValue(STRING_SELECT, null));
     String expectedMessage = I18n.get(NULL_GIVEN_VALUE);
     Assertions.assertEquals(expectedMessage, e.getMessage());
 
     e =
         Assertions.assertThrows(
-            IllegalArgumentException.class,
-            () -> {
-              getTitleFromStringValue(null, "one");
-            });
+            IllegalArgumentException.class, () -> getTitleFromStringValue(null, "one"));
     expectedMessage = formatAndTranslate(UNKNOWN_SELECTION, "null");
     Assertions.assertEquals(expectedMessage, e.getMessage());
 
     e =
         Assertions.assertThrows(
-            IllegalArgumentException.class,
-            () -> {
-              getTitleFromStringValue(null, null);
-            });
+            IllegalArgumentException.class, () -> getTitleFromStringValue(null, null));
     expectedMessage = I18n.get(NULL_GIVEN_VALUE);
     Assertions.assertEquals(expectedMessage, e.getMessage());
   }
@@ -321,9 +296,7 @@ class SelectHelperTest extends BaseTest {
     IllegalArgumentException e =
         Assertions.assertThrows(
             IllegalArgumentException.class,
-            () -> {
-              getIntegerValueFromTitle(INTEGER_SELECT, "Non exiting title");
-            });
+            () -> getIntegerValueFromTitle(INTEGER_SELECT, "Non exiting title"));
     String expectedMessage =
         formatAndTranslate(UNKNOWN_SELECTION_AND_TITLE_PAIR, INTEGER_SELECT, "Non exiting title");
     Assertions.assertEquals(expectedMessage, e.getMessage());
@@ -334,9 +307,7 @@ class SelectHelperTest extends BaseTest {
     IllegalArgumentException e =
         Assertions.assertThrows(
             IllegalArgumentException.class,
-            () -> {
-              getIntegerValueFromTitle(UNKWOWN_SELECT, "Non blank title");
-            });
+            () -> getIntegerValueFromTitle(UNKWOWN_SELECT, "Non blank title"));
     String expectedMessage = formatAndTranslate(UNKNOWN_SELECTION, UNKWOWN_SELECT);
     Assertions.assertEquals(expectedMessage, e.getMessage());
   }
@@ -345,10 +316,7 @@ class SelectHelperTest extends BaseTest {
   void getIntegerValueFromTitle_nullParameter() {
     IllegalArgumentException e =
         Assertions.assertThrows(
-            IllegalArgumentException.class,
-            () -> {
-              getIntegerValueFromTitle(INTEGER_SELECT, null);
-            });
+            IllegalArgumentException.class, () -> getIntegerValueFromTitle(INTEGER_SELECT, null));
     String expectedMessage =
         formatAndTranslate(ERROR_WHILE_SEARCHING_NULL_TITLE_ON_SELECTION, INTEGER_SELECT);
     Assertions.assertEquals(expectedMessage, e.getMessage());
@@ -356,18 +324,13 @@ class SelectHelperTest extends BaseTest {
     e =
         Assertions.assertThrows(
             IllegalArgumentException.class,
-            () -> {
-              getIntegerValueFromTitle(null, "Integer option title");
-            });
+            () -> getIntegerValueFromTitle(null, "Integer option title"));
     expectedMessage = formatAndTranslate(UNKNOWN_SELECTION, "null");
     Assertions.assertEquals(expectedMessage, e.getMessage());
 
     e =
         Assertions.assertThrows(
-            IllegalArgumentException.class,
-            () -> {
-              getIntegerValueFromTitle(null, null);
-            });
+            IllegalArgumentException.class, () -> getIntegerValueFromTitle(null, null));
     expectedMessage = formatAndTranslate(ERROR_WHILE_SEARCHING_NULL_TITLE_ON_SELECTION, "null");
     Assertions.assertEquals(expectedMessage, e.getMessage());
   }
@@ -434,9 +397,7 @@ class SelectHelperTest extends BaseTest {
     IllegalArgumentException e =
         Assertions.assertThrows(
             IllegalArgumentException.class,
-            () -> {
-              getTitleFromIntegerValue(INTEGER_SELECT, nonExitingValue);
-            });
+            () -> getTitleFromIntegerValue(INTEGER_SELECT, nonExitingValue));
     String expectedMessage =
         formatAndTranslate(UNKNOWN_SELECTION_AND_VALUE_PAIR, INTEGER_SELECT, nonExitingValue);
     Assertions.assertEquals(expectedMessage, e.getMessage());
@@ -448,9 +409,7 @@ class SelectHelperTest extends BaseTest {
     IllegalArgumentException e =
         Assertions.assertThrows(
             IllegalArgumentException.class,
-            () -> {
-              getTitleFromIntegerValue(UNKWOWN_SELECT, nonNullValue);
-            });
+            () -> getTitleFromIntegerValue(UNKWOWN_SELECT, nonNullValue));
     String expectedMessage = formatAndTranslate(UNKNOWN_SELECTION, UNKWOWN_SELECT);
     Assertions.assertEquals(expectedMessage, e.getMessage());
   }
@@ -459,28 +418,19 @@ class SelectHelperTest extends BaseTest {
   void getTitleFromIntegerValue_nullParameter() {
     IllegalArgumentException e =
         Assertions.assertThrows(
-            IllegalArgumentException.class,
-            () -> {
-              getTitleFromIntegerValue(INTEGER_SELECT, null);
-            });
+            IllegalArgumentException.class, () -> getTitleFromIntegerValue(INTEGER_SELECT, null));
     String expectedMessage = I18n.get(NULL_GIVEN_VALUE);
     Assertions.assertEquals(expectedMessage, e.getMessage());
 
     e =
         Assertions.assertThrows(
-            IllegalArgumentException.class,
-            () -> {
-              getTitleFromIntegerValue(null, 1);
-            });
+            IllegalArgumentException.class, () -> getTitleFromIntegerValue(null, 1));
     expectedMessage = formatAndTranslate(UNKNOWN_SELECTION, "null");
     Assertions.assertEquals(expectedMessage, e.getMessage());
 
     e =
         Assertions.assertThrows(
-            IllegalArgumentException.class,
-            () -> {
-              getTitleFromIntegerValue(null, null);
-            });
+            IllegalArgumentException.class, () -> getTitleFromIntegerValue(null, null));
     expectedMessage = I18n.get(NULL_GIVEN_VALUE);
     Assertions.assertEquals(expectedMessage, e.getMessage());
   }
