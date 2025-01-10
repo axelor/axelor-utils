@@ -27,8 +27,10 @@ import javax.ws.rs.BadRequestException;
 public class RequestValidator {
 
   public static void validateBody(RequestStructure body) {
-    ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
-    Validator validator = factory.getValidator();
+    Validator validator;
+    try (ValidatorFactory factory = Validation.buildDefaultValidatorFactory()) {
+      validator = factory.getValidator();
+    }
 
     Set<ConstraintViolation<RequestStructure>> constraintViolations = validator.validate(body);
 
@@ -46,8 +48,10 @@ public class RequestValidator {
   }
 
   public static void validateBody(RequestPostStructure body) {
-    ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
-    Validator validator = factory.getValidator();
+    Validator validator;
+    try (ValidatorFactory factory = Validation.buildDefaultValidatorFactory()) {
+      validator = factory.getValidator();
+    }
 
     Set<ConstraintViolation<RequestPostStructure>> constraintViolations = validator.validate(body);
 
