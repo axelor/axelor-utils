@@ -191,6 +191,6 @@ public class FullContextHelper {
       return null;
     }
 
-    return filterOne(modelName, "self.id = ?1", (Long) recordId);
+    return filterOne(modelName, "self.id = ?1", recordId);
   }
 }
