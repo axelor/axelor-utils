@@ -84,11 +84,9 @@ public final class FileHelper {
    * @param destinationFolder Le chemin du fichier
    * @param fileName Le nom du fichier
    * @param multiLine La liste de ligne à écrire
-   * @throws IOException Si le fichier n'existe pas
    * @return Le fichier créé
    */
-  public static File writer(String destinationFolder, String fileName, List<String> multiLine)
-      throws IOException {
+  public static File writer(String destinationFolder, String fileName, List<String> multiLine) {
     System.setProperty("line.separator", "\r\n");
 
     File file = create(destinationFolder, fileName);

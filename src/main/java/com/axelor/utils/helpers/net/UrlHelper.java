@@ -66,7 +66,7 @@ public final class UrlHelper {
   }
 
   public static void fileUrl(
-      File file, String fAddress, String localFileName, String destinationDir) throws IOException {
+      File file, String fAddress, String localFileName, String destinationDir) {
 
     try (OutputStream outputStream = new BufferedOutputStream(new FileOutputStream(file))) {
       int byteRead;

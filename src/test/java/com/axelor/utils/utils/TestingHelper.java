@@ -31,7 +31,7 @@ public class TestingHelper {
   }
 
   @SuppressWarnings("unchecked")
-  public <T> T unmarshal(String resource, Class<T> type) throws JAXBException, IOException {
+  public <T> T unmarshal(String resource, Class<T> type) throws JAXBException {
     JAXBContext context = JAXBContext.newInstance(type);
     Unmarshaller unmarshaller = context.createUnmarshaller();
     return (T) unmarshaller.unmarshal(read(resource));
