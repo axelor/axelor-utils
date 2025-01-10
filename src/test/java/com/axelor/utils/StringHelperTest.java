@@ -64,7 +64,7 @@ class StringHelperTest {
   @Test
   void testGetIdListString() {
 
-    List<Long> customModelIds = Arrays.asList(null, 1l, 2l, null, 5l, null);
+    List<Long> customModelIds = Arrays.asList(null, 1L, 2L, null, 5L, null);
     List<MetaJsonModel> customModelList = new ArrayList<>();
     for (Long id : customModelIds) {
       MetaJsonModel customModel = new MetaJsonModel();
