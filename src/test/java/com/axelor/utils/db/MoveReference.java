@@ -29,7 +29,11 @@ import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
+import lombok.Getter;
+import lombok.Setter;
 
+@Setter
+@Getter
 @Entity
 @Table(name = "TEST_MOVE_REFERENCE")
 public class MoveReference extends Model {
@@ -50,30 +54,6 @@ public class MoveReference extends Model {
 
   public MoveReference(String name, String code) {
     this.name = name;
-    this.code = code;
-  }
-
-  public Long getId() {
-    return id;
-  }
-
-  public void setId(Long id) {
-    this.id = id;
-  }
-
-  public String getName() {
-    return name;
-  }
-
-  public void setName(String name) {
-    this.name = name;
-  }
-
-  public String getCode() {
-    return code;
-  }
-
-  public void setCode(String code) {
     this.code = code;
   }
 
