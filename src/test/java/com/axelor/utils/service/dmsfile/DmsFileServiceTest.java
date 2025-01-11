@@ -15,6 +15,7 @@ import com.google.common.base.Strings;
 import com.google.inject.Inject;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -137,7 +138,8 @@ class DmsFileServiceTest extends BaseTest {
       Assertions.assertEquals(dmsFile.getRelatedId(), userToMerge.getId());
       if (JPA.find(DMSFile.class, dmsFile.getId()).getParent() != null
           && dmsRoot != null
-          && JPA.find(DMSFile.class, dmsFile.getId()).getParent().getId().equals(dmsRoot.getId())) {
+          && Objects.equals(
+              JPA.find(DMSFile.class, dmsFile.getId()).getParent().getId(), dmsRoot.getId())) {
         Assertions.assertEquals(dmsFile.getParent(), getDMSHome(userToMerge, dmsRoot));
       }
     }
@@ -178,7 +180,7 @@ class DmsFileServiceTest extends BaseTest {
       for (DMSFile dmsFile : dmsFileList) {
         if (dmsFile.getParent() != null
             && dmsRoot != null
-            && dmsFile.getParent().getId().equals(dmsRoot.getId())) {
+            && Objects.equals(dmsFile.getParent().getId(), dmsRoot.getId())) {
           dmsFile.setParent(dmsHome);
         }
         dmsFile.setRelatedId(entityMerged.getId());
