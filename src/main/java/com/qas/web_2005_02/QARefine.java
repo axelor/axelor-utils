@@ -23,6 +23,8 @@ import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * Classe Java pour anonymous complex type.
@@ -52,108 +54,34 @@ import javax.xml.bind.annotation.XmlType;
 @XmlRootElement(name = "QARefine")
 public class QARefine {
 
+  @Setter
+  @Getter
   @XmlElement(name = "Moniker", required = true)
   protected String moniker;
 
+  @Setter
+  @Getter
   @XmlElement(name = "Refinement", required = true)
   protected String refinement;
 
   @XmlElement(name = "QAConfig")
   protected QAConfigType qaConfig;
 
+  @Setter
+  @Getter
   @XmlAttribute(name = "Threshold")
   protected Integer threshold;
 
+  @Setter
+  @Getter
   @XmlAttribute(name = "Timeout")
   protected Integer timeout;
 
-  /**
-   * Obtient la valeur de la propriété moniker.
-   *
-   * @return possible object is {@link String }
-   */
-  public String getMoniker() {
-    return moniker;
-  }
-
-  /**
-   * Définit la valeur de la propriété moniker.
-   *
-   * @param value allowed object is {@link String }
-   */
-  public void setMoniker(String value) {
-    this.moniker = value;
-  }
-
-  /**
-   * Obtient la valeur de la propriété refinement.
-   *
-   * @return possible object is {@link String }
-   */
-  public String getRefinement() {
-    return refinement;
-  }
-
-  /**
-   * Définit la valeur de la propriété refinement.
-   *
-   * @param value allowed object is {@link String }
-   */
-  public void setRefinement(String value) {
-    this.refinement = value;
-  }
-
-  /**
-   * Obtient la valeur de la propriété qaConfig.
-   *
-   * @return possible object is {@link QAConfigType }
-   */
   public QAConfigType getQAConfig() {
     return qaConfig;
   }
 
-  /**
-   * Définit la valeur de la propriété qaConfig.
-   *
-   * @param value allowed object is {@link QAConfigType }
-   */
   public void setQAConfig(QAConfigType value) {
     this.qaConfig = value;
-  }
-
-  /**
-   * Obtient la valeur de la propriété threshold.
-   *
-   * @return possible object is {@link Integer }
-   */
-  public Integer getThreshold() {
-    return threshold;
-  }
-
-  /**
-   * Définit la valeur de la propriété threshold.
-   *
-   * @param value allowed object is {@link Integer }
-   */
-  public void setThreshold(Integer value) {
-    this.threshold = value;
-  }
-
-  /**
-   * Obtient la valeur de la propriété timeout.
-   *
-   * @return possible object is {@link Integer }
-   */
-  public Integer getTimeout() {
-    return timeout;
-  }
-
-  /**
-   * Définit la valeur de la propriété timeout.
-   *
-   * @param value allowed object is {@link Integer }
-   */
-  public void setTimeout(Integer value) {
-    this.timeout = value;
   }
 }

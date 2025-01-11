@@ -24,6 +24,8 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * Classe Java pour anonymous complex type.
@@ -50,29 +52,13 @@ import javax.xml.bind.annotation.XmlType;
 @XmlRootElement(name = "QALicenceInfo")
 public class QALicenceInfo {
 
+  @Setter
+  @Getter
   @XmlElement(name = "WarningLevel", required = true)
   protected LicenceWarningLevel warningLevel;
 
   @XmlElement(name = "LicensedSet")
   protected List<QALicensedSet> licensedSet;
-
-  /**
-   * Obtient la valeur de la propriété warningLevel.
-   *
-   * @return possible object is {@link LicenceWarningLevel }
-   */
-  public LicenceWarningLevel getWarningLevel() {
-    return warningLevel;
-  }
-
-  /**
-   * Définit la valeur de la propriété warningLevel.
-   *
-   * @param value allowed object is {@link LicenceWarningLevel }
-   */
-  public void setWarningLevel(LicenceWarningLevel value) {
-    this.warningLevel = value;
-  }
 
   /**
    * Gets the value of the licensedSet property.
@@ -93,7 +79,7 @@ public class QALicenceInfo {
    */
   public List<QALicensedSet> getLicensedSet() {
     if (licensedSet == null) {
-      licensedSet = new ArrayList<QALicensedSet>();
+      licensedSet = new ArrayList<>();
     }
     return this.licensedSet;
   }

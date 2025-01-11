@@ -19,11 +19,13 @@ package com.qas.web_2005_02;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
+import lombok.Setter;
 
 /**
  * Classe Java pour QAAddressType complex type.
@@ -53,9 +55,11 @@ public class QAAddressType {
   @XmlElement(name = "AddressLine", required = true)
   protected List<AddressLineType> addressLine;
 
+  @Setter
   @XmlAttribute(name = "Overflow")
   protected Boolean overflow;
 
+  @Setter
   @XmlAttribute(name = "Truncated")
   protected Boolean truncated;
 
@@ -83,47 +87,11 @@ public class QAAddressType {
     return this.addressLine;
   }
 
-  /**
-   * Obtient la valeur de la propriété overflow.
-   *
-   * @return possible object is {@link Boolean }
-   */
   public boolean isOverflow() {
-    if (overflow == null) {
-      return false;
-    } else {
-      return overflow;
-    }
+    return Objects.requireNonNullElse(overflow, false);
   }
 
-  /**
-   * Définit la valeur de la propriété overflow.
-   *
-   * @param value allowed object is {@link Boolean }
-   */
-  public void setOverflow(Boolean value) {
-    this.overflow = value;
-  }
-
-  /**
-   * Obtient la valeur de la propriété truncated.
-   *
-   * @return possible object is {@link Boolean }
-   */
   public boolean isTruncated() {
-    if (truncated == null) {
-      return false;
-    } else {
-      return truncated;
-    }
-  }
-
-  /**
-   * Définit la valeur de la propriété truncated.
-   *
-   * @param value allowed object is {@link Boolean }
-   */
-  public void setTruncated(Boolean value) {
-    this.truncated = value;
+    return Objects.requireNonNullElse(truncated, false);
   }
 }

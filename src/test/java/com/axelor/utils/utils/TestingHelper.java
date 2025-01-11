@@ -4,7 +4,6 @@ import com.axelor.common.ResourceUtils;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
-import java.io.IOException;
 import java.io.InputStream;
 import javax.annotation.concurrent.ThreadSafe;
 import javax.xml.bind.JAXBContext;
@@ -31,7 +30,7 @@ public class TestingHelper {
   }
 
   @SuppressWarnings("unchecked")
-  public <T> T unmarshal(String resource, Class<T> type) throws JAXBException, IOException {
+  public <T> T unmarshal(String resource, Class<T> type) throws JAXBException {
     JAXBContext context = JAXBContext.newInstance(type);
     Unmarshaller unmarshaller = context.createUnmarshaller();
     return (T) unmarshaller.unmarshal(read(resource));

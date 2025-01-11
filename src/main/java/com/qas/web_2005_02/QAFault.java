@@ -22,6 +22,8 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * Classe Java pour anonymous complex type.
@@ -41,6 +43,8 @@ import javax.xml.bind.annotation.XmlType;
  * &lt;/complexType&gt;
  * </pre>
  */
+@Setter
+@Getter
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(
     name = "",
@@ -53,40 +57,4 @@ public class QAFault {
 
   @XmlElement(name = "ErrorMessage", required = true)
   protected String errorMessage;
-
-  /**
-   * Obtient la valeur de la propriété errorCode.
-   *
-   * @return possible object is {@link String }
-   */
-  public String getErrorCode() {
-    return errorCode;
-  }
-
-  /**
-   * Définit la valeur de la propriété errorCode.
-   *
-   * @param value allowed object is {@link String }
-   */
-  public void setErrorCode(String value) {
-    this.errorCode = value;
-  }
-
-  /**
-   * Obtient la valeur de la propriété errorMessage.
-   *
-   * @return possible object is {@link String }
-   */
-  public String getErrorMessage() {
-    return errorMessage;
-  }
-
-  /**
-   * Définit la valeur de la propriété errorMessage.
-   *
-   * @param value allowed object is {@link String }
-   */
-  public void setErrorMessage(String value) {
-    this.errorMessage = value;
-  }
 }

@@ -82,7 +82,7 @@ class STTest extends BaseTest {
             + "<hr />"
             + "<p><strong>PayeurQuality:</strong> 2,257</p>"
             + "<p><strong>Title: "
-            + title.toString()
+            + title
             + "</p>"
             + "<p><strong>First Name:</strong> "
             + contact.getFirstName()

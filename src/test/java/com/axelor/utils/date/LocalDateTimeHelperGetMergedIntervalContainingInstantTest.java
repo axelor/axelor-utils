@@ -1,6 +1,7 @@
 package com.axelor.utils.date;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 import com.axelor.utils.helpers.date.LocalDateTimeHelper;
 import com.axelor.utils.helpers.date.LocalDateTimeInterval;
@@ -14,7 +15,7 @@ import org.junit.jupiter.api.Test;
 
 class LocalDateTimeHelperGetMergedIntervalContainingInstantTest {
 
-  private LocalDateTime T = LocalDateTime.now();
+  private final LocalDateTime T = LocalDateTime.now();
 
   // i: ------------T------------
   // i: --------A________B-------
@@ -170,9 +171,8 @@ class LocalDateTimeHelperGetMergedIntervalContainingInstantTest {
 
     LocalDateTimeInterval actual =
         LocalDateTimeHelper.getMergedIntervalContainingInstant(intervals, T);
-    LocalDateTimeInterval expected = null;
 
-    assertEquals(actual, expected);
+    assertNull(actual);
 
     // tolerance inferior to the gap between T and the intervals
     intervals = new ArrayList<>();
@@ -181,9 +181,8 @@ class LocalDateTimeHelperGetMergedIntervalContainingInstantTest {
     intervals.add(new LocalDateTimeInterval(C, D, ChronoUnit.HOURS, 12));
 
     actual = LocalDateTimeHelper.getMergedIntervalContainingInstant(intervals, T);
-    expected = null;
 
-    assertEquals(actual, expected);
+    assertNull(actual);
 
     // tolerance superior than the gap between T and the intervals
     intervals = new ArrayList<>();
@@ -192,9 +191,8 @@ class LocalDateTimeHelperGetMergedIntervalContainingInstantTest {
     intervals.add(new LocalDateTimeInterval(C, D, ChronoUnit.MILLENNIA, 50));
 
     actual = LocalDateTimeHelper.getMergedIntervalContainingInstant(intervals, T);
-    expected = null;
 
-    assertEquals(actual, expected);
+    assertNull(actual);
 
     // Infinite tolerance
     intervals = new ArrayList<>();
@@ -203,9 +201,8 @@ class LocalDateTimeHelperGetMergedIntervalContainingInstantTest {
     intervals.add(new LocalDateTimeInterval(C, D, ChronoUnit.FOREVER, 503));
 
     actual = LocalDateTimeHelper.getMergedIntervalContainingInstant(intervals, T);
-    expected = null;
 
-    assertEquals(actual, expected);
+    assertNull(actual);
   }
 
   // i: ------------T------------
@@ -227,9 +224,8 @@ class LocalDateTimeHelperGetMergedIntervalContainingInstantTest {
 
     LocalDateTimeInterval actual =
         LocalDateTimeHelper.getMergedIntervalContainingInstant(intervals, T);
-    LocalDateTimeInterval expected = null;
 
-    assertEquals(actual, expected);
+    assertNull(actual);
 
     // tolerance inferior to the gap between B and C
     intervals = new ArrayList<>();
@@ -237,9 +233,8 @@ class LocalDateTimeHelperGetMergedIntervalContainingInstantTest {
     intervals.add(new LocalDateTimeInterval(C, D));
 
     actual = LocalDateTimeHelper.getMergedIntervalContainingInstant(intervals, T);
-    expected = null;
 
-    assertEquals(actual, expected);
+    assertNull(actual);
 
     // tolerance equal to the gap between B and C
     intervals = new ArrayList<>();
@@ -247,7 +242,7 @@ class LocalDateTimeHelperGetMergedIntervalContainingInstantTest {
     intervals.add(new LocalDateTimeInterval(C, D));
 
     actual = LocalDateTimeHelper.getMergedIntervalContainingInstant(intervals, T);
-    expected = new LocalDateTimeInterval(A, D);
+    var expected = new LocalDateTimeInterval(A, D);
 
     assertEquals(expected.getStartDateT(), actual.getStartDateT());
     assertEquals(expected.getEndDateT(), actual.getEndDateT());
@@ -461,9 +456,8 @@ class LocalDateTimeHelperGetMergedIntervalContainingInstantTest {
 
     LocalDateTimeInterval actual =
         LocalDateTimeHelper.getMergedIntervalContainingInstant(Collections.emptyList(), T);
-    LocalDateTimeInterval expected = null;
 
-    assertEquals(actual, expected);
+    assertNull(actual);
   }
 
   // i: intervals = null
@@ -473,9 +467,8 @@ class LocalDateTimeHelperGetMergedIntervalContainingInstantTest {
   void getMergedIntervalContainingInstant_nullIntervalCollection() {
 
     LocalDateTimeInterval actual = LocalDateTimeHelper.getMergedIntervalContainingInstant(null, T);
-    LocalDateTimeInterval expected = null;
 
-    assertEquals(actual, expected);
+    assertNull(actual);
   }
 
   // i: -----------A_B-----------

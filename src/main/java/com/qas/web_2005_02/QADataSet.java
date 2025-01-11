@@ -21,6 +21,8 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * Classe Java pour QADataSet complex type.
@@ -49,42 +51,16 @@ public class QADataSet {
   @XmlElement(name = "ID", required = true)
   protected String id;
 
+  @Setter
+  @Getter
   @XmlElement(name = "Name", required = true)
   protected String name;
 
-  /**
-   * Obtient la valeur de la propriété id.
-   *
-   * @return possible object is {@link String }
-   */
   public String getID() {
     return id;
   }
 
-  /**
-   * Définit la valeur de la propriété id.
-   *
-   * @param value allowed object is {@link String }
-   */
   public void setID(String value) {
     this.id = value;
-  }
-
-  /**
-   * Obtient la valeur de la propriété name.
-   *
-   * @return possible object is {@link String }
-   */
-  public String getName() {
-    return name;
-  }
-
-  /**
-   * Définit la valeur de la propriété name.
-   *
-   * @param value allowed object is {@link String }
-   */
-  public void setName(String value) {
-    this.name = value;
   }
 }

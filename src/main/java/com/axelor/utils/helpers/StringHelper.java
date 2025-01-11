@@ -241,7 +241,7 @@ public final class StringHelper {
     if (s == null) {
       return null;
     }
-    if (s.length() == 0) {
+    if (s.isEmpty()) {
       return s;
     }
     StringBuilder result = new StringBuilder(s);
@@ -256,7 +256,7 @@ public final class StringHelper {
    * @return list of integers
    */
   public static List<Integer> getIntegerList(String string) {
-    return string != null && !"".equals(string)
+    return string != null && !string.isEmpty()
         ? Arrays.stream(string.split("\\D+")).map(Integer::valueOf).collect(Collectors.toList())
         : new ArrayList<>();
   }
@@ -275,7 +275,7 @@ public final class StringHelper {
     StringBuilder idStringBuilder = new StringBuilder();
     for (Model item : collection) {
       if (item != null && item.getId() != null) {
-        idStringBuilder.append(String.valueOf(item.getId()));
+        idStringBuilder.append(item.getId());
         idStringBuilder.append(",");
       }
     }

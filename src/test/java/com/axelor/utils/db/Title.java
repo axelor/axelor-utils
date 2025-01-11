@@ -56,6 +56,8 @@ public class Title extends Model {
     this.code = code;
   }
 
+  public Title() {}
+
   public Long getId() {
     return id;
   }

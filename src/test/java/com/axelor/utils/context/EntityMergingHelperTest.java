@@ -158,10 +158,7 @@ class EntityMergingHelperTest extends BaseTest {
     List<Map<String, Object>> moveLineMapList =
         moveLines.stream().map(this::moveLineToMap).collect(Collectors.toList());
 
-    moveLineMapList.forEach(
-        moveLineMap -> {
-          moveLineMap.put("credit", BigDecimal.ONE);
-        });
+    moveLineMapList.forEach(moveLineMap -> moveLineMap.put("credit", BigDecimal.ONE));
 
     Map<String, Object> moveMap = new HashMap<>();
     moveMap.put("moveLines", moveLineMapList);
@@ -213,8 +210,9 @@ class EntityMergingHelperTest extends BaseTest {
     Role role = findRole("Test");
 
     User user = Query.of(User.class).filter("self.code LIKE 'admin'").fetchOne();
-    user = addRoleToUser(role, user);
     Assertions.assertNotNull(user);
+
+    user = addRoleToUser(role, user);
     Assertions.assertFalse(user.getRoles().isEmpty());
 
     Context context = new Context(user.getId(), User.class);
@@ -226,7 +224,7 @@ class EntityMergingHelperTest extends BaseTest {
 
   @Transactional
   public User addRoleToUser(Role role, User user) {
-    Optional.ofNullable(user).map(User::getRoles).ifPresent(roles -> roles.add(role));
+    Optional.of(user).map(User::getRoles).ifPresent(roles -> roles.add(role));
     return JPA.save(user);
   }
 
@@ -239,6 +237,15 @@ class EntityMergingHelperTest extends BaseTest {
 
     Assertions.assertNotNull(user);
 
+    Context context = getContext(role, group, user);
+    Integer groupVersion = group.getVersion();
+    User mergedUser = getUser(context);
+
+    Assertions.assertEquals(mergedUser.getGroup().getVersion(), groupVersion);
+    Assertions.assertEquals("Tutu", mergedUser.getName());
+  }
+
+  private static Context getContext(Role role, Group group, User user) {
     Map<String, Object> roleMap = new HashMap<>();
     roleMap.put("id", role.getId());
     List<Map<String, Object>> rolesMapList = new ArrayList<>();
@@ -253,12 +260,7 @@ class EntityMergingHelperTest extends BaseTest {
     userMap.put("name", "Tutu");
     userMap.put("group", groupMap);
 
-    Context context = new Context(userMap, User.class);
-    Integer groupVersion = group.getVersion();
-    User mergedUser = getUser(context);
-
-    Assertions.assertEquals(mergedUser.getGroup().getVersion(), groupVersion);
-    Assertions.assertEquals("Tutu", mergedUser.getName());
+    return new Context(userMap, User.class);
   }
 
   @Transactional

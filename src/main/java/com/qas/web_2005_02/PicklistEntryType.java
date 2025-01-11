@@ -18,12 +18,15 @@
 package com.qas.web_2005_02;
 
 import java.math.BigInteger;
+import java.util.Objects;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * Classe Java pour PicklistEntryType complex type.
@@ -59,24 +62,30 @@ import javax.xml.bind.annotation.XmlType;
  * &lt;/complexType&gt;
  * </pre>
  */
+@Setter
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(
     name = "PicklistEntryType",
     propOrder = {"moniker", "partialAddress", "picklist", "postcode", "score"})
 public class PicklistEntryType {
 
+  @Getter
   @XmlElement(name = "Moniker", required = true)
   protected String moniker;
 
+  @Getter
   @XmlElement(name = "PartialAddress", required = true)
   protected String partialAddress;
 
+  @Getter
   @XmlElement(name = "Picklist", required = true)
   protected String picklist;
 
+  @Getter
   @XmlElement(name = "Postcode", required = true)
   protected String postcode;
 
+  @Getter
   @XmlElement(name = "Score", required = true)
   @XmlSchemaType(name = "nonNegativeInteger")
   protected BigInteger score;
@@ -120,255 +129,34 @@ public class PicklistEntryType {
   @XmlAttribute(name = "PhantomPrimaryPoint")
   protected Boolean phantomPrimaryPoint;
 
-  /**
-   * Obtient la valeur de la propriété moniker.
-   *
-   * @return possible object is {@link String }
-   */
-  public String getMoniker() {
-    return moniker;
-  }
-
-  /**
-   * Définit la valeur de la propriété moniker.
-   *
-   * @param value allowed object is {@link String }
-   */
-  public void setMoniker(String value) {
-    this.moniker = value;
-  }
-
-  /**
-   * Obtient la valeur de la propriété partialAddress.
-   *
-   * @return possible object is {@link String }
-   */
-  public String getPartialAddress() {
-    return partialAddress;
-  }
-
-  /**
-   * Définit la valeur de la propriété partialAddress.
-   *
-   * @param value allowed object is {@link String }
-   */
-  public void setPartialAddress(String value) {
-    this.partialAddress = value;
-  }
-
-  /**
-   * Obtient la valeur de la propriété picklist.
-   *
-   * @return possible object is {@link String }
-   */
-  public String getPicklist() {
-    return picklist;
-  }
-
-  /**
-   * Définit la valeur de la propriété picklist.
-   *
-   * @param value allowed object is {@link String }
-   */
-  public void setPicklist(String value) {
-    this.picklist = value;
-  }
-
-  /**
-   * Obtient la valeur de la propriété postcode.
-   *
-   * @return possible object is {@link String }
-   */
-  public String getPostcode() {
-    return postcode;
-  }
-
-  /**
-   * Définit la valeur de la propriété postcode.
-   *
-   * @param value allowed object is {@link String }
-   */
-  public void setPostcode(String value) {
-    this.postcode = value;
-  }
-
-  /**
-   * Obtient la valeur de la propriété score.
-   *
-   * @return possible object is {@link BigInteger }
-   */
-  public BigInteger getScore() {
-    return score;
-  }
-
-  /**
-   * Définit la valeur de la propriété score.
-   *
-   * @param value allowed object is {@link BigInteger }
-   */
-  public void setScore(BigInteger value) {
-    this.score = value;
-  }
-
-  /**
-   * Obtient la valeur de la propriété fullAddress.
-   *
-   * @return possible object is {@link Boolean }
-   */
   public boolean isFullAddress() {
-    if (fullAddress == null) {
-      return false;
-    } else {
-      return fullAddress;
-    }
+    return Objects.requireNonNullElse(fullAddress, false);
   }
 
-  /**
-   * Définit la valeur de la propriété fullAddress.
-   *
-   * @param value allowed object is {@link Boolean }
-   */
-  public void setFullAddress(Boolean value) {
-    this.fullAddress = value;
-  }
-
-  /**
-   * Obtient la valeur de la propriété multiples.
-   *
-   * @return possible object is {@link Boolean }
-   */
   public boolean isMultiples() {
-    if (multiples == null) {
-      return false;
-    } else {
-      return multiples;
-    }
+    return Objects.requireNonNullElse(multiples, false);
   }
 
-  /**
-   * Définit la valeur de la propriété multiples.
-   *
-   * @param value allowed object is {@link Boolean }
-   */
-  public void setMultiples(Boolean value) {
-    this.multiples = value;
-  }
-
-  /**
-   * Obtient la valeur de la propriété canStep.
-   *
-   * @return possible object is {@link Boolean }
-   */
   public boolean isCanStep() {
-    if (canStep == null) {
-      return false;
-    } else {
-      return canStep;
-    }
+    return Objects.requireNonNullElse(canStep, false);
   }
 
-  /**
-   * Définit la valeur de la propriété canStep.
-   *
-   * @param value allowed object is {@link Boolean }
-   */
-  public void setCanStep(Boolean value) {
-    this.canStep = value;
-  }
-
-  /**
-   * Obtient la valeur de la propriété aliasMatch.
-   *
-   * @return possible object is {@link Boolean }
-   */
   public boolean isAliasMatch() {
-    if (aliasMatch == null) {
-      return false;
-    } else {
-      return aliasMatch;
-    }
+    return Objects.requireNonNullElse(aliasMatch, false);
   }
 
-  /**
-   * Définit la valeur de la propriété aliasMatch.
-   *
-   * @param value allowed object is {@link Boolean }
-   */
-  public void setAliasMatch(Boolean value) {
-    this.aliasMatch = value;
-  }
-
-  /**
-   * Obtient la valeur de la propriété postcodeRecoded.
-   *
-   * @return possible object is {@link Boolean }
-   */
   public boolean isPostcodeRecoded() {
-    if (postcodeRecoded == null) {
-      return false;
-    } else {
-      return postcodeRecoded;
-    }
+    return Objects.requireNonNullElse(postcodeRecoded, false);
   }
 
-  /**
-   * Définit la valeur de la propriété postcodeRecoded.
-   *
-   * @param value allowed object is {@link Boolean }
-   */
-  public void setPostcodeRecoded(Boolean value) {
-    this.postcodeRecoded = value;
-  }
-
-  /**
-   * Obtient la valeur de la propriété crossBorderMatch.
-   *
-   * @return possible object is {@link Boolean }
-   */
   public boolean isCrossBorderMatch() {
-    if (crossBorderMatch == null) {
-      return false;
-    } else {
-      return crossBorderMatch;
-    }
+    return Objects.requireNonNullElse(crossBorderMatch, false);
   }
 
-  /**
-   * Définit la valeur de la propriété crossBorderMatch.
-   *
-   * @param value allowed object is {@link Boolean }
-   */
-  public void setCrossBorderMatch(Boolean value) {
-    this.crossBorderMatch = value;
-  }
-
-  /**
-   * Obtient la valeur de la propriété dummyPOBox.
-   *
-   * @return possible object is {@link Boolean }
-   */
   public boolean isDummyPOBox() {
-    if (dummyPOBox == null) {
-      return false;
-    } else {
-      return dummyPOBox;
-    }
+    return Objects.requireNonNullElse(dummyPOBox, false);
   }
 
-  /**
-   * Définit la valeur de la propriété dummyPOBox.
-   *
-   * @param value allowed object is {@link Boolean }
-   */
-  public void setDummyPOBox(Boolean value) {
-    this.dummyPOBox = value;
-  }
-
-  /**
-   * Obtient la valeur de la propriété name.
-   *
-   * @return possible object is {@link Boolean }
-   */
   public boolean isName() {
     if (name == null) {
       return false;
@@ -377,122 +165,23 @@ public class PicklistEntryType {
     }
   }
 
-  /**
-   * Définit la valeur de la propriété name.
-   *
-   * @param value allowed object is {@link Boolean }
-   */
-  public void setName(Boolean value) {
-    this.name = value;
-  }
-
-  /**
-   * Obtient la valeur de la propriété information.
-   *
-   * @return possible object is {@link Boolean }
-   */
   public boolean isInformation() {
-    if (information == null) {
-      return false;
-    } else {
-      return information;
-    }
+    return Objects.requireNonNullElse(information, false);
   }
 
-  /**
-   * Définit la valeur de la propriété information.
-   *
-   * @param value allowed object is {@link Boolean }
-   */
-  public void setInformation(Boolean value) {
-    this.information = value;
-  }
-
-  /**
-   * Obtient la valeur de la propriété warnInformation.
-   *
-   * @return possible object is {@link Boolean }
-   */
   public boolean isWarnInformation() {
-    if (warnInformation == null) {
-      return false;
-    } else {
-      return warnInformation;
-    }
+    return Objects.requireNonNullElse(warnInformation, false);
   }
 
-  /**
-   * Définit la valeur de la propriété warnInformation.
-   *
-   * @param value allowed object is {@link Boolean }
-   */
-  public void setWarnInformation(Boolean value) {
-    this.warnInformation = value;
-  }
-
-  /**
-   * Obtient la valeur de la propriété incompleteAddr.
-   *
-   * @return possible object is {@link Boolean }
-   */
   public boolean isIncompleteAddr() {
-    if (incompleteAddr == null) {
-      return false;
-    } else {
-      return incompleteAddr;
-    }
+    return Objects.requireNonNullElse(incompleteAddr, false);
   }
 
-  /**
-   * Définit la valeur de la propriété incompleteAddr.
-   *
-   * @param value allowed object is {@link Boolean }
-   */
-  public void setIncompleteAddr(Boolean value) {
-    this.incompleteAddr = value;
-  }
-
-  /**
-   * Obtient la valeur de la propriété unresolvableRange.
-   *
-   * @return possible object is {@link Boolean }
-   */
   public boolean isUnresolvableRange() {
-    if (unresolvableRange == null) {
-      return false;
-    } else {
-      return unresolvableRange;
-    }
+    return Objects.requireNonNullElse(unresolvableRange, false);
   }
 
-  /**
-   * Définit la valeur de la propriété unresolvableRange.
-   *
-   * @param value allowed object is {@link Boolean }
-   */
-  public void setUnresolvableRange(Boolean value) {
-    this.unresolvableRange = value;
-  }
-
-  /**
-   * Obtient la valeur de la propriété phantomPrimaryPoint.
-   *
-   * @return possible object is {@link Boolean }
-   */
   public boolean isPhantomPrimaryPoint() {
-    if (phantomPrimaryPoint == null) {
-      return false;
-    } else {
-      return phantomPrimaryPoint;
-    }
-  }
-
-  /**
-   * Définit la valeur de la propriété phantomPrimaryPoint.
-   *
-   * @param value allowed object is {@link Boolean }
-   */
-  public void setPhantomPrimaryPoint(Boolean value) {
-    this.phantomPrimaryPoint = value;
+    return Objects.requireNonNullElse(phantomPrimaryPoint, false);
   }
 }

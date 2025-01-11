@@ -30,7 +30,7 @@ public class SelectHelper {
 
   /**
    * Method to search value from a couple (selectName / title) when it may not match any value.
-   * Otherwise prefer using {@link #getStringValueFromTitle(String, String)}.
+   * Otherwise, prefer using {@link #getStringValueFromTitle(String, String)}.
    *
    * @param selectName: String representing the name of a string selection.
    * @param title: String representing the title (as displayed before translation in views) of a
@@ -53,8 +53,8 @@ public class SelectHelper {
   }
 
   /**
-   * Method to search value from a couple (selectName / title) when it is sure to match a value.
-   * Otherwise prefer using {@link #getOptionalStringValueFromTitle(String, String)}.
+   * Method to search value from a couple (selectName / title) when it is certain to match a value.
+   * Otherwise, prefer using {@link #getOptionalStringValueFromTitle(String, String)}.
    *
    * @param selectName: String representing the name of a string selection.
    * @param title: String representing the title (as displayed before translation in views) of a
@@ -110,8 +110,8 @@ public class SelectHelper {
   }
 
   /**
-   * Method to search title corresponding to a couple (selectName / value) when it is sure that
-   * there is a match. Otherwise prefer using {@link #getOptionalTitleFromStringValue(String,
+   * Method to search title corresponding to a couple (selectName / value) when it is certain that
+   * there is a match. Otherwise, prefer using {@link #getOptionalTitleFromStringValue(String,
    * String)}.
    *
    * @param selectName: String representing the name of a string selection.
@@ -147,7 +147,7 @@ public class SelectHelper {
   /**
    * @param selectName: String representing the name of a string selection.
    * @return a List containing all the existing values associated to the selection.
-   * @throws IllegalArgumentException if the selectName doen't match any selection in the
+   * @throws IllegalArgumentException if the selectName doesn't match any selection in the
    *     application.
    */
   public static List<String> getPossibleValuesForStringSelection(String selectName) {
@@ -177,7 +177,7 @@ public class SelectHelper {
       String selectName, String title) {
     Optional<String> optionalStringValueFromTitle =
         getOptionalStringValueFromTitle(selectName, title);
-    if (!optionalStringValueFromTitle.isPresent()) {
+    if (optionalStringValueFromTitle.isEmpty()) {
       return Optional.empty();
     }
 
@@ -190,8 +190,8 @@ public class SelectHelper {
   }
 
   /**
-   * Method to search value from a couple (selectName / title) when it is sure to match a value.
-   * Otherwise prefer using {@link #getOptionalIntegerValueFromTitle(String, String)}.
+   * Method to search value from a couple (selectName / title) when it is certain to match a value.
+   * Otherwise, prefer using {@link #getOptionalIntegerValueFromTitle(String, String)}.
    *
    * @param selectName: String representing the name of an integer selection.
    * @param title: String representing the title (as displayed before translation in views) of a
@@ -200,8 +200,8 @@ public class SelectHelper {
    *     title).
    * @throws IllegalArgumentException if the couple (selectName / title) doesn't match any existing
    *     selection.
-   * @throws IllegalArgumentException if the couple (selectName / title) match a selection with non
-   *     numeric values.
+   * @throws IllegalArgumentException if the couple (selectName / title) match a selection with
+   *     non-numeric values.
    */
   public static Integer getIntegerValueFromTitle(String selectName, String title) {
     String valueAsString = getStringValueFromTitle(selectName, title);
@@ -218,7 +218,7 @@ public class SelectHelper {
 
   /**
    * Method to search title corresponding to a couple (selectName / value) when it may not match any
-   * result. Otherwise prefer using {@link #getTitleFromIntegerValue(String, Integer)}.
+   * result. Otherwise, prefer using {@link #getTitleFromIntegerValue(String, Integer)}.
    *
    * @param selectName: String representing the name of an integer selection.
    * @param value: Integer representing the value among the possible ones from to selection named by
@@ -237,7 +237,7 @@ public class SelectHelper {
   }
 
   /**
-   * Method to search title corresponding to a couple (selectName / value) when it is sure that
+   * Method to search title corresponding to a couple (selectName / value) when it is certain that
    * there is a match. Otherwise, prefer using {@link #getOptionalTitleFromIntegerValue(String,
    * Integer)}
    *

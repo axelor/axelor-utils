@@ -1,7 +1,5 @@
 package com.axelor.utils.helpers;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 import java.util.ArrayList;
 import java.util.List;
 import org.junit.jupiter.api.Assertions;
@@ -16,7 +14,7 @@ class StringHtmlListBuilderTest {
     elementList.add("code1");
     elementList.add("code2");
     String expected = "<ul><li>code1</li><li>code2</li></ul>";
-    Assertions.assertEquals(StringHtmlListBuilder.formatMessage(title, elementList), expected);
+    Assertions.assertEquals(expected, StringHtmlListBuilder.formatMessage(title, elementList));
   }
 
   @Test
@@ -26,7 +24,7 @@ class StringHtmlListBuilderTest {
     elementList.add("code1");
     elementList.add("code2");
     String expected = "<ul><li>code1</li><li>code2</li></ul>";
-    Assertions.assertEquals(StringHtmlListBuilder.formatMessage(title, elementList), expected);
+    Assertions.assertEquals(expected, StringHtmlListBuilder.formatMessage(title, elementList));
   }
 
   @Test
@@ -35,7 +33,7 @@ class StringHtmlListBuilderTest {
     elementList.add("code1");
     elementList.add("code2");
     String expected = "<ul><li>code1</li><li>code2</li></ul>";
-    Assertions.assertEquals(StringHtmlListBuilder.formatMessage(elementList), expected);
+    Assertions.assertEquals(expected, StringHtmlListBuilder.formatMessage(elementList));
   }
 
   @Test
@@ -47,6 +45,6 @@ class StringHtmlListBuilderTest {
     elementList.add("code3");
     String expected =
         "<b>following products are not configured correctly:</b><br/><ul><li>code1</li><li>code2</li><li>code3</li></ul>";
-    Assertions.assertEquals(StringHtmlListBuilder.formatMessage(title, elementList), expected);
+    Assertions.assertEquals(expected, StringHtmlListBuilder.formatMessage(title, elementList));
   }
 }

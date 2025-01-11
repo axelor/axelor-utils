@@ -49,7 +49,7 @@ public final class FileHelper {
   public static List<String> reader(String fileName) throws IOException {
 
     List<String> content = new ArrayList<>();
-    try (BufferedReader br = new BufferedReader(new FileReader(new File(fileName)))) {
+    try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
       String ligne = "";
 
       while ((ligne = br.readLine()) != null) {
@@ -73,7 +73,7 @@ public final class FileHelper {
     System.setProperty("line.separator", "\r\n");
 
     File file = create(destinationFolder, fileName);
-    try (FileWriter writer = new FileWriter(file); ) {
+    try (FileWriter writer = new FileWriter(file)) {
       writer.write(line);
     }
   }
@@ -84,11 +84,9 @@ public final class FileHelper {
    * @param destinationFolder Le chemin du fichier
    * @param fileName Le nom du fichier
    * @param multiLine La liste de ligne à écrire
-   * @throws IOException Si le fichier n'existe pas
    * @return Le fichier créé
    */
-  public static File writer(String destinationFolder, String fileName, List<String> multiLine)
-      throws IOException {
+  public static File writer(String destinationFolder, String fileName, List<String> multiLine) {
     System.setProperty("line.separator", "\r\n");
 
     File file = create(destinationFolder, fileName);
@@ -182,11 +180,11 @@ public final class FileHelper {
       File[] list = current.listFiles();
       if (list != null) {
         // Read the files list.
-        for (int i = 0; i < list.length; i++) {
+        for (File file : list) {
           // Create current source File
-          File tf = new File(sourceFolder + File.separator + list[i].getName());
+          File tf = new File(sourceFolder + File.separator + file.getName());
           // Create current destination File
-          File pf = new File(destinationFolder + File.separator + list[i].getName());
+          File pf = new File(destinationFolder + File.separator + file.getName());
           if (tf.isDirectory() && !pf.exists()) {
             // If the file is a directory and does not exit in the
             // destination Folder.
@@ -200,8 +198,8 @@ public final class FileHelper {
           } else if (tf.isFile()) {
             // If it is a file.
             copy(
-                sourceFolder + File.separator + list[i].getName(),
-                destinationFolder + File.separator + list[i].getName());
+                sourceFolder + File.separator + file.getName(),
+                destinationFolder + File.separator + file.getName());
           } else {
             // Other cases.
             LOG.error("Error : Copy folder");

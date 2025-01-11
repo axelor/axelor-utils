@@ -15,6 +15,7 @@ import com.google.common.base.Strings;
 import com.google.inject.Inject;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -117,36 +118,36 @@ class DmsFileServiceTest extends BaseTest {
   void getDMSHome_DMS_exist() {
     User user = JPA.find(User.class, 1L);
     DMSFile dmsFileParent = dmsFileService.getDMSRoot(user);
-    DMSFile expectedDMSfile = new DMSFile();
-    expectedDMSfile.setFileName("Admin");
-    expectedDMSfile.setRelatedId(1L);
-    expectedDMSfile.setRelatedModel("com.axelor.auth.db.User");
-    expectedDMSfile.setParent(dmsFileParent);
-    expectedDMSfile.setIsDirectory(true);
-    Assertions.assertEquals(expectedDMSfile.toString(), getDMSHome(user, dmsFileParent).toString());
+    DMSFile expectedDmsFile = new DMSFile();
+    expectedDmsFile.setFileName("Admin");
+    expectedDmsFile.setRelatedId(1L);
+    expectedDmsFile.setRelatedModel("com.axelor.auth.db.User");
+    expectedDmsFile.setParent(dmsFileParent);
+    expectedDmsFile.setIsDirectory(true);
+    Assertions.assertEquals(expectedDmsFile.toString(), getDMSHome(user, dmsFileParent).toString());
   }
 
   @Test
-  public void addLinkedDMSfiles_mergeDmsFiles() {
+  void addLinkedDmsFiles_mergeDmsFiles() {
     User userToMerge = JPA.find(User.class, 1L);
     List<User> users = userRepository.all().filter("id != ?", 1L).fetch();
-    addLinkedDMSfiles(users, userToMerge);
+    addLinkedDmsFiles(users, userToMerge);
     DMSFile dmsRoot = dmsFileService.getDMSRoot(userToMerge);
-    List<DMSFile> result = addLinkedDMSfiles(users, userToMerge);
+    List<DMSFile> result = addLinkedDmsFiles(users, userToMerge);
     for (DMSFile dmsFile : result) {
       Assertions.assertEquals(dmsFile.getRelatedId(), userToMerge.getId());
       if (JPA.find(DMSFile.class, dmsFile.getId()).getParent() != null
           && dmsRoot != null
-          && JPA.find(DMSFile.class, dmsFile.getId()).getParent().getId() == dmsRoot.getId()) {
+          && Objects.equals(
+              JPA.find(DMSFile.class, dmsFile.getId()).getParent().getId(), dmsRoot.getId())) {
         Assertions.assertEquals(dmsFile.getParent(), getDMSHome(userToMerge, dmsRoot));
       }
     }
   }
 
   public static DMSFile getDMSHome(Model model, DMSFile dmsRoot) {
-    String homeName = null;
     final Mapper mapper = Mapper.of(model.getClass());
-    homeName = mapper.getNameField().get(model).toString();
+    String homeName = mapper.getNameField().get(model).toString();
 
     if (homeName == null) {
       homeName = Strings.padStart("" + model.getId(), 5, '0');
@@ -161,7 +162,7 @@ class DmsFileServiceTest extends BaseTest {
     return dmsHome;
   }
 
-  public List<DMSFile> addLinkedDMSfiles(List<? extends Model> entityList, Model entityMerged) {
+  public List<DMSFile> addLinkedDmsFiles(List<? extends Model> entityList, Model entityMerged) {
 
     DMSFile dmsRoot = dmsFileService.getDMSRoot(entityMerged);
     DMSFile dmsHome = getDMSHome(entityMerged, dmsRoot);
@@ -179,7 +180,7 @@ class DmsFileServiceTest extends BaseTest {
       for (DMSFile dmsFile : dmsFileList) {
         if (dmsFile.getParent() != null
             && dmsRoot != null
-            && dmsFile.getParent().getId() == dmsRoot.getId()) {
+            && Objects.equals(dmsFile.getParent().getId(), dmsRoot.getId())) {
           dmsFile.setParent(dmsHome);
         }
         dmsFile.setRelatedId(entityMerged.getId());

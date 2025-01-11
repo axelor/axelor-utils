@@ -47,8 +47,11 @@ public class FullContextHelper {
   }
 
   public static FullContext filterOne(String modelName, String queryStr, Object... params) {
-
     Query<? extends Model> query = createQuery(modelName, queryStr, null, params);
+    return getFullContext(queryStr, query);
+  }
+
+  private static FullContext getFullContext(String queryStr, Query<? extends Model> query) {
     try {
       Model model = query.fetchOne();
       if (model != null) {
@@ -64,38 +67,14 @@ public class FullContextHelper {
   }
 
   public static FullContext filterOne(String modelName, String queryStr) {
-
     Query<? extends Model> query = createQuery(modelName, queryStr, null, null);
-    try {
-      Model model = query.fetchOne();
-      if (model != null) {
-        return new FullContext(model);
-      }
-    } catch (Exception e) {
-      ExceptionHelper.error(e);
-      throw new IllegalStateException(
-          String.format(I18n.get("Error executing query: %s"), queryStr));
-    }
-
-    return null;
+    return getFullContext(queryStr, query);
   }
 
   public static FullContext filterOne(
       String modelName, String queryStr, Map<String, Object> paramMap) {
-
     Query<? extends Model> query = createQuery(modelName, queryStr, paramMap, null);
-    try {
-      Model model = query.fetchOne();
-      if (model != null) {
-        return new FullContext(model);
-      }
-    } catch (Exception e) {
-      ExceptionHelper.error(e);
-      throw new IllegalStateException(
-          String.format(I18n.get("Error executing query: %s"), queryStr));
-    }
-
-    return null;
+    return getFullContext(queryStr, query);
   }
 
   private static Query<? extends Model> createQuery(
@@ -127,7 +106,7 @@ public class FullContextHelper {
 
   public static List<FullContext> filter(String modelName, String queryStr) {
 
-    List<FullContext> wkfEntities = new ArrayList<FullContext>();
+    List<FullContext> wkfEntities = new ArrayList<>();
 
     Query<? extends Model> query = createQuery(modelName, queryStr, null, null);
 
@@ -140,7 +119,7 @@ public class FullContextHelper {
 
   public static List<FullContext> filter(String modelName, String queryStr, Object... params) {
 
-    List<FullContext> wkfEntities = new ArrayList<FullContext>();
+    List<FullContext> wkfEntities = new ArrayList<>();
 
     if (params == null) {
       params = new Object[] {null};
@@ -158,7 +137,7 @@ public class FullContextHelper {
   public static List<FullContext> filter(
       String modelName, String queryStr, Map<String, Object> paramMap) {
 
-    List<FullContext> wkfEntities = new ArrayList<FullContext>();
+    List<FullContext> wkfEntities = new ArrayList<>();
 
     Query<? extends Model> query = createQuery(modelName, queryStr, paramMap, null);
 
@@ -212,6 +191,6 @@ public class FullContextHelper {
       return null;
     }
 
-    return filterOne(modelName, "self.id = ?1", (Long) recordId);
+    return filterOne(modelName, "self.id = ?1", recordId);
   }
 }

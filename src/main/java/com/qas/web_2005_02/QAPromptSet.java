@@ -19,12 +19,14 @@ package com.qas.web_2005_02;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
+import lombok.Setter;
 
 /**
  * Classe Java pour anonymous complex type.
@@ -54,6 +56,7 @@ public class QAPromptSet {
   @XmlElement(name = "Line")
   protected List<PromptLine> line;
 
+  @Setter
   @XmlAttribute(name = "Dynamic")
   protected Boolean dynamic;
 
@@ -76,30 +79,12 @@ public class QAPromptSet {
    */
   public List<PromptLine> getLine() {
     if (line == null) {
-      line = new ArrayList<PromptLine>();
+      line = new ArrayList<>();
     }
     return this.line;
   }
 
-  /**
-   * Obtient la valeur de la propriété dynamic.
-   *
-   * @return possible object is {@link Boolean }
-   */
   public boolean isDynamic() {
-    if (dynamic == null) {
-      return false;
-    } else {
-      return dynamic;
-    }
-  }
-
-  /**
-   * Définit la valeur de la propriété dynamic.
-   *
-   * @param value allowed object is {@link Boolean }
-   */
-  public void setDynamic(Boolean value) {
-    this.dynamic = value;
+    return Objects.requireNonNullElse(dynamic, false);
   }
 }

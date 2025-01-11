@@ -11,7 +11,7 @@ import org.junit.jupiter.api.Test;
 
 class LocalDateIntervalTest {
 
-  private LocalDate T = LocalDate.of(2000, 1, 1);
+  private final LocalDate T = LocalDate.of(2000, 1, 1);
 
   // i: ------------T------------
   // i: --------A________B------- (AB)

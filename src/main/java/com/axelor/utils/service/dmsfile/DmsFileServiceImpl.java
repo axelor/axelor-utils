@@ -63,7 +63,7 @@ public class DmsFileServiceImpl implements DmsFileService {
       for (DMSFile dmsFile : dmsFileList) {
         if (dmsFile.getParent() != null
             && dmsRoot != null
-            && dmsFile.getParent().getId() == dmsRoot.getId()) {
+            && dmsFile.getParent().getId().equals(dmsRoot.getId())) {
           dmsFile.setParent(dmsHome);
         }
         dmsFile.setRelatedId(entityMerged.getId());
@@ -84,7 +84,7 @@ public class DmsFileServiceImpl implements DmsFileService {
 
   @Override
   public DMSFile getDMSHome(Model model, DMSFile dmsRoot) {
-    String homeName = null;
+    String homeName;
     final Mapper mapper = Mapper.of(model.getClass());
     homeName = mapper.getNameField().get(model).toString();
 

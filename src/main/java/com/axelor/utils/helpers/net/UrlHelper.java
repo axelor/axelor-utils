@@ -36,15 +36,15 @@ import org.slf4j.LoggerFactory;
 
 public final class UrlHelper {
 
-  static final int size = 1024;
+  static final int SIZE = 1024;
 
   private static final Logger LOG = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
   /**
-   * Test la validité d'une url.
+   * Test the validity of an url.
    *
-   * @param url L'URL à tester.
-   * @return null si l'URL est valide, un message d'erreur sinon.
+   * @param url the URL to test
+   * @return null if the URL is valid, an error otherwise
    */
   public static String notExist(String url) {
 
@@ -66,12 +66,12 @@ public final class UrlHelper {
   }
 
   public static void fileUrl(
-      File file, String fAddress, String localFileName, String destinationDir) throws IOException {
+      File file, String fAddress, String localFileName, String destinationDir) {
 
     try (OutputStream outputStream = new BufferedOutputStream(new FileOutputStream(file))) {
       int byteRead;
       int byteWritten = 0;
-      byte[] buf = new byte[size];
+      byte[] buf = new byte[SIZE];
       URL url = new URL(fAddress);
       URLConnection urlConnection = url.openConnection();
       InputStream inputStream = urlConnection.getInputStream();
@@ -89,8 +89,7 @@ public final class UrlHelper {
     }
   }
 
-  public static File fileDownload(String fAddress, String destinationDir, String fileName)
-      throws IOException {
+  public static File fileDownload(String fAddress, String destinationDir, String fileName) {
 
     int slashIndex = fAddress.lastIndexOf('/');
     int periodIndex = fAddress.lastIndexOf('.');
@@ -111,7 +110,7 @@ public final class UrlHelper {
   }
 
   public static void fileDownload(
-      File file, String fAddress, String destinationDir, String fileName) throws IOException {
+      File file, String fAddress, String destinationDir, String fileName) {
 
     int slashIndex = fAddress.lastIndexOf('/');
     int periodIndex = fAddress.lastIndexOf('.');

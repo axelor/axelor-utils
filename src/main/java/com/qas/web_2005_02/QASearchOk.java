@@ -22,6 +22,8 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * Classe Java pour anonymous complex type.
@@ -52,63 +54,21 @@ public class QASearchOk {
   @XmlElement(name = "IsOk")
   protected boolean isOk;
 
+  @Getter
+  @Setter
   @XmlElement(name = "ErrorCode")
   protected String errorCode;
 
+  @Getter
+  @Setter
   @XmlElement(name = "ErrorMessage")
   protected String errorMessage;
 
-  /**
-   * Obtient la valeur de la propriété isOk.
-   *
-   * @return possible object is {@link boolean }
-   */
   public boolean isIsOk() {
     return isOk;
   }
 
-  /**
-   * Définit la valeur de la propriété isOk.
-   *
-   * @param value allowed object is {@link boolean }
-   */
   public void setIsOk(boolean value) {
     this.isOk = value;
-  }
-
-  /**
-   * Obtient la valeur de la propriété errorCode.
-   *
-   * @return possible object is {@link String }
-   */
-  public String getErrorCode() {
-    return errorCode;
-  }
-
-  /**
-   * Définit la valeur de la propriété errorCode.
-   *
-   * @param value allowed object is {@link String }
-   */
-  public void setErrorCode(String value) {
-    this.errorCode = value;
-  }
-
-  /**
-   * Obtient la valeur de la propriété errorMessage.
-   *
-   * @return possible object is {@link String }
-   */
-  public String getErrorMessage() {
-    return errorMessage;
-  }
-
-  /**
-   * Définit la valeur de la propriété errorMessage.
-   *
-   * @param value allowed object is {@link String }
-   */
-  public void setErrorMessage(String value) {
-    this.errorMessage = value;
   }
 }

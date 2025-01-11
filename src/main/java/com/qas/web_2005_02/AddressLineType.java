@@ -17,11 +17,14 @@
  */
 package com.qas.web_2005_02;
 
+import java.util.Objects;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * Classe Java pour AddressLineType complex type.
@@ -44,15 +47,18 @@ import javax.xml.bind.annotation.XmlType;
  * &lt;/complexType&gt;
  * </pre>
  */
+@Setter
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(
     name = "AddressLineType",
     propOrder = {"label", "line"})
 public class AddressLineType {
 
+  @Getter
   @XmlElement(name = "Label")
   protected String label;
 
+  @Getter
   @XmlElement(name = "Line")
   protected String line;
 
@@ -65,105 +71,15 @@ public class AddressLineType {
   @XmlAttribute(name = "Truncated")
   protected Boolean truncated;
 
-  /**
-   * Obtient la valeur de la propriété label.
-   *
-   * @return possible object is {@link String }
-   */
-  public String getLabel() {
-    return label;
-  }
-
-  /**
-   * Définit la valeur de la propriété label.
-   *
-   * @param value allowed object is {@link String }
-   */
-  public void setLabel(String value) {
-    this.label = value;
-  }
-
-  /**
-   * Obtient la valeur de la propriété line.
-   *
-   * @return possible object is {@link String }
-   */
-  public String getLine() {
-    return line;
-  }
-
-  /**
-   * Définit la valeur de la propriété line.
-   *
-   * @param value allowed object is {@link String }
-   */
-  public void setLine(String value) {
-    this.line = value;
-  }
-
-  /**
-   * Obtient la valeur de la propriété lineContent.
-   *
-   * @return possible object is {@link LineContentType }
-   */
   public LineContentType getLineContent() {
-    if (lineContent == null) {
-      return LineContentType.ADDRESS;
-    } else {
-      return lineContent;
-    }
+    return Objects.requireNonNullElse(lineContent, LineContentType.ADDRESS);
   }
 
-  /**
-   * Définit la valeur de la propriété lineContent.
-   *
-   * @param value allowed object is {@link LineContentType }
-   */
-  public void setLineContent(LineContentType value) {
-    this.lineContent = value;
-  }
-
-  /**
-   * Obtient la valeur de la propriété overflow.
-   *
-   * @return possible object is {@link Boolean }
-   */
   public boolean isOverflow() {
-    if (overflow == null) {
-      return false;
-    } else {
-      return overflow;
-    }
+    return Objects.requireNonNullElse(overflow, false);
   }
 
-  /**
-   * Définit la valeur de la propriété overflow.
-   *
-   * @param value allowed object is {@link Boolean }
-   */
-  public void setOverflow(Boolean value) {
-    this.overflow = value;
-  }
-
-  /**
-   * Obtient la valeur de la propriété truncated.
-   *
-   * @return possible object is {@link Boolean }
-   */
   public boolean isTruncated() {
-    if (truncated == null) {
-      return false;
-    } else {
-      return truncated;
-    }
-  }
-
-  /**
-   * Définit la valeur de la propriété truncated.
-   *
-   * @param value allowed object is {@link Boolean }
-   */
-  public void setTruncated(Boolean value) {
-    this.truncated = value;
+    return Objects.requireNonNullElse(truncated, false);
   }
 }

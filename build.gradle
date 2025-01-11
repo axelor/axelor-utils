@@ -73,8 +73,8 @@ dependencies {
 
     testImplementation 'org.junit.vintage:junit-vintage-engine'
 
-    compileOnly 'org.projectlombok:lombok:1.18.30'
-    annotationProcessor 'org.projectlombok:lombok:1.18.30'
+    compileOnly 'org.projectlombok:lombok:1.18.36'
+    annotationProcessor 'org.projectlombok:lombok:1.18.36'
 }
 
 changelog {
@@ -124,7 +124,7 @@ jacoco {
 
 jacocoTestReport {
     reports {
-        xml.enabled true
+        xml.required
     }
 }
 

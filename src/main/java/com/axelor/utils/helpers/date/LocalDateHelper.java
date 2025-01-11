@@ -47,7 +47,7 @@ public class LocalDateHelper {
 
   public static long daysBetween(LocalDate date1, LocalDate date2, boolean days360) {
 
-    long days = 0;
+    long days;
 
     if (days360) {
       days = date1.isBefore(date2) ? days360Between(date1, date2) : -days360Between(date2, date1);
@@ -73,7 +73,7 @@ public class LocalDateHelper {
 
     int nbDayOfFirstMonth = 0;
     int nbDayOfOthersMonths = 0;
-    int nbDayOfLastMonth = 0;
+    int nbDayOfLastMonth;
 
     LocalDate start = startDate;
 
@@ -156,7 +156,7 @@ public class LocalDateHelper {
    * @param frequencyInMonth Number of months depicting the frequency of the event
    * @return The date of the next occurrence of the event
    */
-  public static LocalDate nextOccurency(
+  public static LocalDate nextOccurrence(
       LocalDate startDate, LocalDate goalDate, int frequencyInMonth) {
 
     if (isInputsInvalid(startDate, goalDate, frequencyInMonth)) {
@@ -183,7 +183,7 @@ public class LocalDateHelper {
    * @param frequencyInMonth Number of months depicting the frequency of the event
    * @return The date of the next occurrence of the event
    */
-  public LocalDate nextOccurencyStartDateIncluded(
+  public LocalDate nextOccurrenceStartDateIncluded(
       LocalDate startDate, LocalDate goalDate, int frequencyInMonth) {
 
     if (isInputsInvalid(startDate, goalDate, frequencyInMonth)) {
@@ -210,7 +210,7 @@ public class LocalDateHelper {
    * @param frequencyInMonth Number of months depicting the frequency of the event
    * @return The date of the last occurrence of the event
    */
-  public static LocalDate lastOccurency(
+  public static LocalDate lastOccurrence(
       LocalDate startDate, LocalDate endDate, int frequencyInMonth) {
 
     if (isInputsInvalid(startDate, endDate, frequencyInMonth)) {
@@ -410,7 +410,7 @@ public class LocalDateHelper {
    *
    * @param startDate the start date of the interval
    * @param endDate the end date of the interval
-   * @return the number of non business days between 2 dates (both included). If the startDate is
+   * @return the number of non-business days between 2 dates (both included). If the startDate is
    *     strictly after the endDate, return the opposite value of the same call with inverted
    *     parameters.
    */
@@ -469,7 +469,7 @@ public class LocalDateHelper {
    *     in the past from the @param referenceDate exclusive corresponding to the given @param
    *     targetMonth
    */
-  public static MonthBoundaries getLastMonthOccurenceBoundaries(
+  public static MonthBoundaries getLastMonthOccurrenceBoundaries(
       Month targetMonth, LocalDate referenceDate) {
     if (targetMonth == null || referenceDate == null) {
       return null;
@@ -495,7 +495,7 @@ public class LocalDateHelper {
    *     in the past from the @param referenceDate exclusive corresponding to the given @param
    *     targetMonth
    */
-  public static MonthBoundaries getNextMonthOccurenceBoundaries(
+  public static MonthBoundaries getNextMonthOccurrenceBoundaries(
       Month targetMonth, LocalDate referenceDate) {
     if (targetMonth == null || referenceDate == null) {
       return null;

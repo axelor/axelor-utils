@@ -29,42 +29,35 @@ class StringHelperTest {
 
   @Test
   void testToFirstLower() {
-
-    String actual = "Test";
-    String result = "test";
-
-    Assertions.assertEquals(StringHelper.toFirstLower(actual), result);
+    String actual = StringHelper.toFirstLower("Test");
+    Assertions.assertEquals("test", actual);
   }
 
   @Test
   void testToFirstUpper() {
-
-    String actual = "test";
-    String result = "Test";
-
-    Assertions.assertEquals(StringHelper.toFirstUpper(actual), result);
+    String actual = StringHelper.toFirstUpper("test");
+    Assertions.assertEquals("Test", actual);
   }
 
   @Test
   void testFillString() {
-
     String actual = "test";
     String resultRight = "test    ";
     String resultLeft = "    test";
 
-    Assertions.assertEquals(StringHelper.fillStringRight(actual, ' ', 8), resultRight);
-    Assertions.assertEquals(StringHelper.fillStringRight(actual, ' ', 2), "te");
+    Assertions.assertEquals(resultRight, StringHelper.fillStringRight(actual, ' ', 8));
+    Assertions.assertEquals("te", StringHelper.fillStringRight(actual, ' ', 2));
 
-    Assertions.assertEquals(StringHelper.fillStringLeft(actual, ' ', 8), resultLeft);
-    Assertions.assertEquals(StringHelper.fillStringLeft(actual, ' ', 2), "st");
+    Assertions.assertEquals(resultLeft, StringHelper.fillStringLeft(actual, ' ', 8));
+    Assertions.assertEquals("st", StringHelper.fillStringLeft(actual, ' ', 2));
 
-    Assertions.assertEquals(StringHelper.fillStringLeft(resultRight, ' ', 4), "    ");
+    Assertions.assertEquals("    ", StringHelper.fillStringLeft(resultRight, ' ', 4));
   }
 
   @Test
   void testGetIdListString() {
 
-    List<Long> customModelIds = Arrays.asList(null, 1l, 2l, null, 5l, null);
+    List<Long> customModelIds = Arrays.asList(null, 1L, 2L, null, 5L, null);
     List<MetaJsonModel> customModelList = new ArrayList<>();
     for (Long id : customModelIds) {
       MetaJsonModel customModel = new MetaJsonModel();

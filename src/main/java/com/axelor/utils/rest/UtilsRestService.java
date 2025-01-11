@@ -22,7 +22,7 @@ import java.util.List;
 
 public interface UtilsRestService {
 
-  public void addReferences(MetaModel model, List<MetaModel> listOfRef, String... types);
+  void addReferences(MetaModel model, List<MetaModel> listOfRef, String... types);
 
-  public MetaModel getModel(String fullName);
+  MetaModel getModel(String fullName);
 }

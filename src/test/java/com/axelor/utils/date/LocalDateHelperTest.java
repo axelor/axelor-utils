@@ -194,38 +194,38 @@ class LocalDateHelperTest {
   }
 
   @Test
-  void testNextOccurency() {
+  void testNextOccurrence() {
     Assertions.assertEquals(
         LocalDate.of(2010, 11, 9),
-        LocalDateHelper.nextOccurency(LocalDate.of(2010, 10, 7), LocalDate.of(2011, 3, 9), 2));
+        LocalDateHelper.nextOccurrence(LocalDate.of(2010, 10, 7), LocalDate.of(2011, 3, 9), 2));
     Assertions.assertEquals(
         LocalDate.of(2010, 11, 9),
-        LocalDateHelper.nextOccurency(LocalDate.of(2010, 10, 7), LocalDate.of(2011, 5, 9), 2));
+        LocalDateHelper.nextOccurrence(LocalDate.of(2010, 10, 7), LocalDate.of(2011, 5, 9), 2));
     Assertions.assertEquals(
         LocalDate.of(2010, 8, 31),
-        LocalDateHelper.nextOccurency(LocalDate.of(2010, 8, 7), LocalDate.of(2011, 4, 30), 1));
+        LocalDateHelper.nextOccurrence(LocalDate.of(2010, 8, 7), LocalDate.of(2011, 4, 30), 1));
     Assertions.assertEquals(
         LocalDate.of(2010, 5, 9),
-        LocalDateHelper.nextOccurency(LocalDate.of(2010, 3, 9), LocalDate.of(2011, 3, 9), 2));
+        LocalDateHelper.nextOccurrence(LocalDate.of(2010, 3, 9), LocalDate.of(2011, 3, 9), 2));
   }
 
   @Test
-  void testLastOccurency() {
+  void testLastOccurrence() {
     Assertions.assertEquals(
         LocalDate.of(2011, 3, 9),
-        LocalDateHelper.lastOccurency(LocalDate.of(2010, 11, 9), LocalDate.of(2011, 5, 9), 4));
+        LocalDateHelper.lastOccurrence(LocalDate.of(2010, 11, 9), LocalDate.of(2011, 5, 9), 4));
     Assertions.assertEquals(
         LocalDate.of(2011, 7, 9),
-        LocalDateHelper.lastOccurency(LocalDate.of(2010, 11, 9), LocalDate.of(2011, 9, 9), 4));
+        LocalDateHelper.lastOccurrence(LocalDate.of(2010, 11, 9), LocalDate.of(2011, 9, 9), 4));
     Assertions.assertEquals(
         LocalDate.of(2011, 7, 9),
-        LocalDateHelper.lastOccurency(LocalDate.of(2010, 11, 9), LocalDate.of(2011, 10, 9), 4));
+        LocalDateHelper.lastOccurrence(LocalDate.of(2010, 11, 9), LocalDate.of(2011, 10, 9), 4));
     Assertions.assertEquals(
         LocalDate.of(2011, 1, 9),
-        LocalDateHelper.lastOccurency(LocalDate.of(2010, 11, 9), LocalDate.of(2011, 1, 9), 2));
+        LocalDateHelper.lastOccurrence(LocalDate.of(2010, 11, 9), LocalDate.of(2011, 1, 9), 2));
     Assertions.assertEquals(
         LocalDate.of(2011, 7, 31),
-        LocalDateHelper.lastOccurency(LocalDate.of(2007, 4, 30), LocalDate.of(2011, 8, 6), 1));
+        LocalDateHelper.lastOccurrence(LocalDate.of(2007, 4, 30), LocalDate.of(2011, 8, 6), 1));
   }
 
   @Test

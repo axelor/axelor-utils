@@ -22,6 +22,8 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * Classe Java pour anonymous complex type.
@@ -48,44 +50,18 @@ import javax.xml.bind.annotation.XmlType;
 @XmlRootElement(name = "QAGetLayouts")
 public class QAGetLayouts {
 
+  @Setter
+  @Getter
   @XmlElement(name = "Country", required = true)
   protected String country;
 
   @XmlElement(name = "QAConfig")
   protected QAConfigType qaConfig;
 
-  /**
-   * Obtient la valeur de la propriété country.
-   *
-   * @return possible object is {@link String }
-   */
-  public String getCountry() {
-    return country;
-  }
-
-  /**
-   * Définit la valeur de la propriété country.
-   *
-   * @param value allowed object is {@link String }
-   */
-  public void setCountry(String value) {
-    this.country = value;
-  }
-
-  /**
-   * Obtient la valeur de la propriété qaConfig.
-   *
-   * @return possible object is {@link QAConfigType }
-   */
   public QAConfigType getQAConfig() {
     return qaConfig;
   }
 
-  /**
-   * Définit la valeur de la propriété qaConfig.
-   *
-   * @param value allowed object is {@link QAConfigType }
-   */
   public void setQAConfig(QAConfigType value) {
     this.qaConfig = value;
   }
