@@ -20,6 +20,7 @@ package com.axelor.utils.db;
 import com.axelor.db.JPA;
 import com.axelor.db.JpaModel;
 import com.axelor.db.Query;
+import com.axelor.db.annotations.Widget;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -29,11 +30,16 @@ import javax.persistence.FetchType;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import lombok.Getter;
+import lombok.Setter;
 
+@Setter
+@Getter
 @Entity
 @Table(name = "TEST_INVOICE")
 public class Invoice extends JpaModel {
 
+  @Widget(readonly = true)
   private String code;
 
   @ManyToOne(
@@ -61,62 +67,6 @@ public class Invoice extends JpaModel {
       cascade = CascadeType.ALL,
       orphanRemoval = true)
   private List<InvoiceLine> invoiceLines;
-
-  public String getCode() {
-    return code;
-  }
-
-  public void setCode(String code) {
-    this.code = code;
-  }
-
-  public Move getMove() {
-    return move;
-  }
-
-  public void setMove(Move move) {
-    this.move = move;
-  }
-
-  public Move getOldMove() {
-    return oldMove;
-  }
-
-  public void setOldMove(Move oldMove) {
-    this.oldMove = oldMove;
-  }
-
-  public MoveLine getRejectMoveLine() {
-    return rejectMoveLine;
-  }
-
-  public void setRejectMoveLine(MoveLine rejectMoveLine) {
-    this.rejectMoveLine = rejectMoveLine;
-  }
-
-  public LocalDate getDate() {
-    return date;
-  }
-
-  public void setDate(LocalDate date) {
-    this.date = date;
-  }
-
-  public LocalDate getDueDate() {
-    return dueDate;
-  }
-
-  public void setDueDate(LocalDate dueDate) {
-    this.dueDate = dueDate;
-  }
-
-  public List<InvoiceLine> getInvoiceLines() {
-    return invoiceLines;
-  }
-
-  public void setInvoiceLines(List<InvoiceLine> invoiceLines) {
-    this.invoiceLines = invoiceLines;
-  }
 
   public void addInvoiceLineListItem(InvoiceLine item) {
     if (getInvoiceLines() == null) {

@@ -1,0 +1,3 @@
+---
+title: Don't ignore readonly fields in `EntityMergingHelper`
+type: change

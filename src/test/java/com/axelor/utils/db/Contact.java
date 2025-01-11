@@ -40,32 +40,39 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
+import lombok.Getter;
+import lombok.Setter;
 
+@Setter
 @Entity
 @Table(name = "CONTACT_CONTACT")
 public class Contact extends JpaModel {
 
+  @Getter
   @ManyToOne(
       cascade = {CascadeType.PERSIST, CascadeType.MERGE},
       fetch = FetchType.LAZY)
   private Title title;
 
-  @NotNull private String firstName;
+  @Getter @NotNull private String firstName;
 
-  @NotNull private String lastName;
+  @Getter @NotNull private String lastName;
 
-  @Widget(search = {"firstName", "lastName"})
+  @Widget(
+      search = {"firstName", "lastName"},
+      readonly = true)
   @NameColumn
   @VirtualColumn
   @Access(AccessType.PROPERTY)
   private String fullName;
 
-  @NotNull private String email;
+  @Getter @NotNull private String email;
 
-  private String phone;
+  @Getter private String phone;
 
-  private LocalDate dateOfBirth;
+  @Getter private LocalDate dateOfBirth;
 
+  @Getter
   @OneToMany(
       mappedBy = "contact",
       cascade = CascadeType.ALL,
@@ -73,16 +80,19 @@ public class Contact extends JpaModel {
       orphanRemoval = true)
   private List<Address> addresses;
 
+  @Getter
   @Widget(title = "Photo", help = "Max size 4MB.")
   @Lob
   @Basic(fetch = FetchType.LAZY)
   private byte[] image;
 
+  @Getter
   @Widget(multiline = true)
   private String notes;
 
-  private BigDecimal payeurQuality;
+  @Getter private BigDecimal payeurQuality;
 
+  @Getter
   @Widget(selection = "select.language")
   private String language;
 
@@ -97,30 +107,6 @@ public class Contact extends JpaModel {
     this.lastName = lastName;
   }
 
-  public Title getTitle() {
-    return title;
-  }
-
-  public void setTitle(Title title) {
-    this.title = title;
-  }
-
-  public String getFirstName() {
-    return firstName;
-  }
-
-  public void setFirstName(String firstName) {
-    this.firstName = firstName;
-  }
-
-  public String getLastName() {
-    return lastName;
-  }
-
-  public void setLastName(String lastName) {
-    this.lastName = lastName;
-  }
-
   public String getFullName() {
     return fullName = calculateFullName();
   }
@@ -131,86 +117,6 @@ public class Contact extends JpaModel {
       return this.title.getName() + " " + fullName;
     }
     return fullName;
-  }
-
-  public void setFullName(String fullName) {
-    this.fullName = fullName;
-  }
-
-  public String getEmail() {
-    return email;
-  }
-
-  public void setEmail(String email) {
-    this.email = email;
-  }
-
-  public String getPhone() {
-    return phone;
-  }
-
-  public void setPhone(String phone) {
-    this.phone = phone;
-  }
-
-  public LocalDate getDateOfBirth() {
-    return dateOfBirth;
-  }
-
-  public void setDateOfBirth(LocalDate dateOfBirth) {
-    this.dateOfBirth = dateOfBirth;
-  }
-
-  public List<Address> getAddresses() {
-    return addresses;
-  }
-
-  public void setAddresses(List<Address> addresses) {
-    this.addresses = addresses;
-  }
-
-  public byte[] getImage() {
-    return image;
-  }
-
-  public void setImage(byte[] image) {
-    this.image = image;
-  }
-
-  public String getNotes() {
-    return notes;
-  }
-
-  public void setNotes(String notes) {
-    this.notes = notes;
-  }
-
-  public BigDecimal getPayeurQuality() {
-    return payeurQuality;
-  }
-
-  public void setPayeurQuality(BigDecimal payeurQuality) {
-    this.payeurQuality = payeurQuality;
-  }
-
-  public String getLanguage() {
-    return language;
-  }
-
-  public void setLanguage(String language) {
-    this.language = language;
-  }
-
-  public String getLanguageTitle() {
-    //		MetaSelectItem item = MetaSelectItem
-    //				.filter("self.select.name = ?1 AND self.value = ?2",
-    //						"select.language", this.language).fetchOne();
-    //
-    //		if (item != null) {
-    //			return item.getTitle();
-    //		}
-
-    return "french";
   }
 
   @Override

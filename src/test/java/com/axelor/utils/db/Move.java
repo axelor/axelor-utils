@@ -20,6 +20,7 @@ package com.axelor.utils.db;
 import com.axelor.db.JPA;
 import com.axelor.db.JpaModel;
 import com.axelor.db.Query;
+import com.axelor.db.annotations.Widget;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -29,12 +30,18 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
+import lombok.Getter;
+import lombok.Setter;
 
+@Getter
+@Setter
 @Entity
 @Table(name = "TEST_MOVE")
 public class Move extends JpaModel {
 
-  @NotNull String code;
+  @Widget(readonly = true)
+  @NotNull
+  String code;
 
   @OneToMany(
       fetch = FetchType.LAZY,
@@ -52,38 +59,6 @@ public class Move extends JpaModel {
       fetch = FetchType.LAZY,
       cascade = {CascadeType.PERSIST, CascadeType.MERGE})
   private MoveReference moveReference;
-
-  public String getCode() {
-    return code;
-  }
-
-  public void setCode(String code) {
-    this.code = code;
-  }
-
-  public List<MoveLine> getMoveLines() {
-    return moveLines;
-  }
-
-  public void setMoveLines(List<MoveLine> moveLines) {
-    this.moveLines = moveLines;
-  }
-
-  public Invoice getInvoice() {
-    return invoice;
-  }
-
-  public void setInvoice(Invoice invoice) {
-    this.invoice = invoice;
-  }
-
-  public MoveReference getMoveReference() {
-    return moveReference;
-  }
-
-  public void setMoveReference(MoveReference moveReference) {
-    this.moveReference = moveReference;
-  }
 
   public Move persist() {
     return JPA.persist(this);

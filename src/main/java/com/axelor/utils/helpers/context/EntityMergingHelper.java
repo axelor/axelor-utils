@@ -73,7 +73,7 @@ public class EntityMergingHelper {
 
   private static <T extends Model> void processProperty(
       Map<String, Object> context, T dbEntity, Property property) {
-    if (!context.containsKey(property.getName()) || property.isReadonly() || property.isPrimary()) {
+    if (!context.containsKey(property.getName()) || property.isPrimary()) {
       return;
     }
     Object contextValue = context.get(property.getName());
