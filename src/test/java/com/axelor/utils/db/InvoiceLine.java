@@ -9,7 +9,11 @@ import javax.persistence.FetchType;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import lombok.Getter;
+import lombok.Setter;
 
+@Setter
+@Getter
 @Entity
 @Table(name = "TEST_INVOICE_LINE")
 public class InvoiceLine extends JpaModel {
@@ -31,35 +35,11 @@ public class InvoiceLine extends JpaModel {
       cascade = {CascadeType.PERSIST, CascadeType.MERGE})
   private InvoiceLine parentInvoiceLine;
 
-  public Invoice getInvoice() {
-    return invoice;
-  }
-
-  public void setInvoice(Invoice invoice) {
-    this.invoice = invoice;
-  }
-
-  public List<InvoiceLine> getInvoiceLines() {
-    return invoiceLines;
-  }
-
-  public void setInvoiceLines(List<InvoiceLine> invoiceLines) {
-    this.invoiceLines = invoiceLines;
-  }
-
   public void addInvoiceLineListItem(InvoiceLine item) {
     if (getInvoiceLines() == null) {
       setInvoiceLines(new ArrayList<>());
     }
     getInvoiceLines().add(item);
     item.setParentInvoiceLine(this);
-  }
-
-  public InvoiceLine getParentInvoiceLine() {
-    return parentInvoiceLine;
-  }
-
-  public void setParentInvoiceLine(InvoiceLine parentInvoiceLine) {
-    this.parentInvoiceLine = parentInvoiceLine;
   }
 }
