@@ -4,7 +4,7 @@ stages:
   - test
   - publish
 
-image: axelor/app-builder:6.1
+image: axelor/app-builder:7.2
 
 variables:
   GIT_SUBMODULE_STRATEGY: recursive
@@ -38,7 +38,7 @@ build:
     - *global_cache
   allow_failure: false
   script:
-    - ./gradlew -xtest -xspotlessApply -xlicenseFormat clean build
+    - ./gradlew clean assemble
   interruptible: true
   rules:
     - if: '$CI_PIPELINE_SOURCE != "schedule"'
@@ -89,7 +89,7 @@ javadoc:
   cache:
     - *global_cache_pull
   script:
-    - ./gradlew -xtest -xspotlessApply -xlicenseFormat clean build publish -PaddonsMavenUsername=${NEXUS_ADDONS_DEPLOYMENT_USER} -PaddonsMavenPassword=${NEXUS_ADDONS_DEPLOYMENT_PASSWORD} -P${PUBLISH_TYPE}
+    - ./gradlew clean assemble publish -PaddonsMavenUsername=${NEXUS_ADDONS_DEPLOYMENT_USER} -PaddonsMavenPassword=${NEXUS_ADDONS_DEPLOYMENT_PASSWORD} -P${PUBLISH_TYPE}
 
 publish snapshot:
   <<: *publish_configuration
