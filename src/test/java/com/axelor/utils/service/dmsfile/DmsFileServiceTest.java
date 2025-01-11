@@ -127,7 +127,7 @@ class DmsFileServiceTest extends BaseTest {
   }
 
   @Test
-  public void addLinkedDmsFiles_mergeDmsFiles() {
+  void addLinkedDmsFiles_mergeDmsFiles() {
     User userToMerge = JPA.find(User.class, 1L);
     List<User> users = userRepository.all().filter("id != ?", 1L).fetch();
     addLinkedDmsFiles(users, userToMerge);
