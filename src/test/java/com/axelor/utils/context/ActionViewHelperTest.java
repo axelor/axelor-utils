@@ -9,7 +9,6 @@ import com.axelor.utils.helpers.context.ActionViewHelper;
 import com.axelor.utils.junit.BaseTest;
 import com.axelor.utils.utils.TestingHelper;
 import com.google.inject.Inject;
-import java.io.IOException;
 import javax.xml.bind.JAXBException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
