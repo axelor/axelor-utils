@@ -1,0 +1,3 @@
+---
+title: Autoclose unclosed FileOutputStream in PdfHelper.mergePdf
+type: fix
