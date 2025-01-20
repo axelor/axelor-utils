@@ -28,6 +28,12 @@
   </details>
 
 
+## 2.0.2 (2025-01-20)
+
+#### Fix
+
+* Autoclose unclosed FileOutputStream in PdfHelper.mergePdf
+
 ## 2.0.0 (2024-01-25)
 
 #### Feature
