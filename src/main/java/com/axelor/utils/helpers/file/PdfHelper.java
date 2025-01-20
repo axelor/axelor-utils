@@ -61,9 +61,10 @@ public final class PdfHelper {
       pdfMergerUtility.addSource(file);
     }
     Path tmpFile = MetaFiles.createTempFile(null, "");
-    FileOutputStream stream = new FileOutputStream(tmpFile.toFile());
-    pdfMergerUtility.setDestinationStream(stream);
-    pdfMergerUtility.mergeDocuments(null);
+    try (FileOutputStream stream = new FileOutputStream(tmpFile.toFile())) {
+      pdfMergerUtility.setDestinationStream(stream);
+      pdfMergerUtility.mergeDocuments(null);
+    }
     return tmpFile.toFile();
   }
 
