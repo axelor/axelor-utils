@@ -91,4 +91,9 @@ public final class UtilsExceptionMessage {
 
   public static final String ORIGIN_FETCHER_TOO_MANY_ITERATIONS = /*$$(*/
       "The process was stopped because the computation might be stuck in an infinite loop." /*)*/;
+
+  public static final String MISSING_REQUIRED_FIELDS = /*$$(*/
+      "The following required fields are missing on %s (%s) :" /*)*/;
+  public static final String EXISTING_REFERENCES = /*$$(*/
+      "The following references exist for %s (%s) :" /*)*/;
 }
