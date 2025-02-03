@@ -1,0 +1,5 @@
+title: Make ConditionList Helper extendable
+type: feature
+description: |
+  Allow the creation of new ConditionList static factory methods.
+  You can now create an extension of ConditionList and create specific factory methods.

@@ -19,18 +19,62 @@ import java.util.Objects;
 import java.util.StringJoiner;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
+import javax.annotation.Nonnull;
 import org.apache.commons.collections.CollectionUtils;
 
 public class ConditionList {
 
   private int elementNbr;
   private final StringJoiner joiner;
-  private final boolean plain;
+  private final String footerFormat;
+  private final String headerFormat;
 
-  private ConditionList(StringJoiner joiner, boolean plain) {
+  private ConditionList(StringJoiner joiner, String headerFormat, String footerFormat) {
     this.joiner = joiner;
     this.elementNbr = 0;
-    this.plain = plain;
+    this.headerFormat = headerFormat;
+    this.footerFormat = footerFormat;
+  }
+
+  public static class Builder {
+    private String delimiter = "";
+    private String prefix = "";
+    private String suffix = "";
+    private String header = "";
+    private String footer = "";
+
+    public Builder delimiter(@Nonnull String delimiter) {
+      this.delimiter = delimiter;
+      return this;
+    }
+
+    public Builder prefix(@Nonnull String prefix) {
+      this.prefix = prefix;
+      return this;
+    }
+
+    public Builder suffix(@Nonnull String suffix) {
+      this.suffix = suffix;
+      return this;
+    }
+
+    public Builder header(@Nonnull String header) {
+      this.header = header;
+      return this;
+    }
+
+    public Builder footer(@Nonnull String footer) {
+      this.footer = footer;
+      return this;
+    }
+
+    public ConditionList build() {
+      return new ConditionList(new StringJoiner(delimiter, prefix, suffix), header, footer);
+    }
+  }
+
+  public static Builder builder() {
+    return new Builder();
   }
 
   /**
@@ -39,7 +83,13 @@ public class ConditionList {
    * @return an HTML ConditionList
    */
   public static ConditionList html() {
-    return new ConditionList(new StringJoiner("</li><li>", "<ul><li>", "</li></ul>"), false);
+    return builder()
+        .delimiter("</li><li>")
+        .prefix("<ul><li>")
+        .suffix("</li></ul>")
+        .header("<b>%s</b>")
+        .footer("<BR>%s")
+        .build();
   }
 
   /**
@@ -48,7 +98,7 @@ public class ConditionList {
    * @return a plain text ConditionList
    */
   public static ConditionList plain() {
-    return new ConditionList(new StringJoiner(" ; "), true);
+    return builder().delimiter(" ; ").header("%s — ").footer(" — %s").build();
   }
 
   /**
@@ -208,13 +258,13 @@ public class ConditionList {
   public String format(String headerMessage, String footerMessage) {
     StringBuilder stringBuilder = new StringBuilder();
     if (StringUtils.notBlank(headerMessage)) {
-      stringBuilder.append(String.format(plain ? "%s — " : "<b>%s</b>", headerMessage));
+      stringBuilder.append(String.format(headerFormat, headerMessage));
     }
     if (elementNbr != 0) {
       stringBuilder.append(joiner);
     }
     if (StringUtils.notBlank(footerMessage)) {
-      stringBuilder.append(String.format(plain ? " — %s" : "<BR>%s", footerMessage));
+      stringBuilder.append(String.format(footerFormat, footerMessage));
     }
     return stringBuilder.toString();
   }
