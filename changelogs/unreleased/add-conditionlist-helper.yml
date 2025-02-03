@@ -1,5 +1,0 @@
-title: Add ConditionList Helper
-type: feature
-description: |
-  This helper class bring an elegant way to create nice error messages to display on AOP popup.
-  With helpful builder methods like required fields or references checking.
