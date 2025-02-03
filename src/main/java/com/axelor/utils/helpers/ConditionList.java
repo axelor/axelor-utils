@@ -19,6 +19,7 @@ import java.util.Objects;
 import java.util.StringJoiner;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
+import javax.annotation.Nonnull;
 import org.apache.commons.collections.CollectionUtils;
 
 public class ConditionList {
@@ -36,34 +37,34 @@ public class ConditionList {
   }
 
   public static class Builder {
-    private String delimiter;
-    private String prefix;
-    private String suffix;
-    private String header;
-    private String footer;
+    private String delimiter = "";
+    private String prefix = "";
+    private String suffix = "";
+    private String header = "";
+    private String footer = "";
 
-    public Builder delimiter(String delimiter) {
+    public Builder delimiter(@Nonnull String delimiter) {
       this.delimiter = delimiter;
       return this;
     }
 
-    public Builder prefix(String prefix) {
+    public Builder prefix(@Nonnull String prefix) {
       this.prefix = prefix;
       return this;
     }
 
-    public Builder suffix(String suffix) {
+    public Builder suffix(@Nonnull String suffix) {
       this.suffix = suffix;
       return this;
     }
 
-    public Builder header(String headerMessage) {
-      this.header = headerMessage;
+    public Builder header(@Nonnull String header) {
+      this.header = header;
       return this;
     }
 
-    public Builder footer(String footerMessage) {
-      this.footer = footerMessage;
+    public Builder footer(@Nonnull String footer) {
+      this.footer = footer;
       return this;
     }
 
