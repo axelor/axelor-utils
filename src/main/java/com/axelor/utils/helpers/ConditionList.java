@@ -25,12 +25,14 @@ public class ConditionList {
 
   private int elementNbr;
   private final StringJoiner joiner;
-  private final boolean plain;
+  private final String footerFormat;
+  private final String headerFormat;
 
-  private ConditionList(StringJoiner joiner, boolean plain) {
+  protected ConditionList(StringJoiner joiner, String headerFormat, String footerFormat) {
     this.joiner = joiner;
     this.elementNbr = 0;
-    this.plain = plain;
+    this.headerFormat = headerFormat;
+    this.footerFormat = footerFormat;
   }
 
   /**
@@ -39,7 +41,8 @@ public class ConditionList {
    * @return an HTML ConditionList
    */
   public static ConditionList html() {
-    return new ConditionList(new StringJoiner("</li><li>", "<ul><li>", "</li></ul>"), false);
+    return new ConditionList(
+        new StringJoiner("</li><li>", "<ul><li>", "</li></ul>"), "<b>%s</b>", "<BR>%s");
   }
 
   /**
@@ -48,7 +51,7 @@ public class ConditionList {
    * @return a plain text ConditionList
    */
   public static ConditionList plain() {
-    return new ConditionList(new StringJoiner(" ; "), true);
+    return new ConditionList(new StringJoiner(" ; "), "%s — ", " — %s");
   }
 
   /**
@@ -208,13 +211,13 @@ public class ConditionList {
   public String format(String headerMessage, String footerMessage) {
     StringBuilder stringBuilder = new StringBuilder();
     if (StringUtils.notBlank(headerMessage)) {
-      stringBuilder.append(String.format(plain ? "%s — " : "<b>%s</b>", headerMessage));
+      stringBuilder.append(String.format(headerFormat, headerMessage));
     }
     if (elementNbr != 0) {
       stringBuilder.append(joiner);
     }
     if (StringUtils.notBlank(footerMessage)) {
-      stringBuilder.append(String.format(plain ? " — %s" : "<BR>%s", footerMessage));
+      stringBuilder.append(String.format(footerFormat, footerMessage));
     }
     return stringBuilder.toString();
   }
