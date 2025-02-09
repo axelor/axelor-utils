@@ -1,3 +1,21 @@
+## 3.4.0 (2025-02-03)
+
+#### Feature
+
+* Add ConditionList Helper
+
+  <details>
+  
+  This helper class bring an elegant way to create nice error messages to display on AOP popup.
+  With helpful builder methods like required fields or references checking.
+  
+  </details>
+
+#### Change
+
+* Don't ignore readonly fields in `EntityMergingHelper`
+* Upgrade lombok to 1.18.36
+
 ## 3.3.0 (2024-10-24)
 
 #### Change
@@ -92,6 +110,12 @@
   
   </details>
 
+
+## 2.0.2 (2025-01-20)
+
+#### Fix
+
+* Autoclose unclosed FileOutputStream in PdfHelper.mergePdf
 
 ## 2.0.0 (2024-01-25)
 

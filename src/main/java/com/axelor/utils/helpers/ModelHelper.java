@@ -192,4 +192,19 @@ public final class ModelHelper {
     }
     return dest;
   }
+
+  /**
+   * Find the model class from the full name.
+   *
+   * @param fullName The full name of the model.
+   * @return The class of the model.
+   */
+  public static Class<? extends Model> findModelClass(String fullName) {
+    try {
+      Class<?> modelClass = Class.forName(fullName);
+      return modelClass.asSubclass(Model.class);
+    } catch (ClassNotFoundException e) {
+      throw new IllegalStateException(e);
+    }
+  }
 }
