@@ -37,6 +37,12 @@
 * Add the CriteriaHelper class to provides methods to manipulate Criteria API in a more convenient way.
 * Add the AllModelSelectService class to initialize or update all.model.reference.select selection where items are all the meta models present in the system.
 
+## 3.1.6 (2025-03-25)
+
+#### Change
+
+* Don't ignore readonly fields in `EntityMergingHelper`
+
 ## 3.1.2 (2024-08-05)
 
 #### Feature
