@@ -30,7 +30,11 @@ import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
+import lombok.Getter;
+import lombok.Setter;
 
+@Setter
+@Getter
 @Entity
 @Table(name = "CONTACT_TITLE")
 public class Title extends Model {
@@ -55,6 +59,8 @@ public class Title extends Model {
     this.name = name;
     this.code = code;
   }
+
+  public Title() {}
 
   public Long getId() {
     return id;

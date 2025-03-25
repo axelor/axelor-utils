@@ -101,12 +101,24 @@ class EntityMergingHelperTest extends BaseTest {
   }
 
   @Test
+  void readonlyField() {
+    Move move = Query.of(Move.class).fetchOne();
+    Assertions.assertNotNull(move);
+
+    Context ctx = new Context(move.getId(), Move.class);
+    ctx.put("code", "123");
+    Move mergedMove = EntityMergingHelper.merge(ctx, Move.class);
+
+    Assertions.assertEquals("123", mergedMove.getCode());
+  }
+
+  @Test
   void oneToOne() {
     List<Move> dbMoves = Query.of(Move.class).filter("self.moveReference IS NOT NULL").fetch();
     Assertions.assertTrue(dbMoves.size() >= 2);
-    Move firstMove = dbMoves.stream().findFirst().orElse(null);
+    Move firstMove = dbMoves.get(0);
     Assertions.assertNotNull(firstMove);
-    Move secondMove = dbMoves.stream().filter(move -> move != firstMove).findFirst().orElse(null);
+    Move secondMove = dbMoves.get(1);
     Assertions.assertNotNull(secondMove);
 
     Context firstContext = new Context(firstMove.getId(), Move.class);
