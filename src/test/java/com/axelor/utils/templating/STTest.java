@@ -61,7 +61,7 @@ class STTest extends BaseTest {
           + "}</pre>";
 
   @BeforeEach
-  public void prepareTest() {
+  void prepareTest() {
     contact = new Contact("Doe", "John");
     contact.setEmail("john.doe@axelor.com");
     contact.setFullName(contact.getFullName());
