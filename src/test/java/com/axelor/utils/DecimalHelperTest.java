@@ -9,28 +9,26 @@ class DecimalHelperTest {
 
   @Test
   void isNullOrZero_when_decimal_is_null() {
-
     Assertions.assertTrue(DecimalHelper.isNullOrZero(null));
   }
 
   @Test
   void isNullOrZero_when_decimal_is_zero() {
+    Assertions.assertTrue(DecimalHelper.isNullOrZero(BigDecimal.ZERO));
+    Assertions.assertTrue(DecimalHelper.isNullOrZero(BigDecimal.valueOf(0)));
+    Assertions.assertTrue(DecimalHelper.isNullOrZero(new BigDecimal("0.00")));
+  }
 
-    BigDecimal zeroFromBigDecimalConstant = BigDecimal.ZERO;
-    Assertions.assertTrue(DecimalHelper.isNullOrZero(zeroFromBigDecimalConstant));
-
-    BigDecimal zeroFromInt = BigDecimal.valueOf(0);
-    Assertions.assertTrue(DecimalHelper.isNullOrZero(zeroFromInt));
-
-    BigDecimal zeroFromString = new BigDecimal("0.00");
-    Assertions.assertTrue(DecimalHelper.isNullOrZero(zeroFromString));
+  @Test
+  void isNotNullOrZero_when_decimal_is_zero() {
+    Assertions.assertFalse(DecimalHelper.isNullOrZero(BigDecimal.ONE));
+    Assertions.assertFalse(DecimalHelper.isNullOrZero(BigDecimal.valueOf(1)));
+    Assertions.assertFalse(DecimalHelper.isNullOrZero(new BigDecimal("1.00")));
   }
 
   @Test
   void getZeroOrValue_when_decimal_is_null() {
-
-    BigDecimal decimal = null;
-    Assertions.assertEquals(BigDecimal.ZERO, DecimalHelper.getZeroOrValue(decimal));
+    Assertions.assertEquals(BigDecimal.ZERO, DecimalHelper.getZeroOrValue(null));
   }
 
   @Test
