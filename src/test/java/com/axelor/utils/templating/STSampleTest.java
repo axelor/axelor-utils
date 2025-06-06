@@ -20,6 +20,9 @@ package com.axelor.utils.templating;
 import com.axelor.db.Model;
 import com.google.common.base.Strings;
 import java.util.Locale;
+
+import lombok.Getter;
+import lombok.Setter;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.stringtemplate.v4.AttributeRenderer;
@@ -87,40 +90,16 @@ class STSampleTest {
     }
   }
 
+  @Getter
+  @Setter
   static class Contact extends Model {
     private Long id;
     private String name;
     private String lastName;
 
-    public String getLastName() {
-      return lastName;
-    }
-
-    public void setLastName(String lastName) {
-      this.lastName = lastName;
-    }
-
-    public String getName() {
-      return name;
-    }
-
-    public void setName(String name) {
-      this.name = name;
-    }
-
     public Contact(String name, String lastName) {
       this.name = name;
       this.lastName = lastName;
-    }
-
-    @Override
-    public Long getId() {
-      return id;
-    }
-
-    @Override
-    public void setId(Long id) {
-      this.id = id;
     }
   }
 }
