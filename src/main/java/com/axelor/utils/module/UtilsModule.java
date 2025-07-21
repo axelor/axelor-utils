@@ -22,6 +22,8 @@ import com.axelor.utils.api.HttpExceptionHandler;
 import com.axelor.utils.api.HttpExceptionHandlerImpl;
 import com.axelor.utils.api.ResponseMessageComputeService;
 import com.axelor.utils.api.ResponseMessageComputeServiceImpl;
+import com.axelor.utils.rest.UtilsMenuRestService;
+import com.axelor.utils.rest.UtilsMenuRestServiceImpl;
 import com.axelor.utils.rest.UtilsRestService;
 import com.axelor.utils.rest.UtilsRestServiceImpl;
 import com.axelor.utils.service.ActionService;
@@ -55,6 +57,7 @@ public class UtilsModule extends AxelorModule {
     bind(AppSettingsService.class).to(AppSettingsServiceImpl.class);
     bind(DmsFileService.class).to(DmsFileServiceImpl.class);
     bind(UtilsRestService.class).to(UtilsRestServiceImpl.class);
+    bind(UtilsMenuRestService.class).to(UtilsMenuRestServiceImpl.class);
     bind(ActionService.class).to(ActionServiceImpl.class);
     bind(DataReaderFactory.class).to(DataReaderFactoryImpl.class);
     bind(ResponseMessageComputeService.class).to(ResponseMessageComputeServiceImpl.class);
