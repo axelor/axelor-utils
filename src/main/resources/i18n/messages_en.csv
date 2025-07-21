@@ -13,6 +13,7 @@
 "No such template",,,
 "No title found for the view '%s'.",,,
 "Null given value.",,,
+"Object provided has been updated by another user",,,
 "Record Id",,,
 "Record Name",,,
 "Selection '%s' is not an integer one or is wrongly defined.",,,
