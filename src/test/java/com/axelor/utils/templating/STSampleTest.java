@@ -20,7 +20,6 @@ package com.axelor.utils.templating;
 import com.axelor.db.Model;
 import com.google.common.base.Strings;
 import java.util.Locale;
-
 import lombok.Getter;
 import lombok.Setter;
 import org.junit.jupiter.api.Assertions;
