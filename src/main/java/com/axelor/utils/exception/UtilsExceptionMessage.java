@@ -91,4 +91,7 @@ public final class UtilsExceptionMessage {
 
   public static final String ORIGIN_FETCHER_TOO_MANY_ITERATIONS = /*$$(*/
       "The process was stopped because the computation might be stuck in an infinite loop." /*)*/;
+
+  public static final String OBJECT_ALREADY_UPDATED = /*$$(*/
+      "Object provided has been updated by another user" /*)*/;
 }
