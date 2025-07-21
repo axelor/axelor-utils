@@ -1,3 +1,17 @@
+## 3.4.1 (2025-07-21)
+
+#### Feature
+
+* Added REST APIs for menu and model navigation
+
+  <details>
+  
+  Added new REST endpoints in UtilsRestController to fetch parent menus, child menus, 
+  and related meta models for a given menu.
+  
+  </details>
+
+
 ## 3.4.0 (2025-02-03)
 
 #### Feature
