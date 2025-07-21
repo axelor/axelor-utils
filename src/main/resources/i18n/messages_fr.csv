@@ -14,6 +14,7 @@
 "No such template","Modèle non trouvé",,
 "No title found for the view '%s'.","Aucun titre trouvé pour la vue « %s ».",,
 "Null given value.","Valeur nulle.",,
+"Object provided has been updated by another user","L'objet fourni a déjà été mis à jour par un autre utilisateur.",,
 "Record Id","ID d'enregistrement",,
 "Record Name","Nom d'enregistrement",,
 "Reference on %s ID %s (%s) :: %s","Référence sur %s ID %s (%s) :: %s",,

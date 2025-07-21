@@ -96,4 +96,7 @@ public final class UtilsExceptionMessage {
       "The following required fields are missing on %s (%s) :" /*)*/;
   public static final String EXISTING_REFERENCES = /*$$(*/
       "The following references exist for %s (%s) :" /*)*/;
+
+  public static final String OBJECT_ALREADY_UPDATED = /*$$(*/
+      "Object provided has been updated by another user" /*)*/;
 }
