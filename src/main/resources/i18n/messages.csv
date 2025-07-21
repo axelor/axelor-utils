@@ -18,6 +18,7 @@
 "Record Id",,,
 "Record Name",,,
 "Reference on %s ID %s (%s) :: %s",,,
+"Request successfully completed",,,
 "Selection '%s' is not an integer one or is wrongly defined.",,,
 "Templating can not be empty",,,
 "The collection of IDs cannot be null.",,,

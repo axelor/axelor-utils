@@ -3,3 +3,7 @@
 "com.axelor.dms.db.DMSFile";"DMSFile";"com.axelor.dms.db";"DMS_FILE"
 "com.axelor.utils.db.MoveLine";"MoveLine";"com.axelor.utils.db";"TEST_MOVE_LINE"
 "com.axelor.utils.db.Move";"Move";"com.axelor.utils.db";"TEST_MOVE"
+"com.axelor.meta.db.MetaModel";"MetaModel";"com.axelor.meta.db";"META_MODEL"
+"com.axelor.meta.db.MetaField";"MetaField";"com.axelor.meta.db";"META_FIELD"
+"com.axelor.auth.db.User";"User";"com.axelor.meta.db";"AUTH_USER"
+"com.axelor.test.db.TestModel";"TestModel";"com.axelor.test.db";"TEST_MODEL"
