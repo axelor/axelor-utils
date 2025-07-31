@@ -8,7 +8,8 @@ pluginManagement {
         maven {
             url 'https://repository.axelor.com/nexus/repository/maven-public/'
             mavenContent {
-                releasesOnly()
+                // TODO uncomment when the final release will be available
+               // releasesOnly()
             }
         }
     }
