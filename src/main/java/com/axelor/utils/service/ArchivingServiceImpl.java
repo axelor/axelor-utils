@@ -19,11 +19,11 @@ package com.axelor.utils.service;
 
 import com.axelor.common.ObjectUtils;
 import com.axelor.db.JPA;
+import jakarta.persistence.NoResultException;
+import jakarta.persistence.Query;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import javax.persistence.NoResultException;
-import javax.persistence.Query;
 
 public class ArchivingServiceImpl implements ArchivingService {
 

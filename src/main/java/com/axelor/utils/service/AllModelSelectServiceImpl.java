@@ -10,12 +10,12 @@ import com.axelor.meta.db.repo.MetaModelRepository;
 import com.axelor.meta.db.repo.MetaSelectRepository;
 import com.google.inject.Inject;
 import com.google.inject.persist.Transactional;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.criteria.CriteriaBuilder;
+import jakarta.persistence.criteria.CriteriaQuery;
+import jakarta.persistence.criteria.Root;
+import jakarta.persistence.criteria.Subquery;
 import java.util.List;
-import javax.persistence.EntityManager;
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Root;
-import javax.persistence.criteria.Subquery;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

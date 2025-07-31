@@ -23,13 +23,13 @@ import com.axelor.db.Model;
 import com.axelor.inject.Beans;
 import com.axelor.rpc.Context;
 import com.axelor.utils.helpers.context.adapters.Processor;
+import jakarta.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.function.Function;
 import java.util.stream.Collectors;
-import javax.validation.constraints.NotNull;
 import org.apache.shiro.util.CollectionUtils;
 
 public class MapHelper {

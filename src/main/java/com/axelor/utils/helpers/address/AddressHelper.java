@@ -30,13 +30,13 @@ import com.qas.web_2005_02.QAPortType;
 import com.qas.web_2005_02.QASearch;
 import com.qas.web_2005_02.QASearchOk;
 import com.qas.web_2005_02.QASearchResult;
+import jakarta.xml.ws.Service;
 import java.lang.invoke.MethodHandles;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 import javax.xml.namespace.QName;
-import javax.xml.ws.Service;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

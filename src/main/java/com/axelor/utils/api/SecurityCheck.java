@@ -20,13 +20,13 @@ package com.axelor.utils.api;
 import com.axelor.db.JpaSecurity;
 import com.axelor.db.Model;
 import com.axelor.inject.Beans;
+import jakarta.ws.rs.ForbiddenException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Consumer;
-import javax.ws.rs.ForbiddenException;
 
 public class SecurityCheck {
 

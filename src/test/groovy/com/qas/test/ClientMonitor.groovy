@@ -20,7 +20,7 @@ package com.qas.test;
 import static org.junit.Assert.*
 
 import javax.xml.namespace.QName
-import javax.xml.ws.Service
+import jakarta.xml.ws.Service
 
 import org.junit.Test
 

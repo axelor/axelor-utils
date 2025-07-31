@@ -20,8 +20,8 @@ package com.axelor.utils.api;
 import com.axelor.auth.db.AuditableModel;
 import com.axelor.i18n.I18n;
 import com.axelor.utils.exception.UtilsExceptionMessage;
-import javax.ws.rs.ClientErrorException;
-import javax.ws.rs.core.Response;
+import jakarta.ws.rs.ClientErrorException;
+import jakarta.ws.rs.core.Response;
 
 public class ConflictChecker {
 

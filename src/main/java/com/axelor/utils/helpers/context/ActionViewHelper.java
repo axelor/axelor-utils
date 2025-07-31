@@ -6,13 +6,13 @@ import com.axelor.meta.db.MetaView;
 import com.axelor.meta.schema.actions.ActionView;
 import com.axelor.meta.schema.actions.ActionView.ActionViewBuilder;
 import jakarta.annotation.Nonnull;
+import jakarta.persistence.NoResultException;
+import jakarta.persistence.criteria.CriteriaBuilder;
+import jakarta.persistence.criteria.CriteriaQuery;
+import jakarta.persistence.criteria.Root;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
-import javax.persistence.NoResultException;
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Root;
 
 public class ActionViewHelper {
 

@@ -42,12 +42,12 @@ dependencies {
     // JSch
     implementation 'com.jcraft:jsch:0.1.55'
 
-    implementation 'javax.xml.ws:jaxws-api:2.3.1'
+    implementation 'jakarta.xml.ws:jakarta.xml.ws-api:4.0.2'
 
     implementation 'com.sun.xml.bind:jaxb-impl:4.0.4'
     implementation 'org.apache.commons:commons-csv:1.10.0'
 
-    implementation 'javax.jws:javax.jws-api:1.1'
+    implementation 'jakarta.jws:jakarta.jws-api:3.0.0'
     implementation 'org.reflections:reflections:0.10.2'
     implementation 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.15.3'
 
