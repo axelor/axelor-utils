@@ -125,7 +125,7 @@ public class UtilsRestServiceImpl implements UtilsRestService {
       List<MetaModel> newModels =
           targetModels.values().stream()
               .filter(targetModel -> !listOfRef.contains(targetModel))
-              .collect(Collectors.toList());
+              .toList();
 
       if (newModels.isEmpty()) {
         return;
