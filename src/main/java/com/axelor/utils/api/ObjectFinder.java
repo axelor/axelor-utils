@@ -23,7 +23,7 @@ import com.axelor.db.Model;
 import jakarta.ws.rs.NotFoundException;
 
 public class ObjectFinder {
-  public static int NO_VERSION = -1;
+  public static final int NO_VERSION = -1;
 
   public static <T extends Model> T find(Class<T> objectClass, Long objectId, int versionProvided) {
     T object = JPA.find(objectClass, objectId);

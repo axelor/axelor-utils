@@ -35,8 +35,8 @@ class STTest extends BaseTest {
 
   public Contact contact;
   public String contentFinal;
-  public Map<String, Object> map = Maps.newHashMap();
-  public String content =
+  public final Map<String, Object> map = Maps.newHashMap();
+  public final String content =
       ""
           + "<h1>About Me ($contact.lastName;format=\"upper\"$)</h1>"
           + "<hr />"

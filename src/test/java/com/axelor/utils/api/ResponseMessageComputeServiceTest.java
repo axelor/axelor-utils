@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
 
 public class ResponseMessageComputeServiceTest extends BaseTest {
 
-  protected ResponseMessageComputeService responseMessageComputeService;
+  protected final ResponseMessageComputeService responseMessageComputeService;
 
   @Inject
   public ResponseMessageComputeServiceTest(

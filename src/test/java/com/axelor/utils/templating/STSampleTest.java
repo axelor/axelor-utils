@@ -30,7 +30,7 @@ import org.stringtemplate.v4.STGroup;
 
 class STSampleTest {
 
-  public String template = "Hi $contact.name;format=\"upper\"$ $contact.lastName$";
+  public final String template = "Hi $contact.name;format=\"upper\"$ $contact.lastName$";
 
   private static final int MAX_ITER = 5000;
 

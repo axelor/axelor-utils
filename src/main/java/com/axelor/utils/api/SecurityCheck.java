@@ -36,7 +36,7 @@ public class SecurityCheck {
   protected Map<Class<? extends Model>, List<Long>> mapRemove;
   protected Map<Class<? extends Model>, List<Long>> mapExport;
 
-  protected JpaSecurity jpaSecurity;
+  protected final JpaSecurity jpaSecurity;
 
   public SecurityCheck() {
     this.listCreate = new ArrayList<>();
