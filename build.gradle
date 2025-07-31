@@ -33,32 +33,31 @@ axelor {
 }
 
 dependencies {
-    implementation 'commons-net:commons-net:3.10.0'
-    implementation 'commons-io:commons-io:2.15.0'
-    implementation 'org.apache.commons:commons-lang3:3.13.0'
-    implementation 'org.apache.pdfbox:pdfbox:3.0.0'
-    implementation 'org.apache.commons:commons-text:1.11.0'
+    implementation 'commons-net:commons-net:3.11.1'
+    implementation 'commons-io:commons-io:2.20.0'
+    implementation 'org.apache.commons:commons-lang3:3.18.0'
+    implementation 'org.apache.pdfbox:pdfbox:3.0.5'
+    implementation 'org.apache.commons:commons-text:1.14.0'
 
-    // JSch
     implementation 'com.jcraft:jsch:0.1.55'
 
     implementation 'jakarta.xml.ws:jakarta.xml.ws-api:4.0.2'
 
-    implementation 'com.sun.xml.bind:jaxb-impl:4.0.4'
-    implementation 'org.apache.commons:commons-csv:1.10.0'
+    implementation 'com.sun.xml.bind:jaxb-impl:4.0.5'
+    implementation 'org.apache.commons:commons-csv:1.14.1'
 
     implementation 'jakarta.jws:jakarta.jws-api:3.0.0'
     implementation 'org.reflections:reflections:0.10.2'
-    implementation 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.15.3'
+    implementation 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.19.2'
 
     implementation "com.axelor:axelor-test:${aopVersion}"
 
     testImplementation 'org.junit.vintage:junit-vintage-engine'
 
-    compileOnly 'org.projectlombok:lombok:1.18.36'
-    annotationProcessor 'org.projectlombok:lombok:1.18.36'
-    testCompileOnly 'org.projectlombok:lombok:1.18.36'
-    testAnnotationProcessor 'org.projectlombok:lombok:1.18.36'
+    compileOnly 'org.projectlombok:lombok:1.18.38'
+    annotationProcessor 'org.projectlombok:lombok:1.18.38'
+    testCompileOnly 'org.projectlombok:lombok:1.18.38'
+    testAnnotationProcessor 'org.projectlombok:lombok:1.18.38'
 }
 
 changelog {
