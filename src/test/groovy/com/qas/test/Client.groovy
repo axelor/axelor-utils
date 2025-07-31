@@ -63,7 +63,7 @@ class Client {
 		QName PORT_NAME = new QName("http://www.qas.com/web-2005-02"
 			,"QAPortType")
 
-		def wsdlURL = new URL("http://ip.axelor.com:2021/proweb.wsdl")
+		def wsdlURL = new URI("http://ip.axelor.com:2021/proweb.wsdl").toURL()
 		println wsdlURL
 
 		Service service = Service.create(wsdlURL, SERVICE_NAME);

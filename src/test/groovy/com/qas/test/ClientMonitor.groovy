@@ -60,7 +60,7 @@ class ClientMonitor {
 
 		// set up TCP/IP monitor under Windows | Preferences
 		//http://backup.axelor.com/pub/sftp/proweb.wsdl
-		def wsdlURL = new URL("http://localhost:8001/pub/sftp/proweb.wsdl")
+		def wsdlURL = new URI("http://localhost:8001/pub/sftp/proweb.wsdl").toURL()
 		println wsdlURL
 
 		Service service = Service.create(wsdlURL, SERVICE_NAME);
