@@ -96,9 +96,6 @@ class DmsFileServiceTest extends BaseTest {
   }
 
   @Test
-  void addLinkedDMSFiles_addMultipleFiles() {}
-
-  @Test
   void getDMSRoot_DMS_exist() {
     User user = JPA.find(User.class, 1L);
     String expectedFileParentName = "Mes Documents";
