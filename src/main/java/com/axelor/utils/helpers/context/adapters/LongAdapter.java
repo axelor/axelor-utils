@@ -7,18 +7,12 @@ public class LongAdapter implements Adapter<Long> {
 
   @Override
   public Long process(Object contextRecord) {
-    if (contextRecord == null) {
-      return null;
-    }
-    if (contextRecord instanceof Long) {
-      return (Long) contextRecord;
-    }
-    if (contextRecord instanceof Integer) {
-      return Long.valueOf((Integer) contextRecord);
-    }
-    if (contextRecord instanceof String) {
-      return Long.valueOf((String) contextRecord);
-    }
-    return Long.valueOf(Objects.toString(contextRecord));
+    return switch (contextRecord) {
+      case null -> null;
+      case Long l -> l;
+      case Integer i -> Long.valueOf(i);
+      case String s -> Long.valueOf(s);
+      default -> Long.valueOf(Objects.toString(contextRecord));
+    };
   }
 }
