@@ -51,7 +51,7 @@ class ClientMonitor {
 	
 	
 	@Test
-	def void JAXWSProxy() {
+    void JAXWSProxy() {
 		QName SERVICE_NAME = new QName("http://www.qas.com/web-2005-02"
 			,"ProWeb")
 

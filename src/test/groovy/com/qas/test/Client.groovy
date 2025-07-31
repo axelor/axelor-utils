@@ -48,7 +48,7 @@ class Client {
 	
 	@Test
     static
-    def void WSDL2JavaClient() {
+    void WSDL2JavaClient() {
 		ProWeb service = new ProWeb()
 		def serviceName = service.getServiceName()
 		println serviceName
@@ -56,7 +56,7 @@ class Client {
 	
 	
 	@Test
-	def void JAXWSProxy() {
+    void JAXWSProxy() {
 		QName SERVICE_NAME = new QName("http://www.qas.com/web-2005-02"
 			,"ProWeb")
 
