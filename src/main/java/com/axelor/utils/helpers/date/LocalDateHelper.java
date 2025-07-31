@@ -432,14 +432,11 @@ public class LocalDateHelper {
         ChronoUnit.WEEKS.between(lastSundayFromStartDate, lastSundayFromEndDate);
 
     if (fullWeekBetweenDates == 0) {
-      switch (endDateDayOfWeek) {
-        case SUNDAY:
-          return startDateDayOfWeek == DayOfWeek.SUNDAY ? 1L : 2L;
-        case SATURDAY:
-          return 1L;
-        default:
-          return 0L;
-      }
+      return switch (endDateDayOfWeek) {
+        case SUNDAY -> startDateDayOfWeek == DayOfWeek.SUNDAY ? 1L : 2L;
+        case SATURDAY -> 1L;
+        default -> 0L;
+      };
     }
 
     if (startDateDayOfWeek == DayOfWeek.SUNDAY) {
