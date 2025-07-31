@@ -47,7 +47,8 @@ class Client {
 	//http://cxf.apache.org/docs/how-do-i-develop-a-client.html
 	
 	@Test
-	def void WSDL2JavaClient() {
+    static
+    def void WSDL2JavaClient() {
 		ProWeb service = new ProWeb()
 		def serviceName = service.getServiceName()
 		println serviceName
