@@ -51,7 +51,7 @@ public class ActionViewHelper {
   public static ActionViewBuilder build(
       @Nonnull Class<?> klass, String domain, @Nonnull String... views) {
     List<String> metaViews = Arrays.asList(views);
-    String firstViewName = metaViews.get(0);
+    String firstViewName = metaViews.getFirst();
     Optional<String> title = fetchViewField(firstViewName, String.class, "title");
     if (title.isEmpty()) {
       throw new IllegalArgumentException(

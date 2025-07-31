@@ -44,6 +44,6 @@ public class ListHelper {
     if (list == null || list.isEmpty()) {
       return Optional.empty();
     }
-    return Optional.ofNullable(list.get(0));
+    return Optional.ofNullable(list.getFirst());
   }
 }

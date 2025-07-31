@@ -67,7 +67,7 @@ class DmsFileServiceTest extends BaseTest {
     List<DMSFile> result = dmsFileService.fetchAttachedDMSFiles(move);
     String expectedFileName = "hotcoffee.mkv";
     Assertions.assertEquals(1, result.size());
-    Assertions.assertEquals(expectedFileName, result.get(0).getFileName());
+    Assertions.assertEquals(expectedFileName, result.getFirst().getFileName());
   }
 
   @Test

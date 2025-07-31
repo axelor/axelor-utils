@@ -88,7 +88,7 @@ public class AddressHelper {
       // 1. Pre-check.
 
       QAData qadata = client.doGetData();
-      QADataSet ds = qadata.getDataSet().get(0);
+      QADataSet ds = qadata.getDataSet().getFirst();
 
       QACanSearch canSearch = new QACanSearch();
       canSearch.setCountry("FRX");
