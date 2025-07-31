@@ -40,11 +40,11 @@ public interface QAPortType {
   @WebMethod(
       operationName = "DoGetLicenseInfo",
       action = "http://www.qas.com/web-2005-02/DoGetLicenseInfo")
-  QALicenceInfo doGetLicenseInfo() throws Fault;
+  QALicenceInfo doGetLicenseInfo();
 
   @WebResult(name = "QAData", targetNamespace = "http://www.qas.com/web-2005-02", partName = "body")
   @WebMethod(operationName = "DoGetData", action = "http://www.qas.com/web-2005-02/DoGetData")
-  QAData doGetData() throws Fault;
+  QAData doGetData();
 
   @WebResult(
       name = "QAExampleAddresses",
@@ -58,8 +58,7 @@ public interface QAPortType {
               partName = "body",
               name = "QAGetExampleAddresses",
               targetNamespace = "http://www.qas.com/web-2005-02")
-          QAGetExampleAddresses body)
-      throws Fault;
+          QAGetExampleAddresses body);
 
   @WebResult(
       name = "Picklist",
@@ -71,8 +70,7 @@ public interface QAPortType {
               partName = "body",
               name = "QARefine",
               targetNamespace = "http://www.qas.com/web-2005-02")
-          QARefine body)
-      throws Fault;
+          QARefine body);
 
   @WebResult(
       name = "Address",
@@ -84,8 +82,7 @@ public interface QAPortType {
               partName = "body",
               name = "QAGetAddress",
               targetNamespace = "http://www.qas.com/web-2005-02")
-          QAGetAddress body)
-      throws Fault;
+          QAGetAddress body);
 
   @WebResult(
       name = "QASearchResult",
@@ -97,8 +94,7 @@ public interface QAPortType {
               partName = "body",
               name = "QASearch",
               targetNamespace = "http://www.qas.com/web-2005-02")
-          QASearch body)
-      throws Fault;
+          QASearch body);
 
   @WebResult(
       name = "QASearchOk",
@@ -110,8 +106,7 @@ public interface QAPortType {
               partName = "body",
               name = "QACanSearch",
               targetNamespace = "http://www.qas.com/web-2005-02")
-          QACanSearch body)
-      throws Fault;
+          QACanSearch body);
 
   @WebResult(
       name = "QALayouts",
@@ -123,8 +118,7 @@ public interface QAPortType {
               partName = "body",
               name = "QAGetLayouts",
               targetNamespace = "http://www.qas.com/web-2005-02")
-          QAGetLayouts body)
-      throws Fault;
+          QAGetLayouts body);
 
   @WebResult(
       name = "QAPromptSet",
@@ -138,8 +132,7 @@ public interface QAPortType {
               partName = "body",
               name = "QAGetPromptSet",
               targetNamespace = "http://www.qas.com/web-2005-02")
-          QAGetPromptSet body)
-      throws Fault;
+          QAGetPromptSet body);
 
   @WebResult(
       name = "QASystemInfo",
@@ -148,5 +141,5 @@ public interface QAPortType {
   @WebMethod(
       operationName = "DoGetSystemInfo",
       action = "http://www.qas.com/web-2005-02/DoGetSystemInfo")
-  QASystemInfo doGetSystemInfo() throws Fault;
+  QASystemInfo doGetSystemInfo();
 }

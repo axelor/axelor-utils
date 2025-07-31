@@ -55,122 +55,61 @@ public final class QAPortType_QAPortType_Client {
 
     {
       System.out.println("Invoking doGetLicenseInfo...");
-      try {
-        com.qas.web_2005_02.QALicenceInfo _doGetLicenseInfo__return = port.doGetLicenseInfo();
-        System.out.println("doGetLicenseInfo.result=" + _doGetLicenseInfo__return);
-
-      } catch (Fault e) {
-        System.out.println("Expected exception: Fault has occurred.");
-        System.out.println(e);
-      }
+      QALicenceInfo _doGetLicenseInfo__return = port.doGetLicenseInfo();
+      System.out.println("doGetLicenseInfo.result=" + _doGetLicenseInfo__return);
     }
     {
       System.out.println("Invoking doGetData...");
-      try {
-        com.qas.web_2005_02.QAData _doGetData__return = port.doGetData();
-        System.out.println("doGetData.result=" + _doGetData__return);
-
-      } catch (Fault e) {
-        System.out.println("Expected exception: Fault has occurred.");
-        System.out.println(e);
-      }
+      QAData _doGetData__return = port.doGetData();
+      System.out.println("doGetData.result=" + _doGetData__return);
     }
     {
       System.out.println("Invoking doGetExampleAddresses...");
       com.qas.web_2005_02.QAGetExampleAddresses _doGetExampleAddresses_body = null;
-      try {
-        com.qas.web_2005_02.QAExampleAddresses _doGetExampleAddresses__return =
-            port.doGetExampleAddresses(_doGetExampleAddresses_body);
-        System.out.println("doGetExampleAddresses.result=" + _doGetExampleAddresses__return);
-
-      } catch (Fault e) {
-        System.out.println("Expected exception: Fault has occurred.");
-        System.out.println(e);
-      }
+      QAExampleAddresses _doGetExampleAddresses__return =
+          port.doGetExampleAddresses(_doGetExampleAddresses_body);
+      System.out.println("doGetExampleAddresses.result=" + _doGetExampleAddresses__return);
     }
     {
       System.out.println("Invoking doRefine...");
       com.qas.web_2005_02.QARefine _doRefine_body = null;
-      try {
-        com.qas.web_2005_02.Picklist _doRefine__return = port.doRefine(_doRefine_body);
-        System.out.println("doRefine.result=" + _doRefine__return);
-
-      } catch (Fault e) {
-        System.out.println("Expected exception: Fault has occurred.");
-        System.out.println(e);
-      }
+      Picklist _doRefine__return = port.doRefine(_doRefine_body);
+      System.out.println("doRefine.result=" + _doRefine__return);
     }
     {
       System.out.println("Invoking doGetAddress...");
       com.qas.web_2005_02.QAGetAddress _doGetAddress_body = null;
-      try {
-        com.qas.web_2005_02.Address _doGetAddress__return = port.doGetAddress(_doGetAddress_body);
-        System.out.println("doGetAddress.result=" + _doGetAddress__return);
-
-      } catch (Fault e) {
-        System.out.println("Expected exception: Fault has occurred.");
-        System.out.println(e);
-      }
+      Address _doGetAddress__return = port.doGetAddress(_doGetAddress_body);
+      System.out.println("doGetAddress.result=" + _doGetAddress__return);
     }
     {
       System.out.println("Invoking doSearch...");
       com.qas.web_2005_02.QASearch _doSearch_body = null;
-      try {
-        com.qas.web_2005_02.QASearchResult _doSearch__return = port.doSearch(_doSearch_body);
-        System.out.println("doSearch.result=" + _doSearch__return);
-
-      } catch (Fault e) {
-        System.out.println("Expected exception: Fault has occurred.");
-        System.out.println(e);
-      }
+      QASearchResult _doSearch__return = port.doSearch(_doSearch_body);
+      System.out.println("doSearch.result=" + _doSearch__return);
     }
     {
       System.out.println("Invoking doCanSearch...");
       com.qas.web_2005_02.QACanSearch _doCanSearch_body = null;
-      try {
-        com.qas.web_2005_02.QASearchOk _doCanSearch__return = port.doCanSearch(_doCanSearch_body);
-        System.out.println("doCanSearch.result=" + _doCanSearch__return);
-
-      } catch (Fault e) {
-        System.out.println("Expected exception: Fault has occurred.");
-        System.out.println(e);
-      }
+      QASearchOk _doCanSearch__return = port.doCanSearch(_doCanSearch_body);
+      System.out.println("doCanSearch.result=" + _doCanSearch__return);
     }
     {
       System.out.println("Invoking doGetLayouts...");
       com.qas.web_2005_02.QAGetLayouts _doGetLayouts_body = null;
-      try {
-        com.qas.web_2005_02.QALayouts _doGetLayouts__return = port.doGetLayouts(_doGetLayouts_body);
-        System.out.println("doGetLayouts.result=" + _doGetLayouts__return);
-
-      } catch (Fault e) {
-        System.out.println("Expected exception: Fault has occurred.");
-        System.out.println(e);
-      }
+      QALayouts _doGetLayouts__return = port.doGetLayouts(_doGetLayouts_body);
+      System.out.println("doGetLayouts.result=" + _doGetLayouts__return);
     }
     {
       System.out.println("Invoking doGetPromptSet...");
       com.qas.web_2005_02.QAGetPromptSet _doGetPromptSet_body = null;
-      try {
-        com.qas.web_2005_02.QAPromptSet _doGetPromptSet__return =
-            port.doGetPromptSet(_doGetPromptSet_body);
-        System.out.println("doGetPromptSet.result=" + _doGetPromptSet__return);
-
-      } catch (Fault e) {
-        System.out.println("Expected exception: Fault has occurred.");
-        System.out.println(e);
-      }
+      QAPromptSet _doGetPromptSet__return = port.doGetPromptSet(_doGetPromptSet_body);
+      System.out.println("doGetPromptSet.result=" + _doGetPromptSet__return);
     }
     {
       System.out.println("Invoking doGetSystemInfo...");
-      try {
-        com.qas.web_2005_02.QASystemInfo _doGetSystemInfo__return = port.doGetSystemInfo();
-        System.out.println("doGetSystemInfo.result=" + _doGetSystemInfo__return);
-
-      } catch (Fault e) {
-        System.out.println("Expected exception: Fault has occurred.");
-        System.out.println(e);
-      }
+      QASystemInfo _doGetSystemInfo__return = port.doGetSystemInfo();
+      System.out.println("doGetSystemInfo.result=" + _doGetSystemInfo__return);
     }
 
     System.exit(0);
