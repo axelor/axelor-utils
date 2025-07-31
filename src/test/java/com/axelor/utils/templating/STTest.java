@@ -24,6 +24,7 @@ import com.axelor.utils.template.TemplateMaker;
 import com.google.common.collect.Maps;
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Locale;
 import java.util.Map;
@@ -33,32 +34,36 @@ import org.junit.jupiter.api.Test;
 
 class STTest extends BaseTest {
 
+  private static final String DATE_FORMAT_PATTERN = "dd/MM/yyyy";
+  private static final String TIME_FORMAT_PATTERN = "HH";
+
   public Contact contact;
   public String contentFinal;
   public final Map<String, Object> map = Maps.newHashMap();
   public final String content =
-      ""
-          + "<h1>About Me ($contact.lastName;format=\"upper\"$)</h1>"
-          + "<hr />"
-          + "<p><strong>PayeurQuality:</strong> $contact.payeurQuality;format=\"%,2.3f\"$</p>"
-          + "<p><strong>Title: $contact.title$</p>"
-          + "<p><strong>First Name:</strong> $contact.firstName$</p>"
-          + "<p><strong>Last Name:</strong> $contact.lastName;format=\"upper\"$</p>"
-          + "<p><strong>DateOfBirth:</strong> $contact.dateOfBirth;format=\"dd/MM/yyyy\"$</p>"
-          + "<p>&nbsp;</p>"
-          + "<p><em>Contact me:</em>&nbsp;<a href='mailto:$contact.email$' target='_blank'>$contact.fullName$</a></p>"
-          + "<hr />$__time__;format=\"HH\"$"
-          + "<ul>$__date__$"
-          + "<li>Java</li>"
-          + "<li>JavaScript</li>"
-          + "<li>Groovy</li>"
-          + "<li>HTML5</li>"
-          + "</ul>"
-          + "<pre>public class Hello {<br /><br />"
-          + "private String testKey1 = $testKey1$<br />"
-          + "private String testKey2 = $testKey2$<br />"
-          + "private String testKey3 = $testKey3$<br />"
-          + "}</pre>";
+      """
+    <h1>About Me ($contact.lastName;format="upper"$)</h1>
+    <hr />
+    <p><strong>PayeurQuality:</strong> $contact.payeurQuality;format="%,2.3f"$</p>
+    <p><strong>Title:</strong> $contact.title$</p>
+    <p><strong>First Name:</strong> $contact.firstName$</p>
+    <p><strong>Last Name:</strong> $contact.lastName;format="upper"$</p>
+    <p><strong>DateOfBirth:</strong> $contact.dateOfBirth;format="dd/MM/yyyy"$</p>
+    <p>&nbsp;</p>
+    <p><em>Contact me:</em>&nbsp;<a href='mailto:$contact.email$' target='_blank'>$contact.fullName$</a></p>
+    <hr />$__time__;format="HH"$
+    <ul>$__date__$
+    <li>Java</li>
+    <li>JavaScript</li>
+    <li>Groovy</li>
+    <li>HTML5</li>
+    </ul>
+    <pre>public class Hello {<br />
+      private String testKey1 = $testKey1$<br />
+      private String testKey2 = $testKey2$<br />
+      private String testKey3 = $testKey3$<br />
+    }</pre>
+    """;
 
   @BeforeEach
   void prepareTest() {
@@ -76,49 +81,45 @@ class STTest extends BaseTest {
     map.put("testKey2", "This is the key 2");
     map.put("testKey3", "This is the key 3");
 
+    final String HTML_TEMPLATE =
+        """
+      <h1>About Me (JOHN)</h1>
+      <hr />
+      <p><strong>PayeurQuality:</strong> 2,257</p>
+      <p><strong>Title:</strong> %s</p>
+      <p><strong>First Name:</strong> %s</p>
+      <p><strong>Last Name:</strong> %s</p>
+      <p><strong>DateOfBirth:</strong> %s</p>
+      <p>&nbsp;</p>
+      <p><em>Contact me:</em>&nbsp;<a href='mailto:%s' target='_blank'>%s</a></p>
+      <hr />%s
+      <ul>%s
+      <li>Java</li>
+      <li>JavaScript</li>
+      <li>Groovy</li>
+      <li>HTML5</li>
+      </ul>
+      <pre>public class Hello {<br />
+        private String testKey1 = %s<br />
+        private String testKey2 = %s<br />
+        private String testKey3 = %s<br />
+      }</pre>
+      """;
+
     contentFinal =
-        ""
-            + "<h1>About Me (JOHN)</h1>"
-            + "<hr />"
-            + "<p><strong>PayeurQuality:</strong> 2,257</p>"
-            + "<p><strong>Title: "
-            + title
-            + "</p>"
-            + "<p><strong>First Name:</strong> "
-            + contact.getFirstName()
-            + "</p>"
-            + "<p><strong>Last Name:</strong> "
-            + contact.getLastName().toUpperCase()
-            + "</p>"
-            + "<p><strong>DateOfBirth:</strong> "
-            + contact.getDateOfBirth().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"))
-            + "</p>"
-            + "<p>&nbsp;</p>"
-            + "<p><em>Contact me:</em>&nbsp;<a href='mailto:"
-            + contact.getEmail()
-            + "' target='_blank'>"
-            + contact.getFullName()
-            + "</a></p>"
-            + "<hr />"
-            + java.time.LocalTime.now().format(DateTimeFormatter.ofPattern("HH"))
-            + "<ul>"
-            + LocalDate.now()
-            + "<li>Java</li>"
-            + "<li>JavaScript</li>"
-            + "<li>Groovy</li>"
-            + "<li>HTML5</li>"
-            + "</ul>"
-            + "<pre>public class Hello {<br /><br />"
-            + "private String testKey1 = "
-            + map.get("testKey1")
-            + "<br />"
-            + "private String testKey2 = "
-            + map.get("testKey2")
-            + "<br />"
-            + "private String testKey3 = "
-            + map.get("testKey3")
-            + "<br />"
-            + "}</pre>";
+        String.format(
+            HTML_TEMPLATE,
+            title,
+            contact.getFirstName(),
+            contact.getLastName().toUpperCase(),
+            contact.getDateOfBirth().format(DateTimeFormatter.ofPattern(DATE_FORMAT_PATTERN)),
+            contact.getEmail(),
+            contact.getFullName(),
+            LocalTime.now().format(DateTimeFormatter.ofPattern(TIME_FORMAT_PATTERN)),
+            LocalDate.now(),
+            map.get("testKey1"),
+            map.get("testKey2"),
+            map.get("testKey3"));
   }
 
   @Test
