@@ -21,6 +21,7 @@ package com.qas.web_2005_02;
 import com.axelor.utils.helpers.ExceptionHelper;
 import java.io.File;
 import java.net.MalformedURLException;
+import java.net.URI;
 import java.net.URL;
 import javax.xml.namespace.QName;
 
@@ -42,7 +43,7 @@ public final class QAPortType_QAPortType_Client {
         if (wsdlFile.exists()) {
           wsdlURL = wsdlFile.toURI().toURL();
         } else {
-          wsdlURL = new URL(args[0]);
+          wsdlURL = new URI(args[0]).toURL();
         }
       } catch (MalformedURLException e) {
         ExceptionHelper.error(e);

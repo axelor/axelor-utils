@@ -22,6 +22,8 @@ import jakarta.xml.ws.WebEndpoint;
 import jakarta.xml.ws.WebServiceClient;
 import jakarta.xml.ws.WebServiceFeature;
 import java.net.MalformedURLException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.URL;
 import javax.xml.namespace.QName;
 
@@ -43,8 +45,8 @@ public class ProWeb extends Service {
   static {
     URL url = null;
     try {
-      url = new URL("http://ip.axelor.com:2021/proweb.wsdl");
-    } catch (MalformedURLException e) {
+      url = new URI("http://ip.axelor.com:2021/proweb.wsdl").toURL();
+    } catch (MalformedURLException | URISyntaxException e) {
       java.util.logging.Logger.getLogger(ProWeb.class.getName())
           .log(
               java.util.logging.Level.INFO,

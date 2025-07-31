@@ -29,6 +29,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.lang.invoke.MethodHandles;
+import java.net.MalformedURLException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.net.URLConnection;
 import org.slf4j.Logger;
@@ -53,14 +56,14 @@ public final class UrlHelper {
     }
 
     try {
-      URL fileURL = new URL(url);
+      URL fileURL = new URI(url).toURL();
       fileURL.openConnection().connect();
       return null;
-    } catch (java.net.MalformedURLException ex) {
-      ExceptionHelper.error(ex);
+    } catch (URISyntaxException | MalformedURLException e) {
+      ExceptionHelper.error(e);
       return String.format(I18n.get(UtilsExceptionMessage.URL_SERVICE_2), url);
-    } catch (java.io.IOException ex) {
-      ExceptionHelper.error(ex);
+    } catch (IOException e) {
+      ExceptionHelper.error(e);
       return String.format(I18n.get(UtilsExceptionMessage.URL_SERVICE_3), url);
     }
   }
@@ -72,7 +75,7 @@ public final class UrlHelper {
       int byteRead;
       int byteWritten = 0;
       byte[] buf = new byte[SIZE];
-      URL url = new URL(fAddress);
+      URL url = new URI(fAddress).toURL();
       URLConnection urlConnection = url.openConnection();
       InputStream inputStream = urlConnection.getInputStream();
 
@@ -84,7 +87,7 @@ public final class UrlHelper {
       LOG.info("Downloaded Successfully.");
       LOG.debug("No of bytes {}", byteWritten);
 
-    } catch (IOException ex) {
+    } catch (URISyntaxException | IOException ex) {
       ExceptionHelper.error(ex);
     }
   }
