@@ -15,7 +15,7 @@
  * You should have received a copy of the GNU Affero General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.qas.test;
+package com.qas.test
 
 import static org.junit.Assert.*
 
@@ -66,8 +66,8 @@ class Client {
 		def wsdlURL = new URI("http://ip.axelor.com:2021/proweb.wsdl").toURL()
 		println wsdlURL
 
-		Service service = Service.create(wsdlURL, SERVICE_NAME);
-		QAPortType client = service.getPort(QAPortType.class);
+		Service service = Service.create(wsdlURL, SERVICE_NAME)
+		QAPortType client = service.getPort(QAPortType.class)
 		//QAPortType client = service.getPort(PORT_NAME, QAPortType.class)
 		println client.dump()
 
