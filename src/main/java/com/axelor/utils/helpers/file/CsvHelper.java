@@ -31,7 +31,7 @@ public final class CsvHelper {
             .setDelimiter(separator)
             .setHeader()
             .setSkipHeaderRecord(true)
-            .build();
+            .get();
     var records = format.parse(new FileReader(fileName));
     return records.getRecords();
   }
@@ -49,7 +49,7 @@ public final class CsvHelper {
       throws IOException {
     return new CSVPrinter(
         new FileWriter(filePath + File.separator + fileName),
-        CSVFormat.Builder.create().setDelimiter(separator).setQuote(null).build());
+        CSVFormat.Builder.create().setDelimiter(separator).setQuote(null).get());
   }
 
   public static CSVPrinter setCsvFile(
@@ -57,7 +57,7 @@ public final class CsvHelper {
       throws IOException {
     return new CSVPrinter(
         new FileWriter(filePath + File.separator + fileName),
-        CSVFormat.Builder.create().setDelimiter(separator).setQuote(quoteChar).build());
+        CSVFormat.Builder.create().setDelimiter(separator).setQuote(quoteChar).get());
   }
 
   public static void csvWriter(
