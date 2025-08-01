@@ -31,17 +31,6 @@ public class ExceptionHelper {
   }
 
   /**
-   * Deprecated in favor of {@link #error(ActionResponse, Throwable)}.
-   *
-   * @param response the ActionResponse to send the error message to.
-   * @param e the Throwable to log.
-   */
-  @Deprecated
-  public static void trace(@Nonnull ActionResponse response, @Nonnull Throwable e) {
-    error(response, e);
-  }
-
-  /**
    * Traces an exception corresponding to a bug in the logs and displays the exception message on
    * the screen via a popup.
    *
@@ -51,17 +40,6 @@ public class ExceptionHelper {
   public static void error(@Nonnull ActionResponse response, @Nonnull Throwable e) {
     log.error(e.getMessage(), e);
     response.setError(e.getMessage());
-  }
-
-  /**
-   * Deprecated in favor of {@link #error(ActionResponse, String)}.
-   *
-   * @param response the ActionResponse to send the error message to.
-   * @param message the message to display.
-   */
-  @Deprecated
-  public static void trace(@Nonnull ActionResponse response, @Nonnull String message) {
-    error(response, message);
   }
 
   /**
@@ -75,17 +53,6 @@ public class ExceptionHelper {
   }
 
   /**
-   * Deprecated in favor of {@link #error(String, Throwable)}.
-   *
-   * @param message the message to log.
-   * @param e the Throwable to log.
-   */
-  @Deprecated
-  public static void trace(@Nonnull String message, @Nonnull Throwable e) {
-    error(message, e);
-  }
-
-  /**
    * Traces an exception with a specific message in the logs.
    *
    * @param message the message to log.
@@ -93,16 +60,6 @@ public class ExceptionHelper {
    */
   public static void error(@Nonnull String message, @Nonnull Throwable e) {
     log.error(message, e);
-  }
-
-  /**
-   * Deprecated in favor of {@link #error(Throwable)}.
-   *
-   * @param e the Throwable to log.
-   */
-  @Deprecated
-  public static void trace(@Nonnull Throwable e) {
-    error(e);
   }
 
   /**

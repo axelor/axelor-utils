@@ -14,11 +14,14 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
-public class ActionViewHelper {
+public abstract class ActionViewHelper {
+
+  private ActionViewHelper() {
+    throw new IllegalStateException("Utility class");
+  }
 
   /**
-   * Utility method to fetch the given field value of the given meta view in database using a fine
-   * criteria query.
+   * Fetch the given field value of the given meta view in the database using a fine criteria query.
    *
    * @param name The name of the view
    * @param selectFieldClass The class of the field to fetch
@@ -41,10 +44,10 @@ public class ActionViewHelper {
   }
 
   /**
-   * Utility method to build an ActionViewBuilder with minimal input information.
+   * Build an ActionViewBuilder with minimal input information.
    *
    * @param klass The class of the action view model
-   * @param domain The domain of the action view if any
+   * @param domain The domain of the action view, if any
    * @param views All views to add into the builder
    * @return The built ActionViewBuilder ready to be completed
    */

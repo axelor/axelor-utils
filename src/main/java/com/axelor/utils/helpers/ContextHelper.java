@@ -20,14 +20,18 @@ package com.axelor.utils.helpers;
 import com.axelor.rpc.Context;
 import com.axelor.utils.exception.UtilsExceptionMessage;
 
-public final class ContextHelper {
+public abstract class ContextHelper {
 
   public static String SPAN_CLASS_WARNING = "label-warning";
   public static String SPAN_CLASS_IMPORTANT = "label-important";
 
+  private ContextHelper() {
+    throw new IllegalStateException("Utility class");
+  }
+
   /**
-   * Function that split a message that we want display in a label to avoid to exceed the panel and
-   * create a popup size issue
+   * Split a message we want to display in a label to avoid exceeding the panel and creating a popup
+   * size issue.
    *
    * @param message The message to format
    * @param spanClass The span class (label-warning, label-important...)
@@ -36,20 +40,17 @@ public final class ContextHelper {
    */
   public static String formatLabel(String message, String spanClass, int length) {
     if (message.length() > 80) {
-      String formattedMessage =
-          String.format(
-              "<span class='label %s'>%s</span>", spanClass, message.substring(0, length));
-      formattedMessage +=
-          String.format(
+      return String.format(
+              "<span class='label %s'>%s</span>", spanClass, message.substring(0, length))
+          + String.format(
               "<br/><span class='label %s'>%s</span>", spanClass, message.substring(length));
-      return formattedMessage;
     } else {
       return String.format("<span class='label %s'>%s</span>", spanClass, message);
     }
   }
 
   /**
-   * Function that returns the object instance corresponding to a certain depth of parent contexts
+   * Return the object instance corresponding to a certain depth of parent contexts.
    *
    * @param context The context from which to get the parent
    * @param klass The class of the desired parent
@@ -72,8 +73,7 @@ public final class ContextHelper {
   }
 
   /**
-   * Function that returns the object instance of the desired field from the context or all its
-   * parents
+   * Return the object instance of the desired field from the context or all its parents.
    *
    * @param context The context
    * @param fieldName The field name in the context
@@ -93,7 +93,7 @@ public final class ContextHelper {
   }
 
   /**
-   * Function that returns the very first parent of the current context
+   * Return the very first parent of the current context.
    *
    * @param context The context
    * @param parentClass The class of the desired parent
