@@ -27,7 +27,7 @@ spotless {
       exclude '**/build/**'
       exclude '**/javadoc/**'
     }
-    indentWithSpaces(2)
+    leadingTabsToSpaces(2)
     trimTrailingWhitespace()
     endWithNewline()
   }
@@ -39,7 +39,7 @@ spotless {
       exclude '**/build/**'
       exclude '**/javadoc/**'
     }
-    indentWithSpaces(2)
+    leadingTabsToSpaces(2)
     endWithNewline()
   }
 
