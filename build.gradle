@@ -46,12 +46,10 @@ dependencies {
     implementation 'com.sun.xml.bind:jaxb-impl:4.0.5'
     implementation 'org.apache.commons:commons-csv:1.14.1'
 
-    implementation 'jakarta.jws:jakarta.jws-api:3.0.0'
     implementation 'org.reflections:reflections:0.10.2'
     implementation 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.19.2'
 
     implementation "com.axelor:axelor-test:${aopVersion}"
-
 
     compileOnly 'org.projectlombok:lombok:1.18.38'
     annotationProcessor 'org.projectlombok:lombok:1.18.38'
