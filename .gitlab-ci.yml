@@ -1,4 +1,3 @@
-# Stages (ie phases) that can be used by jobs
 stages:
   - build
   - test
@@ -13,7 +12,7 @@ variables:
 before_script:
   - export GRADLE_USER_HOME=`pwd`/.gradle
 
-# Add wrapper and caches folders in cache
+# Add wrapper and caches folders in the cache
 .global_cache: &global_cache
   paths:
     - .gradle
