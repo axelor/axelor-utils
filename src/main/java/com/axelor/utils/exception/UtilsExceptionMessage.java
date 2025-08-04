@@ -85,7 +85,7 @@ public interface UtilsExceptionMessage {
   String PROCESS_BEING_COMPUTED = /*$$(*/ "Computation in progress..." /*)*/;
 
   String API_DISABLED = /*$$(*/
-      "AOS API calls are disabled, please contact your administrator. The property utils.api.enable is false in application.properties." /*)*/;
+      "AOS API calls are disabled, please contact your administrator." /*)*/;
 
   String ORIGIN_FETCHER_TOO_MANY_ITERATIONS = /*$$(*/
       "The process was stopped because the computation might be stuck in an infinite loop." /*)*/;
