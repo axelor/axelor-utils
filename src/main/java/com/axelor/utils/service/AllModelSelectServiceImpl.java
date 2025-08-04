@@ -20,9 +20,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * Utility for managing and creating a selection of all metaModels in the system. It handles the
- * creation and updating of a MetaSelect instance named "all.model.reference.select", where the
- * items are the MetaModels present in the system.
+ * Utility for managing and creating a selection of all the metamodels in the system. It handles the
+ * creation and updating of a {@link MetaSelect} instance named <code>all.model.reference.select
+ * </code>, where the items are the {@link MetaModel} records present in the system.
  */
 public class AllModelSelectServiceImpl implements AllModelSelectService {
   public static final String ALL_MODEL_SELECT = "all.model.reference.select";
@@ -38,7 +38,7 @@ public class AllModelSelectServiceImpl implements AllModelSelectService {
   }
 
   /**
-   * Creates or updates the selection of all models when a StartupEvent is observed.
+   * Creates or updates the selection of all models when a {@link StartupEvent} is observed.
    *
    * @param event the startup event
    */
@@ -59,10 +59,10 @@ public class AllModelSelectServiceImpl implements AllModelSelectService {
   }
 
   /**
-   * Updates the items in the specified MetaSelect by adding models that are not currently included
-   * and removing items that are no longer present in the models.
+   * Updates the items in the specified {@link MetaSelect} by adding models that are not currently
+   * included and removing items that are no longer present in the models.
    *
-   * @param allModelSelect the MetaSelect to be updated
+   * @param allModelSelect the {@link MetaSelect} to be updated
    */
   private void updateMetaSelectItems(MetaSelect allModelSelect) {
 
@@ -79,11 +79,11 @@ public class AllModelSelectServiceImpl implements AllModelSelectService {
   }
 
   /**
-   * Finds MetaModel instances that are present in the system and not included in the specified
-   * MetaSelect instance.
+   * Finds {@link MetaModel} instances that are present in the system and not included in the
+   * specified {@link MetaSelect} instance.
    *
-   * @param allModelSelect the MetaSelect to be checked
-   * @return a list of MetaModel instances not in the MetaSelect
+   * @param allModelSelect the {@link MetaSelect} to be checked
+   * @return a list of {@link MetaModel} instances not in the {@link MetaSelect}
    */
   private List<MetaModel> findModelsNotInSelect(MetaSelect allModelSelect) {
     EntityManager em = JPA.em();
@@ -106,11 +106,11 @@ public class AllModelSelectServiceImpl implements AllModelSelectService {
   }
 
   /**
-   * Finds MetaSelectItem instances that are not associated with any MetaModel instances in the
-   * specified MetaSelect.
+   * Finds {@link MetaSelectItem} instances that are not associated with any {@link MetaModel}
+   * instances in the specified {@link MetaSelect}.
    *
-   * @param allModelSelect the MetaSelect to be checked
-   * @return a list of MetaSelectItem instances not associated with any MetaModel
+   * @param allModelSelect the {@link MetaSelect} to be checked
+   * @return a list of {@link MetaSelectItem} instances not associated with any {@link MetaModel}
    */
   private List<MetaSelectItem> findItemsNotInMetaModel(MetaSelect allModelSelect) {
 
@@ -124,18 +124,18 @@ public class AllModelSelectServiceImpl implements AllModelSelectService {
 
     cq.select(metaSelectItem)
         .where(
-            cb.equal(metaSelectItem.get("select"), allModelSelect.getId()),
+            cb.equal(metaSelectItem.get("select").get("id"), allModelSelect.getId()),
             cb.not(metaSelectItem.get("value").in(subquery)));
 
     return JPA.em().createQuery(cq).getResultList();
   }
 
   /**
-   * Creates MetaSelectItem instances from a list of MetaModel and adds them to the specified
-   * MetaSelect.
+   * Creates {@link MetaSelectItem} instances from a list of {@link MetaModel} and adds them to the
+   * specified {@link MetaSelect}.
    *
-   * @param metaModelList the list of MetaModel to create items from
-   * @param metaSelect the MetaSelect to add the items to
+   * @param metaModelList the list of {@link MetaModel} to create items from
+   * @param metaSelect the {@link MetaSelect} to add the items to
    */
   private void createMetaSelectItemsFromModels(
       List<MetaModel> metaModelList, MetaSelect metaSelect) {
