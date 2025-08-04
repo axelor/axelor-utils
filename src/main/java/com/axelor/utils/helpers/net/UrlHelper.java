@@ -39,18 +39,19 @@ import org.slf4j.LoggerFactory;
 
 public final class UrlHelper {
 
+  private UrlHelper() {}
+
   static final int SIZE = 1024;
 
   private static final Logger LOG = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
   /**
-   * Test the validity of an url.
+   * Test the validity of a URL.
    *
    * @param url the URL to test
    * @return null if the URL is valid, an error otherwise
    */
   public static String notExist(String url) {
-
     if (Strings.isNullOrEmpty(url)) {
       return I18n.get(UtilsExceptionMessage.URL_SERVICE_1);
     }
@@ -59,7 +60,7 @@ public final class UrlHelper {
       URL fileURL = new URI(url).toURL();
       fileURL.openConnection().connect();
       return null;
-    } catch (URISyntaxException | MalformedURLException e) {
+    } catch (IllegalArgumentException | URISyntaxException | MalformedURLException e) {
       ExceptionHelper.error(e);
       return String.format(I18n.get(UtilsExceptionMessage.URL_SERVICE_2), url);
     } catch (IOException e) {
