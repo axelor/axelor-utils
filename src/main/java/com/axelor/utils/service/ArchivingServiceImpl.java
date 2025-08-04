@@ -140,11 +140,12 @@ public class ArchivingServiceImpl implements ArchivingService {
     Query findModelWithobjectFieldQuery =
         JPA.em()
             .createNativeQuery(
-                "SELECT view.title as viewTitle"
-                    + " FROM meta_view view"
-                    + " WHERE view.name like :viewtName");
+                """
+                SELECT view.title as viewTitle
+                FROM meta_view view
+                WHERE view.name like :viewName""");
     findModelWithobjectFieldQuery.setParameter(
-        "viewtName", modelName.replaceAll("([a-z])([A-Z])", "$1-$2").toLowerCase() + "-form");
+        "viewName", modelName.replaceAll("([a-z])([A-Z])", "$1-$2").toLowerCase() + "-form");
     List<String> modelNameList = findModelWithobjectFieldQuery.getResultList();
     return !ObjectUtils.isEmpty(modelNameList) ? modelNameList.getFirst() : modelName;
   }
