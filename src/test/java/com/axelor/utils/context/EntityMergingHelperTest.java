@@ -43,7 +43,7 @@ class EntityMergingHelperTest extends BaseTest {
   }
 
   @BeforeEach
-  public void beforeEach() {
+  void beforeEach() {
     loaderHelper.importCsv("data/groups-input.xml");
     loaderHelper.importCsv("data/users-input.xml");
     loaderHelper.importCsv("data/move-references-input.xml");
@@ -65,7 +65,7 @@ class EntityMergingHelperTest extends BaseTest {
 
   @AfterEach
   @Transactional
-  public void afterEach() {
+  void afterEach() {
     Query.of(MoveLine.class).delete();
     Query.of(Move.class).delete();
     Query.of(MoveReference.class).delete();
