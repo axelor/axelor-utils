@@ -22,8 +22,9 @@ import com.axelor.i18n.I18n;
 public interface UtilsExceptionMessage {
 
   /**
-   * Used to factorize code &amp; increase readability by avoiding String.format(I18n.get(...), ...,
-   * ...) calls.
+   * Used to factorize code and increase readability by avoiding <code>
+   * String.format(I18n.get(...), ...,
+   * ...)</code> calls.
    *
    * @param keyMessage the key of the message in the i18n file
    * @param args the arguments to replace in the message
@@ -53,15 +54,12 @@ public interface UtilsExceptionMessage {
   String GIVEN_COUPLE_S_S_MATCH_A_VALUE_WHICH_IS_NOT_AN_INTEGER = /*$$(*/
       "Given couple %s / %s match a value which is not an integer." /*)*/;
 
-  /** Period service */
-  String PERIOD_1 = /*$$(*/ "Years in 360 days" /*)*/;
-
   /** URL service */
   String URL_SERVICE_1 = /*$$(*/ "Can not opening the connection to a empty URL." /*)*/;
 
   String URL_SERVICE_2 = /*$$(*/ "Url %s is malformed." /*)*/;
   String URL_SERVICE_3 = /*$$(*/
-      "An error occurs while opening the connection. Please verify the following URL : %s." /*)*/;
+      "An error occurs while opening the connection. Please verify the following URL: %s." /*)*/;
 
   /** Template maker */
   String TEMPLATE_MAKER_1 = /*$$(*/ "No such template" /*)*/;

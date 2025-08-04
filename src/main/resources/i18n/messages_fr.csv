@@ -1,6 +1,6 @@
 "key","message","comment","context"
 "AOS API calls are disabled, please contact your administrator.","Les appels API AOS sont désactivés, veuillez contacter votre administrateur.",,
-"An error occurs while opening the connection. Please verify the following URL : %s.","Une erreur est survenue pendant la connexion. Veuillez verifier l'URL suivant: %s.",,
+"An error occurs while opening the connection. Please verify the following URL: %s.","Une erreur est survenue pendant la connexion. Veuillez vérifier l'URL suivante : %s.",,
 "Can not opening the connection to a empty URL.","Impossible d'établir la connexion avec un URL vide.",,
 "Cannot find record #%s","Impossible de trouver l’enregistrement #%s",,
 "Code",,,
@@ -33,6 +33,5 @@
 "Unknown selection and value pair: '%s' / '%s'.","Paire de sélection et valeur inconnue : « %s » / « %s ».",,
 "Unknown selection: '%s'.","Sélection inconnue : « %s »",,
 "Url %s is malformed.","Le format de l’url %s est incorrect.",,
-"Years in 360 days","L'année en 360 jours",,
 "has been correctly created with the id :","a été corretement créé avec l'id :",,
 "has been created","a bien été créé",,
