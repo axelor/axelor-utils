@@ -32,7 +32,7 @@ class ResponseMessageComputeServiceTest extends BaseTest {
     Invoice invoice = new Invoice();
     invoice.setId(1L);
     Assertions.assertEquals(
-        "The object Invoice has been correctly created with the id : 1",
+        "The object Invoice has been correctly created with the id: 1",
         responseMessageComputeService.computeCreateMessage(invoice));
   }
 }

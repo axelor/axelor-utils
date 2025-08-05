@@ -34,7 +34,7 @@ public class ResponseMessageComputeServiceImpl implements ResponseMessageCompute
 
   private void computeWithId(Model model, StringBuilder result, Mapper mapper) {
     result.append(" ");
-    result.append(I18n.get("has been correctly created with the id :"));
+    result.append(I18n.get("has been correctly created with the id:"));
     result.append(" ");
     result.append(mapper.get(model, "id"));
   }

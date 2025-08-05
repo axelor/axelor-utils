@@ -89,9 +89,9 @@ public interface UtilsExceptionMessage {
       "The process was stopped because the computation might be stuck in an infinite loop." /*)*/;
 
   String MISSING_REQUIRED_FIELDS = /*$$(*/
-      "The following required fields are missing on %s (%s) :" /*)*/;
+      "The following required fields are missing on %s (%s):" /*)*/;
 
-  String EXISTING_REFERENCES = /*$$(*/ "The following references exist for %s (%s) :" /*)*/;
+  String EXISTING_REFERENCES = /*$$(*/ "The following references exist for %s (%s):" /*)*/;
 
   String RESPONSE_SUCCESS = /*$$(*/ "Request successfully completed" /*)*/;
 
