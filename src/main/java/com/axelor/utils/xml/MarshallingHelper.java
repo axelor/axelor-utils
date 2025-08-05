@@ -25,7 +25,7 @@ import jakarta.xml.bind.Unmarshaller;
 import java.io.File;
 import java.io.StringReader;
 import java.io.StringWriter;
-import org.glassfish.jaxb.runtime.marshaller.NamespacePrefixMapper;
+import org.eclipse.persistence.internal.oxm.NamespacePrefixMapper;
 
 public final class MarshallingHelper {
 
