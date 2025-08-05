@@ -11,7 +11,6 @@ import com.axelor.utils.junit.BaseTest;
 import com.google.inject.Inject;
 import com.google.inject.persist.Transactional;
 import java.util.Optional;
-import java.util.stream.Collectors;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -95,13 +94,12 @@ class CriteriaHelperTest extends BaseTest {
             .select((db, root) -> root.get("code"))
             .build()
             .getResultList();
-    assertEquals(users.stream().map(User::getCode).collect(Collectors.toList()), userCodes);
+    assertEquals(users.stream().map(User::getCode).toList(), userCodes);
   }
 
   @Test
   void builder_buildWithoutSelection() {
-    assertThrows(
-        IllegalStateException.class,
-        () -> CriteriaHelper.builder(User.class, String.class).build());
+    CriteriaHelper.Builder<User, String> builder = CriteriaHelper.builder(User.class, String.class);
+    assertThrows(IllegalStateException.class, builder::build);
   }
 }
