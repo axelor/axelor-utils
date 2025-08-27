@@ -17,7 +17,6 @@
  */
 package com.axelor.utils.rest;
 
-import com.axelor.common.StringUtils;
 import com.axelor.meta.db.MetaAction;
 import com.axelor.meta.db.MetaMenu;
 import com.axelor.meta.db.MetaModel;
@@ -33,6 +32,7 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
 import java.util.stream.Collectors;
+import org.apache.commons.collections.CollectionUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -51,12 +51,12 @@ public class UtilsMenuRestServiceImpl implements UtilsMenuRestService {
   }
 
   @Override
-  public Set<MetaMenu> getAllParentMenus(String menuNames) {
-    if (StringUtils.isBlank(menuNames)) {
+  public Set<MetaMenu> getAllParentMenus(Set<String> menus) {
+    if (CollectionUtils.isEmpty(menus)) {
       return Collections.emptySet();
     }
 
-    return getAllParentsRecursive(split(menuNames));
+    return getAllParentsRecursive(menus);
   }
 
   protected Set<MetaMenu> getAllParentsRecursive(Set<String> menuNames) {
@@ -88,21 +88,21 @@ public class UtilsMenuRestServiceImpl implements UtilsMenuRestService {
   }
 
   @Override
-  public Set<MetaMenu> getAllChildMenus(String menuNames) {
-    if (StringUtils.isBlank(menuNames)) {
+  public Set<MetaMenu> getAllChildMenus(Set<String> menus) {
+    if (CollectionUtils.isEmpty(menus)) {
       return Collections.emptySet();
     }
 
-    return getAllChildrenRecursive(split(menuNames));
+    return getAllChildrenRecursive(menus);
   }
 
   @Override
-  public Map<String, Object> getRelatedMetaModel(String menuNames) {
-    if (StringUtils.isBlank(menuNames)) {
+  public Map<String, Object> getRelatedMetaModel(Set<String> menus) {
+    if (CollectionUtils.isEmpty(menus)) {
       return Collections.emptyMap();
     }
 
-    return split(menuNames).stream()
+    return menus.stream()
         .map(menuName -> Map.entry(menuName, getRelatedModel(menuName)))
         .filter(entry -> !entry.getValue().isEmpty())
         .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
@@ -167,13 +167,5 @@ public class UtilsMenuRestServiceImpl implements UtilsMenuRestService {
     utilsRestService.addReferences(model, indirectReferences, "MANY_TO_ONE", "MANY_TO_MANY");
     menuMap.put("indirectReferences", indirectReferences);
     return menuMap;
-  }
-
-  protected Set<String> split(String menuNames) {
-    if (menuNames == null || menuNames.trim().isEmpty()) {
-      return Collections.emptySet();
-    }
-
-    return Set.of(menuNames.split(","));
   }
 }

@@ -101,4 +101,6 @@ public interface UtilsExceptionMessage {
   String RESPONSE_SUCCESS = /*$$(*/ "Request successfully completed" /*)*/;
 
   String OBJECT_ALREADY_UPDATED = /*$$(*/ "Object provided has been updated by another user" /*)*/;
+
+  String NO_MENU_PROVIDED = /*$$(*/ "No menu name has been provided in the payload!" /*)*/;
 }
