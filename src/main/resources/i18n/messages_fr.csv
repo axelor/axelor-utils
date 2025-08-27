@@ -11,6 +11,7 @@
 "Given couple %s / %s match a value which is not an integer.","La paire %s / %s ne correspond pas à une sélection de type entiers.",,
 "Meta json field type %s could not be converted to a meta field type.","Le type de champ personnalisé %s n'a pas pu être converti vers un type de champ.",,
 "Name",,,
+"No menu name has been provided in the payload!","Aucun nom de menu n'a été fourni dans la requėte!",,
 "No such template","Modèle non trouvé",,
 "No title found for the view '%s'.","Aucun titre trouvé pour la vue « %s ».",,
 "Null given value.","Valeur nulle.",,
