@@ -26,24 +26,24 @@ public interface UtilsMenuRestService {
   /**
    * Gets all parent menus for the given menu names.
    *
-   * @param menuNames comma-separated list of menu names
+   * @param menus: set of menu names
    * @return a set of parent MetaMenu objects
    */
-  Set<MetaMenu> getAllParentMenus(String menuNames);
+  Set<MetaMenu> getAllParentMenus(Set<String> menus);
 
   /**
    * Gets all child menus for the given menu names.
    *
-   * @param menuNames comma-separated list of menu names
+   * @param menus: set of menu names
    * @return a set of child MetaMenu objects
    */
-  Set<MetaMenu> getAllChildMenus(String menuNames);
+  Set<MetaMenu> getAllChildMenus(Set<String> menus);
 
   /**
-   * Gets related meta models for the given menu names.
+   * Gets related metamodels for the given menu names.
    *
-   * @param menuNames comma-separated list of menu names
-   * @return a map of menu names to their related meta model information
+   * @param menus comma-separated list of menu names
+   * @return a map of menu names to their related metamodel information
    */
-  Map<String, Object> getRelatedMetaModel(String menuNames);
+  Map<String, Object> getRelatedMetaModel(Set<String> menus);
 }
