@@ -68,8 +68,8 @@ public class UtilsRestServiceImpl implements UtilsRestService {
   }
 
   /**
-   * Adds references of the specified types to the provided list. This implementation
-   * only processes the first level of references without recursion.
+   * Adds references of the specified types to the provided list. This implementation only processes
+   * the first level of references without recursion.
    *
    * <p>Performance optimizations:
    *

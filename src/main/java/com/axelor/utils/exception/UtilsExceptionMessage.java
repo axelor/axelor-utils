@@ -93,12 +93,12 @@ public interface UtilsExceptionMessage {
   String ORIGIN_FETCHER_TOO_MANY_ITERATIONS = /*$$(*/
       "The process was stopped because the computation might be stuck in an infinite loop." /*)*/;
 
-  String MISSING_REQUIRED_FIELDS = /*$$(*/ "The following required fields are missing on %s (%s) :" /*)*/;
+  String MISSING_REQUIRED_FIELDS = /*$$(*/
+      "The following required fields are missing on %s (%s) :" /*)*/;
 
   String OBJECT_ALREADY_UPDATED = /*$$(*/ "Object provided has been updated by another user" /*)*/;
 
   String EXISTING_REFERENCES = /*$$(*/ "The following references exist for %s (%s) :" /*)*/;
 
   String RESPONSE_SUCCESS = /*$$(*/ "Request successfully completed" /*)*/;
-
 }
