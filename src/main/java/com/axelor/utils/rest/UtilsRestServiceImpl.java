@@ -27,7 +27,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -44,8 +43,6 @@ import org.slf4j.LoggerFactory;
  *
  * <ul>
  *   <li><b>Caching:</b> Uses ConcurrentHashMap to cache model lookups, reducing database queries
- *   <li><b>Recursive Optimization:</b> Uses ThreadLocal to track processed models and avoid
- *       infinite recursion
  *   <li><b>Batch Processing:</b> Fetches multiple models in a single query instead of individual
  *       lookups
  *   <li><b>Stream Improvements:</b> Optimized filter conditions and null checks for better
@@ -54,7 +51,7 @@ import org.slf4j.LoggerFactory;
  * </ul>
  *
  * <p>These optimizations significantly reduce database queries, lower memory usage, improve
- * response times, and enhance scalability, especially for complex model hierarchies.
+ * response times, and enhance scalability for model reference processing.
  */
 @Singleton
 public class UtilsRestServiceImpl implements UtilsRestService {
@@ -65,25 +62,20 @@ public class UtilsRestServiceImpl implements UtilsRestService {
   // Cache for model lookups to avoid repeated database queries
   protected final Map<String, MetaModel> modelCache = new ConcurrentHashMap<>();
 
-  // Cache for processed models to avoid redundant processing in recursive calls
-  protected final ThreadLocal<Set<String>> processedModels = ThreadLocal.withInitial(HashSet::new);
-
   @Inject
   public UtilsRestServiceImpl(MetaModelRepository metaModelRepository) {
     this.metaModelRepository = metaModelRepository;
   }
 
   /**
-   * Recursively adds references of the specified types to the provided list. This optimized
-   * implementation reduces database queries and prevents infinite recursion.
+   * Adds references of the specified types to the provided list. This implementation
+   * only processes the first level of references without recursion.
    *
    * <p>Performance optimizations:
    *
    * <ul>
-   *   <li>Uses ThreadLocal to track processed models and prevent redundant processing
    *   <li>Implements batch fetching of models instead of individual queries
    *   <li>Adds early returns for null inputs and empty results to avoid unnecessary processing
-   *   <li>Properly cleans up resources after processing to prevent memory leaks
    *   <li>Safely handles empty sets to prevent NoSuchElementException
    * </ul>
    *
@@ -99,13 +91,6 @@ public class UtilsRestServiceImpl implements UtilsRestService {
 
     try {
       String fullName = model.getFullName();
-
-      // Check if we've already processed this model to avoid infinite recursion
-      if (processedModels.get().contains(fullName)) {
-        return;
-      }
-
-      processedModels.get().add(fullName);
 
       Class<?> modelClass = Class.forName(fullName);
       Property[] properties = Mapper.of(modelClass).getProperties();
@@ -133,18 +118,8 @@ public class UtilsRestServiceImpl implements UtilsRestService {
 
       listOfRef.addAll(newModels);
 
-      for (MetaModel metaModel : newModels) {
-        addReferences(metaModel, listOfRef, types);
-      }
-
     } catch (ClassNotFoundException e) {
       logger.error("Failed to load class for model: {}", model.getFullName(), e);
-    } finally {
-      // Clean up the processed models set when we're done with the top-level call
-      Set<String> processed = processedModels.get();
-      if (processed != null && processed.size() == 1 && processed.contains(model.getFullName())) {
-        processed.clear();
-      }
     }
   }
 
