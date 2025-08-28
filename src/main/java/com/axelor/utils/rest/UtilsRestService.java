@@ -27,9 +27,9 @@ import java.util.List;
 public interface UtilsRestService {
 
   /**
-   * Recursively adds references of the specified types to the provided list. This method traverses
-   * the model's properties and adds any referenced models that match the specified relationship
-   * types.
+   * Adds references of the specified types to the provided list. This method traverses
+   * the model's properties and adds any directly referenced models that match the specified
+   * relationship types (first level only).
    *
    * @param model the MetaModel to find references for
    * @param listOfRef the list to add references to
