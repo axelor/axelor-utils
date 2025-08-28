@@ -37,7 +37,7 @@ import org.slf4j.LoggerFactory;
 
 /**
  * Implementation of UtilsRestService. Provides optimized methods for working with MetaModels and
- * their direct references.
+ * their references.
  *
  * <p>Performance optimizations include:
  *
@@ -68,7 +68,7 @@ public class UtilsRestServiceImpl implements UtilsRestService {
   }
 
   /**
-   * Adds direct references of the specified types to the provided list. This implementation
+   * Adds references of the specified types to the provided list. This implementation
    * only processes the first level of references without recursion.
    *
    * <p>Performance optimizations:
