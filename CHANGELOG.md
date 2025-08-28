@@ -1,3 +1,22 @@
+## 3.4.2 (2025-08-28)
+
+#### Fix
+
+* Fix indirect references cleanup logic in UtilsRestService
+
+  <details>
+  
+  Fix the processedModels cleanup logic in addReferences method to properly handle
+  indirect references. The previous condition was too restrictive, causing issues
+  with reference classification in menu navigation.
+  
+  This resolves the issue where indirect references were not properly cleaned up
+  from the ThreadLocal processedModels set, leading to incorrect reference
+  classification in subsequent calls.
+  
+  </details>
+
+
 ## 3.4.1 (2025-07-21)
 
 #### Feature
