@@ -142,8 +142,11 @@ public class UtilsRestServiceImpl implements UtilsRestService {
     } finally {
       // Clean up the processed models set when we're done with the top-level call
       Set<String> processed = processedModels.get();
-      if (processed != null && processed.size() == 1 && processed.contains(model.getFullName())) {
-        processed.clear();
+      if (processed != null && processed.contains(model.getFullName())) {
+        processed.remove(model.getFullName());
+        if (processed.isEmpty()) {
+          processedModels.remove();
+        }
       }
     }
   }
