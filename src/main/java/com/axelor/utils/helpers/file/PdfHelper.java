@@ -77,8 +77,8 @@ public final class PdfHelper {
    */
   public static String getFileLinkFromPdfFile(File file, String fileName) {
 
-    String fileLink = "ws/files/report/" + file.getName();
-    fileLink += "?name=" + URLEncoder.encode(fileName, StandardCharsets.UTF_8);
+    String fileLink = "ws/files/report?link=" + file.getName();
+    fileLink += "&?name=" + URLEncoder.encode(fileName, StandardCharsets.UTF_8);
     return fileLink;
   }
 
