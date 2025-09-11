@@ -22,9 +22,32 @@ public class ImportMetaFile {
     this.metaFiles = metaFiles;
   }
 
+  /**
+   * Method to import a MetaFile entity with AOP imports. Example of an XML import:
+   *
+   * <pre>{@code
+   * <input file="meta-files.csv" separator=";" type="com.axelor.meta.db.MetaFile" call="com.axelor.utils.init.ImportMetaFile:importMetaFile"/>
+   * }</pre>
+   *
+   * <p>The CSV file must contain the following entries:
+   *
+   * <ul>
+   *   <li><b>filePath</b> (String): a path relative to the base directory represented by
+   *       <b>__path__</b> that points to the file to upload.
+   *   <li><b>importId</b> (String): for easy mapping inside other csv files
+   * </ul>
+   *
+   * <p>If the required entries are missing or the target file does not exist, an exception is
+   * thrown.
+   *
+   * @param bean the target MetaFile entity to populate/update (must be a MetaFile)
+   * @param values a map of parameters containing at least {@code "filePath"}
+   * @return the uploaded and persisted MetaFile instance
+   * @throws IllegalArgumentException if {@code filePath} is missing/empty or the file cannot be
+   *     found
+   * @throws RuntimeException if an unexpected error occurs during upload
+   */
   public MetaFile importMetaFile(Object bean, Map<String, Object> values) {
-    assert bean instanceof MetaFile;
-    MetaFile metaFile = (MetaFile) bean;
     String filePath = (String) values.get("filePath");
     if (ObjectUtils.isEmpty(filePath)) {
       LOG.error("'filePath' is required");
@@ -36,12 +59,13 @@ public class ImportMetaFile {
       LOG.error("No file found: {}", file.getAbsolutePath());
       throw new IllegalArgumentException("No file found: " + file.getAbsolutePath());
     }
+    assert bean instanceof MetaFile;
+    MetaFile metaFile = (MetaFile) bean;
     try {
-      metaFile = metaFiles.upload(file, metaFile);
+      return metaFiles.upload(file, metaFile);
     } catch (Exception e) {
       LOG.error("Error when importing meta file", e);
       throw new RuntimeException(e);
     }
-    return metaFile;
   }
 }
