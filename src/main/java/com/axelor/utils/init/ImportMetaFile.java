@@ -23,7 +23,9 @@ public class ImportMetaFile {
   }
 
   /**
-   * Method to import a MetaFile entity with AOP imports. Example of an XML import:
+   * Import a {@link MetaFile} entity with AOP imports.
+   *
+   * <p>Example of an XML import:
    *
    * <pre>{@code
    * <input file="meta-files.csv" separator=";" type="com.axelor.meta.db.MetaFile" call="com.axelor.utils.init.ImportMetaFile:importMetaFile"/>
