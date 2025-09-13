@@ -1,7 +1,7 @@
 /*
  * Axelor Business Solutions
  *
- * Copyright (C) 2022 Axelor (<http://axelor.com>).
+ * Copyright (C) 2025 Axelor (<http://axelor.com>).
  *
  * This program is free software: you can redistribute it and/or  modify
  * it under the terms of the GNU Affero General Public License, version 3,
@@ -17,132 +17,94 @@
  */
 package com.axelor.utils.rest;
 
-import com.axelor.common.StringUtils;
+import com.axelor.i18n.I18n;
 import com.axelor.inject.Beans;
-import com.axelor.meta.db.MetaAction;
-import com.axelor.meta.db.MetaMenu;
-import com.axelor.meta.db.MetaModel;
-import com.axelor.meta.db.repo.MetaMenuRepository;
 import com.axelor.utils.api.HttpExceptionHandler;
 import com.axelor.utils.api.ResponseConstructor;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Objects;
+import com.axelor.utils.dtos.MenuApiRequest;
+import com.axelor.utils.exception.UtilsExceptionMessage;
+import java.util.Collections;
 import java.util.Set;
-import java.util.stream.Collectors;
-import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
-import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import org.apache.shiro.util.CollectionUtils;
+import org.apache.commons.collections.CollectionUtils;
 
+/**
+ * REST controller for utility operations. Provides endpoints for retrieving parent and child menus,
+ * and related meta models.
+ */
 @Path("/fetch")
 @Produces(MediaType.APPLICATION_JSON)
 public class UtilsRestController {
 
-  private static final String RESPONSE_SUCCESS = "Request successfully completed";
-
-  private Set<String> split(String menuNames) {
-    return menuNames == null ? new HashSet<>() : Set.of(menuNames.split(","));
-  }
-
-  private Set<MetaMenu> getAllParents(
-      MetaMenuRepository metaMenuRepository, Set<String> menuNames) {
-    var parentMenus =
-        metaMenuRepository
-            .all()
-            .filter("self.name in (:names)")
-            .bind("names", menuNames)
-            .fetch()
-            .stream()
-            .map(MetaMenu::getParent)
-            .collect(Collectors.toSet());
-    if (CollectionUtils.isEmpty(parentMenus) || parentMenus.stream().allMatch(Objects::isNull)) {
-      return new HashSet<>();
-    }
-    parentMenus.addAll(
-        getAllParents(
-            metaMenuRepository,
-            parentMenus.stream().map(MetaMenu::getName).collect(Collectors.toSet())));
-    return parentMenus;
-  }
-
-  @GET
+  /**
+   * Gets all parent menus for the given menu names.
+   *
+   * @param request: the payload of the request
+   * @return Response containing parent menus
+   */
+  @POST
   @Path("/parent-menus")
   @HttpExceptionHandler
-  public Response getAllParentMenus(@QueryParam("menus") String menuNames) {
-    var menuRepo = Beans.get(MetaMenuRepository.class);
-    var parentMenus =
-        StringUtils.notBlank(menuNames)
-            ? getAllParents(menuRepo, split(menuNames))
-            : new HashSet<MetaMenu>();
-
-    return ResponseConstructor.build(Response.Status.OK, RESPONSE_SUCCESS, parentMenus);
-  }
-
-  public Set<MetaMenu> getAllChildren(
-      MetaMenuRepository metaMenuRepository, Set<String> menuNames) {
-    var childMenus =
-        new HashSet<>(
-            metaMenuRepository
-                .all()
-                .filter("self.parent.name in (:names) ")
-                .bind("names", menuNames)
-                .fetch());
-    if (CollectionUtils.isEmpty(childMenus) || childMenus.stream().allMatch(Objects::isNull)) {
-      return new HashSet<>();
+  public Response getAllParentMenus(MenuApiRequest request) {
+    Set<String> menus = request.getMenus();
+    if (CollectionUtils.isEmpty(menus)) {
+      return ResponseConstructor.build(
+          Response.Status.OK,
+          I18n.get(UtilsExceptionMessage.NO_MENU_PROVIDED),
+          Collections.emptyList());
     }
-    childMenus.addAll(
-        getAllChildren(
-            metaMenuRepository,
-            childMenus.stream().map(MetaMenu::getName).collect(Collectors.toSet())));
-    return childMenus;
+    var parentMenus = Beans.get(UtilsMenuRestService.class).getAllParentMenus(menus);
+    return ResponseConstructor.build(
+        Response.Status.OK, I18n.get(UtilsExceptionMessage.RESPONSE_SUCCESS), parentMenus);
   }
 
-  @GET
+  /**
+   * Gets all child menus for the given menu names.
+   *
+   * @param request: the payload of the request
+   * @return Response containing child menus
+   */
+  @POST
   @Path("/child-menus")
   @HttpExceptionHandler
-  public Response getAllChildMenus(@QueryParam("menus") String menuNames) {
-    var menuRepo = Beans.get(MetaMenuRepository.class);
-    var childMenus =
-        StringUtils.notBlank(menuNames)
-            ? getAllChildren(menuRepo, split(menuNames))
-            : new HashSet<MetaMenu>();
-
-    return ResponseConstructor.build(Response.Status.OK, RESPONSE_SUCCESS, childMenus);
-  }
-
-  @GET
-  @Path("/related-model")
-  @HttpExceptionHandler
-  public Response getRelatedMetaModel(@QueryParam("menus") String menuNames) {
-    var map = new HashMap<String, Object>();
-    var menuRepo = Beans.get(MetaMenuRepository.class);
-    var utilsRestService = Beans.get(UtilsRestService.class);
-
-    for (String menuName : split(menuNames)) {
-      MetaMenu menu = menuRepo.findByName(menuName);
-      MetaAction view = menu.getAction();
-      var menuMap = new HashMap<String, Object>();
-      if (view != null && view.getModel() != null) {
-        var model = utilsRestService.getModel(view.getModel());
-        menuMap.put("model", model);
-
-        var directReferences = new ArrayList<MetaModel>();
-        utilsRestService.addReferences(model, directReferences, "ONE_TO_ONE", "ONE_TO_MANY");
-        menuMap.put("directReferences", directReferences);
-
-        var indirectReferences = new ArrayList<MetaModel>();
-        utilsRestService.addReferences(model, indirectReferences, "MANY_TO_ONE", "MANY_TO_MANY");
-        menuMap.put("indirectReferences", indirectReferences);
-
-        map.put(menuName, menuMap);
-      }
+  public Response getAllChildMenus(MenuApiRequest request) {
+    Set<String> menus = request.getMenus();
+    if (CollectionUtils.isEmpty(menus)) {
+      return ResponseConstructor.build(
+          Response.Status.OK,
+          I18n.get(UtilsExceptionMessage.NO_MENU_PROVIDED),
+          Collections.emptyList());
     }
 
-    return ResponseConstructor.build(Response.Status.OK, RESPONSE_SUCCESS, map);
+    var childMenus = Beans.get(UtilsMenuRestService.class).getAllChildMenus(menus);
+    return ResponseConstructor.build(
+        Response.Status.OK, I18n.get(UtilsExceptionMessage.RESPONSE_SUCCESS), childMenus);
+  }
+
+  /**
+   * Gets related metamodels for the given menu names.
+   *
+   * @param request: the payload of the request
+   * @return Response containing related meta models
+   */
+  @POST
+  @Path("/related-model")
+  @HttpExceptionHandler
+  public Response getRelatedMetaModel(MenuApiRequest request) {
+    Set<String> menuNames = request.getMenus();
+    if (menuNames == null || menuNames.isEmpty()) {
+      return ResponseConstructor.build(
+          Response.Status.OK,
+          I18n.get(UtilsExceptionMessage.NO_MENU_PROVIDED),
+          Collections.emptyList());
+    }
+
+    var relatedMetaModels = Beans.get(UtilsMenuRestService.class).getRelatedMetaModel(menuNames);
+    return ResponseConstructor.build(
+        Response.Status.OK, I18n.get(UtilsExceptionMessage.RESPONSE_SUCCESS), relatedMetaModels);
   }
 }

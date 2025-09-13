@@ -45,12 +45,6 @@ class LocalDateIntervalTest {
     LocalDateInterval GH2 = new LocalDateInterval(G, H);
     LocalDateInterval IJ2 = new LocalDateInterval(I, J);
 
-    assertEquals(AB, AB);
-    assertEquals(CD, CD);
-    assertEquals(EF, EF);
-    assertEquals(GH, GH);
-    assertEquals(IJ, IJ);
-
     assertEquals(AB, AB2);
     assertEquals(CD, CD2);
     assertEquals(EF, EF2);

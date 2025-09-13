@@ -53,10 +53,10 @@ class EntityMergingHelperTest extends BaseTest {
   }
 
   @Transactional
-  public Role createRole(String roleName) {
+  public void createRole(String roleName) {
     Role role = new Role();
     role.setName(roleName);
-    return JPA.save(role);
+    JPA.save(role);
   }
 
   public Role findRole(String roleName) {

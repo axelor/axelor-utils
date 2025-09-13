@@ -85,7 +85,7 @@ public class ActionServiceImpl implements ActionService {
     if (value == null || (!value.containsKey("values") && !value.containsKey("attrs"))) {
       return;
     }
-    Object values = null;
+    Object values;
     Map<String, Object> map = new HashMap<>();
     if (value.containsKey("values")) {
       values = value.get("values");

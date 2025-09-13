@@ -1,7 +1,7 @@
 /*
  * Axelor Business Solutions
  *
- * Copyright (C) 2022 Axelor (<http://axelor.com>).
+ * Copyright (C) 2025 Axelor (<http://axelor.com>).
  *
  * This program is free software: you can redistribute it and/or  modify
  * it under the terms of the GNU Affero General Public License, version 3,
@@ -61,7 +61,7 @@ class STTest extends BaseTest {
           + "}</pre>";
 
   @BeforeEach
-  public void prepareTest() {
+  void prepareTest() {
     contact = new Contact("Doe", "John");
     contact.setEmail("john.doe@axelor.com");
     contact.setFullName(contact.getFullName());
