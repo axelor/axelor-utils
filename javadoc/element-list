@@ -4,6 +4,7 @@ com.axelor.utils.adapters
 com.axelor.utils.api
 com.axelor.utils.db
 com.axelor.utils.db.repo
+com.axelor.utils.dtos
 com.axelor.utils.exception
 com.axelor.utils.helpers
 com.axelor.utils.helpers.address

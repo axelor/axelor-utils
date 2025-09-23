@@ -1,3 +1,25 @@
+## 3.4.3 (2025-09-23)
+
+#### Feature
+
+* Change the REST API to use POST methods
+
+  <details>
+  
+  Change the `GET` methods in the `UtilsRestController` REST API to `POST` methods for better performance and security.
+  
+  </details>
+
+* Added REST APIs for menu and model navigation
+
+  <details>
+  
+  Added new REST endpoints in `UtilsRestController` to fetch parent menus, child menus, 
+  and related meta models for a given menu.
+  
+  </details>
+
+
 ## 3.4.2 (2025-08-28)
 
 #### Fix

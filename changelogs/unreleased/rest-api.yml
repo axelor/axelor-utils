@@ -1,4 +1,0 @@
-title: Change the REST API to use POST methods
-type: feature
-description: |
-  Change the `GET` methods in the `UtilsRestController` REST API to `POST` methods for better performance and security.
