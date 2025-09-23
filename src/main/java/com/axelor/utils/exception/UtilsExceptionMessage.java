@@ -101,4 +101,6 @@ public interface UtilsExceptionMessage {
   String EXISTING_REFERENCES = /*$$(*/ "The following references exist for %s (%s) :" /*)*/;
 
   String RESPONSE_SUCCESS = /*$$(*/ "Request successfully completed" /*)*/;
+
+  String NO_MENU_PROVIDED = /*$$(*/ "No menu name has been provided in the payload!" /*)*/;
 }
