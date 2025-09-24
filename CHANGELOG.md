@@ -1,3 +1,19 @@
+## 3.4.4 (2025-09-24)
+
+#### Change
+
+* Revert merge of feat/92960-use-post branch
+
+  <details>
+  
+  Reverted the accidental merge of branch 'feat/92960-use-post' into 'release/3.4'.
+  
+  This reverts commit 43c6969a3c58752e66d76c5ae6509f6b1e0dc827 which incorrectly
+  merged API changes that should not have been included in the release branch.
+  
+  </details>
+
+
 ## 3.4.3 (2025-09-23)
 
 #### Feature
