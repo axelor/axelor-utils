@@ -15,12 +15,12 @@
  * You should have received a copy of the GNU Affero General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.qas.test;
+package com.qas.test
 
 import static org.junit.Assert.*
 
 import javax.xml.namespace.QName
-import javax.xml.ws.Service
+import jakarta.xml.ws.Service
 
 import org.junit.Test
 
@@ -47,7 +47,8 @@ class Client {
 	//http://cxf.apache.org/docs/how-do-i-develop-a-client.html
 	
 	@Test
-	def void WSDL2JavaClient() {
+    static
+    void WSDL2JavaClient() {
 		ProWeb service = new ProWeb()
 		def serviceName = service.getServiceName()
 		println serviceName
@@ -55,18 +56,18 @@ class Client {
 	
 	
 	@Test
-	def void JAXWSProxy() {
+    void JAXWSProxy() {
 		QName SERVICE_NAME = new QName("http://www.qas.com/web-2005-02"
 			,"ProWeb")
 
 		QName PORT_NAME = new QName("http://www.qas.com/web-2005-02"
 			,"QAPortType")
 
-		def wsdlURL = new URL("http://ip.axelor.com:2021/proweb.wsdl")
+		def wsdlURL = new URI("http://ip.axelor.com:2021/proweb.wsdl").toURL()
 		println wsdlURL
 
-		Service service = Service.create(wsdlURL, SERVICE_NAME);
-		QAPortType client = service.getPort(QAPortType.class);
+		Service service = Service.create(wsdlURL, SERVICE_NAME)
+		QAPortType client = service.getPort(QAPortType.class)
 		//QAPortType client = service.getPort(PORT_NAME, QAPortType.class)
 		println client.dump()
 

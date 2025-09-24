@@ -67,7 +67,7 @@ class DmsFileServiceTest extends BaseTest {
     List<DMSFile> result = dmsFileService.fetchAttachedDMSFiles(move);
     String expectedFileName = "hotcoffee.mkv";
     Assertions.assertEquals(1, result.size());
-    Assertions.assertEquals(expectedFileName, result.get(0).getFileName());
+    Assertions.assertEquals(expectedFileName, result.getFirst().getFileName());
   }
 
   @Test
@@ -94,9 +94,6 @@ class DmsFileServiceTest extends BaseTest {
     DMSFile dmsFile = dmsFileRepository.find(1L);
     Assertions.assertEquals("ws/dms/inline/1", dmsFileService.getInlineUrl(dmsFile));
   }
-
-  @Test
-  void addLinkedDMSFiles_addMultipleFiles() {}
 
   @Test
   void getDMSRoot_DMS_exist() {

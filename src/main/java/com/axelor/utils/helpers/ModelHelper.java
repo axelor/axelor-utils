@@ -27,6 +27,7 @@ import com.axelor.i18n.I18n;
 import com.axelor.utils.ThrowConsumer;
 import com.axelor.utils.exception.UtilsExceptionMessage;
 import com.google.common.base.Preconditions;
+import jakarta.persistence.Column;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -38,7 +39,6 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import javax.persistence.Column;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.LoggerFactory;
 

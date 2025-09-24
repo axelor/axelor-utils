@@ -1,0 +1,2 @@
+title: Replace `javax.xml.ws:jaxws-api:2.3.1` by `jakarta.xml.ws:jakarta.xml.ws-api:4.0.2`
+type: change

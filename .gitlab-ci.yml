@@ -1,10 +1,9 @@
-# Stages (ie phases) that can be used by jobs
 stages:
   - build
   - test
   - publish
 
-image: axelor/app-builder:7.2
+image: axelor/app-builder:8.0-beta
 
 variables:
   GIT_SUBMODULE_STRATEGY: recursive
@@ -13,7 +12,7 @@ variables:
 before_script:
   - export GRADLE_USER_HOME=`pwd`/.gradle
 
-# Add wrapper and caches folders in cache
+# Add wrapper and caches folders in the cache
 .global_cache: &global_cache
   paths:
     - .gradle

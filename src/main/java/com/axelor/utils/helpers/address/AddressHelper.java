@@ -30,13 +30,15 @@ import com.qas.web_2005_02.QAPortType;
 import com.qas.web_2005_02.QASearch;
 import com.qas.web_2005_02.QASearchOk;
 import com.qas.web_2005_02.QASearchResult;
+import jakarta.xml.ws.Service;
 import java.lang.invoke.MethodHandles;
 import java.net.MalformedURLException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 import javax.xml.namespace.QName;
-import javax.xml.ws.Service;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -50,7 +52,7 @@ public class AddressHelper {
 
   private static final Logger LOG = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
-  public void setService(String wsdlUrl) throws MalformedURLException {
+  public void setService(String wsdlUrl) throws MalformedURLException, URISyntaxException {
     // TODO: inject this
     if (client == null) {
       SERVICE_NAME = new QName("http://www.qas.com/web-2005-02", "ProWeb");
@@ -58,7 +60,7 @@ public class AddressHelper {
       PORT_NAME = new QName("http://www.qas.com/web-2005-02", "QAPortType");
 
       // def wsdlURL = new URL("http://ip.axelor.com:2021/proweb.wsdl")
-      wsdlURL = new URL(wsdlUrl);
+      wsdlURL = new URI(wsdlUrl).toURL();
       // println this.wsdlURL
 
       service = Service.create(wsdlURL, SERVICE_NAME);
@@ -76,7 +78,7 @@ public class AddressHelper {
       QName PORT_NAME = new QName("http://www.qas.com/web-2005-02", "QAPortType");
 
       // def wsdlURL = new URL("http://ip.axelor.com:2021/proweb.wsdl")
-      URL wsdlURL = new URL(wsdlUrl);
+      URL wsdlURL = new URI(wsdlUrl).toURL();
 
       Service service = Service.create(wsdlURL, SERVICE_NAME);
       QAPortType client = service.getPort(QAPortType.class);
@@ -86,7 +88,7 @@ public class AddressHelper {
       // 1. Pre-check.
 
       QAData qadata = client.doGetData();
-      QADataSet ds = qadata.getDataSet().get(0);
+      QADataSet ds = qadata.getDataSet().getFirst();
 
       QACanSearch canSearch = new QACanSearch();
       canSearch.setCountry("FRX");

@@ -5,20 +5,23 @@ import com.axelor.i18n.I18n;
 import com.axelor.meta.db.MetaView;
 import com.axelor.meta.schema.actions.ActionView;
 import com.axelor.meta.schema.actions.ActionView.ActionViewBuilder;
+import jakarta.annotation.Nonnull;
+import jakarta.persistence.NoResultException;
+import jakarta.persistence.criteria.CriteriaBuilder;
+import jakarta.persistence.criteria.CriteriaQuery;
+import jakarta.persistence.criteria.Root;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
-import javax.annotation.Nonnull;
-import javax.persistence.NoResultException;
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Root;
 
-public class ActionViewHelper {
+public abstract class ActionViewHelper {
+
+  private ActionViewHelper() {
+    throw new IllegalStateException("Utility class");
+  }
 
   /**
-   * Utility method to fetch the given field value of the given meta view in database using a fine
-   * criteria query.
+   * Fetch the given field value of the given meta view in the database using a fine criteria query.
    *
    * @param name The name of the view
    * @param selectFieldClass The class of the field to fetch
@@ -41,17 +44,17 @@ public class ActionViewHelper {
   }
 
   /**
-   * Utility method to build an ActionViewBuilder with minimal input information.
+   * Build an ActionViewBuilder with minimal input information.
    *
    * @param klass The class of the action view model
-   * @param domain The domain of the action view if any
+   * @param domain The domain of the action view, if any
    * @param views All views to add into the builder
    * @return The built ActionViewBuilder ready to be completed
    */
   public static ActionViewBuilder build(
       @Nonnull Class<?> klass, String domain, @Nonnull String... views) {
     List<String> metaViews = Arrays.asList(views);
-    String firstViewName = metaViews.get(0);
+    String firstViewName = metaViews.getFirst();
     Optional<String> title = fetchViewField(firstViewName, String.class, "title");
     if (title.isEmpty()) {
       throw new IllegalArgumentException(

@@ -18,14 +18,18 @@
 package com.axelor.utils.service;
 
 import com.axelor.common.ObjectUtils;
+import com.axelor.common.StringUtils;
 import com.axelor.db.JPA;
+import jakarta.persistence.NoResultException;
+import jakarta.persistence.Query;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import javax.persistence.NoResultException;
-import javax.persistence.Query;
+import java.util.Optional;
 
 public class ArchivingServiceImpl implements ArchivingService {
+
+  public static final String A_Z = "([A-Z])";
 
   @Override
   public Map<String, String> getObjectLinkTo(Object object, Long id) {
@@ -33,91 +37,69 @@ public class ArchivingServiceImpl implements ArchivingService {
     Query findModelWithobjectFieldQuery =
         JPA.em()
             .createNativeQuery(
-                "SELECT field.name as fieldName, model.name as ModelName,field.relationship as relationship,field.mapped_by as mappedBy,model.table_name as tableName"
-                    + " FROM meta_field field"
-                    + " LEFT JOIN meta_model model on field.meta_model = model.id"
-                    + " WHERE field.type_name like :objectName");
+                """
+                        SELECT
+                          field.name as fieldName,
+                          model.name as ModelName,
+                          field.relationship as relationship,
+                          field.mapped_by as mappedBy,
+                          model.table_name as tableName
+                        FROM meta_field field
+                        LEFT JOIN meta_model model on field.meta_model = model.id
+                        WHERE field.type_name like :objectName""");
     findModelWithobjectFieldQuery.setParameter("objectName", object.getClass().getSimpleName());
     List<Object[]> resultList = findModelWithobjectFieldQuery.getResultList();
     for (Object[] result : resultList) {
-
-      String fieldName = ((String) result[0]).replaceAll("([A-Z])", "_$1").toLowerCase();
-      String modelName = (String) result[1];
-      String modelNameBDDFormat =
-          modelName.replaceAll("([A-Z])", "_$1").toLowerCase().replace("^_", "");
-      String relationship = (String) result[2];
-      String mappedBy = null;
-      if (result[3] != null) {
-        mappedBy = ((String) result[3]).replaceAll("([A-Z])", "_$1").toLowerCase();
-      }
-      String tableObjectLinkName = ((String) result[4]).toLowerCase().replace(" ", "_");
-      String tableObjectName = this.getTableObjectName(object);
-
-      Query findobjectQuery = null;
-      if (relationship.equals("ManyToOne") || relationship.equals("OneToOne")) {
-        findobjectQuery =
-            JPA.em()
-                .createNativeQuery(
-                    "SELECT DISTINCT ol."
-                        + fieldName
-                        + " FROM "
-                        + tableObjectLinkName
-                        + " ol LEFT JOIN "
-                        + tableObjectName
-                        + " o ON ol."
-                        + fieldName
-                        + " = "
-                        + "o.id"
-                        + " WHERE o.id =  :objectId ");
-        findobjectQuery.setParameter("objectId", id);
-      } else if (result[3].equals("OneToMany")) {
-        String manyToOneMappedfield = null;
-        if (mappedBy != null && !mappedBy.isEmpty()) {
-          manyToOneMappedfield = mappedBy;
-        } else {
-          manyToOneMappedfield = modelNameBDDFormat;
-        }
-        findobjectQuery =
-            JPA.em()
-                .createNativeQuery(
-                    "SELECT DISTINCT ol."
-                        + fieldName
-                        + " FROM "
-                        + tableObjectLinkName
-                        + " ol LEFT JOIN "
-                        + tableObjectName
-                        + " o ON ol.id = o."
-                        + manyToOneMappedfield
-                        + " WHERE o.id =  :objectId ");
-        findobjectQuery.setParameter("objectId", id);
-      } else if (result[2].equals("ManyToMany")) {
-        String tableNameSet = tableObjectLinkName + "_" + fieldName;
-        findobjectQuery =
-            JPA.em()
-                .createNativeQuery(
-                    "SELECT DISTINCT "
-                        + fieldName
-                        + " FROM "
-                        + tableNameSet
-                        + " WHERE "
-                        + fieldName
-                        + " = :objectId");
-        findobjectQuery.setParameter("objectId", id);
-      }
-
-      if (findobjectQuery != null) {
-        Object objectToCheck = null;
-        try {
-          objectToCheck = findobjectQuery.getSingleResult();
-        } catch (NoResultException nRE) {
-          // nothing to do
-        }
-        if (objectToCheck != null) {
-          objectsLinkToMap.put(modelName, relationship);
-        }
-      }
+      computeRelationship(object, id, result)
+          .ifPresent(relationship -> objectsLinkToMap.put((String) result[1], relationship));
     }
     return objectsLinkToMap;
+  }
+
+  protected Optional<String> computeRelationship(Object object, Long id, Object[] result) {
+    String fieldName = ((String) result[0]).replaceAll(A_Z, "_$1").toLowerCase();
+    String modelName = (String) result[1];
+    String modelNameBDDFormat = modelName.replaceAll(A_Z, "_$1").toLowerCase().replace("^_", "");
+    String relationship = (String) result[2];
+    String mappedBy = null;
+    if (result[3] != null) {
+      mappedBy = ((String) result[3]).replaceAll(A_Z, "_$1").toLowerCase();
+    }
+    String tableObjectLinkName = ((String) result[4]).toLowerCase().replace(" ", "_");
+    String tableObjectName = this.getTableObjectName(object);
+
+    String query = null;
+    if (relationship.equals("ManyToOne") || relationship.equals("OneToOne")) {
+      query =
+          "SELECT DISTINCT ol.%s FROM %s ol LEFT JOIN %s o ON ol.%s = o.id WHERE o.id = :objectId"
+              .formatted(fieldName, tableObjectLinkName, tableObjectName, fieldName);
+    } else if (result[3].equals("OneToMany")) {
+      String manyToOneMappedField = StringUtils.notEmpty(mappedBy) ? mappedBy : modelNameBDDFormat;
+      query =
+          "SELECT DISTINCT ol.%s FROM %s ol LEFT JOIN %s o ON ol.id = o.%s WHERE o.id = :objectId"
+              .formatted(fieldName, tableObjectLinkName, tableObjectName, manyToOneMappedField);
+    } else if (relationship.equals("ManyToMany")) {
+      String tableNameSet = tableObjectLinkName + "_" + fieldName;
+      query =
+          "SELECT DISTINCT %s FROM %s WHERE %s = :objectId"
+              .formatted(fieldName, tableNameSet, fieldName);
+    }
+
+    if (query == null) {
+      return Optional.empty();
+    }
+
+    Query findobjectQuery = JPA.em().createNativeQuery(query);
+    findobjectQuery.setParameter("objectId", id);
+
+    Object objectToCheck = null;
+    try {
+      objectToCheck = findobjectQuery.getSingleResult();
+    } catch (NoResultException nRE) {
+      // nothing to do
+    }
+
+    return objectToCheck != null ? Optional.of(relationship) : Optional.empty();
   }
 
   protected String getTableObjectName(Object object) {
@@ -130,8 +112,7 @@ public class ArchivingServiceImpl implements ArchivingService {
             .replace(".db", "")
             .replace(".", "_")
             .toLowerCase();
-    String objectName =
-        object.getClass().getSimpleName().replaceAll("([A-Z])", "_$1").toLowerCase();
+    String objectName = object.getClass().getSimpleName().replaceAll(A_Z, "_$1").toLowerCase();
     return moduleName + objectName;
   }
 
@@ -140,12 +121,10 @@ public class ArchivingServiceImpl implements ArchivingService {
     Query findModelWithobjectFieldQuery =
         JPA.em()
             .createNativeQuery(
-                "SELECT view.title as viewTitle"
-                    + " FROM meta_view view"
-                    + " WHERE view.name like :viewtName");
+                "SELECT view.title as viewTitle FROM meta_view view WHERE view.name like :viewName");
     findModelWithobjectFieldQuery.setParameter(
-        "viewtName", modelName.replaceAll("([a-z])([A-Z])", "$1-$2").toLowerCase() + "-form");
+        "viewName", modelName.replaceAll("([a-z])([A-Z])", "$1-$2").toLowerCase() + "-form");
     List<String> modelNameList = findModelWithobjectFieldQuery.getResultList();
-    return !ObjectUtils.isEmpty(modelNameList) ? modelNameList.get(0) : modelName;
+    return !ObjectUtils.isEmpty(modelNameList) ? modelNameList.getFirst() : modelName;
   }
 }

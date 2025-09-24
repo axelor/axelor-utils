@@ -33,7 +33,6 @@ import java.util.Collection;
 import java.util.Date;
 import java.util.Deque;
 import java.util.List;
-import java.util.stream.Collectors;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -348,8 +347,7 @@ public class LocalDateHelper {
     }
 
     Deque<LocalDateInterval> mergedIntervals = new ArrayDeque<>();
-    List<LocalDateInterval> sortedIntervals =
-        intervals.stream().sorted().collect(Collectors.toList());
+    List<LocalDateInterval> sortedIntervals = intervals.stream().sorted().toList();
 
     for (LocalDateInterval interval : sortedIntervals) {
       if (mergedIntervals.isEmpty()) {
@@ -432,14 +430,11 @@ public class LocalDateHelper {
         ChronoUnit.WEEKS.between(lastSundayFromStartDate, lastSundayFromEndDate);
 
     if (fullWeekBetweenDates == 0) {
-      switch (endDateDayOfWeek) {
-        case SUNDAY:
-          return startDateDayOfWeek == DayOfWeek.SUNDAY ? 1L : 2L;
-        case SATURDAY:
-          return 1L;
-        default:
-          return 0L;
-      }
+      return switch (endDateDayOfWeek) {
+        case SUNDAY -> startDateDayOfWeek == DayOfWeek.SUNDAY ? 1L : 2L;
+        case SATURDAY -> 1L;
+        default -> 0L;
+      };
     }
 
     if (startDateDayOfWeek == DayOfWeek.SUNDAY) {

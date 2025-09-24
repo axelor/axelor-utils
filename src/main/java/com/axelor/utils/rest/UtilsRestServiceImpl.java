@@ -110,7 +110,7 @@ public class UtilsRestServiceImpl implements UtilsRestService {
       List<MetaModel> newModels =
           targetModels.values().stream()
               .filter(targetModel -> !listOfRef.contains(targetModel))
-              .collect(Collectors.toList());
+              .toList();
 
       if (newModels.isEmpty()) {
         return;
@@ -120,12 +120,6 @@ public class UtilsRestServiceImpl implements UtilsRestService {
 
     } catch (ClassNotFoundException e) {
       logger.error("Failed to load class for model: {}", model.getFullName(), e);
-    } finally {
-      // Clean up the processed models set when we're done with the top-level call
-      Set<String> processed = processedModels.get();
-      if (processed != null && processed.size() == 1 && processed.contains(model.getFullName())) {
-        processed.clear();
-      }
     }
   }
 

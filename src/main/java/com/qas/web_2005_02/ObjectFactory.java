@@ -17,7 +17,7 @@
  */
 package com.qas.web_2005_02;
 
-import javax.xml.bind.annotation.XmlRegistry;
+import jakarta.xml.bind.annotation.XmlRegistry;
 
 /**
  * This object contains factory methods for each Java content interface and Java element interface

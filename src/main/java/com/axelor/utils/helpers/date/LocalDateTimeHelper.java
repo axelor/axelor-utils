@@ -33,7 +33,6 @@ import java.util.Collection;
 import java.util.Date;
 import java.util.Deque;
 import java.util.List;
-import java.util.stream.Collectors;
 import javax.xml.datatype.DatatypeConfigurationException;
 import javax.xml.datatype.DatatypeFactory;
 import javax.xml.datatype.XMLGregorianCalendar;
@@ -94,8 +93,7 @@ public class LocalDateTimeHelper {
     }
 
     Deque<LocalDateTimeInterval> mergedIntervals = new ArrayDeque<>();
-    List<LocalDateTimeInterval> sortedIntervals =
-        intervals.stream().sorted().collect(Collectors.toList());
+    List<LocalDateTimeInterval> sortedIntervals = intervals.stream().sorted().toList();
 
     for (LocalDateTimeInterval interval : sortedIntervals) {
       if (mergedIntervals.isEmpty()) {

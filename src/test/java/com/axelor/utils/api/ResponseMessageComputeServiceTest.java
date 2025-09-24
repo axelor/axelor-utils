@@ -7,9 +7,9 @@ import com.google.inject.Inject;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-public class ResponseMessageComputeServiceTest extends BaseTest {
+class ResponseMessageComputeServiceTest extends BaseTest {
 
-  protected ResponseMessageComputeService responseMessageComputeService;
+  protected final ResponseMessageComputeService responseMessageComputeService;
 
   @Inject
   public ResponseMessageComputeServiceTest(
@@ -32,7 +32,7 @@ public class ResponseMessageComputeServiceTest extends BaseTest {
     Invoice invoice = new Invoice();
     invoice.setId(1L);
     Assertions.assertEquals(
-        "The object Invoice has been correctly created with the id : 1",
+        "The object Invoice has been correctly created with the id: 1",
         responseMessageComputeService.computeCreateMessage(invoice));
   }
 }

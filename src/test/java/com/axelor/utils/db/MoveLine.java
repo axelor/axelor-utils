@@ -20,13 +20,13 @@ package com.axelor.utils.db;
 import com.axelor.db.JPA;
 import com.axelor.db.JpaModel;
 import com.axelor.db.Query;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
 

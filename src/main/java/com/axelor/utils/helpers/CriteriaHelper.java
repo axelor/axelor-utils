@@ -2,16 +2,17 @@ package com.axelor.utils.helpers;
 
 import com.axelor.db.JPA;
 import com.axelor.db.Model;
+import jakarta.persistence.TypedQuery;
+import jakarta.persistence.criteria.CriteriaBuilder;
+import jakarta.persistence.criteria.CriteriaQuery;
+import jakarta.persistence.criteria.Predicate;
+import jakarta.persistence.criteria.Root;
+import jakarta.persistence.criteria.Selection;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.function.BiFunction;
-import javax.persistence.TypedQuery;
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Predicate;
-import javax.persistence.criteria.Root;
-import javax.persistence.criteria.Selection;
+import org.hibernate.query.criteria.JpaSelection;
 
 /**
  * CriteriaHelper is a utility class that provides methods to manipulate Criteria API in a more
@@ -51,24 +52,24 @@ public class CriteriaHelper {
   }
 
   /**
-   * Create a new Builder instance for the given model class.
+   * Create a new {@link Builder} instance for the given model class.
    *
    * @param <M> The model type
    * @param modelClass The model class
-   * @return Builder instance
+   * @return {@link Builder} instance
    */
   public static <M extends Model> Builder<M, M> builder(Class<M> modelClass) {
     return builder(modelClass, modelClass).select((cb, root) -> root);
   }
 
   /**
-   * Create a new Builder instance for the given root model class and query result class.
+   * Create a new {@link Builder} instance for the given root model class and query result class.
    *
    * @param <R> The root model type
    * @param <Q> The query result type
    * @param rootClass The root model class. Define on which model class to apply the query.
    * @param queryClass The query result class. Define the type of the result.
-   * @return Builder instance
+   * @return {@link Builder} instance
    */
   public static <R extends Model, Q> Builder<R, Q> builder(
       Class<R> rootClass, Class<Q> queryClass) {
@@ -98,7 +99,7 @@ public class CriteriaHelper {
      * Define the selection for the query.
      *
      * @param filterFunction Function to create the selection
-     * @return Builder instance
+     * @return {@link Builder} instance
      */
     public Builder<R, Q> select(BiFunction<CriteriaBuilder, Root<R>, Selection<Q>> filterFunction) {
       criteriaQuery.select(filterFunction.apply(criteriaBuilder, root));
@@ -109,7 +110,7 @@ public class CriteriaHelper {
      * Add a filter to the query.
      *
      * @param filterFunction Function to create the filter predicate
-     * @return Builder instance
+     * @return {@link Builder} instance
      */
     public Builder<R, Q> filter(BiFunction<CriteriaBuilder, Root<R>, Predicate> filterFunction) {
       filters.add(filterFunction.apply(criteriaBuilder, root));
@@ -119,10 +120,13 @@ public class CriteriaHelper {
     /**
      * Build the query with the added filters.
      *
-     * @return TypedQuery instance
+     * @return {@link TypedQuery} instance
      */
     public TypedQuery<Q> build() {
-      if (criteriaQuery.getSelection() == null) {
+      Selection<Q> selection = criteriaQuery.getSelection();
+      if (selection == null
+          || (selection.isCompoundSelection()
+              && ((JpaSelection<?>) selection).getSelectionItems().isEmpty())) {
         throw new IllegalStateException("You must define a selection to build the final query");
       }
       if (!filters.isEmpty()) {

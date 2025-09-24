@@ -18,7 +18,7 @@
 package com.axelor.utils.helpers;
 
 import com.axelor.rpc.ActionResponse;
-import javax.annotation.Nonnull;
+import jakarta.annotation.Nonnull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -28,17 +28,6 @@ public class ExceptionHelper {
 
   private ExceptionHelper() {
     throw new IllegalStateException("Cannot instantiate utility classes.");
-  }
-
-  /**
-   * Deprecated in favor of {@link #error(ActionResponse, Throwable)}.
-   *
-   * @param response the ActionResponse to send the error message to.
-   * @param e the Throwable to log.
-   */
-  @Deprecated
-  public static void trace(@Nonnull ActionResponse response, @Nonnull Throwable e) {
-    error(response, e);
   }
 
   /**
@@ -54,17 +43,6 @@ public class ExceptionHelper {
   }
 
   /**
-   * Deprecated in favor of {@link #error(ActionResponse, String)}.
-   *
-   * @param response the ActionResponse to send the error message to.
-   * @param message the message to display.
-   */
-  @Deprecated
-  public static void trace(@Nonnull ActionResponse response, @Nonnull String message) {
-    error(response, message);
-  }
-
-  /**
    * Displays the exception message on the screen via a popup.
    *
    * @param response the ActionResponse to send the error message to.
@@ -75,17 +53,6 @@ public class ExceptionHelper {
   }
 
   /**
-   * Deprecated in favor of {@link #error(String, Throwable)}.
-   *
-   * @param message the message to log.
-   * @param e the Throwable to log.
-   */
-  @Deprecated
-  public static void trace(@Nonnull String message, @Nonnull Throwable e) {
-    error(message, e);
-  }
-
-  /**
    * Traces an exception with a specific message in the logs.
    *
    * @param message the message to log.
@@ -93,16 +60,6 @@ public class ExceptionHelper {
    */
   public static void error(@Nonnull String message, @Nonnull Throwable e) {
     log.error(message, e);
-  }
-
-  /**
-   * Deprecated in favor of {@link #error(Throwable)}.
-   *
-   * @param e the Throwable to log.
-   */
-  @Deprecated
-  public static void trace(@Nonnull Throwable e) {
-    error(e);
   }
 
   /**

@@ -4,6 +4,7 @@ com.axelor.utils.adapters
 com.axelor.utils.api
 com.axelor.utils.db
 com.axelor.utils.db.repo
+com.axelor.utils.dtos
 com.axelor.utils.exception
 com.axelor.utils.helpers
 com.axelor.utils.helpers.address
@@ -13,6 +14,7 @@ com.axelor.utils.helpers.date
 com.axelor.utils.helpers.file
 com.axelor.utils.helpers.json
 com.axelor.utils.helpers.net
+com.axelor.utils.init
 com.axelor.utils.junit
 com.axelor.utils.module
 com.axelor.utils.rest

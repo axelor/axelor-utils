@@ -12,6 +12,7 @@ import com.axelor.i18n.I18n;
 import com.axelor.meta.db.MetaField;
 import com.axelor.meta.db.MetaModel;
 import com.axelor.utils.exception.UtilsExceptionMessage;
+import jakarta.annotation.Nonnull;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
@@ -19,7 +20,6 @@ import java.util.Objects;
 import java.util.StringJoiner;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
-import javax.annotation.Nonnull;
 import org.apache.commons.collections.CollectionUtils;
 
 public class ConditionList {
