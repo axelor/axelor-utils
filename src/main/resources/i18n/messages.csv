@@ -11,7 +11,6 @@
 "Given couple %s / %s match a value which is not an integer.",,,
 "Meta json field type %s could not be converted to a meta field type.",,,
 "Name",,,
-"No menu name has been provided in the payload!",,,
 "No such template",,,
 "No title found for the view '%s'.",,,
 "Null given value.",,,
