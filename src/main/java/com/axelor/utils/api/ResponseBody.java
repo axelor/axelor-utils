@@ -17,7 +17,7 @@
  */
 package com.axelor.utils.api;
 
-import javax.ws.rs.core.Response;
+import jakarta.ws.rs.core.Response;
 import lombok.Getter;
 
 @Getter

@@ -28,7 +28,7 @@ public class CsvHelperTest {
     // THEN
     Assertions.assertEquals(2, records.size(), "Number of records does not match");
 
-    CSVRecord record1 = records.get(0);
+    CSVRecord record1 = records.getFirst();
     Assertions.assertEquals("1", record1.get("id"));
     Assertions.assertEquals("John's", record1.get("name"));
     Assertions.assertEquals("25", record1.get("age"));
@@ -58,7 +58,7 @@ public class CsvHelperTest {
     // THEN
     Assertions.assertEquals(2, records.size(), "Number of records does not match");
 
-    CSVRecord record1 = records.get(0);
+    CSVRecord record1 = records.getFirst();
     Assertions.assertEquals("1", record1.get("id"));
     Assertions.assertEquals("'John''s'", record1.get("name"));
     Assertions.assertEquals("25", record1.get("age"));

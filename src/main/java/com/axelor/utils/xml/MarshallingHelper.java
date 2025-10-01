@@ -18,7 +18,6 @@
 package com.axelor.utils.xml;
 
 import com.axelor.utils.helpers.file.FileHelper;
-import com.sun.xml.bind.marshaller.NamespacePrefixMapper;
 import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.JAXBException;
 import jakarta.xml.bind.Marshaller;
@@ -26,6 +25,7 @@ import jakarta.xml.bind.Unmarshaller;
 import java.io.File;
 import java.io.StringReader;
 import java.io.StringWriter;
+import org.eclipse.persistence.internal.oxm.NamespacePrefixMapper;
 
 public final class MarshallingHelper {
 

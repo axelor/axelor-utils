@@ -30,7 +30,7 @@ import org.stringtemplate.v4.STGroup;
 
 class STSampleTest {
 
-  public String template = "Hi $contact.name;format=\"upper\"$ $contact.lastName$";
+  public final String template = "Hi $contact.name;format=\"upper\"$ $contact.lastName$";
 
   private static final int MAX_ITER = 5000;
 
@@ -40,9 +40,8 @@ class STSampleTest {
 
   @Test
   void test() {
-
     stGroup = new STGroup(CHAR, CHAR);
-    stGroup.registerRenderer(String.class, new BasicFormatRenderer());
+    stGroup.registerRenderer(String.class, new BasicFormatRenderer<>());
 
     for (int i = 0; i < MAX_ITER; i++) {
       Contact contact = new Contact("Name" + i, "LastName" + i);
@@ -60,7 +59,7 @@ class STSampleTest {
     return st.render();
   }
 
-  static class BasicFormatRenderer implements AttributeRenderer {
+  static class BasicFormatRenderer<T> implements AttributeRenderer<T> {
 
     public String toString(Object o) {
       return o.toString();

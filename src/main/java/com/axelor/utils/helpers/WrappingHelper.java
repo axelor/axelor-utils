@@ -2,6 +2,7 @@ package com.axelor.utils.helpers;
 
 import com.axelor.auth.db.AuditableModel;
 import com.axelor.db.JpaRepository;
+import jakarta.annotation.Nonnull;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -10,7 +11,6 @@ import java.util.Objects;
 import java.util.Set;
 import java.util.function.Consumer;
 import java.util.function.Function;
-import javax.annotation.Nonnull;
 import org.apache.commons.collections.CollectionUtils;
 
 public final class WrappingHelper {

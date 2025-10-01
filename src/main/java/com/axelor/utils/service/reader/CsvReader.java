@@ -49,7 +49,7 @@ public class CsvReader implements DataReader {
     }
 
     try (FileReader reader = new FileReader(inFile)) {
-      format = CSVFormat.Builder.create().setDelimiter(separator.charAt(0)).build();
+      format = CSVFormat.Builder.create().setDelimiter(separator.charAt(0)).get();
       totalRows = format.parse(reader).getRecords();
       if (CollectionUtils.isEmpty(totalRows)) {
         return false;

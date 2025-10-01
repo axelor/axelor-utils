@@ -28,16 +28,21 @@ class UrlHelperTest extends BaseTest {
 
   @Test
   void testNotExist() {
-
-    String url = "http://www.google.com";
+    String url = "https://www.google.com";
     Assertions.assertNull(UrlHelper.notExist(url));
+  }
 
-    url = "www.google.com";
-    Assertions.assertEquals(
-        String.format(I18n.get(UtilsExceptionMessage.URL_SERVICE_2), url), UrlHelper.notExist(url));
+  @Test
+  void testThrowsException2() {
+    String url = "www.google.com";
+    String expected = String.format(I18n.get(UtilsExceptionMessage.URL_SERVICE_2), url);
+    Assertions.assertEquals(expected, UrlHelper.notExist(url));
+  }
 
-    url = "http://testnotfound.axelor.com/";
-    Assertions.assertEquals(
-        String.format(I18n.get(UtilsExceptionMessage.URL_SERVICE_3), url), UrlHelper.notExist(url));
+  @Test
+  void testThrowsException3() {
+    String url = "https://testnotfound.axelor.com/";
+    String expected = String.format(I18n.get(UtilsExceptionMessage.URL_SERVICE_3), url);
+    Assertions.assertEquals(expected, UrlHelper.notExist(url));
   }
 }

@@ -20,10 +20,10 @@ package com.axelor.utils.api;
 import com.axelor.auth.db.AuditableModel;
 import com.axelor.db.JPA;
 import com.axelor.db.Model;
-import javax.ws.rs.NotFoundException;
+import jakarta.ws.rs.NotFoundException;
 
 public class ObjectFinder {
-  public static int NO_VERSION = -1;
+  public static final int NO_VERSION = -1;
 
   public static <T extends Model> T find(Class<T> objectClass, Long objectId, int versionProvided) {
     T object = JPA.find(objectClass, objectId);

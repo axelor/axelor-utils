@@ -18,9 +18,10 @@
 package com.axelor.utils;
 
 /**
- * Represents an operation that accepts one argument, returns no result and can throw exception.
+ * Represents an operation that accepts one argument, returns no result and can throw an exception.
  *
  * @param <T> the type of the input to the operation.
+ * @param <E>
  */
 @FunctionalInterface
 public interface ThrowConsumer<T, E extends Exception> {

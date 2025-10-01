@@ -2,71 +2,66 @@ import com.axelor.gradle.support.ChangelogSupport
 
 plugins {
     id 'com.axelor.app'
-    id 'com.adarshr.test-logger' version '2.+'
+    id 'com.adarshr.test-logger' version '4.0.0'
 }
 
 apply from: './gradle/version.gradle'
 apply plugin: ChangelogSupport
 
 try {
-    tasks.named("spotlessCheck")
+    tasks.named('spotlessCheck')
 } catch (UnknownTaskException ignored) {
     apply from: './gradle/style.gradle'
 }
 
 testlogger {
-    theme 'mocha'
+    theme = 'mocha'
 }
 
 java {
     toolchain {
-        languageVersion = JavaLanguageVersion.of(11)
+        languageVersion = JavaLanguageVersion.of(21)
     }
 }
 
-group = "com.axelor.addons"
-description "Axelor Utils Module"
+group = 'com.axelor.addons'
+description = 'Axelor Utils Module'
 
 axelor {
-    title "Axelor Utils"
-    description "Axelor Utils Module"
+    title 'Axelor Utils'
+    description 'Axelor Utils Module'
 }
 
 dependencies {
-    implementation 'commons-net:commons-net:3.10.0'
-    implementation 'commons-io:commons-io:2.15.0'
-    implementation 'org.apache.commons:commons-lang3:3.13.0'
-    implementation 'org.apache.pdfbox:pdfbox:3.0.0'
-    implementation 'org.apache.commons:commons-text:1.11.0'
+    implementation 'commons-net:commons-net:3.11.1'
+    implementation 'commons-io:commons-io:2.20.0'
+    implementation 'org.apache.commons:commons-lang3:3.18.0'
+    implementation 'org.apache.pdfbox:pdfbox:3.0.5'
+    implementation 'org.apache.commons:commons-text:1.14.0'
 
-    // JSch
     implementation 'com.jcraft:jsch:0.1.55'
 
-    implementation 'javax.xml.ws:jaxws-api:2.3.1'
+    implementation 'jakarta.xml.ws:jakarta.xml.ws-api:4.0.2'
+    implementation 'org.eclipse.persistence:org.eclipse.persistence.moxy:4.0.7'
+    implementation 'org.apache.commons:commons-csv:1.14.1'
 
-    implementation 'com.sun.xml.bind:jaxb-impl:4.0.4'
-    implementation 'org.apache.commons:commons-csv:1.10.0'
-
-    implementation 'javax.jws:javax.jws-api:1.1'
     implementation 'org.reflections:reflections:0.10.2'
-    implementation 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.15.3'
+    implementation 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.19.2'
 
     implementation "com.axelor:axelor-test:${aopVersion}"
 
-    testImplementation 'org.junit.vintage:junit-vintage-engine'
-
-    compileOnly 'org.projectlombok:lombok:1.18.36'
-    annotationProcessor 'org.projectlombok:lombok:1.18.36'
-    testCompileOnly 'org.projectlombok:lombok:1.18.36'
-    testAnnotationProcessor 'org.projectlombok:lombok:1.18.36'
+    compileOnly 'org.projectlombok:lombok:1.18.38'
+    annotationProcessor 'org.projectlombok:lombok:1.18.38'
+    testCompileOnly 'org.projectlombok:lombok:1.18.38'
+    testAnnotationProcessor 'org.projectlombok:lombok:1.18.38'
 }
 
 changelog {
     version = baseVersion
-    output.set(file("CHANGELOG.md"))
-    inputPath.set(file("changelogs/unreleased"))
-    types.set(["Feature", "Change", "Deprecate", "Remove", "Fix", "Security"])
-    header.set("${version.get()} (${new Date().format("yyyy-MM-dd")})")
+    output.set(file('CHANGELOG.md'))
+    inputPath.set(file('changelogs/unreleased'))
+    types.set(['Feature', 'Change', 'Deprecate', 'Remove', 'Fix', 'Security'])
+    header.set("${version.get()} (${new Date().format('yyyy-MM-dd')})")
 }
 
 //
@@ -76,18 +71,18 @@ changelog {
 apply plugin: 'maven-publish'
 
 ext {
-    mavenUsername = project.findProperty("addonsMavenUsername")
-    mavenPassword = project.findProperty("addonsMavenPassword")
+    mavenUsername = project.findProperty('addonsMavenUsername')
+    mavenPassword = project.findProperty('addonsMavenPassword')
 }
 
 publishing {
     repositories {
         maven {
-            def repoPath = project.hasProperty("finalRelease")
-                    ? "maven-releases"
-                    : "maven-snapshots"
-            name = "maven"
-            url = "https://repository.axelor.com/nexus/repository/" + repoPath
+            def repoPath = project.hasProperty('finalRelease')
+                    ? 'maven-releases'
+                    : 'maven-snapshots'
+            name = 'maven'
+            url = 'https://repository.axelor.com/nexus/repository/' + repoPath
             credentials {
                 username = project.mavenUsername
                 password = project.mavenPassword

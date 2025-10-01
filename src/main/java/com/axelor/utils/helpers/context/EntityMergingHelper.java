@@ -145,14 +145,11 @@ public class EntityMergingHelper {
   }
 
   private static <T> Collection<T> getDefaultCollection(PropertyType propertyType) {
-    switch (propertyType) {
-      case ONE_TO_MANY:
-        return new ArrayList<>();
-      case MANY_TO_MANY:
-        return new HashSet<>();
-      default:
-        return Collections.emptyList();
-    }
+    return switch (propertyType) {
+      case ONE_TO_MANY -> new ArrayList<>();
+      case MANY_TO_MANY -> new HashSet<>();
+      default -> Collections.emptyList();
+    };
   }
 
   private static Property getProperty(String mappedBy, Mapper mappedByMapper) {

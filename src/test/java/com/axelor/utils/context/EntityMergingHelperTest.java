@@ -23,7 +23,6 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-import java.util.stream.Collectors;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -43,7 +42,7 @@ class EntityMergingHelperTest extends BaseTest {
   }
 
   @BeforeEach
-  public void beforeEach() {
+  void beforeEach() {
     loaderHelper.importCsv("data/groups-input.xml");
     loaderHelper.importCsv("data/users-input.xml");
     loaderHelper.importCsv("data/move-references-input.xml");
@@ -65,7 +64,7 @@ class EntityMergingHelperTest extends BaseTest {
 
   @AfterEach
   @Transactional
-  public void afterEach() {
+  void afterEach() {
     Query.of(MoveLine.class).delete();
     Query.of(Move.class).delete();
     Query.of(MoveReference.class).delete();
@@ -165,10 +164,8 @@ class EntityMergingHelperTest extends BaseTest {
     Move move = Query.of(Move.class).filter("self.code = 'TEST_MOVE_1'").fetchOne();
     Assertions.assertNotNull(move);
 
-    List<MoveLine> moveLines = move.getMoveLines();
-
     List<Map<String, Object>> moveLineMapList =
-        moveLines.stream().map(this::moveLineToMap).collect(Collectors.toList());
+        move.getMoveLines().stream().map(this::moveLineToMap).toList();
 
     moveLineMapList.forEach(moveLineMap -> moveLineMap.put("credit", BigDecimal.ONE));
 

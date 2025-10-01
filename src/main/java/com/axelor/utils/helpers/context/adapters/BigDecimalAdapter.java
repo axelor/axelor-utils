@@ -8,18 +8,12 @@ public class BigDecimalAdapter implements Adapter<BigDecimal> {
 
   @Override
   public BigDecimal process(Object contextRecord) {
-    if (contextRecord == null) {
-      return null;
-    }
-    if (contextRecord instanceof BigDecimal) {
-      return (BigDecimal) contextRecord;
-    }
-    if (contextRecord instanceof Long) {
-      return BigDecimal.valueOf((Long) contextRecord);
-    }
-    if (contextRecord instanceof Double) {
-      return BigDecimal.valueOf((Double) contextRecord);
-    }
-    return new BigDecimal(Objects.toString(contextRecord));
+    return switch (contextRecord) {
+      case null -> null;
+      case BigDecimal bigDecimal -> bigDecimal;
+      case Long l -> BigDecimal.valueOf(l);
+      case Double v -> BigDecimal.valueOf(v);
+      default -> new BigDecimal(Objects.toString(contextRecord));
+    };
   }
 }

@@ -25,7 +25,7 @@ import org.apache.commons.collections.CollectionUtils;
 
 public class ActionServiceImpl implements ActionService {
 
-  protected ActionExecutor executor;
+  protected final ActionExecutor executor;
 
   private String modelName;
   private Map<String, Object> context;

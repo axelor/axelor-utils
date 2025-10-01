@@ -17,8 +17,8 @@
  */
 package com.axelor.utils.helpers.file;
 
+import com.axelor.file.temp.TempFiles;
 import com.axelor.i18n.I18n;
-import com.axelor.meta.MetaFiles;
 import com.axelor.utils.exception.UtilsExceptionMessage;
 import com.google.common.base.Preconditions;
 import java.io.File;
@@ -60,7 +60,7 @@ public final class PdfHelper {
     for (File file : fileList) {
       pdfMergerUtility.addSource(file);
     }
-    Path tmpFile = MetaFiles.createTempFile(null, "");
+    Path tmpFile = TempFiles.createTempFile(null, "");
     try (FileOutputStream stream = new FileOutputStream(tmpFile.toFile())) {
       pdfMergerUtility.setDestinationStream(stream);
       pdfMergerUtility.mergeDocuments(null);

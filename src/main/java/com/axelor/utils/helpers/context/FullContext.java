@@ -71,8 +71,7 @@ public class FullContext extends Context {
       return new FullContext((Model) value);
     }
 
-    if (value instanceof Collection) {
-      Collection<?> items = (Collection<?>) value;
+    if (value instanceof Collection<?> items) {
       if (items.isEmpty()) return value;
       if (items.stream().findFirst().get() instanceof Model) {
         items =

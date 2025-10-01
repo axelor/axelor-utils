@@ -9,7 +9,6 @@ import com.axelor.utils.helpers.json.JsonHelper;
 import com.axelor.utils.junit.BaseTest;
 import com.google.inject.Inject;
 import com.google.inject.persist.Transactional;
-import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -51,7 +50,7 @@ class UtilsMenuRestServiceImplTest extends BaseTest {
 
   @Test
   void getAllParentMenus_whenMenuNamesIsEmpty_shouldReturnEmptySet() {
-    Set<MetaMenu> result = utilsMenuRestService.getAllParentMenus(Collections.emptySet());
+    Set<MetaMenu> result = utilsMenuRestService.getAllParentMenus("");
 
     Assertions.assertNotNull(result, "The Result should not be null");
     Assertions.assertTrue(result.isEmpty(), "The Result should be an empty set");
@@ -64,7 +63,7 @@ class UtilsMenuRestServiceImplTest extends BaseTest {
       Assertions.fail("Test requires at least one menu with a parent");
     }
 
-    Set<MetaMenu> result = utilsMenuRestService.getAllParentMenus(Set.of(childMenu.getName()));
+    Set<MetaMenu> result = utilsMenuRestService.getAllParentMenus(childMenu.getName());
 
     Assertions.assertNotNull(result, "The Result should not be null");
     Assertions.assertFalse(result.isEmpty(), "The Result should not be empty");
@@ -81,7 +80,7 @@ class UtilsMenuRestServiceImplTest extends BaseTest {
 
   @Test
   void getAllChildMenus_whenMenuNamesIsEmpty_shouldReturnEmptySet() {
-    Set<MetaMenu> result = utilsMenuRestService.getAllChildMenus(Collections.emptySet());
+    Set<MetaMenu> result = utilsMenuRestService.getAllChildMenus("");
 
     Assertions.assertNotNull(result, "The Result should not be null");
     Assertions.assertTrue(result.isEmpty(), "The Result should be an empty set");
@@ -94,7 +93,7 @@ class UtilsMenuRestServiceImplTest extends BaseTest {
       Assertions.fail("Test requires at least one menu with children");
     }
 
-    Set<MetaMenu> result = utilsMenuRestService.getAllChildMenus(Set.of(parentMenu.getName()));
+    Set<MetaMenu> result = utilsMenuRestService.getAllChildMenus(parentMenu.getName());
 
     Assertions.assertNotNull(result, "The Result should not be null");
     Assertions.assertFalse(result.isEmpty(), "The Result should not be empty");
@@ -111,7 +110,7 @@ class UtilsMenuRestServiceImplTest extends BaseTest {
 
   @Test
   void getRelatedMetaModel_whenMenuNamesIsEmpty_shouldReturnEmptyMap() {
-    Map<String, Object> result = utilsMenuRestService.getRelatedMetaModel(Collections.emptySet());
+    Map<String, Object> result = utilsMenuRestService.getRelatedMetaModel("");
 
     Assertions.assertNotNull(result, "The Result should not be null");
     Assertions.assertTrue(result.isEmpty(), "The Result should be an empty map");
@@ -124,7 +123,7 @@ class UtilsMenuRestServiceImplTest extends BaseTest {
       Assertions.fail("Test requires at least one menu");
     }
 
-    Map<String, Object> result = utilsMenuRestService.getRelatedMetaModel(Set.of(menu.getName()));
+    Map<String, Object> result = utilsMenuRestService.getRelatedMetaModel(menu.getName());
 
     Assertions.assertNotNull(result, "The Result should not be null");
     Assertions.assertEquals(

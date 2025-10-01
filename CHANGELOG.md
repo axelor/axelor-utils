@@ -1,3 +1,74 @@
+## 3.4.4 (2025-09-24)
+
+#### Change
+
+* Revert merge of feat/92960-use-post branch
+
+  <details>
+  
+  Reverted the accidental merge of branch 'feat/92960-use-post' into 'release/3.4'.
+  
+  This reverts commit 43c6969a3c58752e66d76c5ae6509f6b1e0dc827 which incorrectly
+  merged API changes that should not have been included in the release branch.
+  
+  </details>
+
+
+## 3.4.3 (2025-09-23)
+
+#### Feature
+
+* Change the REST API to use POST methods
+
+  <details>
+  
+  Change the `GET` methods in the `UtilsRestController` REST API to `POST` methods for better performance and security.
+  
+  </details>
+
+* Added REST APIs for menu and model navigation
+
+  <details>
+  
+  Added new REST endpoints in `UtilsRestController` to fetch parent menus, child menus, 
+  and related meta models for a given menu.
+  
+  </details>
+
+
+## 3.4.2 (2025-08-28)
+
+#### Fix
+
+* Fix indirect references cleanup logic in UtilsRestService
+
+  <details>
+  
+  Fix the processedModels cleanup logic in addReferences method to properly handle
+  indirect references. The previous condition was too restrictive, causing issues
+  with reference classification in menu navigation.
+  
+  This resolves the issue where indirect references were not properly cleaned up
+  from the ThreadLocal processedModels set, leading to incorrect reference
+  classification in subsequent calls.
+  
+  </details>
+
+
+## 3.4.1 (2025-07-21)
+
+#### Feature
+
+* Added REST APIs for menu and model navigation
+
+  <details>
+  
+  Added new REST endpoints in UtilsRestController to fetch parent menus, child menus, 
+  and related meta models for a given menu.
+  
+  </details>
+
+
 ## 3.4.0 (2025-02-03)
 
 #### Feature
