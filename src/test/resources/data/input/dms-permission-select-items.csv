@@ -1,0 +1,3 @@
+"title","value","select.name"
+"can_read","READ","dms.permission.selection"
+"can_write","WRITE","dms.permission.selection"

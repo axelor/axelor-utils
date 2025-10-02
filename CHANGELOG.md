@@ -1,3 +1,15 @@
+## 3.5.0 (2025-09-26)
+
+#### Feature
+
+* Add Import Helper
+
+  <details>
+
+  This helper class allows to check values consistency on data import.
+
+  </details>
+
 ## 3.4.4 (2025-09-24)
 
 #### Change
