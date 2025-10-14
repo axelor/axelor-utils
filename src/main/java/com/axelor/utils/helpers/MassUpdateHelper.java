@@ -120,7 +120,6 @@ public class MassUpdateHelper {
 
   private static ParallelTransactionExecutor getExecutor() {
     final String tenantId = TenantResolver.currentTenantIdentifier();
-    final String tenantHost = TenantResolver.currentTenantHost();
-    return new ParallelTransactionExecutor(tenantId, tenantHost);
+    return new ParallelTransactionExecutor(tenantId);
   }
 }

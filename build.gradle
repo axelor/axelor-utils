@@ -1,9 +1,7 @@
 import com.axelor.gradle.support.ChangelogSupport
 
-plugins {
-    id 'com.axelor.app'
-    id 'com.adarshr.test-logger' version '4.0.0'
-}
+apply plugin: 'com.axelor.app'
+apply plugin: 'com.adarshr.test-logger'
 
 apply from: './gradle/version.gradle'
 apply plugin: ChangelogSupport
