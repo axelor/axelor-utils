@@ -1,2 +1,2 @@
-title: Replace `com.sun.xml.bind:jaxb-impl:4.0.4` by `org.eclipse.persistence:org.eclipse.persistence.moxy:4.0.7`
+title: Replace `com.sun.xml.bind:jaxb-impl:4.0.4` by `org.eclipse.persistence:org.eclipse.persistence.moxy:4.0.8`
 type: change
