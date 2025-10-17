@@ -1,3 +1,99 @@
+## 4.0.0 (2025-10-17)
+
+#### Feature
+
+* Add ImportMetaFile helper to import MetaFile through AOP imports
+
+  <details>
+  
+  Introduce `ImportMetaFile` class to simplify importing `com.axelor.meta.db.MetaFile` entries via AOP CSV/XML imports.
+  
+  Usage example (XML input):
+  ```xml
+  <input file="meta-files.csv" separator=";" type="com.axelor.meta.db.MetaFile" call="com.axelor.utils.init.ImportMetaFile:importMetaFile"/>
+  ```
+  
+  Required CSV columns:
+  - `filePath`: path relative to `__path__` pointing to the file to upload
+  - `importId`: optional helper for mapping in other CSV files
+  
+  </details>
+
+* Make ConditionList Helper extendable
+
+  <details>
+  
+  Allow the creation of new ConditionList static factory methods.
+  You can now create an extension of ConditionList and create specific factory methods.
+  
+  </details>
+
+* Change the REST API to use POST methods
+
+  <details>
+  
+  Change the `GET` methods in the `UtilsRestController` REST API to `POST` methods for better performance and security.
+  
+  </details>
+
+* Added REST APIs for menu and model navigation
+
+  <details>
+  
+  Added new REST endpoints in `UtilsRestController` to fetch parent menus, child menus, 
+  and related meta models for a given menu.
+  
+  </details>
+
+#### Change
+
+* Upgrade JaCoCo to 0.8.13
+* Replace `javax.xml.ws:jaxws-api:2.3.1` by `jakarta.xml.ws:jakarta.xml.ws-api:4.0.2`
+* Upgrade `lombok` to 1.18.42
+* Upgrade `commons-csv` to 1.14.1
+* Replace `com.sun.xml.bind:jaxb-impl:4.0.4` by `org.eclipse.persistence:org.eclipse.persistence.moxy:4.0.8`
+* Upgrade `commons-net` to 3.12.0
+* Upgrade `commons-io` to 2.20.0
+* Upgrade `jsch` to 2.27.3
+
+  <details>
+  
+  Also relocate maven coordinates. Artifact group changed from `com.jcraft` to `com.github.mwiede`.
+  
+  </details>
+
+* Upgrade `commons-lang3` to 3.19.0
+* Upgrade AOP to 8.0
+
+  <details>
+  
+  See migration guide for more details.
+  
+  </details>
+
+* Upgrade `pdfbox` to 3.0.6
+* Upgrade `jackson-datatype-jsr310` to 2.20.0
+* Upgrade `commons-text` to 1.14.0
+
+#### Remove
+
+* Remove unused constant `PERIOD_1` from `UtilsExceptionMessage`
+* Remove `javax.jws:javax.jws-api` dependency
+
+#### Fix
+
+* Added French translation for version conflict error message.
+* Fix `ParallelTransactionExecutor` constructor compatibility with AOP 8.0
+
+  <details>
+  
+  Update `MassUpdateHelper` to use the correct `ParallelTransactionExecutor` constructor.
+  The constructor now accepts only `tenantId` parameter instead of `tenantId` and `tenantHost`,
+  ensuring compatibility with AOP 8.0.0 API changes.
+  
+  </details>
+
+
 ## 3.5.0 (2025-09-26)
 
 #### Feature
