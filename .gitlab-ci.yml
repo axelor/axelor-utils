@@ -3,7 +3,7 @@ stages:
   - test
   - publish
 
-image: axelor/app-builder:8.0-beta
+image: axelor/app-builder:8.0
 
 variables:
   GIT_SUBMODULE_STRATEGY: recursive
