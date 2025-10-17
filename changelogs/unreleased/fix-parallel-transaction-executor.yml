@@ -1,8 +1,7 @@
 ---
-title: Fix ParallelTransactionExecutor constructor compatibility with Axelor 8.0
+title: Fix `ParallelTransactionExecutor` constructor compatibility with AOP 8.0
 type: fix
 description: |
-  Update MassUpdateHelper to use the correct ParallelTransactionExecutor constructor.
-  The constructor now accepts only tenantId parameter instead of tenantId and tenantHost,
-  ensuring compatibility with Axelor 8.0.0 API changes.
-
+  Update `MassUpdateHelper` to use the correct `ParallelTransactionExecutor` constructor.
+  The constructor now accepts only `tenantId` parameter instead of `tenantId` and `tenantHost`,
+  ensuring compatibility with AOP 8.0.0 API changes.
