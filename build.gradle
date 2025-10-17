@@ -33,7 +33,7 @@ axelor {
 }
 
 dependencies {
-    implementation 'commons-net:commons-net:3.11.1'
+    implementation 'commons-net:commons-net:3.12.0'
     implementation 'commons-io:commons-io:2.20.0'
     implementation 'org.apache.commons:commons-lang3:3.19.0'
     implementation 'org.apache.pdfbox:pdfbox:3.0.6'
