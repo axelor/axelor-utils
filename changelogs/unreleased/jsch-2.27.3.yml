@@ -1,0 +1,4 @@
+title: Upgrade `jsch` to 2.27.3
+type: change
+description:
+  Also relocate maven coordinates. Artifact group changed from `com.jcraft` to `com.github.mwiede`.
