@@ -126,7 +126,7 @@ check_prerequisites() {
   ensure_tag_format
   ensure_tag_dont_exist
   ensure_on_target_branch
-  require_clean_work_tree2
+  require_clean_work_tree
 }
 
 prepare() {
