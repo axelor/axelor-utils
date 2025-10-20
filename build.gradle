@@ -3,6 +3,8 @@ import com.axelor.gradle.support.ChangelogSupport
 plugins {
     id 'com.axelor.app'
     id 'com.adarshr.test-logger' version '4.0.0'
+    id 'maven-publish'
+    id 'jacoco'
 }
 
 apply from: './gradle/version.gradle'
@@ -68,8 +70,6 @@ changelog {
 // Publish
 //
 
-apply plugin: 'maven-publish'
-
 ext {
     mavenUsername = project.findProperty('addonsMavenUsername')
     mavenPassword = project.findProperty('addonsMavenPassword')
@@ -94,8 +94,6 @@ publishing {
 /*
 * Jacoco
 */
-
-apply plugin: 'jacoco'
 
 jacoco {
     toolVersion = '0.8.14'
