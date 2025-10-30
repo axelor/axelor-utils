@@ -1,3 +1,16 @@
+## 3.4.5 (2025-10-30)
+
+#### Feature
+
+* Change the REST API to use POST methods
+
+  <details>
+  
+  Change the `GET` methods in the `UtilsRestController` REST API to `POST` methods for better performance and security.
+  
+  </details>
+
+
 ## 3.4.4 (2025-09-24)
 
 #### Change
