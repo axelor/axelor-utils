@@ -1,6 +1,0 @@
----
-title: Added REST APIs for menu and model navigation
-type: feature
-description: |
-  Added new REST endpoints in `UtilsRestController` to fetch parent menus, child menus, 
-  and related meta models for a given menu.
