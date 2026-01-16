@@ -20,15 +20,32 @@ package com.axelor.utils.helpers;
 import com.axelor.common.ObjectUtils;
 import java.util.regex.Pattern;
 
-public class EmailHelper {
+/** Utility class for email address validation and manipulation. */
+public final class EmailHelper {
+
+  // Local part: allows letters, digits, underscore, dash, plus, and dots between segments
+  // Using possessive quantifiers (++) to prevent catastrophic backtracking
+  private static final String LOCAL_PART = "[_A-Za-z0-9+-]++(?:\\.[_A-Za-z0-9-]++)*+";
+
+  // Domain: first segment + optional intermediate segments + TLD
+  private static final String DOMAIN = "[A-Za-z0-9-]+(?:\\.[A-Za-z0-9-]+)*\\.[A-Za-z]{2,}";
+
+  private static final String EMAIL_PATTERN = "^" + LOCAL_PART + "@" + DOMAIN + "$";
+
+  private static final Pattern COMPILED_PATTERN = Pattern.compile(EMAIL_PATTERN);
+
+  private EmailHelper() {}
+
+  /**
+   * Validates if the given string is a valid email address.
+   *
+   * @param email the email address to validate
+   * @return {@code true} if the email address is valid, {@code false} otherwise
+   */
   public static boolean isValidEmailAddress(String email) {
     if (ObjectUtils.isEmpty(email)) {
       return false;
     }
-
-    final String EMAIL_PATTERN =
-        "[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
-    Pattern pattern = Pattern.compile(EMAIL_PATTERN);
-    return pattern.matcher(email).matches();
+    return COMPILED_PATTERN.matcher(email).matches();
   }
 }
