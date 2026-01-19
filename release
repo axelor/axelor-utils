@@ -10,7 +10,13 @@ GREEN="\033[0;32m"
 CYAN="\033[0;36m"
 NOCOLOR="\033[0m"
 
-target_branch="main"
+# Detect current branch - use it as default if it's a release branch, otherwise use main
+current_branch=$($git_path symbolic-ref --short HEAD 2>/dev/null || echo "")
+if [[ "$current_branch" =~ ^release/[0-9]+\.[0-9]+$ ]]; then
+  target_branch="$current_branch"
+else
+  target_branch="main"
+fi
 
 usage() {
   printf "Usage : ./release [OPTION]\n\n"
@@ -20,7 +26,7 @@ usage() {
   printf "   * Merge into release (release/x.y) branch\n\n"
   printf "Options :\n"
   printf "\t-b <branch> : Default branch to work on (default to 'main').\n"
-  printf "\t-h          : Display this help.\n"
+  printf "\t-h : Display this help.\n"
 }
 
 print_step() {
@@ -31,19 +37,14 @@ print_sub_step() {
   echo -e "${CYAN}$1${NOCOLOR}"
 }
 
-while getopts ":hb:" opt; do
+while getopts ":h" opt; do
   case ${opt} in
   h)
     usage
     exit 1
     ;;
-  b) target_branch=$OPTARG ;;
   \?)
     echo "Invalid option: -$OPTARG" 1>&2
-    exit 1
-    ;;
-  :)
-    echo "Option -$OPTARG requires an argument." >&2
     exit 1
     ;;
   esac
