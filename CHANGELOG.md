@@ -1,3 +1,23 @@
+## 4.0.1 (2026-01-19)
+
+#### Fix
+
+* Fix email validation regex to accept dashes in intermediate domain segments
+
+  <details>
+  
+  The email validation regex in `EmailHelper` was rejecting valid email addresses
+  containing dashes in intermediate domain segments (e.g., user@hdf.my-company.fr).
+  
+  Refactored `EmailHelper` with best practices:
+  - Made class final with private constructor (utility class pattern)
+  - Decomposed regex into named, documented constants for maintainability
+  - Used possessive quantifiers to prevent catastrophic backtracking
+  - Added Javadoc documentation
+  
+  </details>
+
+
 ## 4.0.0 (2025-10-17)
 
 #### Feature
