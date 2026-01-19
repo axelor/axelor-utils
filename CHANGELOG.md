@@ -1,3 +1,17 @@
+## 3.4.6 (2026-01-19)
+
+#### Fix
+
+* Email validation regex now accepts dashes in intermediate domain segments
+
+  <details>
+  
+  Previously, emails with dashes in intermediate domain segments
+  (e.g., `user@hdf.my-company.fr`) were incorrectly rejected.
+  
+  </details>
+
+
 ## 3.4.5 (2025-10-30)
 
 #### Feature
