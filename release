@@ -143,7 +143,7 @@ prepare() {
     rm -rf javadoc
   fi
   print_sub_step '  * Generate Javadoc'
-  ./gradlew javadoc
+  ./gradlew javadoc -PfinalRelease
   mv build/docs/javadoc javadoc
 }
 
