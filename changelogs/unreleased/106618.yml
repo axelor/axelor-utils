@@ -1,5 +1,0 @@
-title: Email validation regex now accepts dashes in intermediate domain segments
-type: fix
-description: |
-  Previously, emails with dashes in intermediate domain segments
-  (e.g., `user@hdf.my-company.fr`) were incorrectly rejected.
