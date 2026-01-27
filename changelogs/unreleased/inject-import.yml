@@ -1,3 +1,0 @@
-title: Import @Inject from jakarta.inject instead of com.google.inject
-type: fix
-

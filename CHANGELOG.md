@@ -1,3 +1,9 @@
+## 4.0.2 (2026-01-27)
+
+#### Fix
+
+* Import @Inject from jakarta.inject instead of com.google.inject
+
 ## 4.0.1 (2026-01-19)
 
 #### Fix
