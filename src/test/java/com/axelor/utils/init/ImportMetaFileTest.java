@@ -4,7 +4,7 @@ import com.axelor.meta.db.MetaFile;
 import com.axelor.meta.db.repo.MetaFileRepository;
 import com.axelor.meta.loader.LoaderHelper;
 import com.axelor.utils.junit.BaseTest;
-import com.google.inject.Inject;
+import jakarta.inject.Inject;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

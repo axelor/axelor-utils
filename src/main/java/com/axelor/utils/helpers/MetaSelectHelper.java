@@ -20,7 +20,7 @@ package com.axelor.utils.helpers;
 import com.axelor.i18n.I18n;
 import com.axelor.meta.db.MetaSelectItem;
 import com.axelor.meta.db.repo.MetaSelectItemRepository;
-import com.google.inject.Inject;
+import jakarta.inject.Inject;
 import java.util.Optional;
 
 public class MetaSelectHelper {

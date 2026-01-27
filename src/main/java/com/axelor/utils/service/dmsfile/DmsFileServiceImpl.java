@@ -7,7 +7,7 @@ import com.axelor.dms.db.repo.DMSFileRepository;
 import com.axelor.meta.db.MetaModel;
 import com.axelor.meta.service.MetaModelService;
 import com.google.common.base.Strings;
-import com.google.inject.Inject;
+import jakarta.inject.Inject;
 import java.util.ArrayList;
 import java.util.List;
 

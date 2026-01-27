@@ -12,7 +12,7 @@ import com.axelor.utils.db.Move;
 import com.axelor.utils.db.MoveLine;
 import com.axelor.utils.junit.BaseTest;
 import com.google.common.base.Strings;
-import com.google.inject.Inject;
+import jakarta.inject.Inject;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;

@@ -19,7 +19,7 @@ package com.axelor.utils.service;
 
 import com.axelor.common.StringUtils;
 import com.axelor.utils.helpers.ExceptionHelper;
-import com.google.inject.Inject;
+import jakarta.inject.Inject;
 import java.io.UnsupportedEncodingException;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;

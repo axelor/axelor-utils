@@ -7,7 +7,7 @@ import com.axelor.meta.schema.actions.ActionView;
 import com.axelor.utils.helpers.context.ActionViewHelper;
 import com.axelor.utils.junit.BaseTest;
 import com.axelor.utils.utils.TestingHelper;
-import com.google.inject.Inject;
+import jakarta.inject.Inject;
 import jakarta.xml.bind.JAXBException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;

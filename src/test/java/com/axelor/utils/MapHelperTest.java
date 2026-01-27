@@ -12,7 +12,7 @@ import com.axelor.utils.db.MoveLine;
 import com.axelor.utils.helpers.MapHelper;
 import com.axelor.utils.helpers.context.adapters.Processor;
 import com.axelor.utils.junit.BaseTest;
-import com.google.inject.Inject;
+import jakarta.inject.Inject;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;

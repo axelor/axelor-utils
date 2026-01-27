@@ -3,7 +3,7 @@ package com.axelor.utils.api;
 import com.axelor.utils.db.Contact;
 import com.axelor.utils.db.Invoice;
 import com.axelor.utils.junit.BaseTest;
-import com.google.inject.Inject;
+import jakarta.inject.Inject;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

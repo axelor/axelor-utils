@@ -18,7 +18,7 @@ import static com.axelor.utils.helpers.SelectHelper.getTitleFromStringValue;
 import com.axelor.i18n.I18n;
 import com.axelor.meta.loader.LoaderHelper;
 import com.axelor.utils.junit.BaseTest;
-import com.google.inject.Inject;
+import jakarta.inject.Inject;
 import java.util.Optional;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;

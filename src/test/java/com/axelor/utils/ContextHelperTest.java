@@ -12,7 +12,7 @@ import com.axelor.utils.db.Move;
 import com.axelor.utils.db.MoveLine;
 import com.axelor.utils.helpers.ContextHelper;
 import com.axelor.utils.junit.BaseTest;
-import com.google.inject.Inject;
+import jakarta.inject.Inject;
 import java.util.Map;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;

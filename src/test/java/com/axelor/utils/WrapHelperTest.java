@@ -4,7 +4,7 @@ import com.axelor.auth.db.User;
 import com.axelor.meta.loader.LoaderHelper;
 import com.axelor.utils.helpers.WrappingHelper;
 import com.axelor.utils.junit.BaseTest;
-import com.google.inject.Inject;
+import jakarta.inject.Inject;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.HashSet;

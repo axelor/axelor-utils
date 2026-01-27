@@ -7,7 +7,7 @@ import com.axelor.meta.service.MetaModelService;
 import com.axelor.utils.db.Move;
 import com.axelor.utils.db.MoveLine;
 import com.axelor.utils.junit.BaseTest;
-import com.google.inject.Inject;
+import jakarta.inject.Inject;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
