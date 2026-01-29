@@ -109,7 +109,8 @@ test {
     useJUnitPlatform()
     // report is always generated after tests run
     finalizedBy jacocoTestReport
-    maxHeapSize = '1G'
+    maxHeapSize = '2G'
+    maxParallelForks = Runtime.runtime.availableProcessors().intdiv(2) ?: 1
 }
 
 jacocoTestReport {
