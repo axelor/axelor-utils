@@ -18,9 +18,8 @@
 package com.axelor.utils.service;
 
 import com.axelor.common.ObjectUtils;
-import com.axelor.common.StringUtils;
 import com.axelor.db.JPA;
-import jakarta.persistence.NoResultException;
+import jakarta.persistence.Entity;
 import jakarta.persistence.Query;
 import java.util.HashMap;
 import java.util.List;
@@ -28,8 +27,6 @@ import java.util.Map;
 import java.util.Optional;
 
 public class ArchivingServiceImpl implements ArchivingService {
-
-  public static final String A_Z = "([A-Z])";
 
   @Override
   public Map<String, String> getObjectLinkTo(Object object, Long id) {
@@ -43,77 +40,45 @@ public class ArchivingServiceImpl implements ArchivingService {
                           model.name as ModelName,
                           field.relationship as relationship,
                           field.mapped_by as mappedBy,
-                          model.table_name as tableName
+                          model.table_name as tableName,
+                          model.full_name as fullName
                         FROM meta_field field
                         LEFT JOIN meta_model model on field.meta_model = model.id
                         WHERE field.type_name like :objectName""");
     findModelWithobjectFieldQuery.setParameter("objectName", object.getClass().getSimpleName());
     List<Object[]> resultList = findModelWithobjectFieldQuery.getResultList();
     for (Object[] result : resultList) {
-      computeRelationship(object, id, result)
+      computeRelationship(id, result)
           .ifPresent(relationship -> objectsLinkToMap.put((String) result[1], relationship));
     }
     return objectsLinkToMap;
   }
 
-  protected Optional<String> computeRelationship(Object object, Long id, Object[] result) {
-    String fieldName = ((String) result[0]).replaceAll(A_Z, "_$1").toLowerCase();
-    String modelName = (String) result[1];
-    String modelNameBDDFormat = modelName.replaceAll(A_Z, "_$1").toLowerCase().replace("^_", "");
+  protected Optional<String> computeRelationship(Long id, Object[] result) {
+    String fieldName = (String) result[0];
     String relationship = (String) result[2];
-    String mappedBy = null;
-    if (result[3] != null) {
-      mappedBy = ((String) result[3]).replaceAll(A_Z, "_$1").toLowerCase();
-    }
-    String tableObjectLinkName = ((String) result[4]).toLowerCase().replace(" ", "_");
-    String tableObjectName = this.getTableObjectName(object);
+    String fullName = (String) result[5];
 
-    String query = null;
+    Class<?> modelClass = fullName != null ? JPA.model(fullName) : null;
+    if (modelClass == null || !modelClass.isAnnotationPresent(Entity.class)) {
+      return Optional.empty();
+    }
+    String entityName = JPA.em().getMetamodel().entity(modelClass).getName();
+
+    String query;
     if (relationship.equals("ManyToOne") || relationship.equals("OneToOne")) {
-      query =
-          "SELECT DISTINCT ol.%s FROM %s ol LEFT JOIN %s o ON ol.%s = o.id WHERE o.id = :objectId"
-              .formatted(fieldName, tableObjectLinkName, tableObjectName, fieldName);
-    } else if (result[3].equals("OneToMany")) {
-      String manyToOneMappedField = StringUtils.notEmpty(mappedBy) ? mappedBy : modelNameBDDFormat;
-      query =
-          "SELECT DISTINCT ol.%s FROM %s ol LEFT JOIN %s o ON ol.id = o.%s WHERE o.id = :objectId"
-              .formatted(fieldName, tableObjectLinkName, tableObjectName, manyToOneMappedField);
+      query = "SELECT 1 FROM %s self WHERE self.%s.id = :objectId".formatted(entityName, fieldName);
     } else if (relationship.equals("ManyToMany")) {
-      String tableNameSet = tableObjectLinkName + "_" + fieldName;
       query =
-          "SELECT DISTINCT %s FROM %s WHERE %s = :objectId"
-              .formatted(fieldName, tableNameSet, fieldName);
-    }
-
-    if (query == null) {
+          "SELECT 1 FROM %s self JOIN self.%s linked WHERE linked.id = :objectId"
+              .formatted(entityName, fieldName);
+    } else {
       return Optional.empty();
     }
 
-    Query findobjectQuery = JPA.em().createNativeQuery(query);
-    findobjectQuery.setParameter("objectId", id);
-
-    Object objectToCheck = null;
-    try {
-      objectToCheck = findobjectQuery.getSingleResult();
-    } catch (NoResultException nRE) {
-      // nothing to do
-    }
-
-    return objectToCheck != null ? Optional.of(relationship) : Optional.empty();
-  }
-
-  protected String getTableObjectName(Object object) {
-    String moduleName =
-        object
-            .getClass()
-            .getPackage()
-            .getName()
-            .replace("com.axelor.apps.", "")
-            .replace(".db", "")
-            .replace(".", "_")
-            .toLowerCase();
-    String objectName = object.getClass().getSimpleName().replaceAll(A_Z, "_$1").toLowerCase();
-    return moduleName + objectName;
+    List<?> linkList =
+        JPA.em().createQuery(query).setParameter("objectId", id).setMaxResults(1).getResultList();
+    return linkList.isEmpty() ? Optional.empty() : Optional.of(relationship);
   }
 
   @Override

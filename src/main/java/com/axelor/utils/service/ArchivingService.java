@@ -21,7 +21,22 @@ import java.util.Map;
 
 public interface ArchivingService {
 
+  /**
+   * Finds the models which still reference the given object through a many-to-one, one-to-one or
+   * many-to-many field. One-to-many fields and non-persistable models are not checked.
+   *
+   * @param object the referenced object, only its class is used
+   * @param id the id of the referenced object
+   * @return a map of simple model name to relationship type ({@code ManyToOne}, {@code OneToOne} or
+   *     {@code ManyToMany}), empty if no model references the object
+   */
   Map<String, String> getObjectLinkTo(Object object, Long id);
 
+  /**
+   * Returns the title of the form view of the given model.
+   *
+   * @param modelName the simple name of the model
+   * @return the title of the {@code <model-name>-form} view, or the model name if there is none
+   */
   String getModelTitle(String modelName);
 }
