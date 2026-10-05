@@ -1,3 +1,20 @@
+## 4.0.3 (2026-10-05)
+
+#### Fix
+
+* Fix NullPointerException in ArchivingService when a model referencing the object has no table
+
+  <details>
+  
+  `getObjectLinkTo` now checks links with JPQL instead of native SQL, so inherited entities
+  (no table of their own) are supported and non-persistable models are skipped.
+  
+  The unused `ArchivingServiceImpl.A_Z` constant and `getTableObjectName` method have been removed,
+  and the unused `object` parameter of `computeRelationship` has been dropped.
+  
+  </details>
+
+
 ## 4.0.2 (2026-01-27)
 
 #### Fix
