@@ -107,11 +107,16 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#getModelTitle(java.lang.String)" class="member-name-link">getModelTitle</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;modelName)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">
+<div class="block">Returns the title of the form view of the given model.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/Map.html" title="class or interface in java.util" class="external-link">Map</a><wbr>&lt;<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>,<wbr><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&gt;</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#getObjectLinkTo(java.lang.Object,java.lang.Long)" class="member-name-link">getObjectLinkTo</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a>&nbsp;object,
  <a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Long.html" title="class or interface in java.lang" class="external-link">Long</a>&nbsp;id)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">
+<div class="block">Finds the models which still reference the given object through a many-to-one, one-to-one or
+ many-to-many field.</div>
+</div>
 </div>
 </div>
 </div>
@@ -131,12 +136,29 @@ loadScripts(document, 'script');</script>
 <h3>getObjectLinkTo</h3>
 <div class="member-signature"><span class="return-type"><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/Map.html" title="class or interface in java.util" class="external-link">Map</a>&lt;<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>,<wbr><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&gt;</span>&nbsp;<span class="element-name">getObjectLinkTo</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a>&nbsp;object,
  <a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Long.html" title="class or interface in java.lang" class="external-link">Long</a>&nbsp;id)</span></div>
+<div class="block">Finds the models which still reference the given object through a many-to-one, one-to-one or
+ many-to-many field. One-to-many fields and non-persistable models are not checked.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>object</code> - the referenced object, only its class is used</dd>
+<dd><code>id</code> - the id of the referenced object</dd>
+<dt>Returns:</dt>
+<dd>a map of simple model name to relationship type (<code>ManyToOne</code>, <code>OneToOne</code> or
+     <code>ManyToMany</code>), empty if no model references the object</dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="getModelTitle(java.lang.String)">
 <h3>getModelTitle</h3>
 <div class="member-signature"><span class="return-type"><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></span>&nbsp;<span class="element-name">getModelTitle</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;modelName)</span></div>
+<div class="block">Returns the title of the form view of the given model.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>modelName</code> - the simple name of the model</dd>
+<dt>Returns:</dt>
+<dd>the title of the <code>&lt;model-name&gt;-form</code> view, or the model name if there is none</dd>
+</dl>
 </section>
 </li>
 </ul>

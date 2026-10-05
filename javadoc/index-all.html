@@ -52,8 +52,6 @@ loadScripts(document, 'script');</script>
 <a href="#I:A">A</a>&nbsp;<a href="#I:B">B</a>&nbsp;<a href="#I:C">C</a>&nbsp;<a href="#I:D">D</a>&nbsp;<a href="#I:E">E</a>&nbsp;<a href="#I:F">F</a>&nbsp;<a href="#I:G">G</a>&nbsp;<a href="#I:H">H</a>&nbsp;<a href="#I:I">I</a>&nbsp;<a href="#I:J">J</a>&nbsp;<a href="#I:L">L</a>&nbsp;<a href="#I:M">M</a>&nbsp;<a href="#I:N">N</a>&nbsp;<a href="#I:O">O</a>&nbsp;<a href="#I:P">P</a>&nbsp;<a href="#I:Q">Q</a>&nbsp;<a href="#I:R">R</a>&nbsp;<a href="#I:S">S</a>&nbsp;<a href="#I:T">T</a>&nbsp;<a href="#I:U">U</a>&nbsp;<a href="#I:V">V</a>&nbsp;<a href="#I:W">W</a>&nbsp;<a href="#I:X">X</a>&nbsp;<br><a href="allclasses-index.html">All&nbsp;Classes&nbsp;and&nbsp;Interfaces</a><span class="vertical-separator">|</span><a href="allpackages-index.html">All&nbsp;Packages</a><span class="vertical-separator">|</span><a href="constant-values.html">Constant&nbsp;Field&nbsp;Values</a><span class="vertical-separator">|</span><a href="serialized-form.html">Serialized&nbsp;Form</a>
 <h2 class="title" id="I:A">A</h2>
 <dl class="index">
-<dt><a href="com/axelor/utils/service/ArchivingServiceImpl.html#A_Z" class="member-name-link">A_Z</a> - Static variable in class com.axelor.utils.service.<a href="com/axelor/utils/service/ArchivingServiceImpl.html" title="class in com.axelor.utils.service">ArchivingServiceImpl</a></dt>
-<dd>&nbsp;</dd>
 <dt><a href="com/axelor/utils/helpers/WrappingHelper.html#accept(java.util.function.Consumer,java.lang.Class,java.lang.Long)" class="member-name-link">accept(Consumer&lt;T&gt;, Class&lt;T&gt;, Long)</a> - Static method in class com.axelor.utils.helpers.<a href="com/axelor/utils/helpers/WrappingHelper.html" title="class in com.axelor.utils.helpers">WrappingHelper</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="com/axelor/utils/helpers/WrappingHelper.html#accept(java.util.function.Consumer,java.lang.Class,java.util.List)" class="member-name-link">accept(Consumer&lt;T&gt;, Class&lt;T&gt;, List&lt;Long&gt;)</a> - Static method in class com.axelor.utils.helpers.<a href="com/axelor/utils/helpers/WrappingHelper.html" title="class in com.axelor.utils.helpers">WrappingHelper</a></dt>
@@ -385,7 +383,7 @@ loadScripts(document, 'script');</script>
 <dd>&nbsp;</dd>
 <dt><a href="com/axelor/utils/helpers/ComputeNameHelper.html" class="type-name-link" title="class in com.axelor.utils.helpers">ComputeNameHelper</a> - Class in <a href="com/axelor/utils/helpers/package-summary.html">com.axelor.utils.helpers</a></dt>
 <dd>&nbsp;</dd>
-<dt><a href="com/axelor/utils/service/ArchivingServiceImpl.html#computeRelationship(java.lang.Object,java.lang.Long,java.lang.Object%5B%5D)" class="member-name-link">computeRelationship(Object, Long, Object[])</a> - Method in class com.axelor.utils.service.<a href="com/axelor/utils/service/ArchivingServiceImpl.html" title="class in com.axelor.utils.service">ArchivingServiceImpl</a></dt>
+<dt><a href="com/axelor/utils/service/ArchivingServiceImpl.html#computeRelationship(java.lang.Long,java.lang.Object%5B%5D)" class="member-name-link">computeRelationship(Long, Object[])</a> - Method in class com.axelor.utils.service.<a href="com/axelor/utils/service/ArchivingServiceImpl.html" title="class in com.axelor.utils.service">ArchivingServiceImpl</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="com/axelor/utils/helpers/ComputeNameHelper.html#computeSimpleFullName(java.lang.String,java.lang.String,java.lang.String)" class="member-name-link">computeSimpleFullName(String, String, String)</a> - Static method in class com.axelor.utils.helpers.<a href="com/axelor/utils/helpers/ComputeNameHelper.html" title="class in com.axelor.utils.helpers">ComputeNameHelper</a></dt>
 <dd>&nbsp;</dd>
@@ -1208,7 +1206,9 @@ loadScripts(document, 'script');</script>
 <div class="block">Batch fetches multiple models by their full names.</div>
 </dd>
 <dt><a href="com/axelor/utils/service/ArchivingService.html#getModelTitle(java.lang.String)" class="member-name-link">getModelTitle(String)</a> - Method in interface com.axelor.utils.service.<a href="com/axelor/utils/service/ArchivingService.html" title="interface in com.axelor.utils.service">ArchivingService</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Returns the title of the form view of the given model.</div>
+</dd>
 <dt><a href="com/axelor/utils/service/ArchivingServiceImpl.html#getModelTitle(java.lang.String)" class="member-name-link">getModelTitle(String)</a> - Method in class com.axelor.utils.service.<a href="com/axelor/utils/service/ArchivingServiceImpl.html" title="class in com.axelor.utils.service">ArchivingServiceImpl</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="com/axelor/utils/db/Wizard.html#getName()" class="member-name-link">getName()</a> - Method in class com.axelor.utils.db.<a href="com/axelor/utils/db/Wizard.html" title="class in com.axelor.utils.db">Wizard</a></dt>
@@ -1234,7 +1234,10 @@ loadScripts(document, 'script');</script>
  parent</div>
 </dd>
 <dt><a href="com/axelor/utils/service/ArchivingService.html#getObjectLinkTo(java.lang.Object,java.lang.Long)" class="member-name-link">getObjectLinkTo(Object, Long)</a> - Method in interface com.axelor.utils.service.<a href="com/axelor/utils/service/ArchivingService.html" title="interface in com.axelor.utils.service">ArchivingService</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Finds the models which still reference the given object through a many-to-one, one-to-one or
+ many-to-many field.</div>
+</dd>
 <dt><a href="com/axelor/utils/service/ArchivingServiceImpl.html#getObjectLinkTo(java.lang.Object,java.lang.Long)" class="member-name-link">getObjectLinkTo(Object, Long)</a> - Method in class com.axelor.utils.service.<a href="com/axelor/utils/service/ArchivingServiceImpl.html" title="class in com.axelor.utils.service">ArchivingServiceImpl</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="com/axelor/utils/service/ActionServiceImpl.html#getOldValue(com.axelor.utils.helpers.context.FullContext,com.axelor.db.mapper.Property)" class="member-name-link">getOldValue(FullContext, Property)</a> - Method in class com.axelor.utils.service.<a href="com/axelor/utils/service/ActionServiceImpl.html" title="class in com.axelor.utils.service">ActionServiceImpl</a></dt>
@@ -1340,8 +1343,6 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Gets the value of the systemInfo property.</div>
 </dd>
-<dt><a href="com/axelor/utils/service/ArchivingServiceImpl.html#getTableObjectName(java.lang.Object)" class="member-name-link">getTableObjectName(Object)</a> - Method in class com.axelor.utils.service.<a href="com/axelor/utils/service/ArchivingServiceImpl.html" title="class in com.axelor.utils.service">ArchivingServiceImpl</a></dt>
-<dd>&nbsp;</dd>
 <dt><a href="com/axelor/utils/helpers/context/FullContext.html#getTarget()" class="member-name-link">getTarget()</a> - Method in class com.axelor.utils.helpers.context.<a href="com/axelor/utils/helpers/context/FullContext.html" title="class in com.axelor.utils.helpers.context">FullContext</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="com/axelor/utils/helpers/SelectHelper.html#getTitleFromIntegerValue(java.lang.String,java.lang.Integer)" class="member-name-link">getTitleFromIntegerValue(String, Integer)</a> - Static method in class com.axelor.utils.helpers.<a href="com/axelor/utils/helpers/SelectHelper.html" title="class in com.axelor.utils.helpers">SelectHelper</a></dt>
